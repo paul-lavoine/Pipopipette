@@ -12,11 +12,14 @@
 
 @interface BarButton : UIButton
 
-- (instancetype)initWithFrame:(CGRect)frame piece:(Piece *)piece;
+- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)position;
 
-- (void)hasBeenSelected:(Player *)owner;
+- (void)selectWithPlayer:(Player *)owner;
 
 // Data
-@property (nonatomic, assign, readonly) Piece *piece;
+@property (nonatomic, strong) NSMutableArray *pieceAssociated;
+@property (assign, nonatomic) CGPoint position;
+@property (assign, nonatomic) bool hasAlreadyBeenSelected;
+@property (nonatomic, strong) Player *owner;
 
 @end

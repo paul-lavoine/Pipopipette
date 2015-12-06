@@ -11,11 +11,28 @@
 
 @interface Piece ()
 
-
-
 @end
 
 
 @implementation Piece
+
+- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point
+{
+    if (self = [super initWithFrame:frame])
+    {
+        _hasBeenWin = false;
+        _position = point;
+        _barButtonsAssociated = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+- (void)selectWithPlayer:(Player *)owner
+{
+    self.backgroundColor = owner.colorPlayer;
+    self.owner = owner;
+    owner.pieceWon ++;
+}
 
 @end

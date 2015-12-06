@@ -11,6 +11,9 @@
 
 @interface Player : NSObject
 
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name;
+
 @property (nonatomic, strong) UIColor *colorPlayer;
+@property (nonatomic, assign) NSInteger pieceWon;
 
 @end

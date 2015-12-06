@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Player.h"
 
-@interface Piece : NSObject
+@interface Piece : UIView
 
-
+@property (nonatomic, strong) NSMutableArray *barButtonsAssociated;
+@property (nonatomic, assign, readonly) CGPoint position;
+@property (nonatomic, assign, readonly) bool hasBeenWin;
 @property (nonatomic, strong) Player *owner;
-@property (nonatomic, assign, readonly) Point position;
+
+- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point;
+- (void)selectWithPlayer:(Player *)owner;
 
 @end

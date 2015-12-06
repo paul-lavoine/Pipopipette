@@ -16,7 +16,6 @@
 // Outlets
 @property (weak, nonatomic) IBOutlet UIView *barView;
 
-
 @end
 
 
@@ -46,19 +45,23 @@
     return cellNib;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame piece:(Piece *)piece
+- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point
 {
     if (self = [super initWithFrame:frame])
     {
-        _piece = piece;
+        _hasAlreadyBeenSelected = false;
+        _position = point;
+        _pieceAssociated = [NSMutableArray array];
     }
     
     return self;
 }
 
-- (void)hasBeenSelected:(Player *)owner
+- (void)selectWithPlayer:(Player *)owner
 {
-    self.barView.backgroundColor = owner.colorPlayer;
+    self.backgroundColor = owner.colorPlayer;
+    self.owner = owner;
+    _hasAlreadyBeenSelected = true;
 }
 
 @end

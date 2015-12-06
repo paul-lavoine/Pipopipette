@@ -10,11 +10,23 @@
 
 @interface Player ()
 
-@property (nonatomic, assign) NSInteger position;
+@property (nonatomic, strong) NSString *name;
 
 @end
 
 
 @implementation Player
+
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name
+{
+    if (self = [super init])
+    {
+        _colorPlayer = color;
+        _name = name;
+    }
+    
+    return self;
+}
+
 
 @end
