@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="barView" destination="X7M-vy-dcH" id="YHJ-7H-ibA"/>
                 <outlet property="contentView" destination="e13-aD-t2t" id="FT8-Uy-Pv2"/>
+                <outlet property="widthConstraint" destination="e6S-CX-F1A" id="Wrm-8A-4ID"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,11 +18,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7M-vy-dcH">
-                    <rect key="frame" x="20" y="0.0" width="5" height="60"/>
+                    <rect key="frame" x="22" y="0.0" width="1" height="60"/>
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="5" id="e6S-CX-F1A"/>
+                        <constraint firstAttribute="width" constant="1" id="e6S-CX-F1A"/>
                     </constraints>
                 </view>
             </subviews>
@@ -33,7 +34,7 @@
                 <constraint firstAttribute="bottom" secondItem="X7M-vy-dcH" secondAttribute="bottom" id="cWr-v3-gkd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="120.5" y="325"/>
+            <point key="canvasLocation" x="134.5" y="456"/>
         </view>
     </objects>
 </document>

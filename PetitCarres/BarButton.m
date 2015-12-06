@@ -13,9 +13,13 @@
 
 @interface BarButton ()
 
+// Data
+@property (weak, nonatomic) NSString *type;
+
 // Outlets
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 
 @end
 
@@ -30,16 +34,17 @@
     {
         _hasAlreadyBeenSelected = false;
         _pieceAssociated = [NSMutableArray array];
-        [self commonInit:type];
+        _type = type;
+        [self commonInit];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSelectButton:)]];
     }
     
     return self;
 }
 
-- (void)commonInit:(NSString *)type
+- (void)commonInit
 {
-    [[NSBundle mainBundle] loadNibNamed:type owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:self.type owner:self options:nil];
     [self addSubview:self.contentView];
 }
 
@@ -54,6 +59,15 @@
     self.barView.backgroundColor = owner.colorPlayer;
     self.owner = owner;
     _hasAlreadyBeenSelected = true;
+    
+    if ([VERTICAL_BAR_BUTTON_XIB isEqualToString:self.type])
+    {
+        self.widthConstraint.constant = BAR_BUTTON_SPACE;
+    }
+    else
+    {
+        self.heightConstraint.constant = BAR_BUTTON_SPACE;
+    }
 }
 
 

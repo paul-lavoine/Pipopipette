@@ -106,7 +106,7 @@
                                                                               j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
                                                                               MIN_LARGER_TOUCH,
                                                                               highSideBarButton)
-                                                              type:@"VerticalBarButton"];
+                                                              type:VERTICAL_BAR_BUTTON_XIB];
                 verticalButton.delegate = self;
                 [self.mapView addSubview:verticalButton];
                 [self.verticalButtons addObject:verticalButton];
@@ -120,7 +120,7 @@
                                                                                j*pieceSize + (j*space) - space - highSideBarButton + offsetHeight - (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
                                                                                highSideBarButton,
                                                                                MIN_LARGER_TOUCH)
-                                                               type:@"HorizontalBarButton"];
+                                                               type:HORIZONTAL_BAR_BUTTON_XIB];
                 horizontalButton.delegate = self;
                 [self.mapView addSubview:horizontalButton];
                 [self.horizontalButtons addObject:horizontalButton];
