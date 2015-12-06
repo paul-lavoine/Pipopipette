@@ -9,13 +9,11 @@
 #import "MapViewController.h"
 
 #import "Board.h"
-#import "barButton.h"
+#import "BarButton.h"
+#import "GlobalConfiguration.h"
 
-#define MIN_LARGER_TOUCH    45
-#define SIZE_PIECE          60
-#define BAR_BUTTON_SPACE    5
 
-@interface MapViewController ()
+@interface MapViewController () <CustomButtonDelegate>
 
 // Outlets
 @property (strong, nonatomic) IBOutlet UIView *mapView;
@@ -24,11 +22,9 @@
 @property (nonatomic, strong) Board *board;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
-@property (nonatomic, strong) NSMutableArray *players;
 @property (nonatomic, strong) NSMutableArray *pieces;
 
 @property (nonatomic, strong) NSArray *colorUsers;
-@property (nonatomic, assign) NSInteger currentPlayer;
 @property (nonatomic, assign) NSInteger rows;
 @property (nonatomic, assign) NSInteger columns;
 @property (nonatomic, assign) NSInteger pieceSelected;
@@ -52,15 +48,17 @@
 {
     [super viewDidLoad];
     
-    self.rows = 3;
-    self.columns = 3;
-    self.currentPlayer = 0;
-    
-    self.players = [NSMutableArray array];
-    [self.players addObject:[[Player alloc] initWithColor:[UIColor blueColor] name:@"Paul"]];
-    [self.players addObject:[[Player alloc] initWithColor:[UIColor redColor] name:@"Cyril"]];
+    self.rows = 16;
+    self.columns = 13;
+
     
     [self buildMapWithRows:self.rows columns:self.columns];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)buildMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -104,13 +102,12 @@
             BarButton *verticalButton;
             if (j <= self.rows)
             {
-                verticalButton = [[BarButton alloc] initWithFrame:CGRectMake(i*pieceSize + (i*smallSideBarButton) - highSideBarButton - space + offsetWidth,
-                                                                             j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
-                                                                             smallSideBarButton,
-                                                                             highSideBarButton)
-                                                         position:CGPointMake(i - 1, j - 1)];
-                verticalButton.backgroundColor = colors[4];
-                [verticalButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+                verticalButton = [[BarButton alloc] initWithFrame:CGRectMake(i*pieceSize + (i*smallSideBarButton) - highSideBarButton + offsetWidth - space - (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
+                                                                              j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
+                                                                              MIN_LARGER_TOUCH,
+                                                                              highSideBarButton)
+                                                              type:@"VerticalBarButton"];
+                verticalButton.delegate = self;
                 [self.mapView addSubview:verticalButton];
                 [self.verticalButtons addObject:verticalButton];
             }
@@ -120,21 +117,20 @@
             if (i <= self.columns)
             {
                 horizontalButton = [[BarButton alloc] initWithFrame:CGRectMake(i*pieceSize + (i*smallSideBarButton) - highSideBarButton + offsetWidth,
-                                                                               j*pieceSize + (j*space) - space - highSideBarButton + offsetHeight,
+                                                                               j*pieceSize + (j*space) - space - highSideBarButton + offsetHeight - (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
                                                                                highSideBarButton,
-                                                                               smallSideBarButton)
-                                                           position:CGPointMake(i - 1, j - 1)];
-                horizontalButton.backgroundColor = colors[4];
-                [horizontalButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+                                                                               MIN_LARGER_TOUCH)
+                                                               type:@"HorizontalBarButton"];
+                horizontalButton.delegate = self;
                 [self.mapView addSubview:horizontalButton];
                 [self.horizontalButtons addObject:horizontalButton];
             }
-            
+
             if (i <= self.columns && j <= self.rows)
             {
                 // Piece
                 int sizePiece = 10;
-                Piece *piece = [[Piece alloc] initWithFrame:CGRectMake(verticalButton.frame.origin.x + space + (highSideBarButton/2) - (sizePiece/2),
+                Piece *piece = [[Piece alloc] initWithFrame:CGRectMake(verticalButton.frame.origin.x + space + (highSideBarButton/2) - (sizePiece/2) + (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
                                                                        verticalButton.frame.origin.y + (highSideBarButton/2) - (sizePiece/2),
                                                                        sizePiece,
                                                                        sizePiece)
@@ -150,24 +146,32 @@
     [self linkComponents:self.columns];
 }
 
+
+#pragma mark - CustomButtonDelegate
+
+- (void)setButton:(BarButton *)button
+{
+    [self buttonTapped:button];
+}
+
 - (void)buttonTapped:(BarButton *)button
 {
     // Retrieve player
-    Player *player = self.players[self.currentPlayer];
+    Player *player = [[GlobalConfiguration sharedInstance] getCurrentPlayer];
     
     // Change Background BarButton
     if (!button.hasAlreadyBeenSelected) {
         
         [button selectWithPlayer:player];
         
-        self.currentPlayer ++;
-        self.currentPlayer = (self.currentPlayer) % [self.players count];
+        [[GlobalConfiguration sharedInstance] nextPlayer];
         
         // Check if piece is complete
         for (Piece *piece in button.pieceAssociated)
         {
             if ([self didCompletePiece:piece])
             {
+                [[GlobalConfiguration sharedInstance] previousPlayer];
                 [piece selectWithPlayer:player];
                 self.pieceSelected ++;
             }

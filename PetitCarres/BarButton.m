@@ -7,14 +7,15 @@
 //
 
 #import "BarButton.h"
-
+#import "GlobalConfiguration.h"
 
 
 
 @interface BarButton ()
 
 // Outlets
-@property (weak, nonatomic) IBOutlet UIView *barView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 
 @end
 
@@ -23,45 +24,38 @@
 
 @implementation BarButton
 
-+ (UINib *)horizontalButtonNib
-{
-    static UINib *cellNib;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        cellNib = [UINib nibWithNibName:@"HorizontalBarButton" bundle:nil];
-    });
-    
-    return cellNib;
-}
-
-+ (UINib *)verticaltalButtonNib
-{
-    static UINib *cellNib;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        cellNib = [UINib nibWithNibName:@"VerticalBarButton" bundle:nil];
-    });
-    
-    return cellNib;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point
+- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type
 {
     if (self = [super initWithFrame:frame])
     {
         _hasAlreadyBeenSelected = false;
-        _position = point;
         _pieceAssociated = [NSMutableArray array];
+        [self commonInit:type];
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSelectButton:)]];
     }
     
     return self;
 }
 
+- (void)commonInit:(NSString *)type
+{
+    [[NSBundle mainBundle] loadNibNamed:type owner:self options:nil];
+    [self addSubview:self.contentView];
+}
+
+#pragma mark - Action Button
+- (IBAction)actionSelectButton:(UIButton *)sender
+{
+    [_delegate setButton:self];
+}
+
 - (void)selectWithPlayer:(Player *)owner
 {
-    self.backgroundColor = owner.colorPlayer;
+    self.barView.backgroundColor = owner.colorPlayer;
     self.owner = owner;
     _hasAlreadyBeenSelected = true;
 }
+
+
 
 @end

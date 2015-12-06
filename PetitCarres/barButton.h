@@ -10,15 +10,34 @@
 
 #import "Piece.h"
 
+#define MIN_LARGER_TOUCH    45
+#define BAR_BUTTON_SPACE    5
+
+@class BarButton;
+
+@protocol CustomButtonDelegate <NSObject>
+
+/**
+ Called when button in tab bar (header section) is select
+ */
+- (void)setButton:(BarButton *)button;
+
+@end
+
 @interface BarButton : UIButton
 
-- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)position;
-
+- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type;
 - (void)selectWithPlayer:(Player *)owner;
+
+
+// Outlets
+@property (weak, nonatomic) IBOutlet UIView *barView;
+
+// Delegate
+@property (nonatomic, weak) id<CustomButtonDelegate> delegate;
 
 // Data
 @property (nonatomic, strong) NSMutableArray *pieceAssociated;
-@property (assign, nonatomic) CGPoint position;
 @property (assign, nonatomic) bool hasAlreadyBeenSelected;
 @property (nonatomic, strong) Player *owner;
 

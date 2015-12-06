@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8157DA41C149518009526D2 /* GlobalConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A8157DA31C149518009526D2 /* GlobalConfiguration.m */; };
 		DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B111BA01AC6009A9EB8 /* main.m */; };
 		DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */; };
 		DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B171BA01AC6009A9EB8 /* MapViewController.m */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A8157DA21C149518009526D2 /* GlobalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfiguration.h; sourceTree = "<group>"; };
+		A8157DA31C149518009526D2 /* GlobalConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfiguration.m; sourceTree = "<group>"; };
 		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6E9B101BA01AC6009A9EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA6E9B111BA01AC6009A9EB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 			children = (
 				DA6E9B131BA01AC6009A9EB8 /* AppDelegate.h */,
 				DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */,
+				A8157DA21C149518009526D2 /* GlobalConfiguration.h */,
+				A8157DA31C149518009526D2 /* GlobalConfiguration.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
+				A8157DA41C149518009526D2 /* GlobalConfiguration.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
 				DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */,

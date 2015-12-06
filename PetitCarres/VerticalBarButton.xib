@@ -5,14 +5,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9060"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarButton">
+            <connections>
+                <outlet property="barView" destination="X7M-vy-dcH" id="YHJ-7H-ibA"/>
+                <outlet property="contentView" destination="e13-aD-t2t" id="FT8-Uy-Pv2"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="e13-aD-t2t" customClass="BarButton">
-            <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
+        <view contentMode="scaleToFill" id="e13-aD-t2t">
+            <rect key="frame" x="0.0" y="0.0" width="45" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7M-vy-dcH">
-                    <rect key="frame" x="20" y="0.0" width="5" height="50"/>
+                    <rect key="frame" x="20" y="0.0" width="5" height="60"/>
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -21,17 +26,14 @@
                 </view>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="X7M-vy-dcH" secondAttribute="centerX" id="6Jo-xC-nrz"/>
                 <constraint firstItem="X7M-vy-dcH" firstAttribute="top" secondItem="e13-aD-t2t" secondAttribute="top" id="Kr0-yB-LsX"/>
                 <constraint firstAttribute="bottom" secondItem="X7M-vy-dcH" secondAttribute="bottom" id="cWr-v3-gkd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="barView" destination="X7M-vy-dcH" id="mCb-EP-i0E"/>
-            </connections>
-            <point key="canvasLocation" x="121" y="325.5"/>
+            <point key="canvasLocation" x="120.5" y="325"/>
         </view>
     </objects>
 </document>
