@@ -74,9 +74,17 @@
     int minSpaceBorder = (MIN_LARGER_TOUCH - smallSideBarButton) / 2;
     
     // Limite le nombre de case à l'espace possile dans la vue
-    self.columns = [self limitNumberOfSquarre:columns highSideBarButton:highSideBarButton space:space minSpaceBorder:minSpaceBorder widthMax:self.view.frame.size.width];
+    self.columns = [self limitNumberOfSquarre:columns
+                            highSideBarButton:highSideBarButton
+                                        space:space
+                               minSpaceBorder:minSpaceBorder
+                                     widthMax:self.view.frame.size.width];
     
-    self.rows = [self limitNumberOfSquarre:rows highSideBarButton:highSideBarButton space:space minSpaceBorder:minSpaceBorder widthMax:(self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight)];
+    self.rows = [self limitNumberOfSquarre:rows
+                         highSideBarButton:highSideBarButton
+                                     space:space
+                            minSpaceBorder:minSpaceBorder
+                                  widthMax:(self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight)];
 
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.view.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
