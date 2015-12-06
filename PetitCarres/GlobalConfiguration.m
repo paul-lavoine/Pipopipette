@@ -10,7 +10,6 @@
 
 @interface GlobalConfiguration ()
 
-@property (nonatomic, strong) NSMutableArray *players;
 @property (nonatomic, assign) NSInteger currentPlayer;
 
 @end
@@ -51,6 +50,16 @@
     return self.players[self.currentPlayer];
 }
 
+- (void)resetCurrentPlayer
+{
+    self.currentPlayer = 0;
+    
+    for (Player *player in self.players)
+    {
+        player.score = 0;
+    }
+}
+
 - (void)nextPlayer
 {
     self.currentPlayer ++;
@@ -65,7 +74,7 @@
 
 - (void)changeCurrentPlayer
 {
-        self.currentPlayer = (self.currentPlayer) % [self.players count];
+    self.currentPlayer = (self.currentPlayer) % [self.players count];
 }
 
 @end

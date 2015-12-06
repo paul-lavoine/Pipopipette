@@ -50,10 +50,17 @@
                             <constraint firstAttribute="trailing" secondItem="dLP-CU-5lT" secondAttribute="trailing" id="Mq3-NL-se8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="i7K-FB-bji"/>
+                    <navigationItem key="navigationItem" id="i7K-FB-bji">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="eIe-W8-hOD">
+                            <connections>
+                                <action selector="restartGame:" destination="flh-BG-aaP" id="rDd-E1-fzq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="contentView" destination="ERF-jj-uNy" id="zGf-A4-Fgz"/>
                         <outlet property="mapView" destination="dLP-CU-5lT" id="vcr-Y4-TNa"/>
                     </connections>
                 </viewController>

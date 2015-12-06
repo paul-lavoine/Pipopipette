@@ -32,7 +32,6 @@
 {
     self.backgroundColor = owner.colorPlayer;
     self.owner = owner;
-    owner.pieceWon ++;
 }
 
 @end

@@ -16,6 +16,7 @@
 @interface MapViewController () <CustomButtonDelegate>
 
 // Outlets
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIView *mapView;
 
 // Data
@@ -50,7 +51,6 @@
     
     self.rows = 16;
     self.columns = 13;
-
     
     [self buildMapWithRows:self.rows columns:self.columns];
 }
@@ -83,7 +83,7 @@
                                      space:space
                             minSpaceBorder:minSpaceBorder
                                   widthMax:(self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight)];
-
+    
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.view.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
     int offsetHeight = ((self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight) - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
@@ -103,10 +103,10 @@
             if (j <= self.rows)
             {
                 verticalButton = [[BarButton alloc] initWithFrame:CGRectMake(i*pieceSize + (i*smallSideBarButton) - highSideBarButton + offsetWidth - space - (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
-                                                                              j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
-                                                                              MIN_LARGER_TOUCH,
-                                                                              highSideBarButton)
-                                                              type:VERTICAL_BAR_BUTTON_XIB];
+                                                                             j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
+                                                                             MIN_LARGER_TOUCH,
+                                                                             highSideBarButton)
+                                                             type:VERTICAL_BAR_BUTTON_XIB];
                 verticalButton.delegate = self;
                 [self.mapView addSubview:verticalButton];
                 [self.verticalButtons addObject:verticalButton];
@@ -125,7 +125,7 @@
                 [self.mapView addSubview:horizontalButton];
                 [self.horizontalButtons addObject:horizontalButton];
             }
-
+            
             if (i <= self.columns && j <= self.rows)
             {
                 // Piece
@@ -144,6 +144,10 @@
     
     // Associate buttons to correct piece and vice versa
     [self linkComponents:self.columns];
+    
+    
+    // Init title
+    self.navigationItem.title = [self setScorePlayers];
 }
 
 
@@ -173,7 +177,9 @@
             {
                 [[GlobalConfiguration sharedInstance] previousPlayer];
                 [piece selectWithPlayer:player];
+                player.score ++;
                 self.pieceSelected ++;
+                self.navigationItem.title = [self setScorePlayers];
             }
         }
         
@@ -236,7 +242,35 @@
     return (self.pieceSelected == (self.rows * self.columns));
 }
 
+#pragma mark - Action
+
+- (IBAction)restartGame:(id)sender {
+    for (UIView *view in self.mapView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    [[GlobalConfiguration sharedInstance] resetCurrentPlayer];
+    [self buildMapWithRows:self.rows columns:self.columns];
+}
+
 #pragma mark - Utils
 
+- (NSString *)setScorePlayers
+{
+    // init title
+    NSMutableString *title = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < [[[GlobalConfiguration sharedInstance] players] count] ; i++)
+    {
+        Player * player = [[GlobalConfiguration sharedInstance] players][i];
+        [title appendFormat:@"%@:%ld",player.name, (long)player.score];
+        if (i != [[[GlobalConfiguration sharedInstance] players] count] - 1)
+        {
+            [title appendString:@" - "];
+        }
+    }
+    
+    return title;
+}
 
 @end

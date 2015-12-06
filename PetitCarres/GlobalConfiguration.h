@@ -15,5 +15,8 @@
 - (Player *)getCurrentPlayer;
 - (void)nextPlayer;
 - (void)previousPlayer;
+- (void)resetCurrentPlayer;
+
+@property (nonatomic, strong) NSMutableArray *players;
 
 @end

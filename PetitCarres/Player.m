@@ -10,7 +10,6 @@
 
 @interface Player ()
 
-@property (nonatomic, strong) NSString *name;
 
 @end
 

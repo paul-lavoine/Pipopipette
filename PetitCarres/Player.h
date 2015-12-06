@@ -14,6 +14,7 @@
 - (instancetype)initWithColor:(UIColor *)color name:(NSString *)name;
 
 @property (nonatomic, strong) UIColor *colorPlayer;
-@property (nonatomic, assign) NSInteger pieceWon;
+@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, strong) NSString *name;
 
 @end
