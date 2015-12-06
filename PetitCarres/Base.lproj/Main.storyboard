@@ -9,7 +9,8 @@
         <scene sceneID="nIv-8U-Q4k">
             <objects>
                 <navigationController id="QFh-AT-frG" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yi4-4f-CMP">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yi4-4f-CMP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
@@ -31,11 +32,11 @@
                         <viewControllerLayoutGuide type="bottom" id="yXZ-uj-RPx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ERF-jj-uNy" userLabel="ContentView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLP-CU-5lT" userLabel="MapView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -50,7 +51,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="mapView" destination="dLP-CU-5lT" id="vcr-Y4-TNa"/>
                     </connections>
