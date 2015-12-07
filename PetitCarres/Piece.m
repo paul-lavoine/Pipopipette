@@ -11,6 +11,8 @@
 
 @interface Piece ()
 
+@property (nonatomic, strong) IBOutlet UIImageView *iconeView;
+
 @end
 
 
@@ -23,15 +25,23 @@
         _hasBeenWin = false;
         _position = point;
         _barButtonsAssociated = [NSMutableArray array];
+        [self commonInit];
     }
     
     return self;
 }
 
+- (void)commonInit
+{
+    [[NSBundle mainBundle] loadNibNamed:@"Piece" owner:self options:nil];
+    [self addSubview:self.iconeView];
+}
+
 - (void)selectWithPlayer:(Player *)owner
 {
-    self.backgroundColor = owner.colorPlayer;
     self.owner = owner;
+    self.iconeView.tintColor = owner.colorPlayer;
+    self.iconeView.image = owner.icone;
 }
 
 @end

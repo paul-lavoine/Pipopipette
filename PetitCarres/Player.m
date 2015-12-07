@@ -16,12 +16,13 @@
 
 @implementation Player
 
-- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone
 {
     if (self = [super init])
     {
         _colorPlayer = color;
         _name = name;
+        _icone = [UIImage imageNamed:icone];
     }
     
     return self;

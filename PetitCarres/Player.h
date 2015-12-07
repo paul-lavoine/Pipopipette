@@ -11,10 +11,11 @@
 
 @interface Player : NSObject
 
-- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name;
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone;
 
 @property (nonatomic, strong) UIColor *colorPlayer;
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) UIImage *icone;
 
 @end

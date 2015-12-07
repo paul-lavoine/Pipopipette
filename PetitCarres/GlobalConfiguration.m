@@ -38,8 +38,8 @@
         self.currentPlayer = 0;
         
         self.players = [NSMutableArray array];
-        [self.players addObject:[[Player alloc] initWithColor:[UIColor blueColor] name:@"Paul"]];
-        [self.players addObject:[[Player alloc] initWithColor:[UIColor redColor] name:@"Cyril"]];
+        [self.players addObject:[[Player alloc] initWithColor:[UIColor blueColor] name:@"Paul" icone:@"croix"]];
+        [self.players addObject:[[Player alloc] initWithColor:[UIColor redColor] name:@"Cyril" icone:@"rond"]];
     }
     
     return self;

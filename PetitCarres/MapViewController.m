@@ -129,13 +129,12 @@
             if (i <= self.columns && j <= self.rows)
             {
                 // Piece
-                int sizePiece = 10;
-                Piece *piece = [[Piece alloc] initWithFrame:CGRectMake(verticalButton.frame.origin.x + space + (highSideBarButton/2) - (sizePiece/2) + (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
-                                                                       verticalButton.frame.origin.y + (highSideBarButton/2) - (sizePiece/2),
-                                                                       sizePiece,
-                                                                       sizePiece)
+                Piece *piece = [[Piece alloc] initWithFrame:CGRectMake(verticalButton.frame.origin.x + space + (highSideBarButton/2) - (highSideBarButton/2) + (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
+                                                                       verticalButton.frame.origin.y + (highSideBarButton/2) - (highSideBarButton/2),
+                                                                       highSideBarButton,
+                                                                       highSideBarButton)
                                                    position:CGPointMake(i - 1, j - 1)];
-                piece.backgroundColor = colors[3];
+//                piece.backgroundColor = colors[3];
                 [self.mapView addSubview:piece];
                 [self.pieces addObject:piece];
             }

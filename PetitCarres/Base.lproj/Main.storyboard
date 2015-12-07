@@ -51,7 +51,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="eIe-W8-hOD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="eIe-W8-hOD">
                             <connections>
                                 <action selector="restartGame:" destination="flh-BG-aaP" id="rDd-E1-fzq"/>
                             </connections>
