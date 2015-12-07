@@ -18,6 +18,8 @@
 // Outlets
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *winnerView;
+@property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 
 // Data
 @property (nonatomic, strong) Board *board;
@@ -29,6 +31,7 @@
 @property (nonatomic, assign) NSInteger rows;
 @property (nonatomic, assign) NSInteger columns;
 @property (nonatomic, assign) NSInteger pieceSelected;
+@property (nonatomic, assign) BOOL alreadyAppear;
 
 @end
 
@@ -49,16 +52,38 @@
 {
     [super viewDidLoad];
     
-    self.rows = 16;
-    self.columns = 13;
+    self.rows = 2;
+    self.columns = 2;
     
-    [self buildMapWithRows:self.rows columns:self.columns];
+
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLayoutSubviews
 {
-    [super viewDidAppear:animated];
+    [super viewDidLayoutSubviews];
     
+    if (!self.alreadyAppear)
+    {
+        self.alreadyAppear = true;
+        [self initGame];
+    }
+}
+
+- (void)initGame
+{
+    self.pieceSelected = 0;
+    
+    // Build Map and Associate Piece
+    [self buildMapWithRows:self.rows columns:self.columns];
+    
+    // Associate buttons to correct piece and vice versa
+    [self linkComponents:self.columns];
+    
+    // Init title
+    self.navigationItem.title = [self setScorePlayers];
+    
+    //Hidde winner view
+    [self displayWinnerView:NO];
 }
 
 - (void)buildMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -134,19 +159,11 @@
                                                                        highSideBarButton,
                                                                        highSideBarButton)
                                                    position:CGPointMake(i - 1, j - 1)];
-//                piece.backgroundColor = colors[3];
                 [self.mapView addSubview:piece];
                 [self.pieces addObject:piece];
             }
         }
     }
-    
-    // Associate buttons to correct piece and vice versa
-    [self linkComponents:self.columns];
-    
-    
-    // Init title
-    self.navigationItem.title = [self setScorePlayers];
 }
 
 
@@ -184,7 +201,10 @@
         
         if ([self isMapComplete])
         {
-            NSLog(@"GG");
+            Player *player = [[GlobalConfiguration sharedInstance] getWinner];
+            NSString *winner = player ? [NSString stringWithFormat:@"Winner is %@", player.name] : @"Match Null";
+            self.winnerLabel.text = winner;
+            [self displayWinnerView:YES];
         }
     }
 }
@@ -249,10 +269,16 @@
     }
     
     [[GlobalConfiguration sharedInstance] resetCurrentPlayer];
-    [self buildMapWithRows:self.rows columns:self.columns];
+    [self initGame];
 }
 
 #pragma mark - Utils
+
+- (void)displayWinnerView:(BOOL)show
+{
+    self.winnerView.hidden = !show;
+    self.winnerLabel.hidden = !show;
+}
 
 - (NSString *)setScorePlayers
 {

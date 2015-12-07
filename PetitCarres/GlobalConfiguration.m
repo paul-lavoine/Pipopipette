@@ -36,7 +36,6 @@
     if (self = [super init])
     {
         self.currentPlayer = 0;
-        
         self.players = [NSMutableArray array];
         [self.players addObject:[[Player alloc] initWithColor:[UIColor blueColor] name:@"Paul" icone:@"croix"]];
         [self.players addObject:[[Player alloc] initWithColor:[UIColor redColor] name:@"Cyril" icone:@"rond"]];
@@ -58,6 +57,35 @@
     {
         player.score = 0;
     }
+}
+
+- (Player *)getWinner
+{
+    Player *winner = [self.players firstObject];
+    // Retrieve high score
+    for (Player *player in self.players)
+    {
+        if (player.score > winner.score)
+        {
+            winner = player;
+        }
+    }
+    
+    // Check if 2 player get the same score
+    int nbPlayerWithTheSameScore = 0;
+    for (Player *player in self.players)
+    {
+        if (winner.score == player.score)
+        {
+            nbPlayerWithTheSameScore++;
+            if (nbPlayerWithTheSameScore >=2)
+            {
+                return nil;
+            }
+        }
+    }
+    
+    return winner;
 }
 
 - (void)nextPlayer

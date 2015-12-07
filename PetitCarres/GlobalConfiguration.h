@@ -13,6 +13,7 @@
 
 + (instancetype)sharedInstance;
 - (Player *)getCurrentPlayer;
+- (Player *)getWinner;
 - (void)nextPlayer;
 - (void)previousPlayer;
 - (void)resetCurrentPlayer;
