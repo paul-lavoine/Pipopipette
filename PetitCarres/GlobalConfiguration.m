@@ -8,9 +8,14 @@
 
 #import "GlobalConfiguration.h"
 
+#define DEFAULT_IA_NAME @"IA"
+
 @interface GlobalConfiguration ()
 
+@property (nonatomic, strong) NSArray *iconesArray;
+@property (nonatomic, strong) NSArray *colorsArray;
 @property (nonatomic, assign) NSInteger currentPlayer;
+@property (nonatomic, strong) NSMutableArray *playersArray;
 
 @end
 
@@ -31,29 +36,68 @@
 
 #pragma mark - Initializers
 
-- (instancetype)init
+- (void)setNumberOfPlayers:(NSInteger)players
 {
-    if (self = [super init])
+    _currentPlayer = 0;
+    [self startDefaultGameWithPlayers:players];
+}
+
+- (void)startDefaultGameWithPlayers:(NSInteger)nbPlayers
+{
+    [self initDefaultData];
+    [self initDefaultPlayers:nbPlayers];
+}
+
+- (void)initDefaultData
+{
+    self.iconesArray =  @[ @"croix", @"rond", @"squarre", @"triangle" ];
+    self.colorsArray = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], [UIColor purpleColor]];
+}
+
+- (void)initDefaultPlayers:(NSInteger)nbPlayers
+{
+    self.playersArray = [NSMutableArray array];
+    for (int i = 0; i < nbPlayers; i++)
     {
-        self.currentPlayer = 0;
-        self.players = [NSMutableArray array];
-        [self.players addObject:[[Player alloc] initWithColor:[UIColor blueColor] name:@"Paul" icone:@"croix"]];
-        [self.players addObject:[[Player alloc] initWithColor:[UIColor redColor] name:@"Cyril" icone:@"rond"]];
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@.%d",DEFAULT_IA_NAME, i] icone:self.iconesArray[i]]];
+    }
+}
+
+- (NSString *)getScorePlayers
+{
+    // init title
+    NSMutableString *title = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < [self playersArraySize] ; i++)
+    {
+        Player * player = self.playersArray[i];
+        [title appendFormat:@"%@:%ld",player.name, (long)player.score];
+        if (i != [self playersArraySize] - 1)
+        {
+            [title appendString:@" - "];
+        }
     }
     
-    return self;
+    return title;
+}
+
+#pragma mark - Utils
+
+- (NSInteger)playersArraySize
+{
+    return [self.playersArray count];
 }
 
 - (Player *)getCurrentPlayer
 {
-    return self.players[self.currentPlayer];
+    return self.playersArray[self.currentPlayer];
 }
 
 - (void)resetCurrentPlayer
 {
     self.currentPlayer = 0;
     
-    for (Player *player in self.players)
+    for (Player *player in self.playersArray)
     {
         player.score = 0;
     }
@@ -61,9 +105,9 @@
 
 - (Player *)getWinner
 {
-    Player *winner = [self.players firstObject];
+    Player *winner = [self.playersArray firstObject];
     // Retrieve high score
-    for (Player *player in self.players)
+    for (Player *player in self.playersArray)
     {
         if (player.score > winner.score)
         {
@@ -73,7 +117,7 @@
     
     // Check if 2 player get the same score
     int nbPlayerWithTheSameScore = 0;
-    for (Player *player in self.players)
+    for (Player *player in self.playersArray)
     {
         if (winner.score == player.score)
         {
@@ -102,7 +146,7 @@
 
 - (void)changeCurrentPlayer
 {
-    self.currentPlayer = (self.currentPlayer) % [self.players count];
+    self.currentPlayer = (self.currentPlayer) % [self.playersArray count];
 }
 
 @end

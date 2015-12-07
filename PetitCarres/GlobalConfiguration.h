@@ -12,12 +12,13 @@
 @interface GlobalConfiguration : NSObject
 
 + (instancetype)sharedInstance;
+- (void)setNumberOfPlayers:(NSInteger)players;
 - (Player *)getCurrentPlayer;
 - (Player *)getWinner;
 - (void)nextPlayer;
 - (void)previousPlayer;
 - (void)resetCurrentPlayer;
-
-@property (nonatomic, strong) NSMutableArray *players;
+- (NSInteger)playersArraySize;
+- (NSString *)getScorePlayers;
 
 @end

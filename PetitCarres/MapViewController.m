@@ -38,24 +38,10 @@
 @implementation MapViewController
 
 #pragma mark - Initializers
-- (instancetype)init
-{
-    if (self = [super init])
-    {
-        
-    }
-    
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.rows = 2;
-    self.columns = 2;
-    
-
 }
 
 - (void)viewDidLayoutSubviews
@@ -69,6 +55,12 @@
     }
 }
 
+- (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
+{
+    self.rows = rows;
+    self.columns = columns;
+}
+
 - (void)initGame
 {
     self.pieceSelected = 0;
@@ -80,7 +72,7 @@
     [self linkComponents:self.columns];
     
     // Init title
-    self.navigationItem.title = [self setScorePlayers];
+    self.navigationItem.title = [[GlobalConfiguration sharedInstance] getScorePlayers];
     
     //Hidde winner view
     [self displayWinnerView:NO];
@@ -88,8 +80,6 @@
 
 - (void)buildMapWithRows:(NSInteger)rows columns:(NSInteger)columns
 {
-    CGFloat statusBarFrameHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-    NSArray *colors = @[[UIColor blueColor], [UIColor redColor], [UIColor purpleColor], [UIColor brownColor], [UIColor blackColor], [UIColor greenColor]];
     int smallSideBarButton = BAR_BUTTON_SPACE;
     int highSideBarButton = SIZE_PIECE;
     int pieceSize = SIZE_PIECE;
@@ -107,11 +97,11 @@
                          highSideBarButton:highSideBarButton
                                      space:space
                             minSpaceBorder:minSpaceBorder
-                                  widthMax:(self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight)];
+                                  widthMax:self.view.frame.size.height];
     
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.view.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
-    int offsetHeight = ((self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - statusBarFrameHeight) - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
+    int offsetHeight = (self.view.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
     
     // Vertical bar
     self.pieces = [NSMutableArray array];
@@ -176,6 +166,7 @@
 
 - (void)buttonTapped:(BarButton *)button
 {
+
     // Retrieve player
     Player *player = [[GlobalConfiguration sharedInstance] getCurrentPlayer];
     
@@ -184,19 +175,24 @@
         
         [button selectWithPlayer:player];
         
-        [[GlobalConfiguration sharedInstance] nextPlayer];
-        
+        BOOL pieceHasBeenWin = false;
+    
         // Check if piece is complete
         for (Piece *piece in button.pieceAssociated)
         {
             if ([self didCompletePiece:piece])
             {
-                [[GlobalConfiguration sharedInstance] previousPlayer];
                 [piece selectWithPlayer:player];
                 player.score ++;
                 self.pieceSelected ++;
-                self.navigationItem.title = [self setScorePlayers];
+                self.navigationItem.title = [[GlobalConfiguration sharedInstance] getScorePlayers];
+                pieceHasBeenWin = true;
             }
+        }
+        
+        if (!pieceHasBeenWin)
+        {
+            [[GlobalConfiguration sharedInstance] nextPlayer];
         }
         
         if ([self isMapComplete])
@@ -278,24 +274,6 @@
 {
     self.winnerView.hidden = !show;
     self.winnerLabel.hidden = !show;
-}
-
-- (NSString *)setScorePlayers
-{
-    // init title
-    NSMutableString *title = [[NSMutableString alloc] init];
-    
-    for (int i = 0; i < [[[GlobalConfiguration sharedInstance] players] count] ; i++)
-    {
-        Player * player = [[GlobalConfiguration sharedInstance] players][i];
-        [title appendFormat:@"%@:%ld",player.name, (long)player.score];
-        if (i != [[[GlobalConfiguration sharedInstance] players] count] - 1)
-        {
-            [title appendString:@" - "];
-        }
-    }
-    
-    return title;
 }
 
 @end
