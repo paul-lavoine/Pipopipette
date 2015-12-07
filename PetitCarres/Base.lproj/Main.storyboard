@@ -41,17 +41,17 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-XD-CXD" userLabel="Winner is">
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-XD-CXD" userLabel="Winner is">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINNER IS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-ui-2zW">
-                                <rect key="frame" x="50" y="100" width="314" height="472"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINNER IS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-ui-2zW">
+                                <rect key="frame" x="50" y="100" width="314" height="322"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="54"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -65,12 +65,12 @@
                             <constraint firstItem="dLP-CU-5lT" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" id="92K-f1-577"/>
                             <constraint firstItem="dLP-CU-5lT" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leading" id="Ay6-De-Dlk"/>
                             <constraint firstItem="wcR-XD-CXD" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" id="E4O-LO-IfD"/>
+                            <constraint firstItem="a7H-ui-2zW" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leadingMargin" constant="30" id="Kap-os-Los"/>
                             <constraint firstAttribute="trailing" secondItem="dLP-CU-5lT" secondAttribute="trailing" id="Mq3-NL-se8"/>
-                            <constraint firstItem="a7H-ui-2zW" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" constant="100" id="Myf-WT-Nkr"/>
-                            <constraint firstItem="a7H-ui-2zW" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leadingMargin" constant="30" id="a3v-eZ-Ny3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="a7H-ui-2zW" secondAttribute="trailing" constant="30" id="cgh-lz-Apu"/>
+                            <constraint firstItem="yXZ-uj-RPx" firstAttribute="top" secondItem="a7H-ui-2zW" secondAttribute="bottom" constant="250" id="TOU-B4-NuM"/>
                             <constraint firstItem="wcR-XD-CXD" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leading" id="jPH-7F-Vxe"/>
-                            <constraint firstItem="yXZ-uj-RPx" firstAttribute="top" secondItem="a7H-ui-2zW" secondAttribute="bottom" constant="100" id="tnE-lZ-V5a"/>
+                            <constraint firstItem="a7H-ui-2zW" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" constant="100" id="mYv-9O-kV8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a7H-ui-2zW" secondAttribute="trailing" constant="30" id="p9S-92-Dvn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji">
