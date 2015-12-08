@@ -7,15 +7,14 @@
 //
 
 #import "GlobalConfiguration.h"
-
-#define DEFAULT_IA_NAME @"IA"
+#import "Player.h"
 
 @interface GlobalConfiguration ()
 
 @property (nonatomic, strong) NSArray *iconesArray;
 @property (nonatomic, strong) NSArray *colorsArray;
 @property (nonatomic, assign) NSInteger currentPlayer;
-@property (nonatomic, strong) NSMutableArray *playersArray;
+
 
 @end
 
@@ -59,26 +58,8 @@
     self.playersArray = [NSMutableArray array];
     for (int i = 0; i < nbPlayers; i++)
     {
-        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@.%d",DEFAULT_IA_NAME, i] icone:self.iconesArray[i]]];
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@", self.iconesArray[i]] icone:self.iconesArray[i] position:i]];
     }
-}
-
-- (NSString *)getScorePlayers
-{
-    // init title
-    NSMutableString *title = [[NSMutableString alloc] init];
-    
-    for (int i = 0; i < [self playersArraySize] ; i++)
-    {
-        Player * player = self.playersArray[i];
-        [title appendFormat:@"%@:%ld",player.name, (long)player.score];
-        if (i != [self playersArraySize] - 1)
-        {
-            [title appendString:@" - "];
-        }
-    }
-    
-    return title;
 }
 
 #pragma mark - Utils

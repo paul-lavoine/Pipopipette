@@ -11,17 +11,19 @@
 @interface Player ()
 
 
+
 @end
 
 
 @implementation Player
 
-- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone position:(NSInteger)position
 {
     if (self = [super init])
     {
         _colorPlayer = color;
         _name = name;
+        _position = position;
         _icone = [UIImage imageNamed:icone];
     }
     

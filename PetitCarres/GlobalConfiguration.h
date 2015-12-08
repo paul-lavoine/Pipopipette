@@ -19,6 +19,7 @@
 - (void)previousPlayer;
 - (void)resetCurrentPlayer;
 - (NSInteger)playersArraySize;
-- (NSString *)getScorePlayers;
+
+@property (nonatomic, strong) NSMutableArray *playersArray;
 
 @end

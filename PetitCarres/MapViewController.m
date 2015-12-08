@@ -21,11 +21,17 @@
 @property (weak, nonatomic) IBOutlet UIView *winnerView;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *scorePlayerFirst;
+@property (weak, nonatomic) IBOutlet UILabel *scorePlayerFourth;
+@property (weak, nonatomic) IBOutlet UILabel *scorePlayerSecond;
+@property (weak, nonatomic) IBOutlet UILabel *scorePlayerThree;
+
 // Data
 @property (nonatomic, strong) Board *board;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
 @property (nonatomic, strong) NSMutableArray *pieces;
+@property (nonatomic, strong) NSArray *scores;
 
 @property (nonatomic, strong) NSArray *colorUsers;
 @property (nonatomic, assign) NSInteger rows;
@@ -63,6 +69,9 @@
 
 - (void)initGame
 {
+    self.scores = @[self.scorePlayerFirst, self.scorePlayerSecond, self.scorePlayerThree, self.scorePlayerFourth];
+    [self initScorePlayer];
+    
     self.pieceSelected = 0;
     
     // Build Map and Associate Piece
@@ -71,11 +80,22 @@
     // Associate buttons to correct piece and vice versa
     [self linkComponents:self.columns];
     
-    // Init title
-    self.navigationItem.title = [[GlobalConfiguration sharedInstance] getScorePlayers];
-    
     //Hidde winner view
     [self displayWinnerView:NO];
+}
+
+- (void)initScorePlayer
+{
+    for (Player *player in [GlobalConfiguration sharedInstance].playersArray)
+    {
+        ((UILabel *)self.scores[player.position]).textColor = player.colorPlayer;
+        ((UILabel *)self.scores[player.position]).text = @"0";
+    }
+}
+
+- (void)updateScore:(Player *)player
+{
+    ((UILabel *)self.scores[player.position]).text = [NSString stringWithFormat:@"%ld", (long)player.score];
 }
 
 - (void)buildMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -84,20 +104,6 @@
     int highSideBarButton = SIZE_PIECE;
     int pieceSize = SIZE_PIECE;
     int space = BAR_BUTTON_SPACE;
-    int minSpaceBorder = (MIN_LARGER_TOUCH - smallSideBarButton) / 2;
-    
-    // Limite le nombre de case à l'espace possile dans la vue
-    self.columns = [self limitNumberOfSquarre:columns
-                            highSideBarButton:highSideBarButton
-                                        space:space
-                               minSpaceBorder:minSpaceBorder
-                                     widthMax:self.view.frame.size.width];
-    
-    self.rows = [self limitNumberOfSquarre:rows
-                         highSideBarButton:highSideBarButton
-                                     space:space
-                            minSpaceBorder:minSpaceBorder
-                                  widthMax:self.view.frame.size.height];
     
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.view.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
@@ -123,7 +129,6 @@
                                                                              highSideBarButton)
                                                              type:VERTICAL_BAR_BUTTON_XIB];
                 verticalButton.delegate = self;
-                [self.mapView addSubview:verticalButton];
                 [self.verticalButtons addObject:verticalButton];
             }
             
@@ -137,7 +142,6 @@
                                                                                MIN_LARGER_TOUCH)
                                                                type:HORIZONTAL_BAR_BUTTON_XIB];
                 horizontalButton.delegate = self;
-                [self.mapView addSubview:horizontalButton];
                 [self.horizontalButtons addObject:horizontalButton];
             }
             
@@ -151,6 +155,16 @@
                                                    position:CGPointMake(i - 1, j - 1)];
                 [self.mapView addSubview:piece];
                 [self.pieces addObject:piece];
+            }
+            
+            if (j <= self.rows)
+            {
+                [self.mapView addSubview:verticalButton];
+               
+            }
+            if (i <= self.columns)
+            {
+                [self.mapView addSubview:horizontalButton];
             }
         }
     }
@@ -166,7 +180,7 @@
 
 - (void)buttonTapped:(BarButton *)button
 {
-
+    
     // Retrieve player
     Player *player = [[GlobalConfiguration sharedInstance] getCurrentPlayer];
     
@@ -176,7 +190,7 @@
         [button selectWithPlayer:player];
         
         BOOL pieceHasBeenWin = false;
-    
+        
         // Check if piece is complete
         for (Piece *piece in button.pieceAssociated)
         {
@@ -185,7 +199,7 @@
                 [piece selectWithPlayer:player];
                 player.score ++;
                 self.pieceSelected ++;
-                self.navigationItem.title = [[GlobalConfiguration sharedInstance] getScorePlayers];
+                [self updateScore:player];
                 pieceHasBeenWin = true;
             }
         }
@@ -229,17 +243,6 @@
     }
 }
 
-- (NSInteger)limitNumberOfSquarre:(NSInteger)cases highSideBarButton:(NSInteger)highSideBarButton space:(NSInteger)space minSpaceBorder:(NSInteger)minSpaceBorder widthMax:(NSInteger)widthMax
-{
-    NSInteger nbCaseAvailable = cases;
-    while (widthMax < ((nbCaseAvailable*highSideBarButton) + (space*(nbCaseAvailable+1) + 2*minSpaceBorder)))
-    {
-        nbCaseAvailable --;
-    }
-    
-    return nbCaseAvailable;
-}
-
 - (BOOL)didCompletePiece:(Piece *)piece
 {
     for (BarButton *button in piece.barButtonsAssociated)
@@ -260,7 +263,8 @@
 #pragma mark - Action
 
 - (IBAction)restartGame:(id)sender {
-    for (UIView *view in self.mapView.subviews) {
+    for (UIView *view in self.mapView.subviews)
+    {
         [view removeFromSuperview];
     }
     
