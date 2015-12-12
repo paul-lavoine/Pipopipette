@@ -17,6 +17,7 @@
 #define HORIZONTAL_BAR_BUTTON_XIB   @"HorizontalBarButton"
 
 @class BarButton;
+@class Player;
 
 @protocol CustomButtonDelegate <NSObject>
 

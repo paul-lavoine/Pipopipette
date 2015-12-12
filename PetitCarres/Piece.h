@@ -11,6 +11,8 @@
 
 #define SIZE_PIECE          60
 
+@class Player;
+
 @interface Piece : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point;

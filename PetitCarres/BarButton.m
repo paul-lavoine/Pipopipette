@@ -7,7 +7,7 @@
 //
 
 #import "BarButton.h"
-#import "GlobalConfiguration.h"
+#import "PlayerManager.h"
 
 
 

@@ -1,5 +1,5 @@
 //
-//  GlobalConfiguration.h
+//  PlayerManager.h
 //  PetitCarres
 //
 //  Created by Paul Lavoine on 06/12/2015.
@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Player.h"
 
-@interface GlobalConfiguration : NSObject
+@interface PlayerManager : NSObject
 
 + (instancetype)sharedInstance;
-- (void)setNumberOfPlayers:(NSInteger)players;
-- (Player *)getCurrentPlayer;
-- (Player *)getWinner;
+- (void)setNumberOfPlayers:(NSInteger)players numberOfBot:(NSInteger)nbBot botLevel:(BotLevel)botLevel;
+- (Player *)currentPlayer;
+- (Player *)winner;
 - (void)nextPlayer;
 - (void)previousPlayer;
 - (void)resetCurrentPlayer;

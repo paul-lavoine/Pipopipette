@@ -9,16 +9,28 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, BotLevel) {
+    BotLevelEasy         = 0,
+    BotLevelMedium       = 1,
+    BotLevelDifficult    = 2,
+};
+
+@class BarButton;
+
 #define DEFAULT_NAME @"Player"
+#define DEFAULT_BOT_NAME @"Bot"
 
 @interface Player : NSObject
 
-- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone position:(NSInteger)position;
+- (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone position:(NSInteger)position isABot:(BOOL)isABot botLevel:(BotLevel)botLevel;
+
+- (BarButton *)selectBarButton:(NSArray *)buttons;
 
 @property (nonatomic, strong) UIColor *colorPlayer;
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImage *icone;
 @property (nonatomic, assign) NSInteger position;
+@property (nonatomic, assign) BOOL isABot;
 
 @end

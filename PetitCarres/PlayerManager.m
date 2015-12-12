@@ -1,33 +1,33 @@
 //
-//  GlobalConfiguration.m
+//  PlayerManager.m
 //  PetitCarres
 //
 //  Created by Paul Lavoine on 06/12/2015.
 //  Copyright © 2015 Paul Lavoine. All rights reserved.
 //
 
-#import "GlobalConfiguration.h"
+#import "PlayerManager.h"
 #import "Player.h"
 
-@interface GlobalConfiguration ()
+@interface PlayerManager ()
 
 @property (nonatomic, strong) NSArray *iconesArray;
 @property (nonatomic, strong) NSArray *colorsArray;
-@property (nonatomic, assign) NSInteger currentPlayer;
+@property (nonatomic, assign) NSInteger positionCurrentPlayer;
 
 
 @end
 
-@implementation GlobalConfiguration
+@implementation PlayerManager
 
 #pragma mark - Shared instance
 
 + (instancetype)sharedInstance
 {
-    static GlobalConfiguration *sharedInstance;
+    static PlayerManager *sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[GlobalConfiguration alloc] init];
+        sharedInstance = [[PlayerManager alloc] init];
     });
     
     return sharedInstance;
@@ -35,16 +35,11 @@
 
 #pragma mark - Initializers
 
-- (void)setNumberOfPlayers:(NSInteger)players
+- (void)setNumberOfPlayers:(NSInteger)players numberOfBot:(NSInteger)nbBot botLevel:(BotLevel)botLevel
 {
-    _currentPlayer = 0;
-    [self startDefaultGameWithPlayers:players];
-}
-
-- (void)startDefaultGameWithPlayers:(NSInteger)nbPlayers
-{
+    self.positionCurrentPlayer = 0;
     [self initDefaultData];
-    [self initDefaultPlayers:nbPlayers];
+    [self initDefaultPlayers:players numberOfBot:nbBot botLevel:botLevel];
 }
 
 - (void)initDefaultData
@@ -53,12 +48,20 @@
     self.colorsArray = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], [UIColor purpleColor]];
 }
 
-- (void)initDefaultPlayers:(NSInteger)nbPlayers
+- (void)initDefaultPlayers:(NSInteger)nbPlayers numberOfBot:(NSInteger)nbBot botLevel:(BotLevel)botLevel
 {
+    NSInteger j = 0;
+    
     self.playersArray = [NSMutableArray array];
     for (int i = 0; i < nbPlayers; i++)
     {
-        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@", self.iconesArray[i]] icone:self.iconesArray[i] position:i]];
+        j++;
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@", self.iconesArray[i]] icone:self.iconesArray[i] position:i isABot:NO botLevel:botLevel]];
+    }
+    
+    for (int i = 0; i < nbBot; i++)
+    {
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i+j] name:[NSString stringWithFormat:@"%@%d",DEFAULT_BOT_NAME, i] icone:self.iconesArray[i+j] position:(i+j) isABot:YES botLevel:botLevel]];
     }
 }
 
@@ -69,14 +72,14 @@
     return [self.playersArray count];
 }
 
-- (Player *)getCurrentPlayer
+- (Player *)currentPlayer
 {
-    return self.playersArray[self.currentPlayer];
+    return self.playersArray[self.positionCurrentPlayer];
 }
 
 - (void)resetCurrentPlayer
 {
-    self.currentPlayer = 0;
+    self.positionCurrentPlayer = 0;
     
     for (Player *player in self.playersArray)
     {
@@ -84,7 +87,7 @@
     }
 }
 
-- (Player *)getWinner
+- (Player *)winner
 {
     Player *winner = [self.playersArray firstObject];
     // Retrieve high score
@@ -115,19 +118,19 @@
 
 - (void)nextPlayer
 {
-    self.currentPlayer ++;
+    self.positionCurrentPlayer ++;
     [self changeCurrentPlayer];
 }
 
 - (void)previousPlayer
 {
-    self.currentPlayer --;
+    self.positionCurrentPlayer --;
     [self changeCurrentPlayer];
 }
 
 - (void)changeCurrentPlayer
 {
-    self.currentPlayer = (self.currentPlayer) % [self.playersArray count];
+    self.positionCurrentPlayer = (self.positionCurrentPlayer) % [self.playersArray count];
 }
 
 @end

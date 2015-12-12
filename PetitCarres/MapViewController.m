@@ -10,7 +10,7 @@
 
 #import "Board.h"
 #import "BarButton.h"
-#import "GlobalConfiguration.h"
+#import "PlayerManager.h"
 
 
 @interface MapViewController () <CustomButtonDelegate>
@@ -86,7 +86,7 @@
 
 - (void)initScorePlayer
 {
-    for (Player *player in [GlobalConfiguration sharedInstance].playersArray)
+    for (Player *player in [PlayerManager sharedInstance].playersArray)
     {
         ((UILabel *)self.scores[player.position]).textColor = player.colorPlayer;
         ((UILabel *)self.scores[player.position]).text = @"0";
@@ -160,7 +160,7 @@
             if (j <= self.rows)
             {
                 [self.mapView addSubview:verticalButton];
-               
+                
             }
             if (i <= self.columns)
             {
@@ -175,14 +175,13 @@
 
 - (void)setButton:(BarButton *)button
 {
-    [self buttonTapped:button];
+    [self buttonSelected:button];
 }
 
-- (void)buttonTapped:(BarButton *)button
+- (void)buttonSelected:(BarButton *)button
 {
-    
     // Retrieve player
-    Player *player = [[GlobalConfiguration sharedInstance] getCurrentPlayer];
+    Player *player = [[PlayerManager sharedInstance] currentPlayer];
     
     // Change Background BarButton
     if (!button.hasAlreadyBeenSelected) {
@@ -204,17 +203,27 @@
             }
         }
         
-        if (!pieceHasBeenWin)
-        {
-            [[GlobalConfiguration sharedInstance] nextPlayer];
-        }
-        
         if ([self isMapComplete])
         {
-            Player *player = [[GlobalConfiguration sharedInstance] getWinner];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            Player *player = [[PlayerManager sharedInstance] winner];
             NSString *winner = player ? [NSString stringWithFormat:@"Winner is %@", player.name] : @"Match Null";
             self.winnerLabel.text = winner;
             [self displayWinnerView:YES];
+        }
+        else
+        {
+            [[PlayerManager sharedInstance] nextPlayer];
+            Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
+            if (currentPlayer.isABot)
+            {
+                [self enableUsersInteractions:NO];
+                [self buttonSelected:[currentPlayer selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons]]];
+            }
+            else
+            {
+                [self enableUsersInteractions:YES];
+            }
         }
     }
 }
@@ -268,11 +277,30 @@
         [view removeFromSuperview];
     }
     
-    [[GlobalConfiguration sharedInstance] resetCurrentPlayer];
+    [[PlayerManager sharedInstance] resetCurrentPlayer];
     [self initGame];
 }
 
 #pragma mark - Utils
+
+- (void)enableUsersInteractions:(BOOL)enable
+{
+    if (enable)
+    {
+        if ([UIApplication sharedApplication].isIgnoringInteractionEvents)
+        {
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        }
+    }
+    else
+    {
+        if (![UIApplication sharedApplication].isIgnoringInteractionEvents)
+        {
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        }
+    }
+}
+
 
 - (void)displayWinnerView:(BOOL)show
 {

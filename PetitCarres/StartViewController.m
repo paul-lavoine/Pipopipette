@@ -8,27 +8,38 @@
 
 #import "StartViewController.h"
 #import "MapViewController.h"
-#import "GlobalConfiguration.h"
+#import "PlayerManager.h"
 #import "BarButton.h"
 
 #define NUMBER_PLAYER_LABEL @"Nombre de joueur :"
+#define NUMBER_BOT_LABEL @"Nombre de Bot :"
 #define NB_MAX_PLAYER 4
 #define NB_MIN_PLAYER 1
 #define NB_DEFAULT_PLAYER 2
+#define NB_DEFAULT_BOT 0
 
 @interface StartViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *nbPlayerLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *incrementStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *incrementPlayerStepper;
+
+@property (weak, nonatomic) IBOutlet UILabel *nbBotLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *incrementBotStepper;
+
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *columnPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *rowPicker;
 
-
+// Switch button
+@property (weak, nonatomic) IBOutlet UIButton *easyButton;
+@property (weak, nonatomic) IBOutlet UIButton *mediumButton;
+@property (weak, nonatomic) IBOutlet UIButton *difficultButton;
 
 // Data
 @property (assign, nonatomic) NSInteger nbPlayer;
+@property (assign, nonatomic) NSInteger nbBot;
+@property (assign, nonatomic) NSInteger botLevel;
 
 @end
 
@@ -55,11 +66,25 @@
 - (void)configureDefaultMenu
 {
     self.nbPlayer = NB_DEFAULT_PLAYER;
-    [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];
-    [self.incrementStepper setValue:NB_DEFAULT_PLAYER];
+    self.nbBot = NB_DEFAULT_BOT;
     
+    // Init Stepper
+    [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];
+    [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_BOT_LABEL, NB_DEFAULT_BOT]];
+    [self.incrementPlayerStepper setValue:NB_DEFAULT_PLAYER];
+    [self.incrementBotStepper setValue:NB_DEFAULT_BOT];
+    
+    // Init Picker View
     [self.columnPicker selectRow:2 inComponent:0 animated:NO];
     [self.rowPicker selectRow:2 inComponent:0 animated:NO];
+    
+    // Init button
+    [[self.easyButton layer] setBorderWidth:1.0f];
+    [[self.easyButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    [[self.mediumButton layer] setBorderWidth:1.0f];
+    [[self.mediumButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    [[self.difficultButton layer] setBorderWidth:1.0f];
+    [[self.difficultButton layer] setBorderColor:[UIColor blackColor].CGColor];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -95,16 +120,11 @@
     return [NSString stringWithFormat:@"%ld",(long)row + 1];
 }
 
-- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    
-}
-
 #pragma mark - Actions
 
 - (IBAction)startGame:(id)sender
 {
-    [[GlobalConfiguration sharedInstance] setNumberOfPlayers:self.nbPlayer];
+    [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:[self selectedLevel]];
     
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
     [mapViewController configureMapWithRows:([self.rowPicker selectedRowInComponent:0] + 1) columns:([self.columnPicker selectedRowInComponent:0] + 1)];
@@ -114,20 +134,35 @@
 
 - (IBAction)valueChanged:(UIStepper *)sender
 {
-    if ([sender value] > NB_MAX_PLAYER)
+    if (sender == self.incrementPlayerStepper)
     {
-        sender.value = NB_MAX_PLAYER;
+        if (sender.value + self.nbBot + 1 > NB_MAX_PLAYER)
+            self.incrementPlayerStepper.value = NB_MAX_PLAYER - self.nbBot;
+        else if (sender.value - 1 < NB_MIN_PLAYER)
+            self.incrementPlayerStepper.value = NB_MIN_PLAYER;
+        
+        self.nbPlayer = [sender value];
+        [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_PLAYER_LABEL, (long)self.nbPlayer]];
     }
-    else if ([sender value] < NB_MIN_PLAYER)
+    else
     {
-        sender.value = NB_MIN_PLAYER;
+        if (self.nbPlayer + sender.value + 1 > NB_MAX_PLAYER)
+            self.incrementBotStepper.value = NB_MAX_PLAYER - self.nbPlayer;
+        else if (self.nbPlayer + sender.value - 1 < 0)
+            self.incrementBotStepper.value = 0;
+        
+        self.nbBot = [sender value];
+        [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.nbBot]];
     }
-    
-    self.nbPlayer = [sender value];
-    [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_PLAYER_LABEL, (long)self.nbPlayer]];
 }
 
 #pragma mark - Utils
+
+- (BotLevel)selectedLevel
+{
+    // TODO
+    return BotLevelEasy;
+}
 
 - (NSInteger)limitNumberOfSquarre:(NSInteger)cases highSideBarButton:(NSInteger)highSideBarButton space:(NSInteger)space minSpaceBorder:(NSInteger)minSpaceBorder widthMax:(NSInteger)widthMax
 {
