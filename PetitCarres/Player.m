@@ -36,30 +36,35 @@
 
 #pragma mark - Utils
 
-- (BarButton *)selectBarButton:(NSArray *)buttons
+- (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces
 {
-    NSMutableArray *arrayButton = [NSMutableArray arrayWithArray:buttons];
-    [arrayButton shuffle];
+    NSMutableArray *arrayShuffleButton = [NSMutableArray arrayWithArray:buttons];
+    [arrayShuffleButton shuffle];
     
     BarButton *selectedBarButton;
     
     switch (self.botLevel) {
         case BotLevelEasy:
-            selectedBarButton = [self selecteButtonWithEasyLevel:arrayButton];
+            selectedBarButton = [self randomChoice:arrayShuffleButton];
             break;
         case BotLevelDifficult:
-            selectedBarButton = [self selecteButtonWithDifficultLevel:arrayButton];
+            selectedBarButton = [self takePieceIfPossible:pieces];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selecteButtonWithDifficultLevel:arrayShuffleButton];
+            break;
+        case BotLevelHardCore:
+            NSLog(@"TODO, not implemented");
             break;
         default:
         case BotLevelMedium:
-            selectedBarButton = [self selecteButtonWithMediumLevel:arrayButton];
+            selectedBarButton = [self takePieceIfPossible:pieces];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:arrayShuffleButton];
             break;
     }
     
     return selectedBarButton ? selectedBarButton : NULL;
 }
 
-- (BarButton *)selecteButtonWithEasyLevel:(NSArray *)arrayWithBarButton
+- (BarButton *)randomChoice:(NSArray *)arrayWithBarButton
 {
     for (BarButton *barButton in arrayWithBarButton)
     {
@@ -71,22 +76,21 @@
     
     NSLog(@"PROBLEM : SelectBarButton Easy level : There is no more accessible barButton");
     
-    return NULL;
+    return nil;
 }
 
-- (BarButton *)selecteButtonWithMediumLevel:(NSArray *)arrayWithBarButton
+- (BarButton *)takePieceIfPossible:(NSArray *)pieces
 {
-    for (BarButton *barButton in arrayWithBarButton)
+    for (Piece *piece in pieces)
     {
-        if (!barButton.hasAlreadyBeenSelected)
+        NSArray *barButtonMissing = [piece barButtonNeededToCompletePiece];
+        if ([barButtonMissing count] == 1)
         {
-            return barButton;
+            return [barButtonMissing firstObject];
         }
     }
     
-    NSLog(@"PROBLEM : SelectBarButton Medium level : There is no more accessible barButton");
-    
-    return NULL;
+    return nil;
 }
 
 - (BarButton *)selecteButtonWithDifficultLevel:(NSArray *)arrayWithBarButton
@@ -95,13 +99,21 @@
     {
         if (!barButton.hasAlreadyBeenSelected)
         {
-            return barButton;
+            for (Piece *piece in barButton.pieceAssociated)
+            {
+                NSArray *barButtonMissing = [piece barButtonNeededToCompletePiece];
+                if ([barButtonMissing count] > 2)
+                {
+                    NSLog(@"3 pièce dispo");
+                    return barButton;
+                }
+            }
         }
     }
     
-    NSLog(@"PROBLEM : SelectBarButton Difficult level : There is no more accessible barButton");
+    NSLog(@"Info Hard : There is no choice ...");
     
-    return NULL;
+    return [self randomChoice:arrayWithBarButton];
 }
 
 @end

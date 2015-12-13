@@ -17,6 +17,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point;
 - (void)selectWithPlayer:(Player *)owner;
+- (NSArray *)barButtonNeededToCompletePiece;
 
 
 @property (nonatomic, strong) NSMutableArray *barButtonsAssociated;

@@ -42,7 +42,7 @@
 
 // Data
 @property (nonatomic, strong) NSMutableArray *pieceAssociated;
-@property (assign, nonatomic) bool hasAlreadyBeenSelected;
+@property (nonatomic, assign) BOOL hasAlreadyBeenSelected;
 @property (nonatomic, strong) Player *owner;
 
 @end

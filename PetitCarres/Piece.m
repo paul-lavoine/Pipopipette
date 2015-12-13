@@ -8,6 +8,7 @@
 
 #import "Piece.h"
 #import "Player.h"
+#import "BarButton.h"
 
 @interface Piece ()
 
@@ -42,6 +43,20 @@
     self.owner = owner;
     self.iconeView.tintColor = owner.colorPlayer;
     self.iconeView.image = owner.icone;
+}
+
+- (NSArray *)barButtonNeededToCompletePiece
+{
+    NSMutableArray *barButtonMissing = [NSMutableArray array];
+    for (BarButton *barButton in self.barButtonsAssociated)
+    {
+        if (!barButton.hasAlreadyBeenSelected)
+        {
+            [barButtonMissing addObject:barButton];
+        }
+    }
+    
+    return barButtonMissing;
 }
 
 @end

@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, BotLevel) {
     BotLevelEasy         = 0,
     BotLevelMedium       = 1,
     BotLevelDifficult    = 2,
+    BotLevelHardCore    = 3,
 };
 
 @class BarButton;
@@ -24,7 +25,7 @@ typedef NS_ENUM(NSInteger, BotLevel) {
 
 - (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone position:(NSInteger)position isABot:(BOOL)isABot botLevel:(BotLevel)botLevel;
 
-- (BarButton *)selectBarButton:(NSArray *)buttons;
+- (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces;
 
 @property (nonatomic, strong) UIColor *colorPlayer;
 @property (nonatomic, assign) NSInteger score;

@@ -15,8 +15,9 @@
 #define NUMBER_BOT_LABEL @"Nombre de Bot :"
 #define NB_MAX_PLAYER 4
 #define NB_MIN_PLAYER 1
+#define NB_MIN_BOT 0
 #define NB_DEFAULT_PLAYER 2
-#define NB_DEFAULT_BOT 2
+#define NB_DEFAULT_BOT 0
 
 @interface StartViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -151,8 +152,10 @@
 
 - (IBAction)startGame:(id)sender
 {
-    [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:[self selectedLevel]];
-    
+    BotLevel level = [self selectedLevel];
+    NSLog(@"level %d", level);
+    [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:level];
+
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
     [mapViewController configureMapWithRows:([self.rowPicker selectedRowInComponent:0] + 1) columns:([self.columnPicker selectedRowInComponent:0] + 1)];
     
@@ -175,8 +178,8 @@
     {
         if (self.nbPlayer + sender.value + 1 > NB_MAX_PLAYER)
             self.incrementBotStepper.value = NB_MAX_PLAYER - self.nbPlayer;
-        else if (self.nbPlayer + sender.value - 1 < 0)
-            self.incrementBotStepper.value = 0;
+        else if (self.nbPlayer + sender.value - 1 < NB_MIN_BOT)
+            self.incrementBotStepper.value = NB_MIN_BOT;
         
         self.nbBot = [sender value];
         [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.nbBot]];
@@ -197,24 +200,20 @@
     }];
 }
 
-
 #pragma mark - Utils
 
 - (BotLevel)selectedLevel
 {
     if (self.easyButton.isSelected)
     {
-                NSLog(@"1");
         return BotLevelEasy;
     }
     else if (self.mediumButton.isSelected)
     {
-                NSLog(@"2");
         return BotLevelMedium;
     }
     else
     {
-        NSLog(@"3");
         return BotLevelDifficult;
     }
 }

@@ -170,9 +170,6 @@
     }
 }
 
-
-
-
 - (void)barButtonSelected:(BarButton *)button
 {
     // Retrieve player
@@ -242,7 +239,8 @@
 - (void)botShouldPlay:(Player *)player
 {
     [self enableUsersInteractions:NO];
-    [self barButtonSelected:[player selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons]]];
+    BarButton *barbuttonSelected = [player selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons] pieces:self.pieces];
+    [self barButtonSelected:barbuttonSelected];
 }
 
 - (void)linkComponents:(NSInteger)nbColumnsAvailable
