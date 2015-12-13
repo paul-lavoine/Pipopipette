@@ -99,14 +99,18 @@
     {
         if (!barButton.hasAlreadyBeenSelected)
         {
+            BOOL eachPieceGetThreeBarButton = true;
             for (Piece *piece in barButton.pieceAssociated)
             {
                 NSArray *barButtonMissing = [piece barButtonNeededToCompletePiece];
-                if ([barButtonMissing count] > 2)
+                if ([barButtonMissing count] <= 2)
                 {
-                    NSLog(@"3 pièce dispo");
-                    return barButton;
+                    eachPieceGetThreeBarButton = false;
                 }
+            }
+            if (eachPieceGetThreeBarButton)
+            {
+                return barButton;
             }
         }
     }
