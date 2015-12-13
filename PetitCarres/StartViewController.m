@@ -16,7 +16,7 @@
 #define NB_MAX_PLAYER 4
 #define NB_MIN_PLAYER 1
 #define NB_DEFAULT_PLAYER 2
-#define NB_DEFAULT_BOT 0
+#define NB_DEFAULT_BOT 2
 
 @interface StartViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -32,14 +32,17 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *rowPicker;
 
 // Switch button
+@property (weak, nonatomic) IBOutlet UIView *contentLevelView;
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *mediumButton;
 @property (weak, nonatomic) IBOutlet UIButton *difficultButton;
 
 // Data
+@property (nonatomic, strong) UIView *colorSelectedButtonView;
 @property (assign, nonatomic) NSInteger nbPlayer;
 @property (assign, nonatomic) NSInteger nbBot;
 @property (assign, nonatomic) NSInteger botLevel;
+@property (nonatomic, assign) BOOL alreadyAppear;
 
 @end
 
@@ -61,6 +64,24 @@
     [super viewDidLoad];
     
     [self configureDefaultMenu];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.alreadyAppear)
+    {
+        self.alreadyAppear = true;
+        // Update view
+        self.colorSelectedButtonView.frame = self.mediumButton.frame;
+    }
 }
 
 - (void)configureDefaultMenu
@@ -85,6 +106,12 @@
     [[self.mediumButton layer] setBorderColor:[UIColor blackColor].CGColor];
     [[self.difficultButton layer] setBorderWidth:1.0f];
     [[self.difficultButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    
+    // Init
+    self.colorSelectedButtonView = [[UIView alloc] initWithFrame:self.mediumButton.frame];
+    self.colorSelectedButtonView.backgroundColor = [UIColor blueColor];
+    [self.contentLevelView insertSubview:self.colorSelectedButtonView atIndex:0];
+    [self changeBotLevel:self.mediumButton];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -156,12 +183,40 @@
     }
 }
 
+- (IBAction)changeBotLevel:(UIButton *)sender
+{
+    [self.easyButton setSelected:NO];
+    [self.mediumButton setSelected:NO];
+    [self.difficultButton setSelected:NO];
+
+    [sender setSelected:YES];
+    [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        self.colorSelectedButtonView.frame = CGRectOffset(sender.frame, 0, 0);
+    }];
+}
+
+
 #pragma mark - Utils
 
 - (BotLevel)selectedLevel
 {
-    // TODO
-    return BotLevelEasy;
+    if (self.easyButton.isSelected)
+    {
+                NSLog(@"1");
+        return BotLevelEasy;
+    }
+    else if (self.mediumButton.isSelected)
+    {
+                NSLog(@"2");
+        return BotLevelMedium;
+    }
+    else
+    {
+        NSLog(@"3");
+        return BotLevelDifficult;
+    }
 }
 
 - (NSInteger)limitNumberOfSquarre:(NSInteger)cases highSideBarButton:(NSInteger)highSideBarButton space:(NSInteger)space minSpaceBorder:(NSInteger)minSpaceBorder widthMax:(NSInteger)widthMax

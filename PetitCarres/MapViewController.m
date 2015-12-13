@@ -171,14 +171,9 @@
 }
 
 
-#pragma mark - CustomButtonDelegate
 
-- (void)setButton:(BarButton *)button
-{
-    [self buttonSelected:button];
-}
 
-- (void)buttonSelected:(BarButton *)button
+- (void)barButtonSelected:(BarButton *)button
 {
     // Retrieve player
     Player *player = [[PlayerManager sharedInstance] currentPlayer];
@@ -193,7 +188,7 @@
         // Check if piece is complete
         for (Piece *piece in button.pieceAssociated)
         {
-            if ([self didCompletePiece:piece])
+            if ([self isCompletePiece:piece])
             {
                 [piece selectWithPlayer:player];
                 player.score ++;
@@ -207,25 +202,47 @@
         {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             Player *player = [[PlayerManager sharedInstance] winner];
-            NSString *winner = player ? [NSString stringWithFormat:@"Winner is %@", player.name] : @"Match Null";
-            self.winnerLabel.text = winner;
+            [self configureWinnerTitleWithPlayer:player];
             [self displayWinnerView:YES];
         }
         else
         {
-            [[PlayerManager sharedInstance] nextPlayer];
-            Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
-            if (currentPlayer.isABot)
+            if (!pieceHasBeenWin)
             {
-                [self enableUsersInteractions:NO];
-                [self buttonSelected:[currentPlayer selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons]]];
+                [self nextTurn];
+            }
+            else if (player.isABot)
+            {
+                [self botShouldPlay:player];
             }
             else
             {
-                [self enableUsersInteractions:YES];
+                    // Piece win and player is real
+                    // Waiting for real player
             }
         }
     }
+}
+
+- (void)nextTurn
+{
+    [[PlayerManager sharedInstance] nextPlayer];
+    Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
+    
+    if (currentPlayer.isABot)
+    {
+        [self botShouldPlay:currentPlayer];
+    }
+    else
+    {
+        [self enableUsersInteractions:YES];
+    }
+}
+
+- (void)botShouldPlay:(Player *)player
+{
+    [self enableUsersInteractions:NO];
+    [self barButtonSelected:[player selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons]]];
 }
 
 - (void)linkComponents:(NSInteger)nbColumnsAvailable
@@ -252,7 +269,28 @@
     }
 }
 
-- (BOOL)didCompletePiece:(Piece *)piece
+#pragma mark - CustomButtonDelegate
+
+- (void)setButton:(BarButton *)button
+{
+    [self barButtonSelected:button];
+}
+
+#pragma mark - Action
+
+- (IBAction)restartGame:(id)sender {
+    for (UIView *view in self.mapView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    [[PlayerManager sharedInstance] resetCurrentPlayer];
+    [self initGame];
+}
+
+#pragma mark - Utils
+
+- (BOOL)isCompletePiece:(Piece *)piece
 {
     for (BarButton *button in piece.barButtonsAssociated)
     {
@@ -269,19 +307,26 @@
     return (self.pieceSelected == (self.rows * self.columns));
 }
 
-#pragma mark - Action
-
-- (IBAction)restartGame:(id)sender {
-    for (UIView *view in self.mapView.subviews)
+- (void)configureWinnerTitleWithPlayer:(Player *)player
+{
+    NSMutableAttributedString *winnerStringWithColor;
+    if (player)
     {
-        [view removeFromSuperview];
+        winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:@"Winner is "];
+        NSDictionary *attrs = @{ NSForegroundColorAttributeName : player.colorPlayer,
+                                 NSFontAttributeName : [UIFont fontWithName:self.winnerLabel.font.fontName size:60.0]
+                                 };
+        
+        NSAttributedString *playerName = [[NSAttributedString alloc] initWithString:player.name attributes:attrs];
+        [winnerStringWithColor appendAttributedString:playerName];
+    }
+    else
+    {
+        winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:@"Match Null"];
     }
     
-    [[PlayerManager sharedInstance] resetCurrentPlayer];
-    [self initGame];
+    self.winnerLabel.attributedText = winnerStringWithColor;
 }
-
-#pragma mark - Utils
 
 - (void)enableUsersInteractions:(BOOL)enable
 {
