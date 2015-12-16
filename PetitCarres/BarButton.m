@@ -56,7 +56,7 @@
 
 - (void)selectWithPlayer:(Player *)owner
 {
-    self.barView.backgroundColor = owner.colorPlayer;
+    self.barView.backgroundColor = DEFAULT_COLOR_BAR_BUTTON;
     self.owner = owner;
     _hasAlreadyBeenSelected = true;
     
@@ -70,6 +70,10 @@
     }
 }
 
+- (void)setColorBackground
+{
+    self.barView.backgroundColor = self.owner.colorPlayer;
+}
 
 
 @end

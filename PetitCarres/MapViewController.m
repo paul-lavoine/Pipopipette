@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSMutableArray *shuffleBarButtons;
 @property (nonatomic, strong) NSMutableArray *pieces;
 @property (nonatomic, strong) NSArray *scores;
+@property (nonatomic, strong) BarButton *lastBarButtonPlayed;
 
 @property (nonatomic, strong) NSArray *colorUsers;
 @property (nonatomic, assign) NSInteger rows;
@@ -179,6 +180,9 @@
 
 - (void)barButtonSelected:(BarButton *)button
 {
+    [self.lastBarButtonPlayed setColorBackground];
+    self.lastBarButtonPlayed = button;
+    
     // Retrieve player
     Player *player = [[PlayerManager sharedInstance] currentPlayer];
     
@@ -262,12 +266,6 @@
     }
 }
 
-- (void)handleTimer:(NSTimer*)theTimer
-{
-    BarButton *barButton = [theTimer userInfo];
-    [self barButtonSelected:barButton];
-}
-
 - (void)linkComponents:(NSInteger)nbColumnsAvailable
 {
     for (int i = 0; i < [self.pieces count] ; i++ )
@@ -312,6 +310,12 @@
 }
 
 #pragma mark - Utils
+
+- (void)handleTimer:(NSTimer*)theTimer
+{
+    BarButton *barButton = [theTimer userInfo];
+    [self barButtonSelected:barButton];
+}
 
 - (BOOL)isCompletePiece:(Piece *)piece
 {

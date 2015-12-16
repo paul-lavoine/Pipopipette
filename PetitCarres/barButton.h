@@ -16,6 +16,8 @@
 #define VERTICAL_BAR_BUTTON_XIB     @"VerticalBarButton"
 #define HORIZONTAL_BAR_BUTTON_XIB   @"HorizontalBarButton"
 
+#define DEFAULT_COLOR_BAR_BUTTON [UIColor yellowColor];
+
 @class BarButton;
 @class Player;
 
@@ -32,6 +34,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type;
 - (void)selectWithPlayer:(Player *)owner;
+- (void)setColorBackground;
 
 
 // Outlets

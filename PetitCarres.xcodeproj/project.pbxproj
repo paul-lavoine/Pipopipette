@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A8157DA41C149518009526D2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8157DA31C149518009526D2 /* PlayerManager.m */; };
 		A85FE8211C15FF2A00EF58E5 /* Piece.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85FE8201C15FF2A00EF58E5 /* Piece.xib */; };
-		A85FE8241C16316B00EF58E5 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* StartViewController.m */; };
+		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
 		DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B111BA01AC6009A9EB8 /* main.m */; };
 		DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */; };
@@ -40,8 +40,8 @@
 		A8157DA21C149518009526D2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
 		A8157DA31C149518009526D2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 		A85FE8201C15FF2A00EF58E5 /* Piece.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Piece.xib; sourceTree = "<group>"; };
-		A85FE8221C16316B00EF58E5 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		A85FE8231C16316B00EF58E5 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		A85FE8221C16316B00EF58E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		A85FE8231C16316B00EF58E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		A85FE82D1C1C2FEB00EF58E5 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
 		A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,10 +186,10 @@
 		DA6E9B3C1BA01D4A009A9EB8 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
+				A85FE8221C16316B00EF58E5 /* MenuViewController.h */,
+				A85FE8231C16316B00EF58E5 /* MenuViewController.m */,
 				DA6E9B161BA01AC6009A9EB8 /* MapViewController.h */,
 				DA6E9B171BA01AC6009A9EB8 /* MapViewController.m */,
-				A85FE8221C16316B00EF58E5 /* StartViewController.h */,
-				A85FE8231C16316B00EF58E5 /* StartViewController.m */,
 			);
 			name = ViewsController;
 			sourceTree = "<group>";
@@ -206,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A85FE8261C1C2F2300EF58E5 /* Utils */,
+				DA6E9B3A1BA01D2E009A9EB8 /* BarButton */,
 				DA6E9B4D1BA03B6A009A9EB8 /* Board */,
 				DA6E9B4F1BA03B74009A9EB8 /* Piece */,
 				DA6E9B4E1BA03B70009A9EB8 /* Player */,
@@ -216,7 +217,6 @@
 		DA6E9B4C1BA03B5F009A9EB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA6E9B3A1BA01D2E009A9EB8 /* BarButton */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8157DA41C149518009526D2 /* PlayerManager.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
-				A85FE8241C16316B00EF58E5 /* StartViewController.m in Sources */,
+				A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
 				DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */,
 				DA6E9B371BA01B5A009A9EB8 /* BarButton.m in Sources */,

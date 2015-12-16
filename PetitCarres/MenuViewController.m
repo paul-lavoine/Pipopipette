@@ -1,12 +1,12 @@
 //
-//  StartViewController.m
+//  MenuViewController.m
 //  PetitCarres
 //
 //  Created by Paul Lavoine on 07/12/2015.
 //  Copyright © 2015 Paul Lavoine. All rights reserved.
 //
 
-#import "StartViewController.h"
+#import "MenuViewController.h"
 #import "MapViewController.h"
 #import "PlayerManager.h"
 #import "BarButton.h"
@@ -19,7 +19,7 @@
 #define NB_DEFAULT_PLAYER 1
 #define NB_DEFAULT_BOT 1
 
-@interface StartViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MenuViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *nbPlayerLabel;
@@ -47,7 +47,7 @@
 
 @end
 
-@implementation StartViewController
+@implementation MenuViewController
 
 #pragma mark - Initializers
 - (instancetype)init
