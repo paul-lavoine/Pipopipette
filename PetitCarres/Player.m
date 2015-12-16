@@ -7,7 +7,6 @@
 //
 
 #import "Player.h"
-#import "NSMutableArray+Additions.h"
 #import "BarButton.h"
 
 @interface Player ()
@@ -37,42 +36,49 @@
 #pragma mark - Utils
 
 - (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces
-{
-    NSMutableArray *arrayShuffleButton = [NSMutableArray arrayWithArray:buttons];
-    [arrayShuffleButton shuffle];
-    
+{    
     BarButton *selectedBarButton;
     
     switch (self.botLevel) {
         case BotLevelEasy:
             selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:arrayShuffleButton];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:buttons];
             break;
         case BotLevelDifficult:
             selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selecteButtonWithMediumLevel:arrayShuffleButton];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:arrayShuffleButton];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:buttons];
             break;
         case BotLevelHardCore:
-            NSLog(@"TODO, not implemented");
+            selectedBarButton = [self takePieceIfPossible:pieces];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheBestPlace:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:buttons];
             break;
         default:
         case BotLevelMedium:
             selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selecteButtonWithMediumLevel:arrayShuffleButton];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:arrayShuffleButton];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:buttons];
             break;
     }
     
     return selectedBarButton ? selectedBarButton : NULL;
 }
 
-- (BarButton *)selectTheSmallestChain:(NSArray *)arrayWithBarButton
+- (BarButton *)selectTheSmallestChain:(NSArray *)buttons
 {
     // TODO not implemented
     
     // TMP
-    return [self randomChoice:arrayWithBarButton];
+    return [self randomChoice:buttons];
+}
+
+- (BarButton *)selectTheBestPlace:(NSArray *)buttons
+{
+    // TODO, Not implemented
+    
+    // TMP
+    return [self selectFreePlace:buttons];
 }
 
 - (BarButton *)takePieceIfPossible:(NSArray *)pieces
@@ -89,9 +95,9 @@
     return nil;
 }
 
-- (BarButton *)selecteButtonWithMediumLevel:(NSArray *)arrayWithBarButton
+- (BarButton *)selectFreePlace:(NSArray *)buttons
 {
-    for (BarButton *barButton in arrayWithBarButton)
+    for (BarButton *barButton in buttons)
     {
         if (!barButton.hasAlreadyBeenSelected)
         {
@@ -116,9 +122,9 @@
     return nil;
 }
 
-- (BarButton *)randomChoice:(NSArray *)arrayWithBarButton
+- (BarButton *)randomChoice:(NSArray *)buttons
 {
-    for (BarButton *barButton in arrayWithBarButton)
+    for (BarButton *barButton in buttons)
     {
         if (!barButton.hasAlreadyBeenSelected)
         {

@@ -18,8 +18,9 @@ typedef NS_ENUM(NSInteger, BotLevel) {
 
 @class BarButton;
 
-#define DEFAULT_NAME @"Player"
-#define DEFAULT_BOT_NAME @"Bot"
+#define DEFAULT_NAME                @"Player"
+#define DEFAULT_BOT_NAME            @"Bot"
+#define MIN_TIME_BEFORE_PLAYING     0.7f
 
 @interface Player : NSObject
 

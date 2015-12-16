@@ -11,6 +11,7 @@
 #import "Board.h"
 #import "BarButton.h"
 #import "PlayerManager.h"
+#import "NSMutableArray+Additions.h"
 
 
 @interface MapViewController () <CustomButtonDelegate>
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) Board *board;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
+@property (nonatomic, strong) NSMutableArray *shuffleBarButtons;
 @property (nonatomic, strong) NSMutableArray *pieces;
 @property (nonatomic, strong) NSArray *scores;
 
@@ -168,6 +170,11 @@
             }
         }
     }
+    
+     // Shuffle array
+    NSArray *barButtons = [self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons];
+    self.shuffleBarButtons = [NSMutableArray arrayWithArray:barButtons];
+    [self.shuffleBarButtons shuffle];
 }
 
 - (void)barButtonSelected:(BarButton *)button
@@ -239,8 +246,26 @@
 - (void)botShouldPlay:(Player *)player
 {
     [self enableUsersInteractions:NO];
-    BarButton *barbuttonSelected = [player selectBarButton:[self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons] pieces:self.pieces];
-    [self barButtonSelected:barbuttonSelected];
+    
+    NSDate * dateBeforeComputeBar = [NSDate date];
+    BarButton *barbuttonSelected = [player selectBarButton:self.shuffleBarButtons pieces:self.pieces];
+    
+    NSTimeInterval  interval = -[dateBeforeComputeBar timeIntervalSinceNow];
+    
+    if (interval < MIN_TIME_BEFORE_PLAYING)
+    {
+        [NSTimer scheduledTimerWithTimeInterval:MIN_TIME_BEFORE_PLAYING - interval target:self selector:@selector(handleTimer:) userInfo:barbuttonSelected repeats:NO];
+    }
+    else
+    {
+        [self barButtonSelected:barbuttonSelected];
+    }
+}
+
+- (void)handleTimer:(NSTimer*)theTimer
+{
+    BarButton *barButton = [theTimer userInfo];
+    [self barButtonSelected:barButton];
 }
 
 - (void)linkComponents:(NSInteger)nbColumnsAvailable

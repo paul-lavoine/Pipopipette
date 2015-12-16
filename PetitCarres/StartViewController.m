@@ -16,8 +16,8 @@
 #define NB_MAX_PLAYER 4
 #define NB_MIN_PLAYER 1
 #define NB_MIN_BOT 0
-#define NB_DEFAULT_PLAYER 2
-#define NB_DEFAULT_BOT 0
+#define NB_DEFAULT_PLAYER 1
+#define NB_DEFAULT_BOT 1
 
 @interface StartViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -153,7 +153,7 @@
 - (IBAction)startGame:(id)sender
 {
     BotLevel level = [self selectedLevel];
-    NSLog(@"level %d", level);
+    NSLog(@"level %ld", (long)level);
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:level];
 
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
