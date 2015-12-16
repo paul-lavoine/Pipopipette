@@ -56,7 +56,10 @@
 
 - (void)selectWithPlayer:(Player *)owner
 {
-    self.barView.backgroundColor = DEFAULT_COLOR_BAR_BUTTON;
+    [UIView beginAnimations:@"test" context:NULL];
+    [UIView setAnimationDuration:0.2f];
+    self.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    
     self.owner = owner;
     _hasAlreadyBeenSelected = true;
     
@@ -68,6 +71,20 @@
     {
         self.heightConstraint.constant = BAR_BUTTON_SPACE;
     }
+    
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+    
+    [owner.colorPlayer getHue:&hue
+        saturation:&saturation
+        brightness:&brightness
+             alpha:&alpha];
+    
+    brightness -= 0.6f;
+    
+    self.barView.backgroundColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
 }
 
 - (void)setColorBackground
