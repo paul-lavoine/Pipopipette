@@ -61,7 +61,7 @@
     self.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     
     self.owner = owner;
-    _hasAlreadyBeenSelected = true;
+    self.hasAlreadyBeenSelected = true;
     
     if ([VERTICAL_BAR_BUTTON_XIB isEqualToString:self.type])
     {
