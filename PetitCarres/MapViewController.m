@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerThree;
 
 // Data
+@property (nonatomic, strong) UILabel *navigationBarTitle;
 @property (nonatomic, strong) Board *board;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
@@ -51,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationBarTitle = [[UILabel alloc] init];
+    [self setNavigationBarTitle];
 }
 
 - (void)viewDidLayoutSubviews
@@ -236,6 +239,7 @@
 {
     [[PlayerManager sharedInstance] nextPlayer];
     Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
+    [self setNavigationBarTitle];
     
     if (currentPlayer.isABot)
     {
@@ -311,6 +315,13 @@
 
 #pragma mark - Utils
 
+- (void)setNavigationBarTitle
+{
+    self.navigationBarTitle.attributedText = [self configureAttributedStringWithPlayer:[[PlayerManager sharedInstance] currentPlayer] string:@"Tour du joueur " sizeFont:18.0f];
+    [self.navigationBarTitle sizeToFit];
+    self.navigationItem.titleView = self.navigationBarTitle;
+}
+
 - (void)handleTimer:(NSTimer*)theTimer
 {
     BarButton *barButton = [theTimer userInfo];
@@ -336,23 +347,30 @@
 
 - (void)configureWinnerTitleWithPlayer:(Player *)player
 {
-    NSMutableAttributedString *winnerStringWithColor;
+    NSAttributedString *winnerStringWithColor;
     if (player)
     {
-        winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:@"Winner is "];
-        NSDictionary *attrs = @{ NSForegroundColorAttributeName : player.colorPlayer,
-                                 NSFontAttributeName : [UIFont fontWithName:self.winnerLabel.font.fontName size:60.0]
-                                 };
-        
-        NSAttributedString *playerName = [[NSAttributedString alloc] initWithString:player.name attributes:attrs];
-        [winnerStringWithColor appendAttributedString:playerName];
+        winnerStringWithColor = [self configureAttributedStringWithPlayer:player string:@"Winner is " sizeFont:60.0f];
     }
     else
     {
-        winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:@"Match Null"];
+        winnerStringWithColor = [[NSAttributedString alloc] initWithString:@"Match Null"];
     }
     
     self.winnerLabel.attributedText = winnerStringWithColor;
+}
+
+- (NSMutableAttributedString *)configureAttributedStringWithPlayer:(Player *)player string:(NSString *)string sizeFont:(CGFloat)sizeFont
+{
+    NSMutableAttributedString *winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:string];
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : player.colorPlayer,
+                             NSFontAttributeName : [UIFont fontWithName:self.winnerLabel.font.fontName size:sizeFont]
+                             };
+    
+    NSAttributedString *playerName = [[NSAttributedString alloc] initWithString:player.name attributes:attrs];
+    [winnerStringWithColor appendAttributedString:playerName];
+    
+    return winnerStringWithColor;
 }
 
 - (void)enableUsersInteractions:(BOOL)enable

@@ -184,6 +184,19 @@
         self.nbBot = [sender value];
         [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.nbBot]];
     }
+    
+    if (self.nbBot + self.nbPlayer >= NB_MAX_PLAYER)
+    {
+        self.navigationItem.title = @"Nombre de joueur max atteint";
+        self.navigationController.navigationBar.titleTextAttributes = @{
+                                                                        NSForegroundColorAttributeName : [UIColor redColor],
+                                                                        NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:15.0f]
+                                                                        };
+    }
+    else
+    {
+        self.navigationItem.title = @"";
+    }
 }
 
 - (IBAction)changeBotLevel:(UIButton *)sender
