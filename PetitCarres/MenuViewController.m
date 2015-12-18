@@ -153,7 +153,6 @@
 - (IBAction)startGame:(id)sender
 {
     BotLevel level = [self selectedLevel];
-    NSLog(@"level %ld", (long)level);
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:level];
 
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];

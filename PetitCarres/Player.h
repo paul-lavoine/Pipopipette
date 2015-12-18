@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, BotLevel) {
     BotLevelEasy         = 0,
     BotLevelMedium       = 1,
     BotLevelDifficult    = 2,
-    BotLevelHardCore    = 3,
+    BotLevelHardCore     = 3,
 };
 
 @class BarButton;

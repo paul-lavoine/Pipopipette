@@ -8,9 +8,11 @@
 
 #import "Player.h"
 #import "BarButton.h"
+#import "Minimax.h"
 
 @interface Player ()
 
+@property (nonatomic, strong) Minimax *minimax;
 @property (nonatomic, assign) BotLevel botLevel;
 
 @end
@@ -28,6 +30,7 @@
         _isABot = isABot;
         _botLevel = botLevel;
         _icone = [UIImage imageNamed:icone];
+        _minimax = [Minimax sharedInstance];
     }
     
     return self;
@@ -36,7 +39,7 @@
 #pragma mark - Utils
 
 - (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces
-{    
+{
     BarButton *selectedBarButton;
     
     switch (self.botLevel) {
@@ -45,9 +48,10 @@
             selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:buttons];
             break;
         case BotLevelDifficult:
-            selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:buttons];
+            selectedBarButton = [self.minimax getBestActionWithMinimax:buttons];
+//            selectedBarButton = [self takePieceIfPossible:pieces];
+//            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
+//            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:buttons];
             break;
         case BotLevelHardCore:
             selectedBarButton = [self takePieceIfPossible:pieces];
@@ -67,7 +71,7 @@
 
 - (BarButton *)selectTheSmallestChain:(NSArray *)buttons
 {
-    // TODO not implemented
+    // TODO, Not implemented
     
     // TMP
     return [self randomChoice:buttons];
@@ -75,11 +79,12 @@
 
 - (BarButton *)selectTheBestPlace:(NSArray *)buttons
 {
-    // TODO, Not implemented
     
     // TMP
     return [self selectFreePlace:buttons];
 }
+
+
 
 - (BarButton *)takePieceIfPossible:(NSArray *)pieces
 {

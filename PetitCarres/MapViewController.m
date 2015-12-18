@@ -8,11 +8,10 @@
 
 #import "MapViewController.h"
 
-#import "Board.h"
 #import "BarButton.h"
 #import "PlayerManager.h"
 #import "NSMutableArray+Additions.h"
-
+#import "Minimax.h"
 
 @interface MapViewController () <CustomButtonDelegate>
 
@@ -29,7 +28,6 @@
 
 // Data
 @property (nonatomic, strong) UILabel *navigationBarTitle;
-@property (nonatomic, strong) Board *board;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
 @property (nonatomic, strong) NSMutableArray *shuffleBarButtons;
@@ -88,6 +86,17 @@
     
     //Hidde winner view
     [self displayWinnerView:NO];
+    
+    // Init Algorithm
+    Player *botPlayer;
+    for (Player *player in [[PlayerManager sharedInstance] playersArray])
+    {
+        if (player.isABot)
+        {
+            botPlayer = player;
+        }
+    }
+    [[Minimax sharedInstance] configureWithMaxScore:(self.rows * self.columns) player:botPlayer pieces:[NSArray arrayWithArray:self.pieces]];
 }
 
 - (void)initScorePlayer
