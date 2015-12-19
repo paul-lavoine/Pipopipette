@@ -36,6 +36,7 @@
         _pieceAssociated = [NSMutableArray array];
         _type = type;
         [self commonInit];
+        _barView.layer.cornerRadius = 4;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSelectButton:)]];
     }
     
