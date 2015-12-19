@@ -34,6 +34,7 @@
 
 // Switch button
 @property (weak, nonatomic) IBOutlet UIView *contentLevelView;
+@property (strong, nonatomic) UIButton *defaultSelectedButton;
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *mediumButton;
 @property (weak, nonatomic) IBOutlet UIButton *difficultButton;
@@ -81,8 +82,9 @@
     if (!self.alreadyAppear)
     {
         self.alreadyAppear = true;
+        
         // Update view
-        self.colorSelectedButtonView.frame = self.mediumButton.frame;
+        self.colorSelectedButtonView.frame = self.defaultSelectedButton.frame;
     }
 }
 
@@ -111,11 +113,16 @@
     [[self.extremeButton layer] setBorderWidth:1.0f];
     [[self.extremeButton layer] setBorderColor:[UIColor blackColor].CGColor];
     
-    // Init
-    self.colorSelectedButtonView = [[UIView alloc] initWithFrame:self.mediumButton.frame];
+    self.defaultSelectedButton = self.difficultButton;
+    [self initLevelBot:self.defaultSelectedButton];
+}
+
+- (void)initLevelBot:(UIButton *)button
+{
+    self.colorSelectedButtonView = [[UIView alloc] initWithFrame:button.frame];
     self.colorSelectedButtonView.backgroundColor = [UIColor blueColor];
     [self.contentLevelView insertSubview:self.colorSelectedButtonView atIndex:0];
-    [self changeBotLevel:self.mediumButton];
+    [self changeBotLevel:button];
 }
 
 #pragma mark - UIPickerViewDataSource

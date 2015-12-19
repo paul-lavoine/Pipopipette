@@ -12,9 +12,11 @@
 
 @interface Player ()
 
-@property (nonatomic, strong) NSMutableArray *buttonsRecorded;
 @property (nonatomic, strong) Minimax *minimax;
 @property (nonatomic, assign) BotLevel botLevel;
+@property (nonatomic, strong) BarButton *selectedBarButton;
+@property (nonatomic, strong) NSMutableArray *buttonsAvailable;
+@property (nonatomic, strong) NSMutableArray *piecesAvailable;
 
 @end
 
@@ -51,7 +53,9 @@
         case BotLevelDifficult:
             selectedBarButton = [self takePieceIfPossible:pieces];
             selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:buttons actualBestScore:100000];
+            self.selectedBarButton = nil;
+            self.buttonsAvailable = [self getBarAvailable:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:self.buttonsAvailable actualBestScore:100000];
             break;
         case BotLevelExtreme:
             selectedBarButton = [self.minimax getBestActionWithMinimax:buttons];
@@ -67,65 +71,83 @@
     return selectedBarButton ? selectedBarButton : NULL;
 }
 
+- (NSMutableArray *)getBarAvailable:(NSArray *)buttons
+{
+    NSMutableArray *barButtonsAvailable = [NSMutableArray array];
+    for (BarButton *barButton in buttons)
+    {
+        if (!barButton.hasAlreadyBeenSelected)
+        {
+            [barButtonsAvailable addObject:barButton];
+        }
+    }
+    return  barButtonsAvailable;
+}
+
 - (BarButton *)selectTheSmallestChain:(NSArray *)buttons actualBestScore:(NSInteger)actualBestScore
 {
-    self.buttonsRecorded = [buttons copy];
-    BarButton *randomButton = [self randomChoice:self.buttonsRecorded];
-    BarButton *selectedButton = nil;
+    BarButton *randomButton = [buttons firstObject];
     NSInteger chainPiece = 0;
     NSInteger bestMinScore = actualBestScore;
     
     for (Piece *piece in randomButton.pieceAssociated)
     {
-        chainPiece += [self startChainingWithPiece:piece barButtonSelected:randomButton];
-        
-        if (chainPiece < bestMinScore)
-        {
-            bestMinScore = chainPiece;
-            selectedButton = randomButton;
-        }
+        chainPiece += [self computeChainPieceWithFirstPiece:piece barButtonSelected:randomButton];
     }
     
-    NSInteger checkAllBarButtonVisited = true;
-    for (BarButton *barButton in self.buttonsRecorded)
+    if (chainPiece < bestMinScore)
     {
-        if (!barButton.hasAlreadyBeenSelected)
-        {
-            checkAllBarButtonVisited = false;
-            break;
-        }
+        bestMinScore = chainPiece;
+        self.selectedBarButton = randomButton;
     }
     
-    if (!checkAllBarButtonVisited)
+    if ([self.buttonsAvailable count] != 0)
     {
-        return [self selectTheSmallestChain:self.buttonsRecorded actualBestScore:bestMinScore];
+        return [self selectTheSmallestChain:self.buttonsAvailable actualBestScore:bestMinScore];
     }
     
-    return selectedButton;
+    return self.selectedBarButton;
 }
 
-- (NSInteger)startChainingWithPiece:(Piece *)piece barButtonSelected:(BarButton *)barButtonSelected
+- (NSInteger)computeChainPieceWithFirstPiece:(Piece *)piece barButtonSelected:(BarButton *)barButtonSelected
 {
-    for (BarButton *barButton in piece.barButtonsAssociated)
+    NSInteger cpt = 0;
+    
+    if (![self.piecesAvailable containsObject:piece])
     {
-        if (barButton != barButtonSelected && !barButton.hasAlreadyBeenSelected)
+        for (BarButton *barButton in piece.barButtonsAssociated)
         {
-            for (Piece *pieceAssociated in barButton.pieceAssociated)
+            if (barButton != barButtonSelected && !barButton.hasAlreadyBeenSelected)
             {
-                if (pieceAssociated != piece && !piece.hasBeenWin)
+                if ([self.buttonsAvailable containsObject:barButton])
                 {
-                    return ([self startChainingWithPiece:pieceAssociated barButtonSelected:barButton] + 1);
+                    for (Piece *pieceAssociated in barButton.pieceAssociated)
+                    {
+                        if (pieceAssociated != piece && !piece.hasBeenWin && [[piece barButtonNeededToCompletePiece] count] <= 2 && [self.buttonsAvailable containsObject:barButton] && ![self.piecesAvailable containsObject:pieceAssociated])
+                        {
+                            [self.piecesAvailable addObject:pieceAssociated];
+                            [self.buttonsAvailable removeObject:barButton];
+                            return ([self computeChainPieceWithFirstPiece:pieceAssociated barButtonSelected:barButton] + 1);
+                        }
+                    }
+                    [self.buttonsAvailable removeObject:barButton];
+                }
+                else
+                {
+                    cpt++;
                 }
             }
-        }
-        if ([self.buttonsRecorded containsObject:barButton])
-        {
-            [self.buttonsRecorded removeObject:barButton];
+            if ([self.buttonsAvailable containsObject:barButton])
+            {
+                [self.buttonsAvailable removeObject:barButton];
+            }
         }
     }
-    
-    return 0;
+
+    return (1 - cpt);
 }
+
+
 
 - (BarButton *)takePieceIfPossible:(NSArray *)pieces
 {
@@ -138,7 +160,7 @@
         }
     }
     
-    NSLog(@"Info : There is no free piece ...");
+    //    NSLog(@"Info : There is no free place ...");
     
     return nil;
 }
@@ -165,7 +187,7 @@
         }
     }
     
-    NSLog(@"Info Hard : There is no choice ...");
+    //    NSLog(@"Info : There is no choice ...");
     
     return nil;
 }

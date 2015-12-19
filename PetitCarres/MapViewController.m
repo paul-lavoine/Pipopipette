@@ -143,6 +143,7 @@
                                                                              MIN_LARGER_TOUCH,
                                                                              highSideBarButton)
                                                              type:VERTICAL_BAR_BUTTON_XIB];
+                verticalButton.position = CGPointMake(i*100, j*100);
                 verticalButton.delegate = self;
                 [self.verticalButtons addObject:verticalButton];
             }
@@ -157,6 +158,7 @@
                                                                                MIN_LARGER_TOUCH)
                                                                type:HORIZONTAL_BAR_BUTTON_XIB];
                 horizontalButton.delegate = self;
+                horizontalButton.position = CGPointMake(i, j);
                 [self.horizontalButtons addObject:horizontalButton];
             }
             

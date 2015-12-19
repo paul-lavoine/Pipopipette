@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, BotLevel) {
 
 #define DEFAULT_NAME                @"Player"
 #define DEFAULT_BOT_NAME            @"Bot"
-#define MIN_TIME_BEFORE_PLAYING     0.7f
+#define MIN_TIME_BEFORE_PLAYING     0.0f // 0.7
 
 @interface Player : NSObject
 

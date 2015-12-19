@@ -47,5 +47,6 @@
 @property (nonatomic, strong) NSMutableArray *pieceAssociated;
 @property (nonatomic, assign) BOOL hasAlreadyBeenSelected;
 @property (nonatomic, strong) Player *owner;
+@property (nonatomic, assign) CGPoint position;
 
 @end
