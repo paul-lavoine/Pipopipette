@@ -42,7 +42,7 @@
 // sauf qu'elle retourne l'action associée au meilleur score
 - (BarButton *)getBestActionWithMinimax:(NSArray *)buttons
 {
-    NSInteger depth = 5;
+    NSInteger depth = 3;
     BarButton *barButtonSelected = nil;
     NSInteger maxScore = -_bestScore;
     

@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *mediumButton;
 @property (weak, nonatomic) IBOutlet UIButton *difficultButton;
+@property (weak, nonatomic) IBOutlet UIButton *extremeButton;
 
 // Data
 @property (nonatomic, strong) UIView *colorSelectedButtonView;
@@ -107,6 +108,8 @@
     [[self.mediumButton layer] setBorderColor:[UIColor blackColor].CGColor];
     [[self.difficultButton layer] setBorderWidth:1.0f];
     [[self.difficultButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    [[self.extremeButton layer] setBorderWidth:1.0f];
+    [[self.extremeButton layer] setBorderColor:[UIColor blackColor].CGColor];
     
     // Init
     self.colorSelectedButtonView = [[UIView alloc] initWithFrame:self.mediumButton.frame];
@@ -203,6 +206,7 @@
     [self.easyButton setSelected:NO];
     [self.mediumButton setSelected:NO];
     [self.difficultButton setSelected:NO];
+    [self.extremeButton setSelected:NO];
 
     [sender setSelected:YES];
     [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
