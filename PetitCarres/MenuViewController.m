@@ -16,8 +16,11 @@
 #define NB_MAX_PLAYER 4
 #define NB_MIN_PLAYER 1
 #define NB_MIN_BOT 0
-#define NB_DEFAULT_PLAYER 1
-#define NB_DEFAULT_BOT 1
+
+#define NB_DEFAULT_PLAYER   1
+#define NB_DEFAULT_BOT      1
+#define NB_DEFAULT_ROWS     2
+#define NB_DEFAULT_COLUMNS  2
 
 @interface MenuViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -56,7 +59,7 @@
 {
     if (self = [super init])
     {
-        
+
     }
     
     return self;
@@ -65,6 +68,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.nbPlayer = NB_DEFAULT_PLAYER;
+    self.nbBot = NB_DEFAULT_BOT;
+    self.defaultSelectedButton = self.extremeButton;
     
     [self configureDefaultMenu];
 }
@@ -90,8 +97,10 @@
 
 - (void)configureDefaultMenu
 {
-    self.nbPlayer = NB_DEFAULT_PLAYER;
-    self.nbBot = NB_DEFAULT_BOT;
+    // Init game start button
+    [self.startGameButton.layer setBorderWidth:1.0f];
+    [self.startGameButton.layer setBorderColor:[UIColor blackColor].CGColor];
+    self.startGameButton.layer.cornerRadius = 13.0f;
     
     // Init Stepper
     [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];
@@ -100,10 +109,10 @@
     [self.incrementBotStepper setValue:NB_DEFAULT_BOT];
     
     // Init Picker View
-    [self.columnPicker selectRow:2 inComponent:0 animated:NO];
-    [self.rowPicker selectRow:2 inComponent:0 animated:NO];
+    [self.columnPicker selectRow:NB_DEFAULT_COLUMNS - 1 inComponent:0 animated:NO];
+    [self.rowPicker selectRow:NB_DEFAULT_ROWS - 1 inComponent:0 animated:NO];
     
-    // Init button
+    // Init level button
     [[self.easyButton layer] setBorderWidth:1.0f];
     [[self.easyButton layer] setBorderColor:[UIColor blackColor].CGColor];
     [[self.mediumButton layer] setBorderWidth:1.0f];
@@ -113,7 +122,6 @@
     [[self.extremeButton layer] setBorderWidth:1.0f];
     [[self.extremeButton layer] setBorderColor:[UIColor blackColor].CGColor];
     
-    self.defaultSelectedButton = self.difficultButton;
     [self initLevelBot:self.defaultSelectedButton];
 }
 
@@ -234,6 +242,10 @@
     else if (self.mediumButton.isSelected)
     {
         return BotLevelMedium;
+    }
+    else if (self.extremeButton.isSelected)
+    {
+        return BotLevelExtreme;
     }
     else
     {

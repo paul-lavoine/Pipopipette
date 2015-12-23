@@ -9,6 +9,7 @@
 #import "Player.h"
 #import "BarButton.h"
 #import "Minimax.h"
+#import "Component.h"
 
 @interface Player ()
 
@@ -41,30 +42,36 @@
 
 #pragma mark - Utils
 
-- (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces
+- (BarButton *)selectBarWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons pieces:(NSArray *)pieces
 {
+    // Shuffle array
+    NSMutableArray *shuffleBarButtons = [[Component class] shuffleButtonsWithHorizontalButtons:horizontalButtons verticalButtons:verticalButtons];
     BarButton *selectedBarButton;
     
     switch (self.botLevel) {
         case BotLevelEasy:
             selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:shuffleBarButtons];
             break;
         case BotLevelDifficult:
-            selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
-            self.selectedBarButton = nil;
-            self.buttonsAvailable = [self getBarAvailable:buttons];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:self.buttonsAvailable actualBestScore:100000];
+            selectedBarButton = [self difficultLevel:shuffleBarButtons pieces:pieces barButton:selectedBarButton];
             break;
         case BotLevelExtreme:
-            selectedBarButton = [self.minimax getBestActionWithMinimax:buttons];
+            //            if ([buttons count] < 0)
+            //            {
+            //                selectedBarButton = [self difficultLevel:buttons pieces:pieces barButton:selectedBarButton];
+            //            }
+            //            else
+            //            {
+            
+            selectedBarButton = [self.minimax getBestActionWithHorizontalButtons:horizontalButtons verticalButtons:verticalButtons pieces:pieces player:self];
+            //            }
             break;
         default:
         case BotLevelMedium:
             selectedBarButton = [self takePieceIfPossible:pieces];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
-            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:buttons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:shuffleBarButtons];
+            selectedBarButton = selectedBarButton ? selectedBarButton : [self randomChoice:shuffleBarButtons];
             break;
     }
     
@@ -143,7 +150,7 @@
             }
         }
     }
-
+    
     return (1 - cpt);
 }
 
@@ -207,4 +214,20 @@
     return nil;
 }
 
+- (BarButton *)difficultLevel:(NSArray *)buttons pieces:(NSArray *)pieces barButton:(BarButton *)barButton
+{
+    BarButton *selectedBarButton = barButton;
+    
+    selectedBarButton = [self takePieceIfPossible:pieces];
+    selectedBarButton = selectedBarButton ? selectedBarButton : [self selectFreePlace:buttons];
+    
+    // Init
+    self.selectedBarButton = nil;
+    self.buttonsAvailable = [self getBarAvailable:buttons];
+    
+    // Search the smallest chain
+    selectedBarButton = selectedBarButton ? selectedBarButton : [self selectTheSmallestChain:self.buttonsAvailable actualBestScore:100000];
+    
+    return  selectedBarButton;
+}
 @end

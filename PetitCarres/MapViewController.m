@@ -8,10 +8,9 @@
 
 #import "MapViewController.h"
 
-#import "BarButton.h"
 #import "PlayerManager.h"
-#import "NSMutableArray+Additions.h"
 #import "Minimax.h"
+#import "Component.h"
 
 @interface MapViewController () <CustomButtonDelegate>
 
@@ -30,7 +29,6 @@
 @property (nonatomic, strong) UILabel *navigationBarTitle;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
-@property (nonatomic, strong) NSMutableArray *shuffleBarButtons;
 @property (nonatomic, strong) NSMutableArray *pieces;
 @property (nonatomic, strong) NSArray *scores;
 @property (nonatomic, strong) BarButton *lastBarButtonPlayed;
@@ -82,7 +80,7 @@
     [self buildMapWithRows:self.rows columns:self.columns];
     
     // Associate buttons to correct piece and vice versa
-    [self linkComponents:self.columns];
+    [[Component class] linkComponentsWithPieces:self.pieces horizontalButtons:self.horizontalButtons verticalButtons:self.verticalButtons nbColumnsAvailable:self.columns];
     
     //Hidde winner view
     [self displayWinnerView:NO];
@@ -96,7 +94,7 @@
             botPlayer = player;
         }
     }
-    [[Minimax sharedInstance] configureWithMaxScore:(self.rows * self.columns) player:botPlayer pieces:[NSArray arrayWithArray:self.pieces]];
+    [Minimax sharedInstance].columns = self.columns;
 }
 
 - (void)initScorePlayer
@@ -108,8 +106,9 @@
     }
 }
 
-- (void)updateScore:(Player *)player
+- (void)incrementScore:(Player *)player
 {
+    player.score ++;
     ((UILabel *)self.scores[player.position]).text = [NSString stringWithFormat:@"%ld", (long)player.score];
 }
 
@@ -128,6 +127,8 @@
     self.pieces = [NSMutableArray array];
     self.horizontalButtons = [NSMutableArray array];
     self.verticalButtons = [NSMutableArray array];
+    NSInteger cptIdBarButton = 0;
+    NSInteger cptIdPiece = 0;
     
     // Insert UI components
     for (int j = 1; j <= self.rows + 1; j++)
@@ -142,10 +143,12 @@
                                                                              j*pieceSize + (j*space) - highSideBarButton + offsetHeight,
                                                                              MIN_LARGER_TOUCH,
                                                                              highSideBarButton)
-                                                             type:VERTICAL_BAR_BUTTON_XIB];
+                                                             type:VERTICAL_BAR_BUTTON_XIB
+                                                       idPosition:cptIdBarButton];
                 verticalButton.position = CGPointMake(i*100, j*100);
                 verticalButton.delegate = self;
                 [self.verticalButtons addObject:verticalButton];
+                cptIdBarButton++;
             }
             
             // Horizontal button
@@ -156,10 +159,12 @@
                                                                                j*pieceSize + (j*space) - space - highSideBarButton + offsetHeight - (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE)/2,
                                                                                highSideBarButton,
                                                                                MIN_LARGER_TOUCH)
-                                                               type:HORIZONTAL_BAR_BUTTON_XIB];
+                                                               type:HORIZONTAL_BAR_BUTTON_XIB
+                                                         idPosition:cptIdBarButton];
                 horizontalButton.delegate = self;
                 horizontalButton.position = CGPointMake(i, j);
                 [self.horizontalButtons addObject:horizontalButton];
+                cptIdBarButton++;
             }
             
             if (i <= self.columns && j <= self.rows)
@@ -169,7 +174,9 @@
                                                                        verticalButton.frame.origin.y + (highSideBarButton/2) - (highSideBarButton/2),
                                                                        highSideBarButton,
                                                                        highSideBarButton)
-                                                   position:CGPointMake(i - 1, j - 1)];
+                                                   position:CGPointMake(i - 1, j - 1)
+                                                        uid:cptIdPiece];
+                cptIdPiece++;
                 [self.mapView addSubview:piece];
                 [self.pieces addObject:piece];
             }
@@ -185,11 +192,6 @@
             }
         }
     }
-    
-     // Shuffle array
-    NSArray *barButtons = [self.horizontalButtons arrayByAddingObjectsFromArray:self.verticalButtons];
-    self.shuffleBarButtons = [NSMutableArray arrayWithArray:barButtons];
-    [self.shuffleBarButtons shuffle];
 }
 
 - (void)barButtonSelected:(BarButton *)button
@@ -203,20 +205,19 @@
     // Change Background BarButton
     if (!button.hasAlreadyBeenSelected) {
         
-        [button selectWithPlayer:player];
+        [button selectedByPlayer:player animate:YES];
         
         BOOL pieceHasBeenWin = false;
         
         // Check if piece is complete
         for (Piece *piece in button.pieceAssociated)
         {
-            if ([self isCompletePiece:piece])
+            if ([piece isCompletePiece])
             {
-                [piece selectWithPlayer:player];
-                player.score ++;
-                self.pieceSelected ++;
-                [self updateScore:player];
                 pieceHasBeenWin = true;
+                self.pieceSelected ++;
+                [piece selectedByPlayer:player];
+                [self incrementScore:player];
             }
         }
         
@@ -239,8 +240,8 @@
             }
             else
             {
-                    // Piece win and player is real
-                    // Waiting for real player
+                    // Piece has been win and player is real
+                    // Waiting for next real player
             }
         }
     }
@@ -267,7 +268,7 @@
     [self enableUsersInteractions:NO];
     
     NSDate * dateBeforeComputeBar = [NSDate date];
-    BarButton *barbuttonSelected = [player selectBarButton:self.shuffleBarButtons pieces:self.pieces];
+    BarButton *barbuttonSelected = [player selectBarWithHorizontalButtons:self.horizontalButtons verticalButtons:self.verticalButtons pieces:self.pieces];
     
     NSTimeInterval  interval = -[dateBeforeComputeBar timeIntervalSinceNow];
     
@@ -278,30 +279,6 @@
     else
     {
         [self barButtonSelected:barbuttonSelected];
-    }
-}
-
-- (void)linkComponents:(NSInteger)nbColumnsAvailable
-{
-    for (int i = 0; i < [self.pieces count] ; i++ )
-    {
-        Piece *piece = self.pieces[i];
-        BarButton *button = self.horizontalButtons[i];
-        [piece.barButtonsAssociated addObject: button];
-        [button.pieceAssociated addObject:piece];
-        
-        button = self.horizontalButtons[i + nbColumnsAvailable];
-        [piece.barButtonsAssociated addObject:button];
-        [button.pieceAssociated addObject:piece];
-        
-        int ligne = i/nbColumnsAvailable;
-        button = self.verticalButtons[i + ligne];
-        [piece.barButtonsAssociated addObject:button];
-        [button.pieceAssociated addObject:piece];
-        
-        button = self.verticalButtons[i+1 + ligne];
-        [piece.barButtonsAssociated addObject:button];
-        [button.pieceAssociated addObject:piece];
     }
 }
 
@@ -337,18 +314,6 @@
 {
     BarButton *barButton = [theTimer userInfo];
     [self barButtonSelected:barButton];
-}
-
-- (BOOL)isCompletePiece:(Piece *)piece
-{
-    for (BarButton *button in piece.barButtonsAssociated)
-    {
-        if (!button.hasAlreadyBeenSelected)
-        {
-            return false;
-        }
-    }
-    return true;
 }
 
 - (BOOL)isMapComplete

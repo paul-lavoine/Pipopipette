@@ -15,14 +15,16 @@
 
 @interface Piece : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point;
-- (void)selectWithPlayer:(Player *)owner;
+- (instancetype)initWithFrame:(CGRect)frame position:(CGPoint)point uid:(NSInteger)uid;
+- (void)selectedByPlayer:(Player *)owner;
 - (NSArray *)barButtonNeededToCompletePiece;
-
+- (BOOL)isCompletePiece;
+- (id)copyWithZone:(NSZone *)zone;
 
 @property (nonatomic, strong) NSMutableArray *barButtonsAssociated;
-@property (nonatomic, assign, readonly) CGPoint position;
-@property (nonatomic, assign, readonly) bool hasBeenWin;
+@property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) bool hasBeenWin;
 @property (nonatomic, strong) Player *owner;
+@property (nonatomic, assign) NSInteger uid;
 
 @end

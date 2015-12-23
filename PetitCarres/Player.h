@@ -20,13 +20,13 @@ typedef NS_ENUM(NSInteger, BotLevel) {
 
 #define DEFAULT_NAME                @"Player"
 #define DEFAULT_BOT_NAME            @"Bot"
-#define MIN_TIME_BEFORE_PLAYING     0.0f // 0.7
+#define MIN_TIME_BEFORE_PLAYING     0.7f // 0.7
 
 @interface Player : NSObject
 
 - (instancetype)initWithColor:(UIColor *)color name:(NSString *)name icone:(NSString *)icone position:(NSInteger)position isABot:(BOOL)isABot botLevel:(BotLevel)botLevel;
 
-- (BarButton *)selectBarButton:(NSArray *)buttons pieces:(NSArray *)pieces;
+- (BarButton *)selectBarWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons pieces:(NSArray *)pieces;
 
 @property (nonatomic, strong) UIColor *colorPlayer;
 @property (nonatomic, assign) NSInteger score;

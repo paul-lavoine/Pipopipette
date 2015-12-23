@@ -24,17 +24,16 @@
 @end
 
 
-
-
 @implementation BarButton
 
-- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type
+- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type idPosition:(NSInteger)idPosition
 {
     if (self = [super initWithFrame:frame])
     {
         _hasAlreadyBeenSelected = false;
         _pieceAssociated = [NSMutableArray array];
         _type = type;
+        _uid = idPosition;
         [self commonInit];
         _barView.layer.cornerRadius = 4;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSelectButton:)]];
@@ -55,37 +54,40 @@
     [_delegate setButton:self];
 }
 
-- (void)selectWithPlayer:(Player *)owner
+- (void)selectedByPlayer:(Player *)owner animate:(BOOL)animate
 {
-    [UIView beginAnimations:@"test" context:NULL];
-    [UIView setAnimationDuration:0.2f];
-    self.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-    
     self.owner = owner;
     self.hasAlreadyBeenSelected = true;
     
-    if ([VERTICAL_BAR_BUTTON_XIB isEqualToString:self.type])
+    if (animate)
     {
-        self.widthConstraint.constant = BAR_BUTTON_SPACE;
+        [UIView beginAnimations:@"test" context:NULL];
+        [UIView setAnimationDuration:0.2f];
+        self.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        
+        if ([VERTICAL_BAR_BUTTON_XIB isEqualToString:self.type])
+        {
+            self.widthConstraint.constant = BAR_BUTTON_SPACE;
+        }
+        else
+        {
+            self.heightConstraint.constant = BAR_BUTTON_SPACE;
+        }
+        
+        CGFloat hue;
+        CGFloat saturation;
+        CGFloat brightness;
+        CGFloat alpha;
+        
+        [owner.colorPlayer getHue:&hue
+                       saturation:&saturation
+                       brightness:&brightness
+                            alpha:&alpha];
+        
+        brightness -= 0.6f;
+        
+        self.barView.backgroundColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
     }
-    else
-    {
-        self.heightConstraint.constant = BAR_BUTTON_SPACE;
-    }
-    
-    CGFloat hue;
-    CGFloat saturation;
-    CGFloat brightness;
-    CGFloat alpha;
-    
-    [owner.colorPlayer getHue:&hue
-        saturation:&saturation
-        brightness:&brightness
-             alpha:&alpha];
-    
-    brightness -= 0.6f;
-    
-    self.barView.backgroundColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
 }
 
 - (void)setColorBackground
@@ -93,5 +95,16 @@
     self.barView.backgroundColor = self.owner.colorPlayer;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    BarButton *copy = [[BarButton allocWithZone: zone] init];
+    
+    [copy setHasAlreadyBeenSelected:self.hasAlreadyBeenSelected];
+    [copy setOwner:self.owner];
+    [copy setPosition:self.position];
+    [copy setUid:self.uid];
+    
+    return copy;
+}
 
 @end

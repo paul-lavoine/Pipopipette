@@ -32,10 +32,10 @@
 
 @interface BarButton : UIButton
 
-- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type;
-- (void)selectWithPlayer:(Player *)owner;
+- (instancetype)initWithFrame:(CGRect)frame type:(NSString *)type idPosition:(NSInteger)idPosition;
+- (void)selectedByPlayer:(Player *)owner animate:(BOOL)animate;
 - (void)setColorBackground;
-
+- (id)copyWithZone:(NSZone *)zone;
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UIView *barView;
@@ -48,5 +48,6 @@
 @property (nonatomic, assign) BOOL hasAlreadyBeenSelected;
 @property (nonatomic, strong) Player *owner;
 @property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) NSInteger uid;
 
 @end

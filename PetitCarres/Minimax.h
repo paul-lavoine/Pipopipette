@@ -12,7 +12,8 @@
 @interface Minimax : NSObject
 
 + (instancetype)sharedInstance;
-- (void)configureWithMaxScore:(NSInteger)bestScore player:(Player *)player pieces:(NSArray *)pieces;
-- (BarButton *)getBestActionWithMinimax:(NSArray *)buttons;
+- (BarButton *)getBestActionWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons pieces:(NSArray *)pieces player:(Player *)player;
+
+@property (nonatomic, assign) NSInteger columns;
 
 @end

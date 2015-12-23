@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-SU-bVa" userLabel="NbPlayer">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueur :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3H-NC-HgQ">
                                                 <rect key="frame" x="10" y="10" width="196" height="29"/>
@@ -50,7 +50,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de bot :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyG-n3-pR4">
-                                                <rect key="frame" x="10" y="51" width="196" height="29"/>
+                                                <rect key="frame" x="10" y="73.5" width="196" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                 </connections>
                                             </stepper>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7bu-2d-7Ff">
-                                                <rect key="frame" x="216" y="51" width="94" height="29"/>
+                                                <rect key="frame" x="216" y="69" width="94" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="Hun-NQ-YEM"/>
                                                 </constraints>
@@ -84,7 +84,7 @@
                                                 </connections>
                                             </stepper>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrb-Yi-OOW" userLabel="LevelView">
-                                                <rect key="frame" x="10" y="90" width="300" height="45"/>
+                                                <rect key="frame" x="10" y="108" width="300" height="45"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srP-8K-FfH">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="45"/>
@@ -159,8 +159,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="qyG-n3-pR4" firstAttribute="top" secondItem="Y3H-NC-HgQ" secondAttribute="bottom" constant="12" id="KIi-bD-RWg"/>
-                                            <constraint firstItem="7bu-2d-7Ff" firstAttribute="top" secondItem="QyK-lp-L6H" secondAttribute="bottom" constant="12" id="LJI-j8-GGZ"/>
+                                            <constraint firstItem="7bu-2d-7Ff" firstAttribute="top" secondItem="QyK-lp-L6H" secondAttribute="bottom" constant="30" id="LJI-j8-GGZ"/>
                                             <constraint firstAttribute="trailing" secondItem="QyK-lp-L6H" secondAttribute="trailing" constant="10" id="NlO-5m-g93"/>
                                             <constraint firstItem="QyK-lp-L6H" firstAttribute="leading" secondItem="Y3H-NC-HgQ" secondAttribute="trailing" constant="10" id="XhB-df-HMY"/>
                                             <constraint firstItem="7bu-2d-7Ff" firstAttribute="leading" secondItem="qyG-n3-pR4" secondAttribute="trailing" constant="10" id="Zbd-MN-snD"/>
@@ -179,7 +178,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Uz-G5-Mce" userLabel="RowColumn">
-                                        <rect key="frame" x="0.0" y="145" width="320" height="160"/>
+                                        <rect key="frame" x="0.0" y="163" width="320" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ligne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plc-Gs-kZj">
                                                 <rect key="frame" x="10" y="109" width="140" height="20.5"/>
@@ -230,7 +229,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2g-LC-pKY">
-                                        <rect key="frame" x="20" y="335" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="353" width="280" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Lancer la partie">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
