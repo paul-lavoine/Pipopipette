@@ -241,6 +241,9 @@
 
 - (void)barButtonSelected:(BarButton *)button
 {
+    if (button.hasAlreadyBeenSelected)
+        return;
+    
     [self.lastBarButtonPlayed setColorBackground];
     self.lastBarButtonPlayed = button;
     
@@ -248,46 +251,43 @@
     Player *player = [[PlayerManager sharedInstance] currentPlayer];
     
     // Change Background BarButton
-    if (!button.hasAlreadyBeenSelected) {
-        
-        [button selectedByPlayer:player animate:YES];
-        
-        BOOL pieceHasBeenWin = false;
-        
-        // Check if piece is complete
-        for (Piece *piece in button.pieceAssociated)
+    [button selectedByPlayer:player animate:YES];
+    
+    BOOL pieceHasBeenWin = false;
+    
+    // Check if piece is complete
+    for (Piece *piece in button.pieceAssociated)
+    {
+        if ([piece isCompletePiece])
         {
-            if ([piece isCompletePiece])
-            {
-                pieceHasBeenWin = true;
-                self.pieceSelected ++;
-                [piece selectedByPlayer:player];
-                [self incrementScore:player];
-            }
+            pieceHasBeenWin = true;
+            self.pieceSelected ++;
+            [piece selectedByPlayer:player];
+            [self incrementScore:player];
         }
-        
-        if ([self isMapComplete])
+    }
+    
+    if ([self isMapComplete])
+    {
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        Player *player = [[PlayerManager sharedInstance] winner];
+        [self configureWinnerTitleWithPlayer:player];
+        [self displayWinnerView:YES];
+    }
+    else
+    {
+        if (!pieceHasBeenWin)
         {
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            Player *player = [[PlayerManager sharedInstance] winner];
-            [self configureWinnerTitleWithPlayer:player];
-            [self displayWinnerView:YES];
+            [self nextTurn];
+        }
+        else if (player.isABot)
+        {
+            [self botShouldPlay:player];
         }
         else
         {
-            if (!pieceHasBeenWin)
-            {
-                [self nextTurn];
-            }
-            else if (player.isABot)
-            {
-                [self botShouldPlay:player];
-            }
-            else
-            {
-                // Piece has been win and player is real
-                // Waiting for next real player
-            }
+            // Piece has been win and player is real
+            // Waiting for next real player
         }
     }
 }
