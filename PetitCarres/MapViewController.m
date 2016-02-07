@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UILabel *navigationBarTitle;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
+@property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) NSMutableArray *pieces;
 @property (nonatomic, strong) NSArray *scores;
 @property (nonatomic, strong) BarButton *lastBarButtonPlayed;
@@ -95,6 +96,7 @@
         }
     }
     [Minimax sharedInstance].columns = self.columns;
+    [Minimax sharedInstance].rows = self.rows;
 }
 
 - (void)initScorePlayer
@@ -192,6 +194,49 @@
             }
         }
     }
+    
+    // Build map with all buttons
+    [self buildButtonsArray];
+}
+
+- (void)buildButtonsArray
+{
+    self.buttons = [NSMutableArray array];
+    
+    NSInteger globalHorizontalCpt = 0;
+    NSInteger globalVerticalCpt = 0;
+    NSInteger horizontalCpt = 0;
+    NSInteger verticalCpt = 0;
+    BOOL countHorizontalButton = true;
+    
+    while (globalHorizontalCpt < [self.horizontalButtons count] || globalVerticalCpt < [self.verticalButtons count])
+    {
+        
+        if (countHorizontalButton)
+        {
+            [self.buttons addObject:[self.horizontalButtons objectAtIndex:globalHorizontalCpt]];
+            horizontalCpt++;
+            globalHorizontalCpt ++;
+            
+            if (horizontalCpt == self.columns)
+            {
+                countHorizontalButton = false;
+                horizontalCpt = 0;
+            }
+        }
+        else
+        {
+            [self.buttons addObject:[self.verticalButtons objectAtIndex:globalVerticalCpt]];
+            verticalCpt ++;
+            globalVerticalCpt ++;
+            
+            if (verticalCpt == self.columns + 1)
+            {
+                countHorizontalButton = true;
+                verticalCpt = 0;
+            }
+        }
+    }
 }
 
 - (void)barButtonSelected:(BarButton *)button
@@ -240,8 +285,8 @@
             }
             else
             {
-                    // Piece has been win and player is real
-                    // Waiting for next real player
+                // Piece has been win and player is real
+                // Waiting for next real player
             }
         }
     }
@@ -268,7 +313,7 @@
     [self enableUsersInteractions:NO];
     
     NSDate * dateBeforeComputeBar = [NSDate date];
-    BarButton *barbuttonSelected = [player selectBarWithHorizontalButtons:self.horizontalButtons verticalButtons:self.verticalButtons pieces:self.pieces];
+    BarButton *barbuttonSelected = [player selectBarWithButtons:self.buttons pieces:self.pieces];
     
     NSTimeInterval  interval = -[dateBeforeComputeBar timeIntervalSinceNow];
     

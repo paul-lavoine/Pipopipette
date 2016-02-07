@@ -35,10 +35,9 @@
 }
 
 
-+ (NSMutableArray *)shuffleButtonsWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons
++ (NSMutableArray *)shuffleButtonsWithHorizontalButtons:(NSArray *)buttons
 {
-    NSArray *barButtons = [horizontalButtons arrayByAddingObjectsFromArray:verticalButtons];
-    NSMutableArray *shuffleBarButtons = [NSMutableArray arrayWithArray:barButtons];
+    NSMutableArray *shuffleBarButtons = [NSMutableArray arrayWithArray:buttons];
     [shuffleBarButtons shuffle];
     
     return shuffleBarButtons;

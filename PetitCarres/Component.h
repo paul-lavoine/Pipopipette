@@ -14,6 +14,6 @@
 @interface Component : NSObject
 
 + (void)linkComponentsWithPieces:(NSArray *)pieces horizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons nbColumnsAvailable:(NSInteger)nbColumnsAvailable;
-+ (NSMutableArray *)shuffleButtonsWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons;
++ (NSMutableArray *)shuffleButtonsWithHorizontalButtons:(NSArray *)buttons;
 
 @end

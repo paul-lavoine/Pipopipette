@@ -42,10 +42,10 @@
 
 #pragma mark - Utils
 
-- (BarButton *)selectBarWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons pieces:(NSArray *)pieces
+- (BarButton *)selectBarWithButtons:(NSArray *)buttons pieces:(NSArray *)pieces
 {
     // Shuffle array
-    NSMutableArray *shuffleBarButtons = [[Component class] shuffleButtonsWithHorizontalButtons:horizontalButtons verticalButtons:verticalButtons];
+    NSMutableArray *shuffleBarButtons = [[Component class] shuffleButtonsWithHorizontalButtons:buttons];
     BarButton *selectedBarButton;
     
     switch (self.botLevel) {
@@ -63,8 +63,7 @@
             //            }
             //            else
             //            {
-            
-            selectedBarButton = [self.minimax getBestActionWithHorizontalButtons:horizontalButtons verticalButtons:verticalButtons pieces:pieces player:self];
+            selectedBarButton = [self.minimax getBestActionWithButtons:buttons pieces:pieces];
             //            }
             break;
         default:

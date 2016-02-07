@@ -12,8 +12,9 @@
 @interface Minimax : NSObject
 
 + (instancetype)sharedInstance;
-- (BarButton *)getBestActionWithHorizontalButtons:(NSArray *)horizontalButtons verticalButtons:(NSArray *)verticalButtons pieces:(NSArray *)pieces player:(Player *)player;
+- (BarButton *)getBestActionWithButtons:(NSArray *)buttons pieces:(NSArray *)pieces;
 
 @property (nonatomic, assign) NSInteger columns;
+@property (nonatomic, assign) NSInteger rows;
 
 @end

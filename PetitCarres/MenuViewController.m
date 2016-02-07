@@ -10,17 +10,11 @@
 #import "MapViewController.h"
 #import "PlayerManager.h"
 #import "BarButton.h"
+#import "GlobalConfigurations.h"
 
 #define NUMBER_PLAYER_LABEL @"Nombre de joueur :"
 #define NUMBER_BOT_LABEL @"Nombre de Bot :"
-#define NB_MAX_PLAYER 4
-#define NB_MIN_PLAYER 1
-#define NB_MIN_BOT 0
 
-#define NB_DEFAULT_PLAYER   1
-#define NB_DEFAULT_BOT      1
-#define NB_DEFAULT_ROWS     2
-#define NB_DEFAULT_COLUMNS  2
 
 @interface MenuViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -44,10 +38,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *extremeButton;
 
 // Data
+@property (nonatomic, strong) GlobalConfigurations *configurations;
 @property (nonatomic, strong) UIView *colorSelectedButtonView;
-@property (assign, nonatomic) NSInteger nbPlayer;
-@property (assign, nonatomic) NSInteger nbBot;
-@property (assign, nonatomic) NSInteger botLevel;
 @property (nonatomic, assign) BOOL alreadyAppear;
 
 @end
@@ -59,7 +51,7 @@
 {
     if (self = [super init])
     {
-
+        
     }
     
     return self;
@@ -69,8 +61,7 @@
 {
     [super viewDidLoad];
     
-    self.nbPlayer = NB_DEFAULT_PLAYER;
-    self.nbBot = NB_DEFAULT_BOT;
+    self.configurations = [GlobalConfigurations sharedInstance];
     self.defaultSelectedButton = self.extremeButton;
     
     [self configureDefaultMenu];
@@ -171,7 +162,7 @@
 - (IBAction)startGame:(id)sender
 {
     BotLevel level = [self selectedLevel];
-    [[PlayerManager sharedInstance] setNumberOfPlayers:self.nbPlayer numberOfBot:self.nbBot botLevel:level];
+    [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
 
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
     [mapViewController configureMapWithRows:([self.rowPicker selectedRowInComponent:0] + 1) columns:([self.columnPicker selectedRowInComponent:0] + 1)];
@@ -183,26 +174,26 @@
 {
     if (sender == self.incrementPlayerStepper)
     {
-        if (sender.value + self.nbBot + 1 > NB_MAX_PLAYER)
-            self.incrementPlayerStepper.value = NB_MAX_PLAYER - self.nbBot;
+        if (sender.value + self.configurations.nbBot + 1 > NB_MAX_PLAYER)
+            self.incrementPlayerStepper.value = NB_MAX_PLAYER - self.configurations.nbBot;
         else if (sender.value - 1 < NB_MIN_PLAYER)
             self.incrementPlayerStepper.value = NB_MIN_PLAYER;
         
-        self.nbPlayer = [sender value];
-        [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_PLAYER_LABEL, (long)self.nbPlayer]];
+        self.configurations.nbPlayer = [sender value];
+        [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_PLAYER_LABEL, (long)self.configurations.nbPlayer]];
     }
     else
     {
-        if (self.nbPlayer + sender.value + 1 > NB_MAX_PLAYER)
-            self.incrementBotStepper.value = NB_MAX_PLAYER - self.nbPlayer;
-        else if (self.nbPlayer + sender.value - 1 < NB_MIN_BOT)
+        if (self.configurations.nbPlayer + sender.value + 1 > NB_MAX_PLAYER)
+            self.incrementBotStepper.value = NB_MAX_PLAYER - self.configurations.nbPlayer;
+        else if (self.configurations.nbPlayer + sender.value - 1 < NB_MIN_BOT)
             self.incrementBotStepper.value = NB_MIN_BOT;
         
-        self.nbBot = [sender value];
-        [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.nbBot]];
+        self.configurations.nbBot = [sender value];
+        [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.configurations.nbBot]];
     }
     
-    if (self.nbBot + self.nbPlayer >= NB_MAX_PLAYER)
+    if (self.configurations.nbBot + self.configurations.nbPlayer >= NB_MAX_PLAYER)
     {
         self.navigationItem.title = @"Nombre de joueur max atteint";
         self.navigationController.navigationBar.titleTextAttributes = @{

@@ -12,6 +12,8 @@
 		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
 		A866FE391C2961C400916810 /* Component.m in Sources */ = {isa = PBXBuildFile; fileRef = A866FE381C2961C400916810 /* Component.m */; };
+		A89811361C67F71B003A344B /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811351C67F71B003A344B /* HomePageViewController.m */; };
+		A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811391C67F93A003A344B /* GlobalConfigurations.m */; };
 		A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FEB5091C24C35A0085E589 /* Minimax.m */; };
 		DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B111BA01AC6009A9EB8 /* main.m */; };
 		DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */; };
@@ -47,6 +49,10 @@
 		A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 		A866FE371C2961C400916810 /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
 		A866FE381C2961C400916810 /* Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Component.m; sourceTree = "<group>"; };
+		A89811341C67F71B003A344B /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		A89811351C67F71B003A344B /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		A89811381C67F93A003A344B /* GlobalConfigurations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfigurations.h; sourceTree = "<group>"; };
+		A89811391C67F93A003A344B /* GlobalConfigurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfigurations.m; sourceTree = "<group>"; };
 		A8FEB5081C24C35A0085E589 /* Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minimax.h; sourceTree = "<group>"; };
 		A8FEB5091C24C35A0085E589 /* Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minimax.m; sourceTree = "<group>"; };
 		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +99,7 @@
 		A85FE8261C1C2F2300EF58E5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A89811371C67F92B003A344B /* Configuration */,
 				A8FEB5071C24C3440085E589 /* MiniMax */,
 				A85FE8271C1C2F2D00EF58E5 /* NSMutableArray+Addition */,
 			);
@@ -117,6 +124,42 @@
 				DA6E9B4F1BA03B74009A9EB8 /* Piece */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		A89811311C67F6DE003A344B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A85FE8221C16316B00EF58E5 /* MenuViewController.h */,
+				A85FE8231C16316B00EF58E5 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		A89811321C67F6EC003A344B /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				A89811341C67F71B003A344B /* HomePageViewController.h */,
+				A89811351C67F71B003A344B /* HomePageViewController.m */,
+			);
+			name = HomePage;
+			sourceTree = "<group>";
+		};
+		A89811331C67F6F2003A344B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E9B161BA01AC6009A9EB8 /* MapViewController.h */,
+				DA6E9B171BA01AC6009A9EB8 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		A89811371C67F92B003A344B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				A89811381C67F93A003A344B /* GlobalConfigurations.h */,
+				A89811391C67F93A003A344B /* GlobalConfigurations.m */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		A8FEB5071C24C3440085E589 /* MiniMax */ = {
@@ -210,10 +253,9 @@
 		DA6E9B3C1BA01D4A009A9EB8 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
-				A85FE8221C16316B00EF58E5 /* MenuViewController.h */,
-				A85FE8231C16316B00EF58E5 /* MenuViewController.m */,
-				DA6E9B161BA01AC6009A9EB8 /* MapViewController.h */,
-				DA6E9B171BA01AC6009A9EB8 /* MapViewController.m */,
+				A89811321C67F6EC003A344B /* HomePage */,
+				A89811331C67F6F2003A344B /* Map */,
+				A89811311C67F6DE003A344B /* Menu */,
 			);
 			name = ViewsController;
 			sourceTree = "<group>";
@@ -371,11 +413,13 @@
 				A866FE391C2961C400916810 /* Component.m in Sources */,
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */,
+				A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */,
 				A8157DA41C149518009526D2 /* PlayerManager.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
 				A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
 				DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */,
+				A89811361C67F71B003A344B /* HomePageViewController.m in Sources */,
 				DA6E9B371BA01B5A009A9EB8 /* BarButton.m in Sources */,
 				DA6E9B4A1BA03AE7009A9EB8 /* Player.m in Sources */,
 				A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */,
