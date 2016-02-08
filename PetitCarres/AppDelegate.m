@@ -7,12 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MapViewController.h"
 
 @interface AppDelegate ()
-
-// View controllers
-@property (nonatomic, strong) MapViewController *mapViewController;
 
 @end
 

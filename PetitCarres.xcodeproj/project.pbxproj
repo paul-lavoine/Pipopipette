@@ -28,8 +28,9 @@
 		A87C5CE41C6807BD00CF0B33 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD41C6807BD00CF0B33 /* Roboto-Regular.ttf */; };
 		A87C5CE51C6807BD00CF0B33 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD51C6807BD00CF0B33 /* Roboto-Thin.ttf */; };
 		A87C5CE61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf */; };
-		A89811361C67F71B003A344B /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811351C67F71B003A344B /* HomePageViewController.m */; };
+		A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811351C67F71B003A344B /* HomePageViewController.m */; };
 		A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811391C67F93A003A344B /* GlobalConfigurations.m */; };
+		A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA74D1C692E98004351EF /* TutorielViewController.m */; };
 		A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FEB5091C24C35A0085E589 /* Minimax.m */; };
 		DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B111BA01AC6009A9EB8 /* main.m */; };
 		DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */; };
@@ -86,6 +87,8 @@
 		A89811381C67F93A003A344B /* GlobalConfigurations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfigurations.h; sourceTree = "<group>"; };
 		A89811391C67F93A003A344B /* GlobalConfigurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfigurations.m; sourceTree = "<group>"; };
 		A898113B1C6802C2003A344B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		A8CBA74C1C692E98004351EF /* TutorielViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorielViewController.h; sourceTree = "<group>"; };
+		A8CBA74D1C692E98004351EF /* TutorielViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorielViewController.m; sourceTree = "<group>"; };
 		A8FEB5081C24C35A0085E589 /* Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minimax.h; sourceTree = "<group>"; };
 		A8FEB5091C24C35A0085E589 /* Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minimax.m; sourceTree = "<group>"; };
 		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +135,7 @@
 		A85FE8261C1C2F2300EF58E5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A8CBA7471C6918C3004351EF /* UIButton+Text */,
 				A89811371C67F92B003A344B /* Configuration */,
 				A8FEB5071C24C3440085E589 /* MiniMax */,
 				A85FE8271C1C2F2D00EF58E5 /* NSMutableArray+Addition */,
@@ -228,6 +232,22 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
+		A8CBA7471C6918C3004351EF /* UIButton+Text */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "UIButton+Text";
+			sourceTree = "<group>";
+		};
+		A8CBA74B1C692E6D004351EF /* Tutoriel */ = {
+			isa = PBXGroup;
+			children = (
+				A8CBA74C1C692E98004351EF /* TutorielViewController.h */,
+				A8CBA74D1C692E98004351EF /* TutorielViewController.m */,
+			);
+			name = Tutoriel;
+			sourceTree = "<group>";
+		};
 		A8FEB5071C24C3440085E589 /* MiniMax */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +341,7 @@
 				A89811321C67F6EC003A344B /* HomePage */,
 				A89811331C67F6F2003A344B /* Map */,
 				A89811311C67F6DE003A344B /* Menu */,
+				A8CBA74B1C692E6D004351EF /* Tutoriel */,
 			);
 			name = ViewsController;
 			sourceTree = "<group>";
@@ -484,6 +505,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */,
+				A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */,
 				A866FE391C2961C400916810 /* Component.m in Sources */,
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */,
@@ -493,7 +516,6 @@
 				A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
 				DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */,
-				A89811361C67F71B003A344B /* HomePageViewController.m in Sources */,
 				DA6E9B371BA01B5A009A9EB8 /* BarButton.m in Sources */,
 				DA6E9B4A1BA03AE7009A9EB8 /* Player.m in Sources */,
 				A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */,

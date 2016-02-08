@@ -11,17 +11,42 @@
 #import "PlayerManager.h"
 #import "GlobalConfigurations.h"
 
+
 @interface HomePageViewController ()
 
+// Outlets
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (weak, nonatomic) IBOutlet UIButton *configureGameButton;
+@property (weak, nonatomic) IBOutlet UIView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *playView;
+@property (weak, nonatomic) IBOutlet UIView *setupView;
+@property (weak, nonatomic) IBOutlet UIView *creditView;
+
+// Data
 
 @end
 
 @implementation HomePageViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self configureUI];
+}
 
+- (void)configureUI
+{
+    [self.navigationController setNavigationBarHidden:YES];
 
+    
+    // Background Color
+    self.playView.backgroundColor = GREEN_COLOR;
+    self.setupView.backgroundColor = PINK_COLOR;
+    self.creditView.backgroundColor = [UIColor whiteColor];
+    self.logoView.backgroundColor = [UIColor whiteColor];
+    
+
+}
 
 #pragma mark - Actions
 

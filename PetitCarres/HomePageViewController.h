@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define HomePageViewControllerID @"HomePageViewControllerID"
 
 @interface HomePageViewController : UIViewController
 
