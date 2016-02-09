@@ -14,6 +14,8 @@
 		A866FE391C2961C400916810 /* Component.m in Sources */ = {isa = PBXBuildFile; fileRef = A866FE381C2961C400916810 /* Component.m */; };
 		A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811A1C6A86080002F5D8 /* RootViewController.xib */; };
 		A878811D1C6A97AB0002F5D8 /* TutorielViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */; };
+		A87881201C6A9C750002F5D8 /* CGUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811F1C6A9C750002F5D8 /* CGUViewController.xib */; };
+		A87881221C6A9E0B0002F5D8 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */; };
 		A87C5CD71C6807BD00CF0B33 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */; };
 		A87C5CD81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */; };
 		A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */; };
@@ -72,6 +74,8 @@
 		A866FE381C2961C400916810 /* Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Component.m; sourceTree = "<group>"; };
 		A878811A1C6A86080002F5D8 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorielViewController.xib; sourceTree = "<group>"; };
+		A878811F1C6A9C750002F5D8 /* CGUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGUViewController.xib; sourceTree = "<group>"; };
+		A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			children = (
 				A85FE8221C16316B00EF58E5 /* MenuViewController.h */,
 				A85FE8231C16316B00EF58E5 /* MenuViewController.m */,
+				A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			children = (
 				A8CBA7511C6951CC004351EF /* CGUViewController.h */,
 				A8CBA7521C6951CC004351EF /* CGUViewController.m */,
+				A878811F1C6A9C750002F5D8 /* CGUViewController.xib */,
 			);
 			name = Credit;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				A87C5CDC1C6807BD00CF0B33 /* Roboto-BoldItalic.ttf in Resources */,
 				A87C5CD71C6807BD00CF0B33 /* Roboto-Black.ttf in Resources */,
 				A87C5CE11C6807BD00CF0B33 /* Roboto-LightItalic.ttf in Resources */,
+				A87881221C6A9E0B0002F5D8 /* MenuViewController.xib in Resources */,
 				A87C5CE61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf in Resources */,
 				A87C5CE51C6807BD00CF0B33 /* Roboto-Thin.ttf in Resources */,
 				A87C5CDE1C6807BD00CF0B33 /* Roboto-CondensedItalic.ttf in Resources */,
@@ -521,6 +528,7 @@
 				A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */,
 				DA6E9B391BA01D2A009A9EB8 /* HorizontalBarButton.xib in Resources */,
 				A87C5CE31C6807BD00CF0B33 /* Roboto-MediumItalic.ttf in Resources */,
+				A87881201C6A9C750002F5D8 /* CGUViewController.xib in Resources */,
 				A87C5CD81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,11 +47,12 @@
 @implementation MenuViewController
 
 #pragma mark - Initializers
+
 - (instancetype)init
 {
-    if (self = [super init])
+    if (self = [super initWithNibName:@"MenuViewController" bundle:nil])
     {
-        
+
     }
     
     return self;

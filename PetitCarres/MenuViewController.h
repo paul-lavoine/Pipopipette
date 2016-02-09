@@ -12,4 +12,6 @@
 
 @interface MenuViewController : UIViewController
 
+- (instancetype)init;
+
 @end

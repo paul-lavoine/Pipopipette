@@ -58,7 +58,6 @@
     // ChildView
     [self addConstraintToContentView];
     
-    
     // Gesture Recognizer
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backViewAction:)];
     [self.backButton addGestureRecognizer:tapRecognizer];

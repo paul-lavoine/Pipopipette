@@ -62,10 +62,19 @@
 - (IBAction)tutorialAction:(id)sender
 {
     TutorielViewController *tutorielViewController = [[TutorielViewController alloc] init];
-    RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:@"TUTORIEL" image:[UIImage imageNamed:@"tutoriel_icon"] subView:tutorielViewController.view];
-    
+    [self pushViewController:tutorielViewController title:@"TUTORIEL" image:[UIImage imageNamed:@"tutoriel_icon"]];
+}
+
+- (IBAction)setupAction:(id)sender
+{
+    MenuViewController *menuViewController = [[MenuViewController alloc] init];
+    [self pushViewController:menuViewController title:@"REGLAGLES" image:[UIImage imageNamed:@"setup_button"]];
+}
+
+- (void)pushViewController:(UIViewController *)viewController title:(NSString *)title image:(UIImage *)image
+{
+    RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:title image:image subView:viewController.view];
     [self.navigationController pushViewController:rootViewController animated:YES];
-    
 }
 
 @end
