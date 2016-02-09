@@ -8,6 +8,31 @@
 
 #import "CGUViewController.h"
 
+@interface CGUViewController ()
+
+
+@end
+
+
 @implementation CGUViewController
+
+#pragma mark - Initializers
+
+- (instancetype)init
+{
+    if (self = [super initWithNibName:@"CGUViewController" bundle:nil])
+    {
+        
+    }
+    
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+
+}
 
 @end

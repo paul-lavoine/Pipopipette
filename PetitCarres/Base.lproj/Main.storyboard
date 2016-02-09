@@ -284,6 +284,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="configureGameButton" destination="2FK-iN-X6z" id="BQM-cV-zqv"/>
+                        <outlet property="creditButtonView" destination="Oed-g5-Cg2" id="hi2-4M-7lL"/>
+                        <outlet property="creditImageView" destination="SYU-X3-azl" id="z2g-bo-Hbm"/>
                         <outlet property="creditView" destination="0vr-mc-0Vc" id="L1o-1B-j76"/>
                         <outlet property="logoView" destination="4Rx-Yt-H1E" id="m0n-df-IWa"/>
                         <outlet property="playButton" destination="ct5-BK-i6E" id="EM4-it-Dwi"/>
@@ -550,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZE-ew-bbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165" y="238"/>
+            <point key="canvasLocation" x="29" y="137"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="m1c-R3-a4r">
@@ -679,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="me1-Sc-S1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="643" y="282"/>
+            <point key="canvasLocation" x="513" y="233"/>
         </scene>
     </scenes>
     <resources>

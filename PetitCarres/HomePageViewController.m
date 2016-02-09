@@ -12,6 +12,7 @@
 #import "GlobalConfigurations.h"
 #import "MenuViewController.h"
 #import "TutorielViewController.h"
+#import "CGUViewController.h"
 
 @interface HomePageViewController ()
 
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *playView;
 @property (weak, nonatomic) IBOutlet UIView *setupView;
 @property (weak, nonatomic) IBOutlet UIView *creditView;
+@property (weak, nonatomic) IBOutlet UIView *creditButtonView;
+@property (weak, nonatomic) IBOutlet UIImageView *creditImageView;
 
 // Data
 
@@ -33,6 +36,10 @@
 {
     [super viewDidLoad];
     [self configureUI];
+    
+    // Gesture Recognizer
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(creditButtonAction:)];
+    [self.creditButtonView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)configureUI
@@ -42,9 +49,12 @@
     // Background Color
     self.playView.backgroundColor = GREEN_COLOR;
     self.setupView.backgroundColor = PINK_COLOR;
-    [self.configureGameButton.imageView setTintColor:[UIColor whiteColor]];
     self.creditView.backgroundColor = [UIColor whiteColor];
     self.logoView.backgroundColor = [UIColor whiteColor];
+    
+    // Tint color button
+    [self.configureGameButton.imageView setTintColor:[UIColor whiteColor]];
+    [self.creditImageView setTintColor:GREEN_COLOR];
 }
 
 #pragma mark - Actions
@@ -57,6 +67,12 @@
     [mapViewController configureMapWithRows:NB_DEFAULT_ROWS columns:NB_DEFAULT_COLUMNS];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
+}
+
+- (IBAction)creditButtonAction:(id)sender
+{
+    CGUViewController *cguViewController = [[CGUViewController alloc] init];
+    [self pushViewController:cguViewController title:@"MENTIONS LÉGALES" image:[UIImage imageNamed:@"credit_button"]];
 }
 
 - (IBAction)tutorialAction:(id)sender
