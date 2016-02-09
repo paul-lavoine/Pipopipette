@@ -12,6 +12,8 @@
 		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
 		A866FE391C2961C400916810 /* Component.m in Sources */ = {isa = PBXBuildFile; fileRef = A866FE381C2961C400916810 /* Component.m */; };
+		A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811A1C6A86080002F5D8 /* RootViewController.xib */; };
+		A878811D1C6A97AB0002F5D8 /* TutorielViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */; };
 		A87C5CD71C6807BD00CF0B33 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */; };
 		A87C5CD81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */; };
 		A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */; };
@@ -32,6 +34,7 @@
 		A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811391C67F93A003A344B /* GlobalConfigurations.m */; };
 		A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA74D1C692E98004351EF /* TutorielViewController.m */; };
 		A8CBA7531C6951CC004351EF /* CGUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA7521C6951CC004351EF /* CGUViewController.m */; };
+		A8CBA7571C6A828C004351EF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA7561C6A828C004351EF /* RootViewController.m */; };
 		A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FEB5091C24C35A0085E589 /* Minimax.m */; };
 		DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B111BA01AC6009A9EB8 /* main.m */; };
 		DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */; };
@@ -67,6 +70,8 @@
 		A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 		A866FE371C2961C400916810 /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
 		A866FE381C2961C400916810 /* Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Component.m; sourceTree = "<group>"; };
+		A878811A1C6A86080002F5D8 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorielViewController.xib; sourceTree = "<group>"; };
 		A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -92,6 +97,8 @@
 		A8CBA74D1C692E98004351EF /* TutorielViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorielViewController.m; sourceTree = "<group>"; };
 		A8CBA7511C6951CC004351EF /* CGUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGUViewController.h; sourceTree = "<group>"; };
 		A8CBA7521C6951CC004351EF /* CGUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGUViewController.m; sourceTree = "<group>"; };
+		A8CBA7551C6A828C004351EF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A8CBA7561C6A828C004351EF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A8FEB5081C24C35A0085E589 /* Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minimax.h; sourceTree = "<group>"; };
 		A8FEB5091C24C35A0085E589 /* Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minimax.m; sourceTree = "<group>"; };
 		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +254,7 @@
 			children = (
 				A8CBA74C1C692E98004351EF /* TutorielViewController.h */,
 				A8CBA74D1C692E98004351EF /* TutorielViewController.m */,
+				A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */,
 			);
 			name = Tutoriel;
 			sourceTree = "<group>";
@@ -258,6 +266,16 @@
 				A8CBA7521C6951CC004351EF /* CGUViewController.m */,
 			);
 			name = Credit;
+			sourceTree = "<group>";
+		};
+		A8CBA7541C6A8260004351EF /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				A8CBA7551C6A828C004351EF /* RootViewController.h */,
+				A8CBA7561C6A828C004351EF /* RootViewController.m */,
+				A878811A1C6A86080002F5D8 /* RootViewController.xib */,
+			);
+			name = Root;
 			sourceTree = "<group>";
 		};
 		A8FEB5071C24C3440085E589 /* MiniMax */ = {
@@ -354,6 +372,7 @@
 				A89811321C67F6EC003A344B /* HomePage */,
 				A89811331C67F6F2003A344B /* Map */,
 				A89811311C67F6DE003A344B /* Menu */,
+				A8CBA7541C6A8260004351EF /* Root */,
 				A8CBA74B1C692E6D004351EF /* Tutoriel */,
 			);
 			name = ViewsController;
@@ -481,6 +500,7 @@
 			files = (
 				A85FE8211C15FF2A00EF58E5 /* Piece.xib in Resources */,
 				DA6E9B1B1BA01AC6009A9EB8 /* Main.storyboard in Resources */,
+				A878811D1C6A97AB0002F5D8 /* TutorielViewController.xib in Resources */,
 				A87C5CE41C6807BD00CF0B33 /* Roboto-Regular.ttf in Resources */,
 				A87C5CDA1C6807BD00CF0B33 /* Roboto-BoldCondensed.ttf in Resources */,
 				A87C5CDD1C6807BD00CF0B33 /* Roboto-Condensed.ttf in Resources */,
@@ -498,6 +518,7 @@
 				A87C5CDE1C6807BD00CF0B33 /* Roboto-CondensedItalic.ttf in Resources */,
 				A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */,
 				DA6E9B1D1BA01AC6009A9EB8 /* Images.xcassets in Resources */,
+				A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */,
 				DA6E9B391BA01D2A009A9EB8 /* HorizontalBarButton.xib in Resources */,
 				A87C5CE31C6807BD00CF0B33 /* Roboto-MediumItalic.ttf in Resources */,
 				A87C5CD81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf in Resources */,
@@ -521,6 +542,7 @@
 				A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */,
 				A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */,
 				A866FE391C2961C400916810 /* Component.m in Sources */,
+				A8CBA7571C6A828C004351EF /* RootViewController.m in Sources */,
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */,
 				A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */,

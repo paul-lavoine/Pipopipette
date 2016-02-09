@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
 #define TutorielViewControllerID @"TutorielViewControllerID"
 
 @interface TutorielViewController : UIViewController
+
+- (instancetype)init;
 
 @end

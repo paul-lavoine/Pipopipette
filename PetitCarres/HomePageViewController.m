@@ -38,11 +38,11 @@
 - (void)configureUI
 {
     [self.navigationController setNavigationBarHidden:YES];
-
     
     // Background Color
     self.playView.backgroundColor = GREEN_COLOR;
     self.setupView.backgroundColor = PINK_COLOR;
+    [self.configureGameButton.imageView setTintColor:[UIColor whiteColor]];
     self.creditView.backgroundColor = [UIColor whiteColor];
     self.logoView.backgroundColor = [UIColor whiteColor];
 }
@@ -57,6 +57,15 @@
     [mapViewController configureMapWithRows:NB_DEFAULT_ROWS columns:NB_DEFAULT_COLUMNS];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
+}
+
+- (IBAction)tutorialAction:(id)sender
+{
+    TutorielViewController *tutorielViewController = [[TutorielViewController alloc] init];
+    RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:@"TUTORIEL" image:[UIImage imageNamed:@"tutoriel_icon"] subView:tutorielViewController.view];
+    
+    [self.navigationController pushViewController:rootViewController animated:YES];
+    
 }
 
 @end

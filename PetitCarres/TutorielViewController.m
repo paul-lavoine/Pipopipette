@@ -10,8 +10,6 @@
 
 @interface TutorielViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *backButton;
-
 @property (weak, nonatomic) IBOutlet UILabel *introLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstRule;
 @property (weak, nonatomic) IBOutlet UILabel *secondRule;
@@ -21,20 +19,27 @@
 @property (weak, nonatomic) IBOutlet UILabel *firstQuoteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondQuoteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thirdQuoteLabel;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
 @implementation TutorielViewController
 
+#pragma mark - Constructor
+
+- (instancetype)init
+{
+    if (self = [super initWithNibName:@"TutorielViewController" bundle:nil])
+    {
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self configureUI];
-    
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    [self.backButton addGestureRecognizer:tapRecognizer];
 }
 
 - (void)configureUI
@@ -51,10 +56,6 @@
     
 }
 
-#pragma mark - Actions
-- (IBAction)tapped:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 @end
