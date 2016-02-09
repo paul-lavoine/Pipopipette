@@ -23,6 +23,8 @@
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -168,26 +170,21 @@
                                                     <segue destination="rd5-bR-8oM" kind="show" id="EyA-Py-ct4"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RÉGLAGES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWp-XZ-hxL">
-                                                <rect key="frame" x="0.0" y="66" width="85" height="18"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtN-Ah-jcS">
+                                                <rect key="frame" x="0.0" y="66" width="84" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="6eE-qq-OFL"/>
+                                                    <constraint firstAttribute="height" constant="18" id="tce-BE-RsI"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUTORIEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdW-1r-ibC">
-                                                <rect key="frame" x="234" y="66" width="79.5" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="rWj-Yv-Deq"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                                <state key="normal" title="RÉGLAGES">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="rd5-bR-8oM" kind="show" id="qU9-bF-EEr"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12R-OB-Stw">
-                                                <rect key="frame" x="246" y="0.0" width="56.5" height="56.5"/>
+                                                <rect key="frame" x="247" y="0.0" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="12R-OB-Stw" secondAttribute="height" multiplier="1:1" id="zQv-Ut-ZIc"/>
                                                 </constraints>
@@ -196,19 +193,32 @@
                                                     <segue destination="JFB-Uw-6Qh" kind="show" id="zty-AK-mNH"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ati-wL-qBe">
+                                                <rect key="frame" x="236" y="66" width="78" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="Qry-7e-XfG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                                <state key="normal" title="TUTORIEL">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="JFB-Uw-6Qh" kind="show" id="Yp9-kZ-dWc"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="2FK-iN-X6z" firstAttribute="centerX" secondItem="IWp-XZ-hxL" secondAttribute="centerX" id="1dN-hJ-5e5"/>
-                                            <constraint firstAttribute="bottom" secondItem="XdW-1r-ibC" secondAttribute="bottom" id="50S-ms-ehF"/>
-                                            <constraint firstAttribute="bottom" secondItem="IWp-XZ-hxL" secondAttribute="bottom" id="5YK-JK-iUw"/>
-                                            <constraint firstItem="IWp-XZ-hxL" firstAttribute="leading" secondItem="mKv-V8-qKf" secondAttribute="leading" id="82q-Ff-RHx"/>
-                                            <constraint firstItem="XdW-1r-ibC" firstAttribute="top" secondItem="12R-OB-Stw" secondAttribute="bottom" constant="10" id="dlw-TG-Bou"/>
-                                            <constraint firstItem="IWp-XZ-hxL" firstAttribute="top" secondItem="2FK-iN-X6z" secondAttribute="bottom" constant="10" id="kdS-bK-8S4"/>
+                                            <constraint firstAttribute="trailing" secondItem="ati-wL-qBe" secondAttribute="trailing" id="2Fz-BD-J4N"/>
+                                            <constraint firstAttribute="bottom" secondItem="NtN-Ah-jcS" secondAttribute="bottom" id="2Il-0i-rDK"/>
+                                            <constraint firstItem="ati-wL-qBe" firstAttribute="top" secondItem="12R-OB-Stw" secondAttribute="bottom" constant="10" id="IcS-nB-pZ4"/>
+                                            <constraint firstItem="ati-wL-qBe" firstAttribute="centerX" secondItem="12R-OB-Stw" secondAttribute="centerX" id="U32-i4-N2L"/>
+                                            <constraint firstItem="NtN-Ah-jcS" firstAttribute="leading" secondItem="mKv-V8-qKf" secondAttribute="leading" id="Yr5-qo-cOo"/>
+                                            <constraint firstItem="NtN-Ah-jcS" firstAttribute="centerX" secondItem="2FK-iN-X6z" secondAttribute="centerX" id="huS-yu-Zte"/>
+                                            <constraint firstItem="NtN-Ah-jcS" firstAttribute="top" secondItem="2FK-iN-X6z" secondAttribute="bottom" constant="10" id="lPu-aa-3an"/>
                                             <constraint firstItem="12R-OB-Stw" firstAttribute="top" secondItem="mKv-V8-qKf" secondAttribute="top" id="rz3-gu-RYi"/>
+                                            <constraint firstAttribute="bottom" secondItem="ati-wL-qBe" secondAttribute="bottom" id="wcn-cO-UJU"/>
                                             <constraint firstItem="2FK-iN-X6z" firstAttribute="top" secondItem="mKv-V8-qKf" secondAttribute="top" id="x1c-yB-xWx"/>
-                                            <constraint firstAttribute="trailing" secondItem="XdW-1r-ibC" secondAttribute="trailing" id="xnG-FN-mJL"/>
-                                            <constraint firstItem="12R-OB-Stw" firstAttribute="centerX" secondItem="XdW-1r-ibC" secondAttribute="centerX" id="zJi-au-z5f"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -306,7 +316,7 @@
         <!--Menu View Controller-->
         <scene sceneID="qRY-Bp-9pd">
             <objects>
-                <viewController id="rd5-bR-8oM" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewControllerID" id="rd5-bR-8oM" customClass="MenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YxV-o6-NgG"/>
                         <viewControllerLayoutGuide type="bottom" id="xCy-m7-dy2"/>
@@ -560,10 +570,71 @@
             </objects>
             <point key="canvasLocation" x="210" y="214"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ZYB-cB-A7F">
+            <objects>
+                <viewController id="be7-iF-uWt" customClass="CGUViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LA5-KG-zPR"/>
+                        <viewControllerLayoutGuide type="bottom" id="gZd-Ls-u02"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E7L-gX-tn4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tuto" translatesAutoresizingMaskIntoConstraints="NO" id="Daa-Lv-wXD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccr-5L-SK0">
+                                <rect key="frame" x="40" y="70" width="520" height="480"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWy-ht-uno">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_arrow_tuto_button" translatesAutoresizingMaskIntoConstraints="NO" id="wA1-sw-PEM">
+                                                <rect key="frame" x="10" y="10" width="18" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="fOk-am-Qj6"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="wA1-sw-PEM" firstAttribute="top" secondItem="lWy-ht-uno" secondAttribute="top" constant="10" id="IWX-x9-pxC"/>
+                                            <constraint firstItem="wA1-sw-PEM" firstAttribute="leading" secondItem="lWy-ht-uno" secondAttribute="leading" constant="10" id="WGj-GF-zJS"/>
+                                            <constraint firstAttribute="width" constant="45" id="jnH-gi-jtv"/>
+                                            <constraint firstAttribute="height" constant="45" id="sYn-o1-nWe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lWy-ht-uno" firstAttribute="top" secondItem="ccr-5L-SK0" secondAttribute="top" id="U9G-8z-dhH"/>
+                                    <constraint firstItem="lWy-ht-uno" firstAttribute="leading" secondItem="ccr-5L-SK0" secondAttribute="leading" id="wgh-gn-xqA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ccr-5L-SK0" firstAttribute="leading" secondItem="E7L-gX-tn4" secondAttribute="leading" constant="40" id="3IS-jP-6h7"/>
+                            <constraint firstAttribute="trailing" secondItem="ccr-5L-SK0" secondAttribute="trailing" constant="40" id="7HR-Gj-k17"/>
+                            <constraint firstItem="Daa-Lv-wXD" firstAttribute="leading" secondItem="E7L-gX-tn4" secondAttribute="leading" id="EC0-QP-psG"/>
+                            <constraint firstItem="Daa-Lv-wXD" firstAttribute="top" secondItem="E7L-gX-tn4" secondAttribute="top" id="LY6-Ik-mgs"/>
+                            <constraint firstItem="gZd-Ls-u02" firstAttribute="top" secondItem="ccr-5L-SK0" secondAttribute="bottom" constant="50" id="Q83-WK-pei"/>
+                            <constraint firstAttribute="trailing" secondItem="Daa-Lv-wXD" secondAttribute="trailing" id="Sng-hr-pTG"/>
+                            <constraint firstItem="ccr-5L-SK0" firstAttribute="top" secondItem="LA5-KG-zPR" secondAttribute="bottom" constant="50" id="rLO-Z0-NM9"/>
+                            <constraint firstItem="gZd-Ls-u02" firstAttribute="top" secondItem="Daa-Lv-wXD" secondAttribute="bottom" id="tPW-5q-jHc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5pQ-oM-s9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-422" y="991"/>
+        </scene>
         <!--Tutoriel View Controller-->
         <scene sceneID="m5P-eP-mVL">
             <objects>
-                <viewController id="JFB-Uw-6Qh" customClass="TutorielViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorielViewControllerID" id="JFB-Uw-6Qh" customClass="TutorielViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pfR-ee-rqj"/>
                         <viewControllerLayoutGuide type="bottom" id="l4v-yI-G8A"/>
@@ -904,4 +975,8 @@
         <image name="tutoriel_button" width="89" height="98"/>
         <image name="tutoriel_icon" width="64" height="71"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qU9-bF-EEr"/>
+        <segue reference="zty-AK-mNH"/>
+    </inferredMetricsTieBreakers>
 </document>

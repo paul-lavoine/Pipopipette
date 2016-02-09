@@ -10,7 +10,8 @@
 #import "MapViewController.h"
 #import "PlayerManager.h"
 #import "GlobalConfigurations.h"
-
+#import "MenuViewController.h"
+#import "TutorielViewController.h"
 
 @interface HomePageViewController ()
 
@@ -44,8 +45,6 @@
     self.setupView.backgroundColor = PINK_COLOR;
     self.creditView.backgroundColor = [UIColor whiteColor];
     self.logoView.backgroundColor = [UIColor whiteColor];
-    
-
 }
 
 #pragma mark - Actions

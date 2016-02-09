@@ -1,5 +1,5 @@
 //
-//  TutorielViewController.h
+//  CGUViewController.h
 //  PetitCarres
 //
 //  Created by Paul Lavoine on 08/02/2016.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define TutorielViewControllerID @"TutorielViewControllerID"
-
-@interface TutorielViewController : UIViewController
+@interface CGUViewController : UIViewController
 
 @end

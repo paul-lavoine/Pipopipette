@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define MenuViewControllerID @"MenuViewControllerID"
+
 @interface MenuViewController : UIViewController
 
 @end
