@@ -26,7 +26,7 @@
 @implementation RootViewController
 
 
-#pragma mark - Constructor
+#pragma mark - Initializers
 
 - (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(ChildViewController *)subView
 {
@@ -44,6 +44,8 @@
     
     return self;
 }
+
+#pragma mark - View lifeCycle
 
 - (void)viewDidLoad
 {
@@ -104,15 +106,17 @@
                                                       constant:0.0]];
 }
 
-- (void)pushViewController:(UIViewController *)viewController
-{
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
 #pragma mark - Actions
 - (IBAction)backViewAction:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Utils
+
+- (void)pushViewController:(UIViewController *)viewController
+{
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

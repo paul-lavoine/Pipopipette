@@ -10,7 +10,7 @@
 
 #define MapViewControllerID @"MapViewControllerID"
 
-@interface MapViewController : ChildViewController
+@interface MapViewController : UIViewController
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns;
 

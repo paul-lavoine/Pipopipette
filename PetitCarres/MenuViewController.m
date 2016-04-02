@@ -69,12 +69,6 @@
     [self configureDefaultMenu];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -144,14 +138,14 @@
                         highSideBarButton:SIZE_PIECE
                                     space:BAR_BUTTON_SPACE
                            minSpaceBorder:minSpaceBorder
-                                 widthMax:self.view.frame.size.width];
+                                 widthMax:self.rootParentViewController.view.frame.size.width];
     }
     
     return [self limitNumberOfSquarre:10
                     highSideBarButton:SIZE_PIECE
                                 space:BAR_BUTTON_SPACE
                        minSpaceBorder:minSpaceBorder
-                             widthMax:self.view.frame.size.height];
+                             widthMax:self.rootParentViewController.view.frame.size.height];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
