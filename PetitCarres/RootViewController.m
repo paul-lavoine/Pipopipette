@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentChildView;
 
 // Data
-@property (nonatomic, strong) UIViewController *subView;
+@property (nonatomic, strong) ChildViewController *subView;
 @property (nonatomic, strong) NSString *titleView;
 @property (nonatomic, strong) UIImage *image;
 @end
@@ -28,7 +28,7 @@
 
 #pragma mark - Constructor
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIViewController *)subView
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(ChildViewController *)subView
 {
     if (self = [super initWithNibName:@"RootViewController" bundle:nil])
     {
@@ -37,13 +37,13 @@
         self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
         _subView = subView;
         _subView.navigationController.delegate = self;
+        _subView.rootParentViewController = self;
         _titleView = title;
         _image = image;
     }
     
     return self;
 }
-
 
 - (void)viewDidLoad
 {
@@ -104,6 +104,10 @@
                                                       constant:0.0]];
 }
 
+- (void)pushViewController:(UIViewController *)viewController
+{
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 #pragma mark - Actions
 - (IBAction)backViewAction:(id)sender

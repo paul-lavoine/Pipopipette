@@ -52,11 +52,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Rx-Yt-H1E" userLabel="Logo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xn9-k8-IZt">
-                                        <rect key="frame" x="143" y="40" width="127.5" height="160"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xn9-k8-IZt">
+                                        <rect key="frame" x="144" y="40" width="126" height="160"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LA PIPOPIPETTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFW-tY-qps">
-                                                <rect key="frame" x="0.0" y="136" width="127.5" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LA PIPOPIPETTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFW-tY-qps">
+                                                <rect key="frame" x="0.0" y="136" width="126" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="KXD-39-ElV"/>
                                                 </constraints>
@@ -64,7 +64,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_appli" translatesAutoresizingMaskIntoConstraints="NO" id="bO1-84-XAY">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_appli" translatesAutoresizingMaskIntoConstraints="NO" id="bO1-84-XAY">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bO1-84-XAY" secondAttribute="height" multiplier="1:1" id="pNS-Uy-iZr"/>
@@ -178,7 +178,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kna-hV-j2D">
-                                                <rect key="frame" x="198.5" y="0.0" width="77.5" height="84"/>
+                                                <rect key="frame" x="198" y="0.0" width="77.5" height="84"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutoriel_button" translatesAutoresizingMaskIntoConstraints="NO" id="836-vZ-1M0">
                                                         <rect key="frame" x="11" y="0.0" width="56" height="56"/>
@@ -325,6 +325,7 @@
         <!--Map View Controller-->
         <scene sceneID="m1c-R3-a4r">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="me1-Sc-S1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MapViewControllerID" id="flh-BG-aaP" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tVn-k3-E5T"/>
@@ -447,9 +448,8 @@
                         <outlet property="winnerView" destination="wcR-XD-CXD" id="vK1-7B-yMg"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="me1-Sc-S1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109" y="177"/>
+            <point key="canvasLocation" x="94" y="174"/>
         </scene>
     </scenes>
     <resources>

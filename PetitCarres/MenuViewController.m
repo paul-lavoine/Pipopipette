@@ -16,7 +16,7 @@
 #define NUMBER_BOT_LABEL @"Nombre de Bot :"
 
 
-@interface MenuViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MenuViewController () <UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *nbPlayerLabel;
@@ -64,7 +64,7 @@
     
     self.configurations = [GlobalConfigurations sharedInstance];
     self.defaultSelectedButton = self.extremeButton;
-    
+    self.navigationController.delegate = self;
     
     [self configureDefaultMenu];
 }
@@ -94,8 +94,6 @@
     [self.startGameButton.layer setBorderWidth:1.0f];
     [self.startGameButton.layer setBorderColor:[UIColor blackColor].CGColor];
     self.startGameButton.layer.cornerRadius = 13.0f;
-//    self.startGameButton.userInteractionEnabled = YES;
-//    [self.startGameButton addTarget:self action:@selector(startGame:) forControlEvents:UIControlEventTouchUpInside];
     
     // Init Stepper
     [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];
@@ -167,11 +165,12 @@
 {
     BotLevel level = [self selectedLevel];
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
-
-    MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    MapViewController *mapViewController = [mainStoryboard instantiateViewControllerWithIdentifier:MapViewControllerID];
     [mapViewController configureMapWithRows:([self.rowPicker selectedRowInComponent:0] + 1) columns:([self.columnPicker selectedRowInComponent:0] + 1)];
     
-    [self.navigationController pushViewController:mapViewController animated:YES];
+    [self.rootParentViewController pushViewController:mapViewController];
 }
 
 - (IBAction)valueChanged:(UIStepper *)sender

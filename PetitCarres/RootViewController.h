@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChildViewController;
+
 @interface RootViewController : UIViewController
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIViewController *)subView;
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(ChildViewController *)subView;
+- (void)pushViewController:(UIViewController *)viewController;
 
 @end

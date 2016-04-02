@@ -99,7 +99,7 @@
     [self pushViewController:menuViewController title:@"REGLAGLES" image:[UIImage imageNamed:@"setup_button"]];
 }
 
-- (void)pushViewController:(UIViewController *)viewController title:(NSString *)title image:(UIImage *)image
+- (void)pushViewController:(ChildViewController *)viewController title:(NSString *)title image:(UIImage *)image
 {
     RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:title image:image subView:viewController];
     [self.navigationController pushViewController:rootViewController animated:YES];

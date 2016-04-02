@@ -10,7 +10,7 @@
 
 #define MenuViewControllerID @"MenuViewControllerID"
 
-@interface MenuViewController : UIViewController
+@interface MenuViewController : ChildViewController
 
 - (instancetype)init;
 

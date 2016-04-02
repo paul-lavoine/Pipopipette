@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CGUViewController : UIViewController
+@interface CGUViewController : ChildViewController
 
 @end

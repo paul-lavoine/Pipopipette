@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A8157DA41C149518009526D2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8157DA31C149518009526D2 /* PlayerManager.m */; };
+		A828D6A01CAF9B4B00720C31 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D69F1CAF9B4B00720C31 /* ChildViewController.m */; };
 		A85FE8211C15FF2A00EF58E5 /* Piece.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85FE8201C15FF2A00EF58E5 /* Piece.xib */; };
 		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		A8157DA21C149518009526D2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
 		A8157DA31C149518009526D2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
+		A828D69E1CAF9B4B00720C31 /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
+		A828D69F1CAF9B4B00720C31 /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
 		A85FE8201C15FF2A00EF58E5 /* Piece.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Piece.xib; sourceTree = "<group>"; };
 		A85FE8221C16316B00EF58E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		A85FE8231C16316B00EF58E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
@@ -105,7 +108,7 @@
 		A8CBA7561C6A828C004351EF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A8FEB5081C24C35A0085E589 /* Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minimax.h; sourceTree = "<group>"; };
 		A8FEB5091C24C35A0085E589 /* Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minimax.m; sourceTree = "<group>"; };
-		DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetitCarres.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6E9B0C1BA01AC6009A9EB8 /* Pipopipette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pipopipette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6E9B101BA01AC6009A9EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA6E9B111BA01AC6009A9EB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA6E9B131BA01AC6009A9EB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,7 +118,7 @@
 		DA6E9B1A1BA01AC6009A9EB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA6E9B1C1BA01AC6009A9EB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DA6E9B1F1BA01AC6009A9EB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		DA6E9B251BA01AC7009A9EB8 /* PetitCarresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetitCarresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6E9B251BA01AC7009A9EB8 /* Pipopipette.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pipopipette.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6E9B2A1BA01AC7009A9EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA6E9B2B1BA01AC7009A9EB8 /* PetitCarresTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetitCarresTests.m; sourceTree = "<group>"; };
 		DA6E9B351BA01B5A009A9EB8 /* BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButton.h; sourceTree = "<group>"; };
@@ -146,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A828D69D1CAF9B3200720C31 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				A828D69E1CAF9B4B00720C31 /* ChildViewController.h */,
+				A828D69F1CAF9B4B00720C31 /* ChildViewController.m */,
+			);
+			name = Child;
+			sourceTree = "<group>";
+		};
 		A85FE8261C1C2F2300EF58E5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,8 +317,8 @@
 		DA6E9B0D1BA01AC6009A9EB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */,
-				DA6E9B251BA01AC7009A9EB8 /* PetitCarresTests.xctest */,
+				DA6E9B0C1BA01AC6009A9EB8 /* Pipopipette.app */,
+				DA6E9B251BA01AC7009A9EB8 /* Pipopipette.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -374,6 +386,7 @@
 		DA6E9B3C1BA01D4A009A9EB8 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
+				A828D69D1CAF9B3200720C31 /* Child */,
 				A8CBA7501C6951B8004351EF /* Credit */,
 				A89811321C67F6EC003A344B /* HomePage */,
 				A89811331C67F6F2003A344B /* Map */,
@@ -426,9 +439,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA6E9B0B1BA01AC6009A9EB8 /* PetitCarres */ = {
+		DA6E9B0B1BA01AC6009A9EB8 /* Pipopipette */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA6E9B2F1BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PetitCarres" */;
+			buildConfigurationList = DA6E9B2F1BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "Pipopipette" */;
 			buildPhases = (
 				DA6E9B081BA01AC6009A9EB8 /* Sources */,
 				DA6E9B091BA01AC6009A9EB8 /* Frameworks */,
@@ -438,14 +451,14 @@
 			);
 			dependencies = (
 			);
-			name = PetitCarres;
+			name = Pipopipette;
 			productName = PetitCarres;
-			productReference = DA6E9B0C1BA01AC6009A9EB8 /* PetitCarres.app */;
+			productReference = DA6E9B0C1BA01AC6009A9EB8 /* Pipopipette.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA6E9B241BA01AC7009A9EB8 /* PetitCarresTests */ = {
+		DA6E9B241BA01AC7009A9EB8 /* PipopipetteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA6E9B321BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PetitCarresTests" */;
+			buildConfigurationList = DA6E9B321BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PipopipetteTests" */;
 			buildPhases = (
 				DA6E9B211BA01AC7009A9EB8 /* Sources */,
 				DA6E9B221BA01AC7009A9EB8 /* Frameworks */,
@@ -456,9 +469,9 @@
 			dependencies = (
 				DA6E9B271BA01AC7009A9EB8 /* PBXTargetDependency */,
 			);
-			name = PetitCarresTests;
+			name = PipopipetteTests;
 			productName = PetitCarresTests;
-			productReference = DA6E9B251BA01AC7009A9EB8 /* PetitCarresTests.xctest */;
+			productReference = DA6E9B251BA01AC7009A9EB8 /* Pipopipette.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -480,7 +493,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DA6E9B071BA01AC6009A9EB8 /* Build configuration list for PBXProject "PetitCarres" */;
+			buildConfigurationList = DA6E9B071BA01AC6009A9EB8 /* Build configuration list for PBXProject "Pipopipette" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -493,8 +506,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA6E9B0B1BA01AC6009A9EB8 /* PetitCarres */,
-				DA6E9B241BA01AC7009A9EB8 /* PetitCarresTests */,
+				DA6E9B0B1BA01AC6009A9EB8 /* Pipopipette */,
+				DA6E9B241BA01AC7009A9EB8 /* PipopipetteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -553,6 +566,7 @@
 				A8CBA7571C6A828C004351EF /* RootViewController.m in Sources */,
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */,
+				A828D6A01CAF9B4B00720C31 /* ChildViewController.m in Sources */,
 				A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */,
 				A8157DA41C149518009526D2 /* PlayerManager.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
@@ -579,7 +593,7 @@
 /* Begin PBXTargetDependency section */
 		DA6E9B271BA01AC7009A9EB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DA6E9B0B1BA01AC6009A9EB8 /* PetitCarres */;
+			target = DA6E9B0B1BA01AC6009A9EB8 /* Pipopipette */;
 			targetProxy = DA6E9B261BA01AC7009A9EB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -697,7 +711,7 @@
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pipopipette;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -712,7 +726,7 @@
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pipopipette;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -732,8 +746,8 @@
 				INFOPLIST_FILE = PetitCarresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetitCarres.app/PetitCarres";
+				PRODUCT_NAME = Pipopipette;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pipopipette.app/Pipopipette";
 			};
 			name = Debug;
 		};
@@ -748,15 +762,15 @@
 				INFOPLIST_FILE = PetitCarresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetitCarres.app/PetitCarres";
+				PRODUCT_NAME = Pipopipette;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pipopipette.app/Pipopipette";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA6E9B071BA01AC6009A9EB8 /* Build configuration list for PBXProject "PetitCarres" */ = {
+		DA6E9B071BA01AC6009A9EB8 /* Build configuration list for PBXProject "Pipopipette" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA6E9B2D1BA01AC7009A9EB8 /* Debug */,
@@ -765,7 +779,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA6E9B2F1BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PetitCarres" */ = {
+		DA6E9B2F1BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "Pipopipette" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA6E9B301BA01AC7009A9EB8 /* Debug */,
@@ -774,7 +788,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA6E9B321BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PetitCarresTests" */ = {
+		DA6E9B321BA01AC7009A9EB8 /* Build configuration list for PBXNativeTarget "PipopipetteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA6E9B331BA01AC7009A9EB8 /* Debug */,

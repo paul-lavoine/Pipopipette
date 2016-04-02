@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA6E9B0B1BA01AC6009A9EB8"
-               BuildableName = "PetitCarres.app"
-               BlueprintName = "PetitCarres"
-               ReferencedContainer = "container:PetitCarres.xcodeproj">
+               BuildableName = "Pipopipette.app"
+               BlueprintName = "Pipopipette"
+               ReferencedContainer = "container:Pipopipette.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA6E9B241BA01AC7009A9EB8"
-               BuildableName = "PetitCarresTests.xctest"
-               BlueprintName = "PetitCarresTests"
-               ReferencedContainer = "container:PetitCarres.xcodeproj">
+               BuildableName = "Pipopipette.xctest"
+               BlueprintName = "PipopipetteTests"
+               ReferencedContainer = "container:Pipopipette.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA6E9B0B1BA01AC6009A9EB8"
-            BuildableName = "PetitCarres.app"
-            BlueprintName = "PetitCarres"
-            ReferencedContainer = "container:PetitCarres.xcodeproj">
+            BuildableName = "Pipopipette.app"
+            BlueprintName = "Pipopipette"
+            ReferencedContainer = "container:Pipopipette.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA6E9B0B1BA01AC6009A9EB8"
-            BuildableName = "PetitCarres.app"
-            BlueprintName = "PetitCarres"
-            ReferencedContainer = "container:PetitCarres.xcodeproj">
+            BuildableName = "Pipopipette.app"
+            BlueprintName = "Pipopipette"
+            ReferencedContainer = "container:Pipopipette.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA6E9B0B1BA01AC6009A9EB8"
-            BuildableName = "PetitCarres.app"
-            BlueprintName = "PetitCarres"
-            ReferencedContainer = "container:PetitCarres.xcodeproj">
+            BuildableName = "Pipopipette.app"
+            BlueprintName = "Pipopipette"
+            ReferencedContainer = "container:Pipopipette.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

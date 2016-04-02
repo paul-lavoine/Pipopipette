@@ -11,7 +11,7 @@
 
 #define TutorielViewControllerID @"TutorielViewControllerID"
 
-@interface TutorielViewController : UIViewController
+@interface TutorielViewController : ChildViewController
 
 - (instancetype)init;
 
