@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
+                <outlet property="columnPicker" destination="hqL-C8-N8E" id="bTo-Vp-3rV"/>
+                <outlet property="contentLevelView" destination="f3h-hu-YHW" id="4OJ-bk-s9W"/>
+                <outlet property="difficultButton" destination="L3W-Fl-4hY" id="hvt-cg-a2B"/>
+                <outlet property="easyButton" destination="TQl-io-2vu" id="NkJ-Ns-aaK"/>
+                <outlet property="extremeButton" destination="bJF-Zt-Qd6" id="4bU-Vj-JIF"/>
+                <outlet property="incrementBotStepper" destination="RQa-5L-Daq" id="N44-0l-QyM"/>
+                <outlet property="incrementPlayerStepper" destination="Og9-Ye-fQU" id="dLX-Kb-Qqk"/>
+                <outlet property="mediumButton" destination="Fxd-MV-Q70" id="97f-dw-CoV"/>
+                <outlet property="nbBotLabel" destination="V4S-2U-52h" id="Vta-zN-SWa"/>
+                <outlet property="nbPlayerLabel" destination="waO-3I-aBy" id="iBd-YB-bqF"/>
+                <outlet property="rowPicker" destination="heU-m2-kxu" id="VXB-Eh-9Ec"/>
+                <outlet property="startGameButton" destination="TSO-Ve-0d8" id="GPJ-OQ-T5O"/>
                 <outlet property="view" destination="gFs-f8-W45" id="f3C-eg-V5Z"/>
             </connections>
         </placeholder>
@@ -40,6 +52,9 @@
                                     <exclude reference="Bju-ys-hvp"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="valueChanged:" destination="-1" eventType="touchUpInside" id="R1S-dt-9wn"/>
+                            </connections>
                         </stepper>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-5L-Daq">
                             <rect key="frame" x="496" y="69" width="94" height="29"/>
@@ -51,6 +66,9 @@
                                     <exclude reference="t3f-QF-Dol"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="valueChanged:" destination="-1" eventType="touchUpInside" id="1xY-5b-4fM"/>
+                            </connections>
                         </stepper>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3h-hu-YHW" userLabel="LevelView">
                             <rect key="frame" x="10" y="108" width="580" height="45"/>
@@ -61,6 +79,9 @@
                                     <state key="normal" title="Easy">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeBotLevel:" destination="-1" eventType="touchUpInside" id="W5K-OD-RFT"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxd-MV-Q70">
                                     <rect key="frame" x="145" y="0.0" width="145" height="45"/>
@@ -70,12 +91,18 @@
                                     <state key="focused">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeBotLevel:" destination="-1" eventType="touchUpInside" id="sSh-NK-a2s"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJF-Zt-Qd6">
                                     <rect key="frame" x="435" y="0.0" width="145" height="45"/>
                                     <state key="normal" title="Extreme">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeBotLevel:" destination="-1" eventType="touchUpInside" id="TEo-rS-FBS"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3W-Fl-4hY">
                                     <rect key="frame" x="290" y="0.0" width="145" height="45"/>
@@ -83,6 +110,9 @@
                                     <state key="normal" title="Difficult">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeBotLevel:" destination="-1" eventType="touchUpInside" id="oTz-pe-yU3"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -148,9 +178,17 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="0VC-Q8-hpy"/>
                             </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="2cF-sp-c47"/>
+                                <outlet property="delegate" destination="-1" id="UTI-D1-urJ"/>
+                            </connections>
                         </pickerView>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heU-m2-kxu">
                             <rect key="frame" x="300" y="80" width="300" height="80"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="DXw-oy-t15"/>
+                                <outlet property="delegate" destination="-1" id="be9-Fh-WVj"/>
+                            </connections>
                         </pickerView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Colonne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-jD-m5b">
                             <rect key="frame" x="10" y="29" width="280" height="20.5"/>
@@ -183,6 +221,9 @@
                     <state key="normal" title="Lancer la partie">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="startGame:" destination="-1" eventType="touchUpInside" id="0E7-eX-LrD"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

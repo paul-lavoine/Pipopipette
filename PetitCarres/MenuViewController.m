@@ -31,11 +31,11 @@
 
 // Switch button
 @property (weak, nonatomic) IBOutlet UIView *contentLevelView;
-@property (strong, nonatomic) UIButton *defaultSelectedButton;
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *mediumButton;
 @property (weak, nonatomic) IBOutlet UIButton *difficultButton;
 @property (weak, nonatomic) IBOutlet UIButton *extremeButton;
+@property (strong, nonatomic) UIButton *defaultSelectedButton;
 
 // Data
 @property (nonatomic, strong) GlobalConfigurations *configurations;
@@ -65,6 +65,7 @@
     self.configurations = [GlobalConfigurations sharedInstance];
     self.defaultSelectedButton = self.extremeButton;
     
+    
     [self configureDefaultMenu];
 }
 
@@ -93,6 +94,8 @@
     [self.startGameButton.layer setBorderWidth:1.0f];
     [self.startGameButton.layer setBorderColor:[UIColor blackColor].CGColor];
     self.startGameButton.layer.cornerRadius = 13.0f;
+//    self.startGameButton.userInteractionEnabled = YES;
+//    [self.startGameButton addTarget:self action:@selector(startGame:) forControlEvents:UIControlEventTouchUpInside];
     
     // Init Stepper
     [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];

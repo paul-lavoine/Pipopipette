@@ -10,6 +10,6 @@
 
 @interface RootViewController : UIViewController
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIView *)subView;
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIViewController *)subView;
 
 @end

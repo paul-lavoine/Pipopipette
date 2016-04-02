@@ -15,10 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIView *childView;
+@property (weak, nonatomic) IBOutlet UIView *contentChildView;
 
 // Data
-@property (nonatomic, strong) UIView *subView;
+@property (nonatomic, strong) UIViewController *subView;
 @property (nonatomic, strong) NSString *titleView;
 @property (nonatomic, strong) UIImage *image;
 @end
@@ -28,7 +28,7 @@
 
 #pragma mark - Constructor
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIView *)subView
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subView:(UIViewController *)subView
 {
     if (self = [super initWithNibName:@"RootViewController" bundle:nil])
     {
@@ -36,6 +36,7 @@
         self.navigationController.navigationBarHidden = YES;
         self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
         _subView = subView;
+        _subView.navigationController.delegate = self;
         _titleView = title;
         _image = image;
     }
@@ -65,39 +66,39 @@
 
 - (void)addConstraintToContentView
 {
-    self.subView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.childView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.subView.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.contentChildView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.childView addSubview:self.subView];
+    [self.contentChildView addSubview:self.subView.view];
     
-    [self.childView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView
+    [self.contentChildView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView.view
                                                      attribute:NSLayoutAttributeTrailing
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.childView
+                                                        toItem:self.contentChildView
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0
                                                       constant:0.0]];
     
-    [self.childView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView
+    [self.contentChildView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView.view
                                                      attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.childView
+                                                        toItem:self.contentChildView
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0
                                                       constant:0.0]];
     
-    [self.childView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView
+    [self.contentChildView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView.view
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.childView
+                                                        toItem:self.contentChildView
                                                      attribute:NSLayoutAttributeTop
                                                     multiplier:1.0
                                                       constant:0.0]];
     
-    [self.childView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView
+    [self.contentChildView addConstraint:[NSLayoutConstraint constraintWithItem:self.subView.view
                                                      attribute:NSLayoutAttributeLeading
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.childView
+                                                        toItem:self.contentChildView
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0
                                                       constant:0.0]];

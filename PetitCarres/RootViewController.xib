@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -14,7 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
             <connections>
                 <outlet property="backButton" destination="nQy-lX-jxk" id="kxV-3L-jtF"/>
-                <outlet property="childView" destination="E6I-Gt-INL" id="fdB-Kh-v0J"/>
+                <outlet property="contentChildView" destination="E6I-Gt-INL" id="8aa-IL-Vli"/>
                 <outlet property="contentView" destination="bbL-63-JIC" id="XC0-AZ-qAR"/>
                 <outlet property="titleImageView" destination="KjI-ZR-1PE" id="Ruz-jI-Ghh"/>
                 <outlet property="titleLabel" destination="rwo-rc-q19" id="l8X-5Y-y9P"/>
@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tuto" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-sf-N3f">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tuto" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-sf-N3f">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbL-63-JIC" userLabel="Content">
@@ -50,21 +50,21 @@
                                 <constraint firstAttribute="height" constant="45" id="cNc-AE-gmW"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutoriel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-ZR-1PE">
-                            <rect key="frame" x="240" y="50" width="40" height="40"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutoriel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-ZR-1PE">
+                            <rect key="frame" x="240" y="30" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="6u6-Pe-Q4j"/>
                                 <constraint firstAttribute="width" secondItem="KjI-ZR-1PE" secondAttribute="height" multiplier="1:1" id="cgL-TG-fMT"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUTORIEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwo-rc-q19">
-                            <rect key="frame" x="221" y="100" width="78" height="20"/>
+                            <rect key="frame" x="221" y="80" width="78" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-Gt-INL">
-                            <rect key="frame" x="0.0" y="150" width="520" height="330"/>
+                            <rect key="frame" x="0.0" y="130" width="520" height="350"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -72,7 +72,7 @@
                     <constraints>
                         <constraint firstItem="nQy-lX-jxk" firstAttribute="top" secondItem="bbL-63-JIC" secondAttribute="top" id="1rm-tP-GpD"/>
                         <constraint firstItem="E6I-Gt-INL" firstAttribute="top" secondItem="rwo-rc-q19" secondAttribute="bottom" constant="30" id="KXX-xB-y1D"/>
-                        <constraint firstItem="KjI-ZR-1PE" firstAttribute="top" secondItem="bbL-63-JIC" secondAttribute="top" constant="50" id="c3O-Kv-GR2"/>
+                        <constraint firstItem="KjI-ZR-1PE" firstAttribute="top" secondItem="bbL-63-JIC" secondAttribute="top" constant="30" id="c3O-Kv-GR2"/>
                         <constraint firstAttribute="trailing" secondItem="E6I-Gt-INL" secondAttribute="trailing" id="cvb-a4-fRT"/>
                         <constraint firstItem="nQy-lX-jxk" firstAttribute="leading" secondItem="bbL-63-JIC" secondAttribute="leading" id="eoU-Cy-gfw"/>
                         <constraint firstItem="rwo-rc-q19" firstAttribute="top" secondItem="KjI-ZR-1PE" secondAttribute="bottom" constant="10" id="h9t-RT-Zty"/>
