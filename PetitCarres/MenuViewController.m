@@ -63,7 +63,7 @@
     [super viewDidLoad];
     
     self.configurations = [GlobalConfigurations sharedInstance];
-    self.defaultSelectedButton = self.extremeButton;
+    self.defaultSelectedButton = self.difficultButton;
     self.navigationController.delegate = self;
     
     [self configureDefaultMenu];

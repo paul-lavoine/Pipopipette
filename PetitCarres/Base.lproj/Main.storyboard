@@ -429,7 +429,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="eIe-W8-hOD">
+                        <barButtonItem key="rightBarButtonItem" image="restart_button" id="eIe-W8-hOD">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="restartGame:" destination="flh-BG-aaP" id="rDd-E1-fzq"/>
                             </connections>
@@ -457,6 +458,7 @@
         <image name="credit_button" width="97" height="85"/>
         <image name="logo_appli" width="227" height="262"/>
         <image name="play_button" width="88" height="112"/>
+        <image name="restart_button" width="67" height="57"/>
         <image name="setup_button" width="98" height="98"/>
         <image name="tutoriel_button" width="89" height="98"/>
     </resources>

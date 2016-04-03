@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomStepper">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Xk8-XZ-G9R"/>
+                <outlet property="leftButton" destination="7XE-h6-tE6" id="6gY-oF-bnv"/>
+                <outlet property="rightButton" destination="3Wv-is-xdc" id="Rja-bT-aJF"/>
+                <outlet property="separator" destination="OPE-v1-Ndw" id="Qjn-2u-DFI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="95" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-h6-tE6">
+                    <rect key="frame" x="1" y="1" width="46" height="28"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="-"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wv-is-xdc">
+                    <rect key="frame" x="48" y="1" width="46" height="28"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="+"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPE-v1-Ndw" userLabel="Separator">
+                    <rect key="frame" x="47" y="1" width="1" height="28"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="YU4-Es-dgY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="7XE-h6-tE6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="1" id="4PG-ct-Xl2"/>
+                <constraint firstAttribute="bottom" secondItem="7XE-h6-tE6" secondAttribute="bottom" constant="1" id="6K9-MV-hGH"/>
+                <constraint firstItem="3Wv-is-xdc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="6tT-1b-YY8"/>
+                <constraint firstItem="7XE-h6-tE6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="Uum-zG-r1r"/>
+                <constraint firstAttribute="bottom" secondItem="3Wv-is-xdc" secondAttribute="bottom" constant="1" id="acJ-qv-Dn1"/>
+                <constraint firstItem="OPE-v1-Ndw" firstAttribute="leading" secondItem="7XE-h6-tE6" secondAttribute="trailing" id="i7k-ZX-3od"/>
+                <constraint firstAttribute="trailing" secondItem="3Wv-is-xdc" secondAttribute="trailing" constant="1" id="qiR-z6-9j9"/>
+                <constraint firstAttribute="bottom" secondItem="OPE-v1-Ndw" secondAttribute="bottom" constant="1" id="rXb-R6-pgf"/>
+                <constraint firstItem="3Wv-is-xdc" firstAttribute="leading" secondItem="OPE-v1-Ndw" secondAttribute="trailing" id="sr8-w4-grF"/>
+                <constraint firstItem="3Wv-is-xdc" firstAttribute="width" secondItem="7XE-h6-tE6" secondAttribute="width" id="xpS-zy-7kc"/>
+                <constraint firstItem="OPE-v1-Ndw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="y5F-L3-ZRs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="170.5" y="252"/>
+        </view>
+    </objects>
+</document>

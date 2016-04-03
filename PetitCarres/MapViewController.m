@@ -12,6 +12,8 @@
 #import "Minimax.h"
 #import "Component.h"
 
+#define RIGHT_BAR_BUTTON_SIZE 25
+
 @interface MapViewController () <CustomButtonDelegate>
 
 // Outlets
@@ -51,6 +53,7 @@
     [super viewDidLoad];
     self.navigationBarTitle = [[UILabel alloc] init];
     [self setNavigationBarTitle];
+    [self configureUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,6 +78,20 @@
         self.alreadyAppear = true;
         [self initGame];
     }
+}
+
+- (void)configureUI
+{
+    self.navigationItem.backBarButtonItem.image = [UIImage imageNamed:@"back_arrow_tuto_button.png"];
+    self.navigationItem.backBarButtonItem.title = @"retour";
+    self.navigationItem.backBarButtonItem.tintColor = [UIColor blackColor];
+    
+    // Right Bar Button Item
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"restart_button.png"]];
+    CGFloat offset = imageView.frame.size.width / imageView.frame.size.height;
+    imageView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:imageView];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
