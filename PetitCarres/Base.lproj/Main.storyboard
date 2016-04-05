@@ -26,10 +26,11 @@
             <objects>
                 <navigationController id="QFh-AT-frG" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yi4-4f-CMP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="back_arrow_tuto_button" id="yi4-4f-CMP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="rPS-cn-fUJ" kind="relationship" relationship="rootViewController" id="ahE-vB-Qjo"/>
@@ -430,6 +431,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji">
+                        <barButtonItem key="backBarButtonItem" title="Custom" id="stJ-Gs-PiC"/>
                         <barButtonItem key="rightBarButtonItem" image="restart_button" id="eIe-W8-hOD">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -456,6 +458,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back_arrow_tuto_button" width="18" height="32"/>
         <image name="credit_arrow_button" width="26" height="56"/>
         <image name="credit_button" width="97" height="85"/>
         <image name="logo_appli" width="227" height="262"/>

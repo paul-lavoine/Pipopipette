@@ -82,16 +82,30 @@
 
 - (void)configureUI
 {
-    self.navigationItem.backBarButtonItem.image = [UIImage imageNamed:@"back_arrow_tuto_button.png"];
-    self.navigationItem.backBarButtonItem.title = @"retour";
-    self.navigationItem.backBarButtonItem.tintColor = [UIColor blackColor];
-    
     // Right Bar Button Item
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"restart_button.png"]];
     CGFloat offset = imageView.frame.size.width / imageView.frame.size.height;
-    imageView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:imageView];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    UIButton *rightButton = [[UIButton alloc] init];
+    [rightButton setImage:imageView.image forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(restartGame:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
+    
+    // Back Button Item
+    UIImageView *imageLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back_arrow_tuto_button.png"]];
+    offset = imageLeftView.frame.size.width / imageLeftView.frame.size.height;
+    
+    UIButton *leftButton = [[UIButton alloc] init];
+    [leftButton setImage:imageLeftView.image forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(20.0f, -9.5f, 100.0f, 44.0f)];
+    label.text = @"Retour";
+    [leftButton addSubview:label];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
 }
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -366,7 +380,8 @@
 
 #pragma mark - Action
 
-- (IBAction)restartGame:(id)sender {
+- (IBAction)restartGame:(id)sender
+{
     for (UIView *view in self.mapView.subviews)
     {
         [view removeFromSuperview];
@@ -380,9 +395,9 @@
 
 - (void)setNavigationBarTitle
 {
-    self.navigationBarTitle.attributedText = [self configureAttributedStringWithPlayer:[[PlayerManager sharedInstance] currentPlayer] string:@"Tour du joueur " sizeFont:18.0f];
-    [self.navigationBarTitle sizeToFit];
-    self.navigationItem.titleView = self.navigationBarTitle;
+//    self.navigationBarTitle.attributedText = [self configureAttributedStringWithPlayer:[[PlayerManager sharedInstance] currentPlayer] string:@"Tour du joueur " sizeFont:18.0f];
+//    [self.navigationBarTitle sizeToFit];
+//    self.navigationItem.titleView = self.navigationBarTitle;
 }
 
 - (void)handleTimer:(NSTimer*)theTimer
@@ -442,6 +457,10 @@
     }
 }
 
+- (void)goBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)displayWinnerView:(BOOL)show
 {
