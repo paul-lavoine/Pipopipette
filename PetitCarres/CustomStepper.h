@@ -17,6 +17,9 @@
 
 @interface CustomStepper : UIStepper
 
+@property (nonatomic, weak) IBOutlet UIButton *leftButton;
+@property (nonatomic, weak) IBOutlet UIButton *rightButton;
+
 @property (nonatomic, strong) id<CustomStepperDelegate> delegate;
 
 @end

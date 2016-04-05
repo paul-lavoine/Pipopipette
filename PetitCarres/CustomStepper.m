@@ -13,8 +13,6 @@
 // Outlets
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet UIView *separator;
-@property (nonatomic, weak) IBOutlet UIButton *leftButton;
-@property (nonatomic, weak) IBOutlet UIButton *rightButton;
 
 @end
 

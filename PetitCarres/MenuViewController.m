@@ -12,14 +12,15 @@
 #import "BarButton.h"
 #import "CustomStepper.h"
 #import "GlobalConfigurations.h"
+#import <NSAttributedString+CCLFormat.h>
 
 #define NUMBER_PLAYER_LABEL @"Nombre de joueur"
 #define NUMBER_BOT_LABEL @"Nombre de Bot"
-#define DEFAULT_LEVEL   1
+#define DEFAULT_LEVEL   3
 
-#define COLUMN_LABEL @"NB COLONNE : %ld"
-#define ROW_LABEL @"NB LIGNE : %ld"
-#define LEVEL_LABEL @"NIVEAU : %ld"
+#define COLUMN_LABEL @"NB COLONNE : %@"
+#define ROW_LABEL @"NB LIGNE : %@"
+#define LEVEL_LABEL @"NIVEAU : %@"
 
 
 @interface MenuViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
@@ -125,14 +126,31 @@
     [self initPlayers];
     
     // Init Picker View
-    [self.nbRowStepper setValue:NB_DEFAULT_ROWS - 1];
-    [self.nbRowLabel setText:[NSString stringWithFormat:ROW_LABEL, (long)NB_DEFAULT_ROWS - 1]];
-    [self.nbColumnStepper setValue:NB_DEFAULT_COLUMNS - 1];
-    [self.nbColumnLabel setText:[NSString stringWithFormat:COLUMN_LABEL, (long)NB_DEFAULT_COLUMNS - 1]];
+    //    NSDictionary *steppersAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Medium" size:13.0f]};
+    //
+    //    [self.nbRowStepper setValue:NB_DEFAULT_ROWS];
+    //    NSAttributedString *rowAttributedString = [[NSAttributedString alloc] initWithString:[@NB_DEFAULT_ROWS stringValue]
+    //                                                                            attributes:steppersAttributes];
+    //    self.nbRowLabel.attributedText = [NSAttributedString attributedStringWithFormat:ROW_LABEL,rowAttributedString];
+    //
+    //
+    //    [self.nbColumnStepper setValue:NB_DEFAULT_COLUMNS - 1];
+    ////    [self.nbColumnLabel setText:[NSString stringWithFormat:COLUMN_LABEL, (long)NB_DEFAULT_COLUMNS]];
+    //
+    [self configureSteppers:self.nbColumnStepper label:self.nbColumnLabel string:COLUMN_LABEL value:NB_DEFAULT_COLUMNS];
+    [self configureSteppers:self.nbRowStepper label:self.nbRowLabel string:ROW_LABEL value:NB_DEFAULT_ROWS];
+    
+    // Stepper
+    self.nbColumnStepper.leftButton.backgroundColor = PINK_COLOR;
+    self.nbColumnStepper.rightButton.backgroundColor = GREEN_COLOR;
+    self.nbRowStepper.leftButton.backgroundColor = PINK_COLOR;
+    self.nbRowStepper.rightButton.backgroundColor = GREEN_COLOR;
+    self.levelStepper.leftButton.backgroundColor = PINK_COLOR;
+    self.levelStepper.rightButton.backgroundColor = GREEN_COLOR;
     
     // Init level button
     [self.levelStepper setValue:DEFAULT_LEVEL];
-    [self.levelLabel setText:[NSString stringWithFormat:LEVEL_LABEL, (long)DEFAULT_LEVEL]];
+    [self configureSteppers:self.levelStepper label:self.levelLabel string:LEVEL_LABEL value:DEFAULT_LEVEL];
 }
 
 - (void)initPlayers
@@ -204,7 +222,7 @@
         sender.value = minValue + 1;
     }
     
-    [label setText:[NSString stringWithFormat:string, [@(sender.value) integerValue]]];
+    [self configureSteppers:nil label:label string:string value:sender.value];
 }
 
 #pragma mark - Actions
@@ -254,7 +272,7 @@
     {
         if (!player.isSelected)
         {
-            player.tintColor = shouldColor ? [UIColor redColor] : [UIColor blackColor];
+            player.tintColor = shouldColor ? GRAY_COLOR : [UIColor blackColor];
         }
         else
         {
@@ -305,6 +323,17 @@
     }
     
     return nbCaseAvailable;
+}
+
+- (void)configureSteppers:(UIStepper *)stepper label:(UILabel *)label string:(NSString *)string value:(NSInteger)value
+{
+    NSDictionary *steppersAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Medium" size:13.0f]};
+    [stepper setValue:value];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[@(value) stringValue]
+                                                                           attributes:steppersAttributes];
+    label.attributedText = [NSAttributedString attributedStringWithFormat:string, attributedString];
+    
+    
 }
 
 @end

@@ -1,1 +1,10 @@
-COCOAPODS: 0.38.2
+PODS:
+  - NSAttributedString+CCLFormat (1.2.0)
+
+DEPENDENCIES:
+  - NSAttributedString+CCLFormat
+
+SPEC CHECKSUMS:
+  NSAttributedString+CCLFormat: 46d1e36b72b7ab0e093323705188818b21ba9763
+
+COCOAPODS: 0.39.0
