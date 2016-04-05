@@ -183,13 +183,13 @@
                                     <rect key="frame" x="10" y="190" width="580" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NB COLONNE :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYh-Rl-1qp">
-                                            <rect key="frame" x="10" y="6" width="445" height="18"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
+                                            <rect key="frame" x="10" y="7" width="465" height="15.5"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QM-my-UFa" customClass="CustomStepper">
-                                            <rect key="frame" x="465" y="0.0" width="95" height="30"/>
+                                            <rect key="frame" x="485" y="0.0" width="95" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="U5Z-CX-cs5"/>
@@ -200,30 +200,24 @@
                                     <constraints>
                                         <constraint firstItem="qYh-Rl-1qp" firstAttribute="centerY" secondItem="jpX-Se-6F8" secondAttribute="centerY" id="5c2-fX-5Bo"/>
                                         <constraint firstItem="qYh-Rl-1qp" firstAttribute="leading" secondItem="jpX-Se-6F8" secondAttribute="leading" constant="10" id="FYE-MN-1zF"/>
-                                        <constraint firstAttribute="height" constant="50" id="KNe-0M-WLa"/>
                                         <constraint firstItem="6QM-my-UFa" firstAttribute="leading" secondItem="qYh-Rl-1qp" secondAttribute="trailing" constant="10" id="RKU-cA-COq"/>
-                                        <constraint firstAttribute="trailing" secondItem="6QM-my-UFa" secondAttribute="trailing" constant="20" id="VYp-b2-cMV"/>
+                                        <constraint firstAttribute="trailing" secondItem="6QM-my-UFa" secondAttribute="trailing" id="VYp-b2-cMV"/>
                                         <constraint firstItem="6QM-my-UFa" firstAttribute="centerY" secondItem="jpX-Se-6F8" secondAttribute="centerY" id="nbW-tk-yoz"/>
                                         <constraint firstItem="6QM-my-UFa" firstAttribute="top" secondItem="jpX-Se-6F8" secondAttribute="top" id="rKO-W6-yAo"/>
                                         <constraint firstAttribute="bottom" secondItem="6QM-my-UFa" secondAttribute="bottom" id="t0I-Ld-wGM"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="KNe-0M-WLa"/>
-                                        </mask>
-                                    </variation>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arV-8g-0iQ">
                                     <rect key="frame" x="10" y="230" width="580" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NB LIGNE :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucF-aX-hmP">
-                                            <rect key="frame" x="10" y="6" width="445" height="18"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
+                                            <rect key="frame" x="10" y="7" width="465" height="15.5"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-V1-R5Z" customClass="CustomStepper">
-                                            <rect key="frame" x="465" y="0.0" width="95" height="30"/>
+                                            <rect key="frame" x="485" y="0.0" width="95" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="4F2-fp-5K4"/>
@@ -235,7 +229,7 @@
                                         <constraint firstItem="sXx-V1-R5Z" firstAttribute="centerY" secondItem="arV-8g-0iQ" secondAttribute="centerY" id="2KN-jY-GjN"/>
                                         <constraint firstItem="sXx-V1-R5Z" firstAttribute="top" secondItem="arV-8g-0iQ" secondAttribute="top" id="HTh-eY-Y54"/>
                                         <constraint firstAttribute="height" constant="50" id="KUT-pB-pjJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="sXx-V1-R5Z" secondAttribute="trailing" constant="20" id="KcG-hQ-JmZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="sXx-V1-R5Z" secondAttribute="trailing" id="KcG-hQ-JmZ"/>
                                         <constraint firstItem="sXx-V1-R5Z" firstAttribute="leading" secondItem="ucF-aX-hmP" secondAttribute="trailing" constant="10" id="PI4-Vv-jQ3"/>
                                         <constraint firstItem="ucF-aX-hmP" firstAttribute="leading" secondItem="arV-8g-0iQ" secondAttribute="leading" constant="10" id="UrV-gd-tXY"/>
                                         <constraint firstAttribute="bottom" secondItem="sXx-V1-R5Z" secondAttribute="bottom" id="m5P-Ci-gZN"/>
@@ -251,13 +245,13 @@
                                     <rect key="frame" x="10" y="270" width="580" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NIVEAU :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYS-hT-4GK">
-                                            <rect key="frame" x="10" y="5" width="445" height="20"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                                            <rect key="frame" x="10" y="7.5" width="465" height="15.5"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktg-iG-LCX" customClass="CustomStepper">
-                                            <rect key="frame" x="465" y="0.0" width="95" height="30"/>
+                                            <rect key="frame" x="485" y="0.0" width="95" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="0km-ma-oPR"/>
@@ -273,7 +267,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Ktg-iG-LCX" secondAttribute="bottom" id="KqW-cc-fiF"/>
                                         <constraint firstItem="Ktg-iG-LCX" firstAttribute="top" secondItem="O8j-hO-qjF" secondAttribute="top" id="NCl-NI-Uk7"/>
                                         <constraint firstItem="XYS-hT-4GK" firstAttribute="leading" secondItem="O8j-hO-qjF" secondAttribute="leading" constant="10" id="q7X-AX-LNy"/>
-                                        <constraint firstAttribute="trailing" secondItem="Ktg-iG-LCX" secondAttribute="trailing" constant="20" id="umA-G4-Lxd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ktg-iG-LCX" secondAttribute="trailing" id="umA-G4-Lxd"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">

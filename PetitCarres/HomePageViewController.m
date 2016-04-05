@@ -96,7 +96,7 @@
 - (IBAction)setupAction:(id)sender
 {
     MenuViewController *menuViewController = [[MenuViewController alloc] init];
-    [self pushViewController:menuViewController title:@"REGLAGLES" image:[UIImage imageNamed:@"setup_button"]];
+    [self pushViewController:menuViewController title:@"REGLAGES" image:[UIImage imageNamed:@"setup_button"]];
 }
 
 - (void)pushViewController:(ChildViewController *)viewController title:(NSString *)title image:(UIImage *)image

@@ -48,23 +48,11 @@
 
 // Data
 @property (nonatomic, strong) NSArray *players;
+@property (nonatomic, strong) NSArray *realPlayers;
+@property (nonatomic, strong) NSArray *botPlayers;
 @property (nonatomic, assign) BOOL reachMaxPlayers;
 @property (nonatomic, assign) NSInteger nbColumnMax;
 @property (nonatomic, assign) NSInteger nbRowMax;
-
-//
-//@property (weak, nonatomic) IBOutlet UIStepper *incrementPlayerStepper;
-//@property (weak, nonatomic) IBOutlet UIStepper *incrementBotStepper;
-//@property (weak, nonatomic) IBOutlet UIPickerView *columnPicker;
-//@property (weak, nonatomic) IBOutlet UIPickerView *rowPicker;
-//
-//// Switch button
-//@property (weak, nonatomic) IBOutlet UIView *contentLevelView;
-//@property (weak, nonatomic) IBOutlet UIButton *easyButton;
-//@property (weak, nonatomic) IBOutlet UIButton *mediumButton;
-//@property (weak, nonatomic) IBOutlet UIButton *difficultButton;
-//@property (weak, nonatomic) IBOutlet UIButton *extremeButton;
-//@property (strong, nonatomic) UIButton *defaultSelectedButton;
 
 // Data
 @property (nonatomic, strong) GlobalConfigurations *configurations;
@@ -97,7 +85,12 @@
     self.nbColumnStepper.delegate = self;
     self.nbRowStepper.delegate = self;
     self.levelStepper.delegate = self;
+    
     self.players = @[self.firstPlayerButton, self.firstBotButton, self.secondBotButton, self.secondPlayerButton, self.thirdBotButton, self.thirdPlayerButton, self.fourthBotButton, self.fourthPlayerButton];
+    
+    self.realPlayers = @[self.firstPlayerButton, self.secondPlayerButton, self.thirdPlayerButton, self.fourthPlayerButton];
+    
+    self.botPlayers = @[self.firstBotButton, self.secondBotButton, self.thirdBotButton, self.fourthBotButton];
     
     [self configureDefaultMenu];
 }
@@ -160,11 +153,13 @@
 - (IBAction)startGame:(id)sender
 {
     BotLevel level = [self selectedLevel];
+    self.configurations.nbPlayer = [self computeNbPlayers:self.realPlayers];
+    self.configurations.nbBot = [self computeNbPlayers:self.botPlayers];
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     MapViewController *mapViewController = [mainStoryboard instantiateViewControllerWithIdentifier:MapViewControllerID];
-    [mapViewController configureMapWithRows:(self.nbRowStepper.value + 1) columns:(self.nbColumnStepper.value + 1)];
+    [mapViewController configureMapWithRows:self.nbRowStepper.value columns:self.nbColumnStepper.value];
     
     [self.rootParentViewController pushViewController:mapViewController];
 }
@@ -266,6 +261,19 @@
             player.tintColor = GREEN_COLOR;
         }
     }
+}
+
+- (NSInteger)computeNbPlayers:(NSArray *)players
+{
+    NSInteger nbPlayer = 0;
+    for (UIButton *player in players)
+    {
+        if (player.isSelected)
+        {
+            nbPlayer++;
+        }
+    }
+    return nbPlayer;
 }
 
 - (BotLevel)selectedLevel
