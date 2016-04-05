@@ -88,4 +88,11 @@
                                                       constant:0.0]];
 }
 
+- (IBAction)valueChange:(id)sender
+{
+    if (sender == self.leftButton) { self.value --; }
+    else { self.value ++; }
+    [self.delegate valueChanged:self];
+}
+
 @end

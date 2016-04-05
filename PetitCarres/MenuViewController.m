@@ -10,36 +10,65 @@
 #import "MapViewController.h"
 #import "PlayerManager.h"
 #import "BarButton.h"
+#import "CustomStepper.h"
 #import "GlobalConfigurations.h"
 
-#define NUMBER_PLAYER_LABEL @"Nombre de joueur :"
-#define NUMBER_BOT_LABEL @"Nombre de Bot :"
+#define NUMBER_PLAYER_LABEL @"Nombre de joueur"
+#define NUMBER_BOT_LABEL @"Nombre de Bot"
+#define DEFAULT_LEVEL   1
+
+#define COLUMN_LABEL @"NB COLONNE : %ld"
+#define ROW_LABEL @"NB LIGNE : %ld"
+#define LEVEL_LABEL @"NIVEAU : %ld"
 
 
-@interface MenuViewController () <UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MenuViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *nbPlayerLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *incrementPlayerStepper;
+@property (weak, nonatomic) IBOutlet UIButton *firstPlayerButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondPlayerButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdPlayerButton;
+@property (weak, nonatomic) IBOutlet UIButton *fourthPlayerButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *nbBotLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *incrementBotStepper;
+@property (weak, nonatomic) IBOutlet UIButton *firstBotButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondBotButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdBotButton;
+@property (weak, nonatomic) IBOutlet UIButton *fourthBotButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *nbColumnLabel;
+@property (weak, nonatomic) IBOutlet CustomStepper *nbColumnStepper;
+@property (weak, nonatomic) IBOutlet UILabel *nbRowLabel;
+@property (weak, nonatomic) IBOutlet CustomStepper *nbRowStepper;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+@property (weak, nonatomic) IBOutlet CustomStepper *levelStepper;
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
-@property (weak, nonatomic) IBOutlet UIPickerView *columnPicker;
-@property (weak, nonatomic) IBOutlet UIPickerView *rowPicker;
 
-// Switch button
-@property (weak, nonatomic) IBOutlet UIView *contentLevelView;
-@property (weak, nonatomic) IBOutlet UIButton *easyButton;
-@property (weak, nonatomic) IBOutlet UIButton *mediumButton;
-@property (weak, nonatomic) IBOutlet UIButton *difficultButton;
-@property (weak, nonatomic) IBOutlet UIButton *extremeButton;
-@property (strong, nonatomic) UIButton *defaultSelectedButton;
+// Data
+@property (nonatomic, strong) NSArray *players;
+@property (nonatomic, assign) BOOL reachMaxPlayers;
+@property (nonatomic, assign) NSInteger nbColumnMax;
+@property (nonatomic, assign) NSInteger nbRowMax;
+
+//
+//@property (weak, nonatomic) IBOutlet UIStepper *incrementPlayerStepper;
+//@property (weak, nonatomic) IBOutlet UIStepper *incrementBotStepper;
+//@property (weak, nonatomic) IBOutlet UIPickerView *columnPicker;
+//@property (weak, nonatomic) IBOutlet UIPickerView *rowPicker;
+//
+//// Switch button
+//@property (weak, nonatomic) IBOutlet UIView *contentLevelView;
+//@property (weak, nonatomic) IBOutlet UIButton *easyButton;
+//@property (weak, nonatomic) IBOutlet UIButton *mediumButton;
+//@property (weak, nonatomic) IBOutlet UIButton *difficultButton;
+//@property (weak, nonatomic) IBOutlet UIButton *extremeButton;
+//@property (strong, nonatomic) UIButton *defaultSelectedButton;
 
 // Data
 @property (nonatomic, strong) GlobalConfigurations *configurations;
-@property (nonatomic, strong) UIView *colorSelectedButtonView;
+//@property (nonatomic, strong) UIView *colorSelectedButtonView;
 @property (nonatomic, assign) BOOL alreadyAppear;
 
 @end
@@ -52,7 +81,7 @@
 {
     if (self = [super initWithNibName:@"MenuViewController" bundle:nil])
     {
-
+        
     }
     
     return self;
@@ -63,94 +92,67 @@
     [super viewDidLoad];
     
     self.configurations = [GlobalConfigurations sharedInstance];
-    self.defaultSelectedButton = self.difficultButton;
+    [self.levelStepper setValue:DEFAULT_LEVEL];
     self.navigationController.delegate = self;
+    self.nbColumnStepper.delegate = self;
+    self.nbRowStepper.delegate = self;
+    self.levelStepper.delegate = self;
+    self.players = @[self.firstPlayerButton, self.firstBotButton, self.secondBotButton, self.secondPlayerButton, self.thirdBotButton, self.thirdPlayerButton, self.fourthBotButton, self.fourthPlayerButton];
     
     [self configureDefaultMenu];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLayoutSubviews
 {
-    [super viewDidAppear:animated];
+    [super viewDidLayoutSubviews];
+    int minSpaceBorder = (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE) / 2;
+    self.nbColumnMax = [self limitNumberOfSquarre:10
+                                highSideBarButton:SIZE_PIECE
+                                            space:BAR_BUTTON_SPACE
+                                   minSpaceBorder:minSpaceBorder
+                                         widthMax:self.rootParentViewController.view.frame.size.width];
     
-    if (!self.alreadyAppear)
-    {
-        self.alreadyAppear = true;
-        
-        // Update view
-        self.colorSelectedButtonView.frame = self.defaultSelectedButton.frame;
-    }
+    self.nbRowMax = [self limitNumberOfSquarre:10
+                             highSideBarButton:SIZE_PIECE
+                                         space:BAR_BUTTON_SPACE
+                                minSpaceBorder:minSpaceBorder
+                                      widthMax:self.rootParentViewController.view.frame.size.height];
 }
 
 - (void)configureDefaultMenu
 {
     // Init game start button
-    [self.startGameButton.layer setBorderWidth:1.0f];
-    [self.startGameButton.layer setBorderColor:[UIColor blackColor].CGColor];
-    self.startGameButton.layer.cornerRadius = 13.0f;
+    self.startGameButton.backgroundColor = GREEN_COLOR;
+    self.startGameButton.titleLabel.text = @"JOUER";
+    self.startGameButton.titleLabel.textColor = [UIColor whiteColor];
     
     // Init Stepper
-    [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_PLAYER_LABEL, NB_DEFAULT_PLAYER]];
-    [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %d",NUMBER_BOT_LABEL, NB_DEFAULT_BOT]];
-    [self.incrementPlayerStepper setValue:NB_DEFAULT_PLAYER];
-    [self.incrementBotStepper setValue:NB_DEFAULT_BOT];
+    [self.nbPlayerLabel setText:[NUMBER_PLAYER_LABEL uppercaseString]];
+    [self.nbBotLabel setText:[NUMBER_BOT_LABEL uppercaseString]];
+    [self initPlayers];
     
     // Init Picker View
-    [self.columnPicker selectRow:NB_DEFAULT_COLUMNS - 1 inComponent:0 animated:NO];
-    [self.rowPicker selectRow:NB_DEFAULT_ROWS - 1 inComponent:0 animated:NO];
+    [self.nbRowStepper setValue:NB_DEFAULT_ROWS - 1];
+    [self.nbRowLabel setText:[NSString stringWithFormat:ROW_LABEL, (long)NB_DEFAULT_ROWS - 1]];
+    [self.nbColumnStepper setValue:NB_DEFAULT_COLUMNS - 1];
+    [self.nbColumnLabel setText:[NSString stringWithFormat:COLUMN_LABEL, (long)NB_DEFAULT_COLUMNS - 1]];
     
     // Init level button
-    [[self.easyButton layer] setBorderWidth:1.0f];
-    [[self.easyButton layer] setBorderColor:[UIColor blackColor].CGColor];
-    [[self.mediumButton layer] setBorderWidth:1.0f];
-    [[self.mediumButton layer] setBorderColor:[UIColor blackColor].CGColor];
-    [[self.difficultButton layer] setBorderWidth:1.0f];
-    [[self.difficultButton layer] setBorderColor:[UIColor blackColor].CGColor];
-    [[self.extremeButton layer] setBorderWidth:1.0f];
-    [[self.extremeButton layer] setBorderColor:[UIColor blackColor].CGColor];
-    
-    [self initLevelBot:self.defaultSelectedButton];
+    [self.levelStepper setValue:DEFAULT_LEVEL];
+    [self.levelLabel setText:[NSString stringWithFormat:LEVEL_LABEL, (long)DEFAULT_LEVEL]];
 }
 
-- (void)initLevelBot:(UIButton *)button
+- (void)initPlayers
 {
-    self.colorSelectedButtonView = [[UIView alloc] initWithFrame:button.frame];
-    self.colorSelectedButtonView.backgroundColor = [UIColor blueColor];
-    [self.contentLevelView insertSubview:self.colorSelectedButtonView atIndex:0];
-    [self changeBotLevel:button];
-}
-
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
-{
-    int minSpaceBorder = (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE) / 2;
-    
-    // Limite le nombre de case à l'espace possile dans la vue
-    if (self.columnPicker == thePickerView)
-    {
-        return [self limitNumberOfSquarre:10
-                        highSideBarButton:SIZE_PIECE
-                                    space:BAR_BUTTON_SPACE
-                           minSpaceBorder:minSpaceBorder
-                                 widthMax:self.rootParentViewController.view.frame.size.width];
-    }
-    
-    return [self limitNumberOfSquarre:10
-                    highSideBarButton:SIZE_PIECE
-                                space:BAR_BUTTON_SPACE
-                       minSpaceBorder:minSpaceBorder
-                             widthMax:self.rootParentViewController.view.frame.size.height];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [NSString stringWithFormat:@"%ld",(long)row + 1];
+    [self selectButton:self.firstBotButton isSelected:YES];
+    [self selectButton:self.firstPlayerButton isSelected:YES];
+    self.firstPlayerButton.userInteractionEnabled = NO;
+    [self selectButton:self.secondPlayerButton isSelected:NO];
+    [self selectButton:self.secondBotButton isSelected:NO];
+    [self selectButton:self.thirdPlayerButton isSelected:NO];
+    [self selectButton:self.thirdBotButton isSelected:NO];
+    [self selectButton:self.fourthPlayerButton isSelected:NO];
+    [self selectButton:self.fourthBotButton isSelected:NO];
 }
 
 #pragma mark - Actions
@@ -162,82 +164,127 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     MapViewController *mapViewController = [mainStoryboard instantiateViewControllerWithIdentifier:MapViewControllerID];
-    [mapViewController configureMapWithRows:([self.rowPicker selectedRowInComponent:0] + 1) columns:([self.columnPicker selectedRowInComponent:0] + 1)];
+    [mapViewController configureMapWithRows:(self.nbRowStepper.value + 1) columns:(self.nbColumnStepper.value + 1)];
     
     [self.rootParentViewController pushViewController:mapViewController];
 }
 
 - (IBAction)valueChanged:(UIStepper *)sender
 {
-    if (sender == self.incrementPlayerStepper)
+    NSInteger maxValue = 0;
+    NSInteger minValue = 0;
+    UILabel *label;
+    NSString *string;
+    
+    if (sender == self.nbColumnStepper)
     {
-        if (sender.value + self.configurations.nbBot + 1 > NB_MAX_PLAYER)
-            self.incrementPlayerStepper.value = NB_MAX_PLAYER - self.configurations.nbBot;
-        else if (sender.value - 1 < NB_MIN_PLAYER)
-            self.incrementPlayerStepper.value = NB_MIN_PLAYER;
-        
-        self.configurations.nbPlayer = [sender value];
-        [self.nbPlayerLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_PLAYER_LABEL, (long)self.configurations.nbPlayer]];
+        maxValue = self.nbColumnMax;
+        string = COLUMN_LABEL;
+        label = self.nbColumnLabel;
+    }
+    else if (sender == self.nbRowStepper)
+    {
+        maxValue = self.nbRowMax;
+        string = ROW_LABEL;
+        label = self.nbRowLabel;
+    }
+    else if (sender == self.levelStepper)
+    {
+        maxValue = 4;
+        string = LEVEL_LABEL;
+        label = self.levelLabel;
     }
     else
     {
-        if (self.configurations.nbPlayer + sender.value + 1 > NB_MAX_PLAYER)
-            self.incrementBotStepper.value = NB_MAX_PLAYER - self.configurations.nbPlayer;
-        else if (self.configurations.nbPlayer + sender.value - 1 < NB_MIN_BOT)
-            self.incrementBotStepper.value = NB_MIN_BOT;
-        
-        self.configurations.nbBot = [sender value];
-        [self.nbBotLabel setText:[NSString stringWithFormat:@"%@ %ld",NUMBER_BOT_LABEL, (long)self.configurations.nbBot]];
+        NSLog(@"stepper not found");
     }
     
-    if (self.configurations.nbBot + self.configurations.nbPlayer >= NB_MAX_PLAYER)
+    
+    if (sender.value + 1 > maxValue)
     {
-        self.navigationItem.title = @"Nombre de joueur max atteint";
-        self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                        NSForegroundColorAttributeName : [UIColor redColor],
-                                                                        NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:15.0f]
-                                                                        };
+        sender.value = maxValue;
     }
-    else
+    else if (sender.value - 1 <= minValue)
     {
-        self.navigationItem.title = @"";
+        sender.value = minValue + 1;
     }
+    
+    [label setText:[NSString stringWithFormat:string, [@(sender.value) integerValue]]];
 }
 
-- (IBAction)changeBotLevel:(UIButton *)sender
-{
-    [self.easyButton setSelected:NO];
-    [self.mediumButton setSelected:NO];
-    [self.difficultButton setSelected:NO];
-    [self.extremeButton setSelected:NO];
+#pragma mark - Actions
 
-    [sender setSelected:YES];
-    [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+- (IBAction)selectPlayer:(UIButton *)sender
+{
+    if (!sender.isSelected && self.reachMaxPlayers)
+        return;
     
-    [UIView animateWithDuration:0.5f animations:^{
-        self.colorSelectedButtonView.frame = CGRectOffset(sender.frame, 0, 0);
-    }];
+    [self selectButton:sender isSelected:!sender.selected];
+    [self isFullPlayerSelected];
 }
 
 #pragma mark - Utils
 
+- (void)selectButton:(UIButton *)button isSelected:(BOOL)isSelected
+{
+    button.selected = isSelected;
+    button.tintColor = button.selected ? GREEN_COLOR : [UIColor blackColor];
+}
+
+- (BOOL)isFullPlayerSelected
+{
+    NSInteger nbPlayers = 0;
+    for (UIButton *player in self.players)
+    {
+        if (player.isSelected)
+        {
+            nbPlayers ++;
+            if (nbPlayers >= NB_MAX_PLAYER)
+            {
+                self.reachMaxPlayers = YES;
+                [self colorPlayersNotSelected:YES];
+                return YES;
+            }
+        }
+    }
+    
+    self.reachMaxPlayers = NO;
+    [self colorPlayersNotSelected:NO];
+    return NO;
+}
+
+- (void)colorPlayersNotSelected:(BOOL)shouldColor
+{
+    for (UIButton *player in self.players)
+    {
+        if (!player.isSelected)
+        {
+            player.tintColor = shouldColor ? [UIColor redColor] : [UIColor blackColor];
+        }
+        else
+        {
+            player.tintColor = GREEN_COLOR;
+        }
+    }
+}
+
 - (BotLevel)selectedLevel
 {
-    if (self.easyButton.isSelected)
+    if (self.levelStepper.value == 1)
     {
         return BotLevelEasy;
     }
-    else if (self.mediumButton.isSelected)
+    else if (self.levelStepper.value == 2)
     {
         return BotLevelMedium;
     }
-    else if (self.extremeButton.isSelected)
+    else if (self.levelStepper.value == 3)
     {
-        return BotLevelExtreme;
+        return BotLevelDifficult;
     }
     else
     {
-        return BotLevelDifficult;
+        return BotLevelExtreme;
     }
 }
 

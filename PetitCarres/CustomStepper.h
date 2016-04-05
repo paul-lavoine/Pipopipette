@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomStepper : UIView
+@protocol CustomStepperDelegate <NSObject>
+
+- (IBAction)valueChanged:(UIStepper *)sender;
+
+@end
+
+
+@interface CustomStepper : UIStepper
+
+@property (nonatomic, strong) id<CustomStepperDelegate> delegate;
 
 @end

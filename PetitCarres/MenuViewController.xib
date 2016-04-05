@@ -16,7 +16,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
+                <outlet property="firstBotButton" destination="YEw-zf-Gff" id="TJq-1L-ebG"/>
+                <outlet property="firstPlayerButton" destination="5wO-ki-zcX" id="uGY-gf-28U"/>
+                <outlet property="fourthBotButton" destination="ySu-QQ-xao" id="IPn-If-wrh"/>
+                <outlet property="fourthPlayerButton" destination="3lr-0V-MCG" id="Rzh-np-ubn"/>
+                <outlet property="levelLabel" destination="XYS-hT-4GK" id="QMq-MT-T57"/>
+                <outlet property="levelStepper" destination="Ktg-iG-LCX" id="Fbx-hz-FYM"/>
+                <outlet property="nbBotLabel" destination="a8H-C1-1CW" id="e7S-we-Cf0"/>
+                <outlet property="nbColumnLabel" destination="qYh-Rl-1qp" id="hV5-qr-McX"/>
+                <outlet property="nbColumnStepper" destination="6QM-my-UFa" id="WFK-VN-OSK"/>
+                <outlet property="nbPlayerLabel" destination="waO-3I-aBy" id="E4E-HF-xCp"/>
+                <outlet property="nbRowLabel" destination="ucF-aX-hmP" id="bLl-u2-sZO"/>
+                <outlet property="nbRowStepper" destination="sXx-V1-R5Z" id="ZNJ-ps-3JI"/>
+                <outlet property="secondBotButton" destination="Dgv-Bw-sSd" id="N5b-ag-zJ6"/>
+                <outlet property="secondPlayerButton" destination="3cO-AG-JVR" id="NE7-HJ-dxt"/>
                 <outlet property="startGameButton" destination="TSO-Ve-0d8" id="GPJ-OQ-T5O"/>
+                <outlet property="thirdBotButton" destination="cHd-D5-W0q" id="mDw-ih-ebu"/>
+                <outlet property="thirdPlayerButton" destination="tOP-kA-z4Q" id="Mui-IX-saB"/>
                 <outlet property="view" destination="aHf-zW-SCm" id="z1a-2s-Yts"/>
             </connections>
         </placeholder>
@@ -29,10 +45,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFs-f8-W45">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="370"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="380"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSO-Ve-0d8">
-                                    <rect key="frame" x="20" y="325" width="560" height="30"/>
+                                    <rect key="frame" x="40" y="335" width="520" height="30"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="JOUER">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,19 +68,35 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wO-ki-zcX">
                                             <rect key="frame" x="0.0" y="0.0" width="33" height="44"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="player_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="dhb-L8-t0x"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-AG-JVR">
                                             <rect key="frame" x="53" y="0.0" width="33" height="44"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="player_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="q5T-ZH-UGd"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOP-kA-z4Q">
                                             <rect key="frame" x="106" y="0.0" width="33" height="44"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="player_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="Gad-YI-1dm"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lr-0V-MCG">
                                             <rect key="frame" x="159" y="0.0" width="33" height="44"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="player_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="wrd-d3-ZGa"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -94,19 +126,35 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEw-zf-Gff">
                                             <rect key="frame" x="0.0" y="0.0" width="33" height="45"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="bot_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="3nc-we-y8b"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgv-Bw-sSd">
                                             <rect key="frame" x="53" y="0.0" width="33" height="45"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="bot_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="2PA-SN-EYc"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHd-D5-W0q">
                                             <rect key="frame" x="106" y="0.0" width="33" height="45"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="bot_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="Zy3-Sm-SxB"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-QQ-xao">
                                             <rect key="frame" x="159" y="0.0" width="33" height="45"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="bot_icon"/>
+                                            <connections>
+                                                <action selector="selectPlayer:" destination="-1" eventType="touchUpInside" id="qFh-FP-UDD"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -135,8 +183,8 @@
                                     <rect key="frame" x="10" y="190" width="580" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NB COLONNE :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYh-Rl-1qp">
-                                            <rect key="frame" x="10" y="5" width="445" height="20"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                                            <rect key="frame" x="10" y="6" width="445" height="18"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -169,8 +217,8 @@
                                     <rect key="frame" x="10" y="230" width="580" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NB LIGNE :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucF-aX-hmP">
-                                            <rect key="frame" x="10" y="5" width="445" height="20"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                                            <rect key="frame" x="10" y="6" width="445" height="18"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -245,7 +293,7 @@
                                 <constraint firstAttribute="bottom" secondItem="TSO-Ve-0d8" secondAttribute="bottom" constant="15" id="20b-ye-CXK"/>
                                 <constraint firstAttribute="trailing" secondItem="a8H-C1-1CW" secondAttribute="trailing" constant="10" id="2mh-LP-ijG"/>
                                 <constraint firstAttribute="trailing" secondItem="arV-8g-0iQ" secondAttribute="trailing" constant="10" id="5vZ-tq-qL5"/>
-                                <constraint firstAttribute="trailing" secondItem="TSO-Ve-0d8" secondAttribute="trailing" constant="20" id="Ayh-xg-OMK"/>
+                                <constraint firstAttribute="trailing" secondItem="TSO-Ve-0d8" secondAttribute="trailing" constant="40" id="Ayh-xg-OMK"/>
                                 <constraint firstItem="jpX-Se-6F8" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="10" id="FC3-I2-lHs"/>
                                 <constraint firstItem="z7l-EO-5N0" firstAttribute="top" secondItem="a8H-C1-1CW" secondAttribute="bottom" constant="10" id="Iuw-k2-oD0"/>
                                 <constraint firstItem="O8j-hO-qjF" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="10" id="Lgh-rc-Lf9"/>
@@ -253,7 +301,7 @@
                                 <constraint firstItem="waO-3I-aBy" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="10" id="SKZ-hX-trX"/>
                                 <constraint firstItem="arV-8g-0iQ" firstAttribute="top" secondItem="jpX-Se-6F8" secondAttribute="bottom" constant="10" id="YmS-oZ-0G9"/>
                                 <constraint firstItem="a8H-C1-1CW" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="10" id="brU-ET-YCN"/>
-                                <constraint firstItem="TSO-Ve-0d8" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="20" id="dCe-7g-eNs"/>
+                                <constraint firstItem="TSO-Ve-0d8" firstAttribute="leading" secondItem="gFs-f8-W45" secondAttribute="leading" constant="40" id="dCe-7g-eNs"/>
                                 <constraint firstAttribute="trailing" secondItem="O8j-hO-qjF" secondAttribute="trailing" constant="10" id="ecI-VU-mYk"/>
                                 <constraint firstItem="a8H-C1-1CW" firstAttribute="top" secondItem="jM4-Wp-I6J" secondAttribute="bottom" constant="20" id="l0x-2y-P69"/>
                                 <constraint firstAttribute="trailing" secondItem="waO-3I-aBy" secondAttribute="trailing" constant="10" id="mmA-EZ-fey"/>
@@ -263,7 +311,7 @@
                                 <constraint firstAttribute="trailing" secondItem="jpX-Se-6F8" secondAttribute="trailing" constant="10" id="uzF-Wt-BZY"/>
                                 <constraint firstItem="waO-3I-aBy" firstAttribute="top" secondItem="gFs-f8-W45" secondAttribute="top" id="xJE-MO-QMH"/>
                                 <constraint firstItem="jM4-Wp-I6J" firstAttribute="centerX" secondItem="gFs-f8-W45" secondAttribute="centerX" id="xRz-kw-xFR"/>
-                                <constraint firstItem="TSO-Ve-0d8" firstAttribute="top" secondItem="O8j-hO-qjF" secondAttribute="bottom" constant="25" id="xgN-ak-NdP"/>
+                                <constraint firstItem="TSO-Ve-0d8" firstAttribute="top" secondItem="O8j-hO-qjF" secondAttribute="bottom" constant="35" id="xgN-ak-NdP"/>
                                 <constraint firstItem="jpX-Se-6F8" firstAttribute="top" secondItem="z7l-EO-5N0" secondAttribute="bottom" constant="25" id="yaG-90-G0K"/>
                             </constraints>
                         </view>
