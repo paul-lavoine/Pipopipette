@@ -269,17 +269,9 @@
                                 <constraints>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="2:3" id="875-Fi-fUQ"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="top" secondItem="0vr-mc-0Vc" secondAttribute="top" constant="35" id="ByA-oO-oJa"/>
-                                    <constraint firstItem="Oed-g5-Cg2" firstAttribute="leading" secondItem="0vr-mc-0Vc" secondAttribute="leading" constant="40" id="IFZ-tY-n7X"/>
                                     <constraint firstAttribute="bottom" secondItem="Oed-g5-Cg2" secondAttribute="bottom" constant="35" id="ka4-AB-5zn"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oed-g5-Cg2" secondAttribute="trailing" constant="40" id="px9-6B-9RL"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="centerX" secondItem="0vr-mc-0Vc" secondAttribute="centerX" id="vXg-XF-JPk"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="IFZ-tY-n7X"/>
-                                        <exclude reference="px9-6B-9RL"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,12 +299,20 @@
                     <connections>
                         <outlet property="creditButtonView" destination="Oed-g5-Cg2" id="hi2-4M-7lL"/>
                         <outlet property="creditImageView" destination="SYU-X3-azl" id="z2g-bo-Hbm"/>
+                        <outlet property="creditVerticalBottomConstraint" destination="ka4-AB-5zn" id="xIL-sX-COW"/>
+                        <outlet property="creditVerticalTopConstraint" destination="ByA-oO-oJa" id="255-Qx-jwp"/>
                         <outlet property="creditView" destination="0vr-mc-0Vc" id="L1o-1B-j76"/>
+                        <outlet property="logoVerticalBottomConstraint" destination="eDz-fm-H3H" id="vhw-h1-TPh"/>
+                        <outlet property="logoVerticalTopConstraint" destination="rzt-3M-aRR" id="kIB-AA-LIK"/>
                         <outlet property="logoView" destination="4Rx-Yt-H1E" id="m0n-df-IWa"/>
                         <outlet property="playButton" destination="ct5-BK-i6E" id="EM4-it-Dwi"/>
+                        <outlet property="playVerticalBottomConstraint" destination="Hwf-Zp-6Eu" id="HtK-x5-nck"/>
+                        <outlet property="playVerticalTopConstraint" destination="jGn-TJ-ZKL" id="HFm-Rf-WY7"/>
                         <outlet property="playView" destination="chF-Fy-Pla" id="tY8-Hb-OMo"/>
                         <outlet property="setupButtonView" destination="tcU-cM-uH9" id="Mdl-y4-zxW"/>
                         <outlet property="setupImageView" destination="FSs-Ef-7av" id="l99-uK-LeK"/>
+                        <outlet property="setupVerticalBottomConstraint" destination="Uge-Du-bx5" id="Pho-G1-rfS"/>
+                        <outlet property="setupVerticalTopConstraint" destination="XNc-YS-ZR8" id="s5C-UD-VVg"/>
                         <outlet property="setupView" destination="4fQ-S0-Cka" id="rz3-vw-JU7"/>
                         <outlet property="tutorielButtonView" destination="Kna-hV-j2D" id="B4C-vw-D5V"/>
                         <outlet property="tutorielImageView" destination="836-vZ-1M0" id="B2b-Dq-QOu"/>
@@ -325,7 +325,6 @@
         <!--Map View Controller-->
         <scene sceneID="m1c-R3-a4r">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="me1-Sc-S1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MapViewControllerID" id="flh-BG-aaP" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tVn-k3-E5T"/>
@@ -449,6 +448,7 @@
                         <outlet property="winnerView" destination="wcR-XD-CXD" id="vK1-7B-yMg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="me1-Sc-S1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="94" y="174"/>
         </scene>

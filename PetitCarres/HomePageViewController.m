@@ -32,26 +32,54 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tutorielImageView;
 @property (weak, nonatomic) IBOutlet UIView *tutorielButtonView;
 
-// Data
+// Constraint
+@property (nonatomic, assign) BOOL alreadyAppear;
+@property (strong, nonatomic) NSArray *constraints;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalBottomConstraint;
 
 @end
 
 @implementation HomePageViewController
 
+#pragma mark - View lifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self configureUI];
     
+    
     // Gesture Recognizer
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(creditAction:)];
     [self.creditButtonView addGestureRecognizer:tapRecognizer];
     
-     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAction:)];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAction:)];
     [self.setupButtonView addGestureRecognizer:tapRecognizer];
     
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorielAction:)];
     [self.tutorielButtonView addGestureRecognizer:tapRecognizer];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (!self.alreadyAppear && [[UIScreen mainScreen] bounds].size.height <= 480.0f)
+    {
+        self.alreadyAppear = YES;
+        self.constraints = @[self.setupVerticalBottomConstraint, self.setupVerticalTopConstraint, self.playVerticalBottomConstraint, self.playVerticalTopConstraint, self.logoVerticalBottomConstraint, self.logoVerticalTopConstraint, self.creditVerticalTopConstraint, self.creditVerticalBottomConstraint];
+        
+        for (NSLayoutConstraint *constraint in self.constraints)
+        {
+            constraint.constant = constraint.constant - 10;
+        }
+    }
 }
 
 - (void)configureUI
