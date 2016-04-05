@@ -44,8 +44,8 @@
 
 - (void)initDefaultData
 {
-    self.iconesArray =  @[ @"croix", @"rond", @"squarre", @"triangle" ];
-    self.colorsArray = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], [UIColor purpleColor]];
+    self.iconesArray =  @[ @"player1_icon", @"player2_icon", @"player3_icon", @"player4_icon" ];
+    self.colorsArray = @[GREEN_COLOR, PINK_COLOR, GRAY_COLOR, [UIColor blackColor]];
 }
 
 - (void)initDefaultPlayers:(NSInteger)nbPlayers numberOfBot:(NSInteger)nbBot botLevel:(BotLevel)botLevel

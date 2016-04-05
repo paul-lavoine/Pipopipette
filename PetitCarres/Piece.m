@@ -12,6 +12,7 @@
 
 @interface Piece ()
 
+@property (nonatomic, strong) IBOutlet UIView *contentView;
 @property (nonatomic, strong) IBOutlet UIImageView *iconeView;
 
 @end
@@ -36,7 +37,7 @@
 - (void)commonInit
 {
     [[NSBundle mainBundle] loadNibNamed:@"Piece" owner:self options:nil];
-    [self addSubview:self.iconeView];
+    [self addSubview:self.contentView];
 }
 
 - (void)selectedByPlayer:(Player *)owner
