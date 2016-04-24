@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,6 +17,7 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -26,7 +26,7 @@
             <objects>
                 <navigationController id="QFh-AT-frG" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="back_arrow_tuto_button" id="yi4-4f-CMP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yi4-4f-CMP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,18 +397,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frise_map" translatesAutoresizingMaskIntoConstraints="NO" id="1Hg-WP-7XJ">
+                                <rect key="frame" x="0.0" y="647" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4Ul-3z-Blx"/>
+                                </constraints>
+                            </imageView>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-XD-CXD" userLabel="Winner is">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WINNER IS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-ui-2zW">
+                                        <rect key="frame" x="50" y="50" width="314" height="472"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="54"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINNER IS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-ui-2zW">
-                                <rect key="frame" x="50" y="50" width="314" height="472"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="54"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -421,17 +429,16 @@
                             <constraint firstItem="dLP-CU-5lT" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" id="92K-f1-577"/>
                             <constraint firstItem="dLP-CU-5lT" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leading" id="Ay6-De-Dlk"/>
                             <constraint firstItem="wcR-XD-CXD" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leading" id="JVC-nL-8HF"/>
-                            <constraint firstItem="a7H-ui-2zW" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leadingMargin" constant="30" id="Kap-os-Los"/>
                             <constraint firstAttribute="trailing" secondItem="dLP-CU-5lT" secondAttribute="trailing" id="Mq3-NL-se8"/>
                             <constraint firstItem="yXZ-uj-RPx" firstAttribute="top" secondItem="wcR-XD-CXD" secondAttribute="bottom" id="MrJ-9i-2Tf"/>
-                            <constraint firstItem="yXZ-uj-RPx" firstAttribute="top" secondItem="a7H-ui-2zW" secondAttribute="bottom" constant="150" id="TOU-B4-NuM"/>
+                            <constraint firstItem="1Hg-WP-7XJ" firstAttribute="leading" secondItem="ERF-jj-uNy" secondAttribute="leading" id="YiY-2X-TZI"/>
                             <constraint firstItem="29A-RT-e0E" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" id="Yx1-i8-NZD"/>
-                            <constraint firstItem="a7H-ui-2zW" firstAttribute="top" secondItem="tVn-k3-E5T" secondAttribute="bottom" constant="50" id="mYv-9O-kV8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="a7H-ui-2zW" secondAttribute="trailing" constant="30" id="p9S-92-Dvn"/>
+                            <constraint firstAttribute="trailing" secondItem="1Hg-WP-7XJ" secondAttribute="trailing" id="edA-ie-117"/>
+                            <constraint firstItem="yXZ-uj-RPx" firstAttribute="top" secondItem="1Hg-WP-7XJ" secondAttribute="bottom" constant="-5" id="gbg-Bk-OUU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i7K-FB-bji">
-                        <barButtonItem key="backBarButtonItem" title="Custom" id="stJ-Gs-PiC"/>
+                        <barButtonItem key="backBarButtonItem" image="frise_map" id="stJ-Gs-PiC"/>
                         <barButtonItem key="rightBarButtonItem" image="restart_button" id="eIe-W8-hOD">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -442,6 +449,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="bottomFrieze" destination="1Hg-WP-7XJ" id="750-CE-xRo"/>
                         <outlet property="contentView" destination="ERF-jj-uNy" id="zGf-A4-Fgz"/>
                         <outlet property="mapView" destination="dLP-CU-5lT" id="vcr-Y4-TNa"/>
                         <outlet property="scorePlayerFirst" destination="Tee-14-uSS" id="hbc-Ab-JJ3"/>
@@ -458,9 +466,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_arrow_tuto_button" width="18" height="32"/>
         <image name="credit_arrow_button" width="26" height="56"/>
         <image name="credit_button" width="97" height="85"/>
+        <image name="frise_map" width="250" height="15"/>
         <image name="logo_appli" width="227" height="262"/>
         <image name="play_button" width="88" height="112"/>
         <image name="restart_button" width="67" height="57"/>

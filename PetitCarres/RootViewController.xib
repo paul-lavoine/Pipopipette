@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbL-63-JIC" userLabel="Content">
-                    <rect key="frame" x="40" y="70" width="520" height="480"/>
+                    <rect key="frame" x="40" y="50" width="520" height="500"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQy-lX-jxk" userLabel="Back">
                             <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -64,7 +64,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-Gt-INL">
-                            <rect key="frame" x="0.0" y="130" width="520" height="350"/>
+                            <rect key="frame" x="0.0" y="130" width="520" height="370"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -91,7 +91,7 @@
                 <constraint firstItem="bbL-63-JIC" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" constant="40" id="RtF-R1-zgr"/>
                 <constraint firstAttribute="bottom" secondItem="eGf-sf-N3f" secondAttribute="bottom" id="T4J-0l-sgp"/>
                 <constraint firstAttribute="trailing" secondItem="eGf-sf-N3f" secondAttribute="trailing" id="TpE-n9-qry"/>
-                <constraint firstItem="bbL-63-JIC" firstAttribute="top" secondItem="xgm-NY-Y5H" secondAttribute="top" constant="70" id="ZED-vm-uFm"/>
+                <constraint firstItem="bbL-63-JIC" firstAttribute="top" secondItem="xgm-NY-Y5H" secondAttribute="top" constant="50" id="ZED-vm-uFm"/>
                 <constraint firstItem="eGf-sf-N3f" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" id="aZp-42-PFI"/>
                 <constraint firstAttribute="trailing" secondItem="bbL-63-JIC" secondAttribute="trailing" constant="40" id="b8f-3O-Lax"/>
                 <constraint firstAttribute="bottom" secondItem="bbL-63-JIC" secondAttribute="bottom" constant="50" id="mY1-Jw-aAv"/>

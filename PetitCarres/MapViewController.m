@@ -21,6 +21,8 @@
 @property (strong, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *winnerView;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomFrieze;
+@property (weak, nonatomic) IBOutlet UIImageView *topFrieze;
 
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFirst;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFourth;
@@ -89,6 +91,12 @@
     UIButton *rightButton = [[UIButton alloc] init];
     [rightButton setImage:imageView.image forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(restartGame:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *rightLabel=[[UILabel alloc] initWithFrame:CGRectMake(-55.0f, -9.5f, 100.0f, 44.0f)];
+    [rightLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:15.0f]];
+    rightLabel.text = @"rejouer";
+    [rightButton addSubview:rightLabel];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
     
@@ -100,12 +108,31 @@
     [leftButton setImage:imageLeftView.image forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(20.0f, -9.5f, 100.0f, 44.0f)];
-    label.text = @"Retour";
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(25.0f, -9.5f, 100.0f, 44.0f)];
+    [label setFont:[UIFont fontWithName:@"Roboto-Regular" size:15.0f]];
+    label.text = @"retour";
     [leftButton addSubview:label];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
+    
+    // Frieze Top Image
+    UIImage *image = [UIImage imageNamed:@"frise_map.png"];
+    UIImageView *friezeImageView = [[UIImageView alloc] initWithImage:image];
+    CGRect frame = friezeImageView.frame;
+    friezeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    frame.size.width = self.navigationController.navigationBar.frame.size.width;
+    frame.origin.y = -[UIApplication sharedApplication].statusBarFrame.size.height;
+    friezeImageView.frame = frame;
+    [self.navigationController.navigationBar addSubview:friezeImageView];
+    
+    // Frieze Bottom Image
+    self.bottomFrieze.transform = CGAffineTransformMakeRotation(M_PI);
+
+    // TODO
+//    CGRect barFrame = self.navigationController.navigationBar.frame;
+//    barFrame.size.height = 130;
+//    [self.navigationController.navigationBar setFrame:barFrame];
 }
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
