@@ -21,13 +21,17 @@
 @property (strong, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *winnerView;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *bottomFrieze;
-@property (weak, nonatomic) IBOutlet UIImageView *topFrieze;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *replayButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFirst;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFourth;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerSecond;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerThree;
+
+// Constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewVerticalBottomConstraint;
 
 // Data
 @property (nonatomic, strong) UILabel *navigationBarTitle;
@@ -53,22 +57,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationBarTitle = [[UILabel alloc] init];
-    [self setNavigationBarTitle];
+//    [self setNavigationBarTitle];
     [self configureUI];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBarHidden = NO;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLayoutSubviews
@@ -85,54 +75,46 @@
 - (void)configureUI
 {
     // Right Bar Button Item
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"restart_button.png"]];
-    CGFloat offset = imageView.frame.size.width / imageView.frame.size.height;
-    
-    UIButton *rightButton = [[UIButton alloc] init];
-    [rightButton setImage:imageView.image forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(restartGame:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UILabel *rightLabel=[[UILabel alloc] initWithFrame:CGRectMake(-55.0f, -9.5f, 100.0f, 44.0f)];
-    [rightLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:15.0f]];
-    rightLabel.text = @"rejouer";
-    [rightButton addSubview:rightLabel];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
-    
-    // Back Button Item
-    UIImageView *imageLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back_arrow_tuto_button.png"]];
-    offset = imageLeftView.frame.size.width / imageLeftView.frame.size.height;
-    
-    UIButton *leftButton = [[UIButton alloc] init];
-    [leftButton setImage:imageLeftView.image forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(25.0f, -9.5f, 100.0f, 44.0f)];
-    [label setFont:[UIFont fontWithName:@"Roboto-Regular" size:15.0f]];
-    label.text = @"retour";
-    [leftButton addSubview:label];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, RIGHT_BAR_BUTTON_SIZE * offset, RIGHT_BAR_BUTTON_SIZE);
-    
-    // Frieze Top Image
-    UIImage *image = [UIImage imageNamed:@"frise_map.png"];
-    UIImageView *friezeImageView = [[UIImageView alloc] initWithImage:image];
-    CGRect frame = friezeImageView.frame;
-    friezeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    frame.size.width = self.navigationController.navigationBar.frame.size.width;
-    frame.origin.y = -[UIApplication sharedApplication].statusBarFrame.size.height;
-    friezeImageView.frame = frame;
-    [self.navigationController.navigationBar addSubview:friezeImageView];
-    
-    // Frieze Bottom Image
-    self.bottomFrieze.transform = CGAffineTransformMakeRotation(M_PI);
+    [self.replayButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    self.replayButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    self.replayButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    self.replayButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    [self.replayButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
 
-    // TODO
-//    CGRect barFrame = self.navigationController.navigationBar.frame;
-//    barFrame.size.height = 130;
-//    [self.navigationController.navigationBar setFrame:barFrame];
+    // left Bar Button Item
+    [self.backButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
+    
+    // Constraint
+    [self configureConstraintWithHeightView];
+}
+
+- (void)configureConstraintWithHeightView
+{
+    if (IS_IPHONE_4)
+    {
+        self.mapViewVerticalTopConstraint.constant = 17;
+        self.mapViewVerticalBottomConstraint.constant = 17;
+    }
+    else if (IS_IPHONE_5)
+    {
+        self.mapViewVerticalTopConstraint.constant = 20;
+        self.mapViewVerticalBottomConstraint.constant = 20;
+    }
+    else if (IS_IPHONE_6)
+    {
+        self.mapViewVerticalTopConstraint.constant = 24;
+        self.mapViewVerticalBottomConstraint.constant = 23;
+    }
+    else if (IS_IPHONE_6_PLUS)
+    {
+        self.mapViewVerticalTopConstraint.constant = 26;
+        self.mapViewVerticalBottomConstraint.constant = 26;
+    }
+    else
+    {
+        NSLog(@"dont know this iphone size");
+    }
+        
 }
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -193,8 +175,8 @@
     int space = BAR_BUTTON_SPACE;
     
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
-    int offsetWidth = (self.view.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
-    int offsetHeight = (self.view.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
+    int offsetWidth = (self.contentView.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
+    int offsetHeight = 0;//(self.contentView.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
     
     // Vertical bar
     self.pieces = [NSMutableArray array];
@@ -405,18 +387,6 @@
     [self barButtonSelected:button];
 }
 
-#pragma mark - Action
-
-- (IBAction)restartGame:(id)sender
-{
-    for (UIView *view in self.mapView.subviews)
-    {
-        [view removeFromSuperview];
-    }
-    
-    [[PlayerManager sharedInstance] resetCurrentPlayer];
-    [self initGame];
-}
 
 #pragma mark - Utils
 
@@ -484,9 +454,22 @@
     }
 }
 
-- (void)goBack
+#pragma mark - Action
+
+- (IBAction)goBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)replay:(id)sender
+{
+    for (UIView *view in self.mapView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    [[PlayerManager sharedInstance] resetCurrentPlayer];
+    [self initGame];
 }
 
 - (void)displayWinnerView:(BOOL)show

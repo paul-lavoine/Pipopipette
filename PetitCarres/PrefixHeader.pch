@@ -17,10 +17,16 @@
 #define GRAY_COLOR  [UIColor colorWithRed:238.0f/255.0f green:235.0f/255.0f blue:231.0f/255.0f alpha:1.0f]
 #define BLACK_COLOR [UIColor colorWithRed:44.0f/255.0f green:42.0f/255.0f blue:47.0f/255.0f alpha:1.0f]
 
-#define ROBOTO_REGULAR(s)   [UIFont fontWithName:@"Roboto-Regular" size:s];
-#define ROBOTO_LIGHT(s)     [UIFont fontWithName:@"Roboto-Light" size:s];
-#define ROBOTO_THIN(s)      [UIFont fontWithName:@"Roboto-Thin" size:s];
+#define ROBOTO_REGULAR(s)   [UIFont fontWithName:@"Roboto-Regular" size:s]
+#define ROBOTO_LIGHT(s)     [UIFont fontWithName:@"Roboto-Light" size:s]
+#define ROBOTO_THIN(s)      [UIFont fontWithName:@"Roboto-Thin" size:s]
 
+#define IS_IPAD             (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE           (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_4         (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 480.0)
+#define IS_IPHONE_5         (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0)
+#define IS_IPHONE_6         (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0)
+#define IS_IPHONE_6_PLUS    (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
 
 #import "ChildViewController.h"
 
