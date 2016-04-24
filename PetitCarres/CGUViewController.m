@@ -10,6 +10,7 @@
 
 #define MIN_ZOOM_OUT 0.9
 #define ANIMATION_DURATION 0.7
+#define URL_MARINE_WEBSITE @"http://www.marine-difranco.fr"
 
 @interface CGUViewController ()
 
@@ -61,10 +62,10 @@
 
 - (void)configureUI
 {
-    UIFont *regularFont = [UIFont fontWithName:@"Roboto-Regular" size:15.0f];
-    UIFont *lightFont = [UIFont fontWithName:@"Roboto-Light" size:16.5f];
-    UIFont *lightBigFont = [UIFont fontWithName:@"Roboto-Light" size:23.5f];
-    UIFont *thinFont = [UIFont fontWithName:@"Roboto-Thin" size:20.0f];
+    UIFont *regularFont = ROBOTO_REGULAR(15.0f);
+    UIFont *lightFont = ROBOTO_LIGHT(16.5f);
+    UIFont *lightBigFont = ROBOTO_LIGHT(23.5f);
+    UIFont *thinFont = ROBOTO_THIN(20.0f);
     
     NSMutableAttributedString *development = [[NSMutableAttributedString alloc] initWithString:@"application développé par\n" attributes:@{NSFontAttributeName : lightFont}];
     [development appendAttributedString:[[NSAttributedString alloc] initWithString:@"PAUL LAVOINE" attributes:@{NSFontAttributeName : regularFont}]];
@@ -99,8 +100,6 @@
             [self popUpZoomIn];
         });
     });
-    
-    
 }
 
 - (void)popUpZoomIn
@@ -138,7 +137,7 @@
 
 - (void)openWebsite
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.marine-difranco.fr"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_MARINE_WEBSITE]];
 }
 
 @end
