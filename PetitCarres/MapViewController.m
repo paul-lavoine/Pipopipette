@@ -176,7 +176,7 @@
     
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.contentView.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
-    int offsetHeight = 0;//(self.contentView.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2;
+    int offsetHeight = (self.mapView.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2 - 35;
     
     // Vertical bar
     self.pieces = [NSMutableArray array];

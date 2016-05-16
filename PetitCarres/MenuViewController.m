@@ -20,7 +20,7 @@
 
 #define COLUMN_LABEL @"NB COLONNE : %@"
 #define ROW_LABEL @"NB LIGNE : %@"
-#define LEVEL_LABEL @"NIVEAU : %@"
+#define LEVEL_LABEL @"DIFFICULTÉ : %@"
 
 
 @interface MenuViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
