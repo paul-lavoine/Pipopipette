@@ -5,20 +5,26 @@
 //  Created by Paul Lavoine on 09/09/2015.
 //  Copyright (c) 2015 Paul Lavoine. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "MapViewController.h"
+#import "WinnerViewController.h"
 
 #import "PlayerManager.h"
 #import "Minimax.h"
 #import "Component.h"
 
-#define RIGHT_BAR_BUTTON_SIZE 25
+#define SPIN_ANIMATION          @"SpinAnimation"
+#define ROTATION_DURATION       1.0f
+#define EXPAND_DURATION         2.0f
+#define EXPAND_DELAY            0.5f
+#define RIGHT_BAR_BUTTON_SIZE   25
 
 @interface MapViewController () <CustomButtonDelegate>
 
 // Outlets
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *boardGame;
 @property (weak, nonatomic) IBOutlet UIView *winnerView;
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -34,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewVerticalBottomConstraint;
 
 // Data
+@property (nonatomic, strong) WinnerViewController *winnerViewController;
 @property (nonatomic, strong) UILabel *navigationBarTitle;
 @property (nonatomic, strong) NSMutableArray *horizontalButtons;
 @property (nonatomic, strong) NSMutableArray *verticalButtons;
@@ -47,6 +54,7 @@
 @property (nonatomic, assign) NSInteger columns;
 @property (nonatomic, assign) NSInteger pieceSelected;
 @property (nonatomic, assign) BOOL alreadyAppear;
+@property (nonatomic, assign) BOOL animating;
 
 @end
 
@@ -57,7 +65,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self setNavigationBarTitle];
+    //    [self setNavigationBarTitle];
     [self configureUI];
 }
 
@@ -80,7 +88,7 @@
     self.replayButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.replayButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [self.replayButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
-
+    
     // left Bar Button Item
     [self.backButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
     
@@ -114,7 +122,7 @@
     {
         NSLog(@"dont know this iphone size");
     }
-        
+    
 }
 
 - (void)configureMapWithRows:(NSInteger)rows columns:(NSInteger)columns
@@ -137,7 +145,7 @@
     [[Component class] linkComponentsWithPieces:self.pieces horizontalButtons:self.horizontalButtons verticalButtons:self.verticalButtons nbColumnsAvailable:self.columns];
     
     //Hidde winner view
-    [self displayWinnerView:NO];
+    [self displayWinnerView:NO player:nil];
     
     // Init Algorithm
     Player *botPlayer;
@@ -150,6 +158,8 @@
     }
     [Minimax sharedInstance].columns = self.columns;
     [Minimax sharedInstance].rows = self.rows;
+    [self.winnerViewController.view removeFromSuperview];
+    self.winnerViewController = nil;
 }
 
 - (void)initScorePlayer
@@ -325,7 +335,7 @@
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         Player *player = [[PlayerManager sharedInstance] winner];
         [self configureWinnerTitleWithPlayer:player];
-        [self displayWinnerView:YES];
+        [self displayWinnerView:YES player:player];
     }
     else
     {
@@ -392,9 +402,9 @@
 
 - (void)setNavigationBarTitle
 {
-//    self.navigationBarTitle.attributedText = [self configureAttributedStringWithPlayer:[[PlayerManager sharedInstance] currentPlayer] string:@"Tour du joueur " sizeFont:18.0f];
-//    [self.navigationBarTitle sizeToFit];
-//    self.navigationItem.titleView = self.navigationBarTitle;
+    //    self.navigationBarTitle.attributedText = [self configureAttributedStringWithPlayer:[[PlayerManager sharedInstance] currentPlayer] string:@"Tour du joueur " sizeFont:18.0f];
+    //    [self.navigationBarTitle sizeToFit];
+    //    self.navigationItem.titleView = self.navigationBarTitle;
 }
 
 - (void)handleTimer:(NSTimer*)theTimer
@@ -472,10 +482,93 @@
     [self initGame];
 }
 
-- (void)displayWinnerView:(BOOL)show
+#pragma mark - Winner View Management
+
+- (void)displayWinnerView:(BOOL)show player:(Player *)player
 {
-    self.winnerView.hidden = !show;
-    self.winnerLabel.hidden = !show;
+    if (show)
+    {
+        [self rotateSpinningView:self.boardGame];
+        
+        [UIView animateWithDuration:EXPAND_DURATION
+                              delay:0.0f
+                            options:UIViewAnimationOptionTransitionNone
+                         animations: ^{
+                             self.boardGame.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                         } completion:^(BOOL finished){
+                             [self addWinnerViewWithPlayer:player];
+                             [UIView animateWithDuration:EXPAND_DURATION
+                                                   delay:EXPAND_DELAY
+                                                 options:UIViewAnimationOptionTransitionNone
+                                              animations: ^{
+                                                  self.boardGame.transform = CGAffineTransformMakeScale(1, 1);
+                                              } completion:^(BOOL finished){
+                                                  [self stopSpin];
+                                              }];
+                         }];
+    }
+}
+
+- (void)rotateSpinningView:(UIView *)viewToSpin
+{
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:0.0f];
+    animation.toValue = [NSNumber numberWithFloat: 2*M_PI*4];
+    animation.duration = ROTATION_DURATION;
+    animation.repeatCount = INFINITY;
+    [viewToSpin.layer addAnimation:animation forKey:SPIN_ANIMATION];
+}
+
+- (void)stopSpin
+{
+    [self.boardGame.layer removeAnimationForKey:SPIN_ANIMATION];
+}
+
+- (void)addWinnerViewWithPlayer:(Player *)player
+{
+    self.winnerViewController = [[WinnerViewController alloc] initWithWinner:player];
+    self.winnerViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.winnerViewController.view setFrame:self.boardGame.frame];
+    [self.boardGame addSubview:self.winnerViewController.view];
+    [self addConstraintToView:self.winnerViewController.view];
+}
+
+- (void)addConstraintToView:(UIView *)view
+{
+    self.boardGame.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    
+    [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
+                                                     attribute:NSLayoutAttributeTrailing
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.boardGame
+                                                     attribute:NSLayoutAttributeTrailing
+                                                    multiplier:1.0
+                                                      constant:0.0]];
+    
+    [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
+                                                     attribute:NSLayoutAttributeBottom
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.boardGame
+                                                     attribute:NSLayoutAttributeBottom
+                                                    multiplier:1.0
+                                                      constant:0.0]];
+    
+    [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.boardGame
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0
+                                                      constant:0.0]];
+    
+    [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.boardGame
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0
+                                                      constant:0.0]];
 }
 
 @end

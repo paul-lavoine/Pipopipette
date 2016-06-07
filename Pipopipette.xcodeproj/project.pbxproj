@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8CD26ED2AB3656BA55E28AC8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED1636B51C48BF12029EA5C /* libPods.a */; };
+		A80283A91D076D050057678E /* WinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80283A81D076D050057678E /* WinnerViewController.m */; };
+		A80283AB1D076D120057678E /* WinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A80283AA1D076D120057678E /* WinnerViewController.xib */; };
 		A8157DA41C149518009526D2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8157DA31C149518009526D2 /* PlayerManager.m */; };
 		A828D6A01CAF9B4B00720C31 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D69F1CAF9B4B00720C31 /* ChildViewController.m */; };
 		A828D6A91CB0E9EB00720C31 /* CustomStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D6A81CB0E9EB00720C31 /* CustomStepper.m */; };
@@ -70,6 +72,9 @@
 		069E2A307960648314294142 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		0C6243A1969197366985428F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9ED1636B51C48BF12029EA5C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80283A71D076D050057678E /* WinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinnerViewController.h; sourceTree = "<group>"; };
+		A80283A81D076D050057678E /* WinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinnerViewController.m; sourceTree = "<group>"; };
+		A80283AA1D076D120057678E /* WinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinnerViewController.xib; sourceTree = "<group>"; };
 		A8157DA21C149518009526D2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
 		A8157DA31C149518009526D2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 		A828D69E1CAF9B4B00720C31 /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
@@ -174,6 +179,16 @@
 				9ED1636B51C48BF12029EA5C /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A80283A61D076CCF0057678E /* Winner */ = {
+			isa = PBXGroup;
+			children = (
+				A80283A71D076D050057678E /* WinnerViewController.h */,
+				A80283A81D076D050057678E /* WinnerViewController.m */,
+				A80283AA1D076D120057678E /* WinnerViewController.xib */,
+			);
+			name = Winner;
 			sourceTree = "<group>";
 		};
 		A828D69D1CAF9B3200720C31 /* Child */ = {
@@ -433,6 +448,7 @@
 				A89811311C67F6DE003A344B /* Menu */,
 				A8CBA7541C6A8260004351EF /* Root */,
 				A8CBA74B1C692E6D004351EF /* Tutoriel */,
+				A80283A61D076CCF0057678E /* Winner */,
 			);
 			name = ViewsController;
 			sourceTree = "<group>";
@@ -583,6 +599,7 @@
 				A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */,
 				DA6E9B1D1BA01AC6009A9EB8 /* Images.xcassets in Resources */,
 				A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */,
+				A80283AB1D076D120057678E /* WinnerViewController.xib in Resources */,
 				DA6E9B391BA01D2A009A9EB8 /* HorizontalBarButton.xib in Resources */,
 				A87C5CE31C6807BD00CF0B33 /* Roboto-MediumItalic.ttf in Resources */,
 				A87881201C6A9C750002F5D8 /* CGUViewController.xib in Resources */,
@@ -655,6 +672,7 @@
 				A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */,
 				A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */,
 				A866FE391C2961C400916810 /* Component.m in Sources */,
+				A80283A91D076D050057678E /* WinnerViewController.m in Sources */,
 				A8CBA7571C6A828C004351EF /* RootViewController.m in Sources */,
 				DA6E9B471BA03900009A9EB8 /* Piece.m in Sources */,
 				A8FEB50A1C24C35A0085E589 /* Minimax.m in Sources */,

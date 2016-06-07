@@ -488,6 +488,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="backButton" destination="Ioq-Tp-7B7" id="ndJ-tb-guO"/>
+                        <outlet property="boardGame" destination="hTr-7K-G5R" id="QQ8-e0-SbL"/>
                         <outlet property="contentView" destination="ERF-jj-uNy" id="zGf-A4-Fgz"/>
                         <outlet property="mapView" destination="csw-vk-yvD" id="fIH-3h-QHa"/>
                         <outlet property="mapViewVerticalBottomConstraint" destination="aIM-AZ-2yw" id="GOE-qy-P53"/>
