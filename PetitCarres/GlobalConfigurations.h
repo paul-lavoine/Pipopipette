@@ -12,6 +12,9 @@
 #define NB_MIN_PLAYER 1
 #define NB_MIN_BOT 0
 
+#define DIFFICULTY_LEVEL_MAX 3
+#define DIFFICULTY_LEVEL_MIN 1
+
 #define NB_DEFAULT_PLAYER   1
 #define NB_DEFAULT_BOT      1
 #define NB_DEFAULT_ROWS     1

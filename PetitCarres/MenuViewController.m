@@ -185,7 +185,7 @@
 - (IBAction)valueChanged:(UIStepper *)sender
 {
     NSInteger maxValue = 0;
-    NSInteger minValue = 0;
+    NSInteger minValue = DIFFICULTY_LEVEL_MIN;
     UILabel *label;
     NSString *string;
     
@@ -203,7 +203,7 @@
     }
     else if (sender == self.levelStepper)
     {
-        maxValue = 4;
+        maxValue = DIFFICULTY_LEVEL_MAX;
         string = LEVEL_LABEL;
         label = self.levelLabel;
     }
@@ -217,9 +217,9 @@
     {
         sender.value = maxValue;
     }
-    else if (sender.value - 1 <= minValue)
+    else if (sender.value <= minValue)
     {
-        sender.value = minValue + 1;
+        sender.value = minValue;
     }
     
     [self configureSteppers:nil label:label string:string value:sender.value];
