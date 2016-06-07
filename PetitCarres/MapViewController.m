@@ -16,7 +16,7 @@
 #define SPIN_ANIMATION          @"SpinAnimation"
 #define ROTATION_DURATION       1.0f
 #define EXPAND_DURATION         2.0f
-#define EXPAND_DELAY            0.5f
+#define EXPAND_DELAY            0.2f
 #define RIGHT_BAR_BUTTON_SIZE   25
 
 @interface MapViewController () <CustomButtonDelegate>
