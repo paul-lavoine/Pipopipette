@@ -41,7 +41,13 @@
 {
     self.winnerIsLabel.text = [[NSString stringWithFormat:@"le gagnant\nest"] uppercaseString];
     self.playerIsImageView.image = self.player.icone;
-    self.playerIsLabel.text = [[NSString stringWithFormat:@"le joueur %@", self.player.name] uppercaseString];
+    
+    NSMutableAttributedString *winnerPlayer = [[NSMutableAttributedString alloc] initWithString:[@"le joueur " uppercaseString] attributes:@{NSFontAttributeName : ROBOTO_LIGHT(25.0f)}];
+    [winnerPlayer appendAttributedString:[[NSAttributedString alloc] initWithString:[[NSString stringWithFormat:@"%@", self.player.name] uppercaseString]
+                                                                         attributes:@{NSFontAttributeName : ROBOTO_REGULAR(25.0f)}]];
+    
+    
+    self.playerIsLabel.attributedText = winnerPlayer;
 }
 
 

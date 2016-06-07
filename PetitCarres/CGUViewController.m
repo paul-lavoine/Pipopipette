@@ -9,7 +9,7 @@
 #import "CGUViewController.h"
 
 #define MIN_ZOOM_OUT 0.9
-#define ANIMATION_DURATION 0.7
+#define ANIMATION_DURATION 0.5
 #define URL_MARINE_WEBSITE @"http://www.marine-difranco.fr"
 
 @interface CGUViewController ()
