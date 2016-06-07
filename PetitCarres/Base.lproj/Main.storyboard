@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFh-AT-frG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFh-AT-frG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -137,12 +137,16 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="CPZ-rz-iRL" firstAttribute="centerX" secondItem="chF-Fy-Pla" secondAttribute="centerX" id="9fB-Uy-DYB"/>
                                     <constraint firstAttribute="bottom" secondItem="CPZ-rz-iRL" secondAttribute="bottom" constant="25" id="Hwf-Zp-6Eu"/>
                                     <constraint firstItem="CPZ-rz-iRL" firstAttribute="centerY" secondItem="chF-Fy-Pla" secondAttribute="centerY" id="fih-sP-cBW"/>
                                     <constraint firstItem="CPZ-rz-iRL" firstAttribute="top" secondItem="chF-Fy-Pla" secondAttribute="top" constant="25" id="jGn-TJ-ZKL"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="b97-bj-dXt" appends="YES" id="TvH-bl-cZt"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fQ-S0-Cka" userLabel="Setup">
                                 <rect key="frame" x="0.0" y="384" width="414" height="144"/>
@@ -170,6 +174,7 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="fLB-ew-1Jh" firstAttribute="top" secondItem="FSs-Ef-7av" secondAttribute="bottom" constant="10" id="Ecs-Yi-sCo"/>
                                                     <constraint firstItem="fLB-ew-1Jh" firstAttribute="leading" secondItem="tcU-cM-uH9" secondAttribute="leading" id="GP7-hc-SyB"/>
@@ -178,6 +183,9 @@
                                                     <constraint firstItem="fLB-ew-1Jh" firstAttribute="width" secondItem="tcU-cM-uH9" secondAttribute="width" id="jrq-EU-Uec"/>
                                                     <constraint firstItem="fLB-ew-1Jh" firstAttribute="centerX" secondItem="FSs-Ef-7av" secondAttribute="centerX" id="vyn-Dl-AM2"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="1KN-50-X4c" appends="YES" id="ojO-De-hno"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kna-hV-j2D">
                                                 <rect key="frame" x="197.5" y="0.0" width="78" height="84"/>
@@ -199,6 +207,7 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="Zls-0M-5Nc" secondAttribute="bottom" id="Clj-je-prf"/>
                                                     <constraint firstItem="Zls-0M-5Nc" firstAttribute="width" secondItem="Kna-hV-j2D" secondAttribute="width" id="Jta-Sv-Ad6"/>
@@ -207,6 +216,9 @@
                                                     <constraint firstItem="Zls-0M-5Nc" firstAttribute="centerX" secondItem="836-vZ-1M0" secondAttribute="centerX" id="mfO-Bk-JBE"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zls-0M-5Nc" secondAttribute="trailing" id="q7q-5H-qHP"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="7do-nt-9LF" appends="YES" id="S6Z-tk-bYk"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -268,12 +280,16 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="2:3" id="875-Fi-fUQ"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="top" secondItem="0vr-mc-0Vc" secondAttribute="top" constant="35" id="ByA-oO-oJa"/>
                                     <constraint firstAttribute="bottom" secondItem="Oed-g5-Cg2" secondAttribute="bottom" constant="35" id="ka4-AB-5zn"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="centerX" secondItem="0vr-mc-0Vc" secondAttribute="centerX" id="vXg-XF-JPk"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="K4G-P5-amP" appends="YES" id="N4T-Hx-RQ0"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,6 +337,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCe-xS-YDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="b97-bj-dXt">
+                    <connections>
+                        <action selector="startGameAction:" destination="rPS-cn-fUJ" id="Klz-hC-gY6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="K4G-P5-amP">
+                    <connections>
+                        <action selector="creditAction:" destination="rPS-cn-fUJ" id="Dmf-GI-E3E"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1KN-50-X4c">
+                    <connections>
+                        <action selector="setupAction:" destination="rPS-cn-fUJ" id="GQn-KE-EoG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="7do-nt-9LF">
+                    <connections>
+                        <action selector="tutorielAction:" destination="rPS-cn-fUJ" id="rIE-4V-7Da"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-389" y="214"/>
         </scene>

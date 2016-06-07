@@ -14,8 +14,8 @@
 
 #define NB_DEFAULT_PLAYER   1
 #define NB_DEFAULT_BOT      1
-#define NB_DEFAULT_ROWS     5
-#define NB_DEFAULT_COLUMNS  4
+#define NB_DEFAULT_ROWS     1
+#define NB_DEFAULT_COLUMNS  1
 
 @interface GlobalConfigurations : NSObject
 
