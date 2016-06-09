@@ -470,6 +470,7 @@
 
 - (void)displayWinnerView:(BOOL)show player:(Player *)player
 {
+    self.currentPlayerImageView.hidden = show;
     if (show)
     {
         [self rotateSpinningView:self.boardGame];
