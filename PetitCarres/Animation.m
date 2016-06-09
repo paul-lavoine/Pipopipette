@@ -10,7 +10,7 @@
 
 #define MIN_ZOOM_OUT                0.9
 #define ANIMATION_DURATION          ((self.animationDuration != NAN) ?: ANIMATION_DEFAULT_DURATION)
-#define ANIMATION_DEFAULT_DURATION  1.0
+#define ANIMATION_DEFAULT_DURATION  2.0
 
 @interface Animation ()
 
