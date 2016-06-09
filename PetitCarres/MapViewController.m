@@ -14,11 +14,12 @@
 #import "Minimax.h"
 #import "Component.h"
 
-#define SPIN_ANIMATION          @"SpinAnimation"
-#define ROTATION_DURATION       1.0f
-#define EXPAND_DURATION         2.0f
-#define EXPAND_DELAY            0.2f
-#define RIGHT_BAR_BUTTON_SIZE   25
+#define SPIN_ANIMATION                      @"SpinAnimation"
+#define DISPLAY_VIEW_ANIMATION_DELAY        1.0f
+#define ROTATION_DURATION                   1.0f
+#define EXPAND_DURATION                     2.0f
+#define EXPAND_DELAY                        0.2f
+#define RIGHT_BAR_BUTTON_SIZE               25
 
 @interface MapViewController () <CustomButtonDelegate>
 
@@ -76,14 +77,14 @@
     if (!self.alreadyAppear)
     {
         self.alreadyAppear = true;
-       [self initGame];
+        [self initGame];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [Animation sharedInstance].stopAnimation = YES;
+    //    [Animation sharedInstance].stopAnimation = YES;
 }
 
 - (void)configureUI
@@ -169,7 +170,7 @@
     
     Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
     self.currentPlayerImageView.image = currentPlayer.icone;
-//    [[Animation sharedInstance] startAnimation:self.currentPlayerImageView withTimer:2.0f];
+    //    [[Animation sharedInstance] startAnimation:self.currentPlayerImageView withTimer:2.0f];
 }
 
 - (void)initScorePlayer
@@ -344,8 +345,10 @@
     {
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         Player *player = [[PlayerManager sharedInstance] winner];
-//        [self configureWinnerTitleWithPlayer:player];
-        [self displayWinnerView:YES player:player];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, DISPLAY_VIEW_ANIMATION_DELAY * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self displayWinnerView:YES player:player];
+        });
     }
     else
     {
@@ -524,36 +527,36 @@
     
     
     [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
-                                                     attribute:NSLayoutAttributeTrailing
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.boardGame
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+                                                               attribute:NSLayoutAttributeTrailing
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.boardGame
+                                                               attribute:NSLayoutAttributeTrailing
+                                                              multiplier:1.0
+                                                                constant:0.0]];
     
     [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.boardGame
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+                                                               attribute:NSLayoutAttributeBottom
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.boardGame
+                                                               attribute:NSLayoutAttributeBottom
+                                                              multiplier:1.0
+                                                                constant:0.0]];
     
     [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.boardGame
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+                                                               attribute:NSLayoutAttributeTop
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.boardGame
+                                                               attribute:NSLayoutAttributeTop
+                                                              multiplier:1.0
+                                                                constant:0.0]];
     
     [self.boardGame addConstraint:[NSLayoutConstraint constraintWithItem:view
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.boardGame
-                                                     attribute:NSLayoutAttributeLeading
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.boardGame
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:0.0]];
 }
 
 @end
