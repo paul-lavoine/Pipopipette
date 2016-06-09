@@ -11,7 +11,7 @@
 #import "Piece.h"
 
 #define MIN_LARGER_TOUCH    35
-#define BAR_BUTTON_SPACE    7
+#define BAR_BUTTON_SPACE    4
 
 #define VERTICAL_BAR_BUTTON_XIB     @"VerticalBarButton"
 #define HORIZONTAL_BAR_BUTTON_XIB   @"HorizontalBarButton"

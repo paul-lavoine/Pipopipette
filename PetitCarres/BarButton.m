@@ -35,7 +35,7 @@
         _type = type;
         _uid = idPosition;
         [self commonInit];
-        _barView.layer.cornerRadius = 4;
+//        _barView.layer.cornerRadius = 4;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSelectButton:)]];
     }
     
