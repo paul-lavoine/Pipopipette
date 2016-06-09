@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "WinnerViewController.h"
 
+#import "Animation.h"
 #import "PlayerManager.h"
 #import "Minimax.h"
 #import "Component.h"
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFourth;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerSecond;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerThree;
+@property (weak, nonatomic) IBOutlet UIImageView *currentPlayerImageView;
 
 // Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewVerticalTopConstraint;
@@ -76,6 +78,12 @@
         self.alreadyAppear = true;
        [self initGame];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    [Animation sharedInstance].stopAnimation = YES;
 }
 
 - (void)configureUI
@@ -158,6 +166,10 @@
     [Minimax sharedInstance].rows = self.rows;
     [self.winnerViewController.view removeFromSuperview];
     self.winnerViewController = nil;
+    
+    Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
+    self.currentPlayerImageView.image = currentPlayer.icone;
+//    [[Animation sharedInstance] startAnimation:self.currentPlayerImageView withTimer:2.0f];
 }
 
 - (void)initScorePlayer
@@ -357,6 +369,8 @@
 {
     [[PlayerManager sharedInstance] nextPlayer];
     Player *currentPlayer = [[PlayerManager sharedInstance] currentPlayer];
+    self.currentPlayerImageView.image = currentPlayer.icone;
+    
     [self setNavigationBarTitle];
     
     if (currentPlayer.isABot)

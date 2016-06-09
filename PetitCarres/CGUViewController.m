@@ -7,9 +7,8 @@
 //
 
 #import "CGUViewController.h"
+#import "Animation.h"
 
-#define MIN_ZOOM_OUT 0.9
-#define ANIMATION_DURATION 0.5
 #define URL_MARINE_WEBSITE @"http://www.marine-difranco.fr"
 
 @interface CGUViewController ()
@@ -21,8 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *copyrightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *websiteAccessLabel;
 
-// Data
-@property (nonatomic, assign) BOOL stopAnimation;
 
 @end
 
@@ -47,7 +44,7 @@
 {
     [super viewDidLoad];
     [self configureUI];
-    [self startAnimation];
+    [[Animation sharedInstance] startAnimation:self.websiteAccessLabel];
     
     self.websiteAccessLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebsite)];
@@ -57,7 +54,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.stopAnimation = YES;
+    [Animation sharedInstance].stopAnimation = YES;
 }
 
 - (void)configureUI
@@ -91,47 +88,7 @@
     self.copyrightLabel.attributedText = copyrightLight;
 }
 
-#pragma mark - Animations
-- (void)startAnimation
-{
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        //Background Thread
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self popUpZoomIn];
-        });
-    });
-}
 
-- (void)popUpZoomIn
-{
-    self.websiteAccessLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, MIN_ZOOM_OUT, MIN_ZOOM_OUT);
-    [UIView animateWithDuration:ANIMATION_DURATION
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         self.websiteAccessLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
-                     } completion:^(BOOL finished) {
-                         if (!self.stopAnimation)
-                         {
-                             [self popZoomOut];
-                         }
-                     }];
-}
-
-- (void)popZoomOut
-{
-    [UIView animateWithDuration:ANIMATION_DURATION
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         self.websiteAccessLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, MIN_ZOOM_OUT, MIN_ZOOM_OUT);
-                     } completion:^(BOOL finished){
-                         if (!self.stopAnimation)
-                         {
-                             [self popUpZoomIn];
-                         }
-                     }];
-}
 
 #pragma mark - Utils
 

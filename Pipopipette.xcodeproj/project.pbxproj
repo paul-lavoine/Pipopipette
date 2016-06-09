@@ -14,6 +14,7 @@
 		A828D6A01CAF9B4B00720C31 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D69F1CAF9B4B00720C31 /* ChildViewController.m */; };
 		A828D6A91CB0E9EB00720C31 /* CustomStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D6A81CB0E9EB00720C31 /* CustomStepper.m */; };
 		A828D6AC1CB0EA0300720C31 /* CustomStepper.xib in Resources */ = {isa = PBXBuildFile; fileRef = A828D6AB1CB0EA0300720C31 /* CustomStepper.xib */; };
+		A85041E21D0A2E7A00452CFC /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = A85041E11D0A2E7A00452CFC /* Animation.m */; };
 		A85FE8211C15FF2A00EF58E5 /* Piece.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85FE8201C15FF2A00EF58E5 /* Piece.xib */; };
 		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
@@ -82,6 +83,8 @@
 		A828D6A71CB0E9EB00720C31 /* CustomStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomStepper.h; sourceTree = "<group>"; };
 		A828D6A81CB0E9EB00720C31 /* CustomStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomStepper.m; sourceTree = "<group>"; };
 		A828D6AB1CB0EA0300720C31 /* CustomStepper.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStepper.xib; sourceTree = "<group>"; };
+		A85041E01D0A2E7A00452CFC /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		A85041E11D0A2E7A00452CFC /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 		A85FE8201C15FF2A00EF58E5 /* Piece.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Piece.xib; sourceTree = "<group>"; };
 		A85FE8221C16316B00EF58E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		A85FE8231C16316B00EF58E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
@@ -210,9 +213,19 @@
 			name = CustomStepper;
 			sourceTree = "<group>";
 		};
+		A85041DF1D0A2E6800452CFC /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A85041E01D0A2E7A00452CFC /* Animation.h */,
+				A85041E11D0A2E7A00452CFC /* Animation.m */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
 		A85FE8261C1C2F2300EF58E5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A85041DF1D0A2E6800452CFC /* Animations */,
 				A828D6A11CB0E99600720C31 /* CustomStepper */,
 				A8CBA7471C6918C3004351EF /* UIButton+Text */,
 				A89811371C67F92B003A344B /* Configuration */,
@@ -679,6 +692,7 @@
 				A828D6A01CAF9B4B00720C31 /* ChildViewController.m in Sources */,
 				A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */,
 				A8157DA41C149518009526D2 /* PlayerManager.m in Sources */,
+				A85041E21D0A2E7A00452CFC /* Animation.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
 				A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
