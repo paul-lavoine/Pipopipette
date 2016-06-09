@@ -205,7 +205,7 @@
     NSInteger cpt = 0;
     NSInteger globalCpt = 0;
     
-    NSInteger indexPiece = 0;
+//    NSInteger indexPiece = 0;
     NSInteger nbHorizontalPiece = 0;
     NSInteger nbVerticalPiece = 0;
     BOOL isHorizontalButton = true;
@@ -356,7 +356,7 @@
 
 - (NSInteger)indexPieceWithSelectedHorizontalButtonIndex:(NSInteger)selectedButton
 {
-    NSInteger columnSelected = selectedButton/self.columns;
+//    NSInteger columnSelected = selectedButton/self.columns;
     return 0;
 }
 

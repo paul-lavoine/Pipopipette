@@ -100,17 +100,18 @@
 {
     [super viewDidLayoutSubviews];
     int minSpaceBorder = (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE) / 2;
-    self.nbColumnMax = [self limitNumberOfSquarre:10
+    self.nbColumnMax = [self limitNumberOfSquarre:30
                                 highSideBarButton:SIZE_PIECE
                                             space:BAR_BUTTON_SPACE
                                    minSpaceBorder:minSpaceBorder
                                          widthMax:self.rootParentViewController.view.frame.size.width];
     
-    self.nbRowMax = [self limitNumberOfSquarre:10
+    self.nbRowMax = [self limitNumberOfSquarre:30
                              highSideBarButton:SIZE_PIECE
                                          space:BAR_BUTTON_SPACE
                                 minSpaceBorder:minSpaceBorder
-                                      widthMax:self.rootParentViewController.view.frame.size.height];
+                                      widthMax:self.rootParentViewController.view.frame.size.height - 120];
+// 120 espace pour les boutons et le design ...
 }
 
 - (void)configureDefaultMenu
@@ -124,19 +125,7 @@
     [self.nbPlayerLabel setText:[NUMBER_PLAYER_LABEL uppercaseString]];
     [self.nbBotLabel setText:[NUMBER_BOT_LABEL uppercaseString]];
     [self initPlayers];
-    
-    // Init Picker View
-    //    NSDictionary *steppersAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Medium" size:13.0f]};
-    //
-    //    [self.nbRowStepper setValue:NB_DEFAULT_ROWS];
-    //    NSAttributedString *rowAttributedString = [[NSAttributedString alloc] initWithString:[@NB_DEFAULT_ROWS stringValue]
-    //                                                                            attributes:steppersAttributes];
-    //    self.nbRowLabel.attributedText = [NSAttributedString attributedStringWithFormat:ROW_LABEL,rowAttributedString];
-    //
-    //
-    //    [self.nbColumnStepper setValue:NB_DEFAULT_COLUMNS - 1];
-    ////    [self.nbColumnLabel setText:[NSString stringWithFormat:COLUMN_LABEL, (long)NB_DEFAULT_COLUMNS]];
-    //
+
     [self configureSteppers:self.nbColumnStepper label:self.nbColumnLabel string:COLUMN_LABEL value:NB_DEFAULT_COLUMNS];
     [self configureSteppers:self.nbRowStepper label:self.nbRowLabel string:ROW_LABEL value:NB_DEFAULT_ROWS];
     

@@ -25,8 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *boardGame;
-@property (weak, nonatomic) IBOutlet UIView *winnerView;
-@property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *replayButton;
 
@@ -76,7 +74,7 @@
     if (!self.alreadyAppear)
     {
         self.alreadyAppear = true;
-        [self initGame];
+       [self initGame];
     }
 }
 
@@ -186,7 +184,7 @@
     
     // Offset est l'espace à gauche du plateau et à droite du plateau pour aiérer.
     int offsetWidth = (self.contentView.frame.size.width - (self.columns*highSideBarButton) - (space*(self.columns+1)))/2;
-    int offsetHeight = (self.mapView.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2 - 35;
+    int offsetHeight = (self.boardGame.frame.size.height - (self.rows*highSideBarButton) - (space*(self.rows+1)))/2 - 55;
     
     // Vertical bar
     self.pieces = [NSMutableArray array];
@@ -334,7 +332,7 @@
     {
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         Player *player = [[PlayerManager sharedInstance] winner];
-        [self configureWinnerTitleWithPlayer:player];
+//        [self configureWinnerTitleWithPlayer:player];
         [self displayWinnerView:YES player:player];
     }
     else
@@ -416,34 +414,6 @@
 - (BOOL)isMapComplete
 {
     return (self.pieceSelected == (self.rows * self.columns));
-}
-
-- (void)configureWinnerTitleWithPlayer:(Player *)player
-{
-    NSAttributedString *winnerStringWithColor;
-    if (player)
-    {
-        winnerStringWithColor = [self configureAttributedStringWithPlayer:player string:@"Winner is " sizeFont:60.0f];
-    }
-    else
-    {
-        winnerStringWithColor = [[NSAttributedString alloc] initWithString:@"Match Null"];
-    }
-    
-    self.winnerLabel.attributedText = winnerStringWithColor;
-}
-
-- (NSMutableAttributedString *)configureAttributedStringWithPlayer:(Player *)player string:(NSString *)string sizeFont:(CGFloat)sizeFont
-{
-    NSMutableAttributedString *winnerStringWithColor = [[NSMutableAttributedString alloc] initWithString:string];
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : player.colorPlayer,
-                             NSFontAttributeName : [UIFont fontWithName:self.winnerLabel.font.fontName size:sizeFont]
-                             };
-    
-    NSAttributedString *playerName = [[NSAttributedString alloc] initWithString:player.name attributes:attrs];
-    [winnerStringWithColor appendAttributedString:playerName];
-    
-    return winnerStringWithColor;
 }
 
 - (void)enableUsersInteractions:(BOOL)enable
