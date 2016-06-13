@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *replayButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFirst;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerFourth;
 @property (weak, nonatomic) IBOutlet UILabel *scorePlayerSecond;
@@ -66,7 +67,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //    [self setNavigationBarTitle];
     [self configureUI];
 }
 
@@ -81,12 +81,6 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    //    [Animation sharedInstance].stopAnimation = YES;
-}
-
 - (void)configureUI
 {
     // Right Bar Button Item
@@ -95,6 +89,11 @@
     self.replayButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.replayButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [self.replayButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
+    
+    // Score label
+     [self.scoreLabel setFont:ROBOTO_REGULAR(15.0f)];
+    self.scoreLabel.text = @"Score : ";
+    
     
     // left Bar Button Item
     [self.backButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
@@ -179,6 +178,7 @@
     {
         ((UILabel *)self.scores[player.position]).textColor = player.colorPlayer;
         ((UILabel *)self.scores[player.position]).text = @"0";
+        [((UILabel *)self.scores[player.position]) setFont:ROBOTO_BOLD(15.0f)];
     }
 }
 

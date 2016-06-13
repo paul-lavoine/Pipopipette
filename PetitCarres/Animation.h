@@ -11,7 +11,7 @@
 @interface Animation : NSObject
 
 
-+ (instancetype)sharedInstance;
+//+ (instancetype)sharedInstance;
 - (void)startAnimation:(UIView *)view;
 - (void)startAnimation:(UIView *)view withTimer:(CGFloat)timer;
 

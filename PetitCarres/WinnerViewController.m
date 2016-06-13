@@ -12,6 +12,7 @@
 @interface WinnerViewController ()
 
 @property (nonatomic, strong) Player *player;
+@property (weak, nonatomic) IBOutlet UIImageView *logoWinnerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *winnerIsLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerIsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *playerIsLabel;
@@ -33,11 +34,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self configureUI];
 }
 
 - (void)configureUI
+{
+    if (_player)
+    {
+        [self configureWinnerUI];
+    }
+    else
+    {
+        [self configureDraw];
+    }
+}
+
+
+- (void)configureWinnerUI
 {
     self.winnerIsLabel.text = [[NSString stringWithFormat:@"le gagnant\nest"] uppercaseString];
     self.playerIsImageView.image = self.player.icone;
@@ -50,5 +63,12 @@
     self.playerIsLabel.attributedText = winnerPlayer;
 }
 
+- (void)configureDraw
+{
+    self.logoWinnerImageView.hidden = YES;
+    self.playerIsImageView.hidden = YES;
+    self.playerIsLabel.hidden = YES;
+    self.winnerIsLabel.text = [[NSString stringWithFormat:@"match nul"] uppercaseString];
+}
 
 @end

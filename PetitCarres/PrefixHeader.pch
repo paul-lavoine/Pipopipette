@@ -18,6 +18,7 @@
 #define BLACK_COLOR [UIColor colorWithRed:44.0f/255.0f green:42.0f/255.0f blue:47.0f/255.0f alpha:1.0f]
 
 #define ROBOTO_REGULAR(s)   [UIFont fontWithName:@"Roboto-Regular" size:s]
+#define ROBOTO_BOLD(s)      [UIFont fontWithName:@"Roboto-Bold" size:s]
 #define ROBOTO_LIGHT(s)     [UIFont fontWithName:@"Roboto-Light" size:s]
 #define ROBOTO_THIN(s)      [UIFont fontWithName:@"Roboto-Thin" size:s]
 

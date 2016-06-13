@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WinnerViewController">
             <connections>
+                <outlet property="logoWinnerImageView" destination="xUk-Vn-LK7" id="m7z-Gj-FOH"/>
                 <outlet property="playerIsImageView" destination="vDl-bF-Rbt" id="Eie-7b-X2l"/>
                 <outlet property="playerIsLabel" destination="u0Y-ga-E52" id="EzZ-ej-ypH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LP8-ew-N9g"/>
@@ -29,23 +30,23 @@
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uk6-aA-n79">
                     <rect key="frame" x="0.0" y="60" width="464" height="467"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0Y-ga-E52">
-                            <rect key="frame" x="202" y="341.5" width="60" height="29.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0Y-ga-E52">
+                            <rect key="frame" x="202" y="341" width="60" height="29.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logoWinner" translatesAutoresizingMaskIntoConstraints="NO" id="xUk-Vn-LK7">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWinner" translatesAutoresizingMaskIntoConstraints="NO" id="xUk-Vn-LK7">
                             <rect key="frame" x="199" y="30" width="66" height="96"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48Z-yY-y1r">
-                            <rect key="frame" x="201.5" y="156" width="61.5" height="29.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48Z-yY-y1r">
+                            <rect key="frame" x="201" y="156" width="61.5" height="29.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logoWinner" translatesAutoresizingMaskIntoConstraints="NO" id="vDl-bF-Rbt">
-                            <rect key="frame" x="199" y="215.5" width="66" height="96"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWinner" translatesAutoresizingMaskIntoConstraints="NO" id="vDl-bF-Rbt">
+                            <rect key="frame" x="199" y="215" width="66" height="96"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

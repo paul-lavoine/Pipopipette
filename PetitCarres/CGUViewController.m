@@ -44,7 +44,7 @@
 {
     [super viewDidLoad];
     [self configureUI];
-    [[Animation sharedInstance] startAnimation:self.websiteAccessLabel];
+    [[[Animation alloc] init] startAnimation:self.websiteAccessLabel];
     
     self.websiteAccessLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebsite)];
@@ -54,7 +54,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [Animation sharedInstance].stopAnimation = YES;
+
+    [self.websiteAccessLabel.layer removeAllAnimations];
 }
 
 - (void)configureUI

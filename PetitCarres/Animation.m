@@ -99,4 +99,11 @@
     }
 }
 
+#pragma mark - Object lifecycle
+
+- (void)dealloc
+{
+    
+}
+
 @end
