@@ -44,16 +44,15 @@
 
 - (void)configureUI
 {
-    self.introLabel.text = @"La pipopipette est un jeu de société qui se joue de 1 à 4 joueurs. ";
+    self.introLabel.text = LOCALIZED_STRING(@"tutorial.introduction.label");
     self.firstQuoteLabel.text = @"1.";
     self.secondQuoteLabel.text = @"2.";
     self.thirdQuoteLabel.text = @"3.";
-    self.firstRule.text = @"A tour de rôle, chaque joueur sélectionne un coté de l'une des cases du carré. ";
-    self.secondRule.text = @"Le joueur qui selectionne le dernier côté d’une des cases ferme cette case et compte 1 pont. Il rejoue.";
-    self.thirdRule.text = @"Le gagnant est celui qui a fermé le plus grand nombre de cases.";
-    self.titleNoteLabel.text = @"Remarque";
-    self.noteLabel.text = @"Il arrive qu'un joueur ferme deux carrés avec un seul trait. Dans ce cas, son symbole est inscrit sur les deux carrés.";
-    
+    self.firstRule.text = LOCALIZED_STRING(@"tutorial.first_rule.label");
+    self.secondRule.text = LOCALIZED_STRING(@"tutorial.second_rule.label");
+    self.thirdRule.text = LOCALIZED_STRING(@"tutorial.third_rule.label");
+    self.titleNoteLabel.text = LOCALIZED_STRING(@"tutorial.note_title.label");
+    self.noteLabel.text = LOCALIZED_STRING(@"tutorial.note_content.label");
 }
 
 

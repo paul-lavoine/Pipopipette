@@ -1,0 +1,46 @@
+/*
+ Localizable.strings
+ Pipopipette
+ 
+ Created by Paul Lavoine on 17/06/2016.
+ Copyright © 2016 Paul Lavoine. All rights reserved.
+ */
+
+// Global
+"global.default_player.label"       = "Joueur ";
+"global.default_computer.label"     = "Ordinateur ";
+
+// Winner view
+"winner_view.winner_is.label"       = "le gagnant\nest";
+"winner_view.player_winner.label"   = "le joueur ";
+"winner_view.no_winner.label"       = "match nul";
+
+
+// Tutorial
+"tutorial.introduction.label"       = "La pipopipette est un jeu de société qui se joue de 1 à 4 joueurs. ";
+"tutorial.first_rule.label"         = "A tour de rôle, chaque joueur sélectionne un coté de l'une des cases du carré.";
+"tutorial.second_rule.label"        = "Le joueur qui selectionne le dernier côté d’une des cases ferme cette case et compte 1 point. Il rejoue.";
+"tutorial.third_rule.label"         = "Le gagnant est celui qui a fermé le plus grand nombre de cases.";
+"tutorial.note_title.label"         = "Remarque";
+"tutorial.note_content.label"       = "Il arrive qu'un joueur ferme deux carrés avec un seul trait. Dans ce cas, son symbole est inscrit sur les deux carrés.";
+
+
+// Setup
+"setup.nb_player.label"              = "Nombre de joueur";
+"setup.nb_bot.label"                 = "Nombre de Bot";
+"setup.nb_column.label"              = "nb colonne : %@";
+"setup.nb_row.label"                 = "nb ligne : %@";
+"setup.difficulty_player.label"      = "difficulté : %@";
+
+// Menu
+"menu.credits.button"                   = "mentions légales";
+"menu.tutoriel.button"                  = "tutoriel";
+"menu.setup.button"                     = "réglages";
+
+
+// Credits
+"credits.application_developped.label" = "application développé par\n";
+"credits.design_by.label"           = "design par";
+"credits.title_determinant.label"   = "LA ";
+"credits.title_game_name.label"     = "PIPOPIPETTE";
+"credits.copyright.label"           = "© copyright Paul Lavoine - 2016";

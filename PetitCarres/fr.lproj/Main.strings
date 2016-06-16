@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Score"; ObjectID = "4We-qq-FE4"; */
+"4We-qq-FE4.text" = "Score";
+
+/* Class = "UILabel"; text = "LA PIPOPIPETTE"; ObjectID = "HFW-tY-qps"; */
+"HFW-tY-qps.text" = "LA PIPOPIPETTE";
+
+/* Class = "UIButton"; normalTitle = "retour"; ObjectID = "Ioq-Tp-7B7"; */
+"Ioq-Tp-7B7.normalTitle" = "retour";
+
+/* Class = "UILabel"; text = "CRÉDITS"; ObjectID = "Mcm-ks-eZs"; */
+"Mcm-ks-eZs.text" = "CRÉDITS";
+
+/* Class = "UILabel"; text = "JOUER"; ObjectID = "Woo-JU-WWL"; */
+"Woo-JU-WWL.text" = "JOUER";
+
+/* Class = "UILabel"; text = "TUTORIEL"; ObjectID = "Zls-0M-5Nc"; */
+"Zls-0M-5Nc.text" = "TUTORIEL";
+
+/* Class = "UILabel"; text = "RÉGLAGES"; ObjectID = "fLB-ew-1Jh"; */
+"fLB-ew-1Jh.text" = "RÉGLAGES";
+
+/* Class = "UIButton"; normalTitle = "rejouer"; ObjectID = "gsv-G1-y6Z"; */
+"gsv-G1-y6Z.normalTitle" = "rejouer";

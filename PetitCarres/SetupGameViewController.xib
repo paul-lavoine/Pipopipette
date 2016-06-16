@@ -14,7 +14,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupGameViewController">
             <connections>
                 <outlet property="firstBotButton" destination="YEw-zf-Gff" id="TJq-1L-ebG"/>
                 <outlet property="firstPlayerButton" destination="5wO-ki-zcX" id="uGY-gf-28U"/>

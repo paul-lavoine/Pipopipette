@@ -18,8 +18,8 @@ typedef NS_ENUM(NSInteger, BotLevel) {
 
 @class BarButton;
 
-#define DEFAULT_NAME                @"Player"
-#define DEFAULT_BOT_NAME            @"Bot"
+#define DEFAULT_NAME                LOCALIZED_STRING(@"global.default_player.label")
+#define DEFAULT_BOT_NAME            LOCALIZED_STRING(@"global.default_computer.label")
 #define MIN_TIME_BEFORE_PLAYING     0.7f // 0.7
 
 @interface Player : NSObject

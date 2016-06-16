@@ -15,14 +15,15 @@
 		A828D6A91CB0E9EB00720C31 /* CustomStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = A828D6A81CB0E9EB00720C31 /* CustomStepper.m */; };
 		A828D6AC1CB0EA0300720C31 /* CustomStepper.xib in Resources */ = {isa = PBXBuildFile; fileRef = A828D6AB1CB0EA0300720C31 /* CustomStepper.xib */; };
 		A85041E21D0A2E7A00452CFC /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = A85041E11D0A2E7A00452CFC /* Animation.m */; };
+		A85041E71D135D8400452CFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A85041E91D135D8400452CFC /* Localizable.strings */; };
 		A85FE8211C15FF2A00EF58E5 /* Piece.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85FE8201C15FF2A00EF58E5 /* Piece.xib */; };
-		A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* MenuViewController.m */; };
+		A85FE8241C16316B00EF58E5 /* SetupGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* SetupGameViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
 		A866FE391C2961C400916810 /* Component.m in Sources */ = {isa = PBXBuildFile; fileRef = A866FE381C2961C400916810 /* Component.m */; };
 		A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811A1C6A86080002F5D8 /* RootViewController.xib */; };
 		A878811D1C6A97AB0002F5D8 /* TutorielViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */; };
 		A87881201C6A9C750002F5D8 /* CGUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811F1C6A9C750002F5D8 /* CGUViewController.xib */; };
-		A87881221C6A9E0B0002F5D8 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */; };
+		A87881221C6A9E0B0002F5D8 /* SetupGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87881211C6A9E0B0002F5D8 /* SetupGameViewController.xib */; };
 		A87C5CD71C6807BD00CF0B33 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */; };
 		A87C5CD81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */; };
 		A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */; };
@@ -39,7 +40,7 @@
 		A87C5CE41C6807BD00CF0B33 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD41C6807BD00CF0B33 /* Roboto-Regular.ttf */; };
 		A87C5CE51C6807BD00CF0B33 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD51C6807BD00CF0B33 /* Roboto-Thin.ttf */; };
 		A87C5CE61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A87C5CD61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf */; };
-		A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811351C67F71B003A344B /* HomePageViewController.m */; };
+		A87C5CEA1C690CB100CF0B33 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811351C67F71B003A344B /* MenuViewController.m */; };
 		A898113A1C67F93A003A344B /* GlobalConfigurations.m in Sources */ = {isa = PBXBuildFile; fileRef = A89811391C67F93A003A344B /* GlobalConfigurations.m */; };
 		A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA74D1C692E98004351EF /* TutorielViewController.m */; };
 		A8CBA7531C6951CC004351EF /* CGUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CBA7521C6951CC004351EF /* CGUViewController.m */; };
@@ -85,9 +86,14 @@
 		A828D6AB1CB0EA0300720C31 /* CustomStepper.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStepper.xib; sourceTree = "<group>"; };
 		A85041E01D0A2E7A00452CFC /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		A85041E11D0A2E7A00452CFC /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		A85041E81D135D8400452CFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A85041EA1D135D8800452CFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A85041EB1D135DAB00452CFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		A85041EC1D135DAB00452CFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A85041ED1D135DAB00452CFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A85FE8201C15FF2A00EF58E5 /* Piece.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Piece.xib; sourceTree = "<group>"; };
-		A85FE8221C16316B00EF58E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		A85FE8231C16316B00EF58E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		A85FE8221C16316B00EF58E5 /* SetupGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupGameViewController.h; sourceTree = "<group>"; };
+		A85FE8231C16316B00EF58E5 /* SetupGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupGameViewController.m; sourceTree = "<group>"; };
 		A85FE82D1C1C2FEB00EF58E5 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
 		A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 		A866FE371C2961C400916810 /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
@@ -95,7 +101,7 @@
 		A878811A1C6A86080002F5D8 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorielViewController.xib; sourceTree = "<group>"; };
 		A878811F1C6A9C750002F5D8 /* CGUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGUViewController.xib; sourceTree = "<group>"; };
-		A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		A87881211C6A9E0B0002F5D8 /* SetupGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupGameViewController.xib; sourceTree = "<group>"; };
 		A87C5CC71C6807BD00CF0B33 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		A87C5CC81C6807BD00CF0B33 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A87C5CC91C6807BD00CF0B33 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -112,8 +118,8 @@
 		A87C5CD41C6807BD00CF0B33 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A87C5CD51C6807BD00CF0B33 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		A87C5CD61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		A89811341C67F71B003A344B /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
-		A89811351C67F71B003A344B /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		A89811341C67F71B003A344B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		A89811351C67F71B003A344B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		A89811381C67F93A003A344B /* GlobalConfigurations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfigurations.h; sourceTree = "<group>"; };
 		A89811391C67F93A003A344B /* GlobalConfigurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfigurations.m; sourceTree = "<group>"; };
 		A898113B1C6802C2003A344B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -222,6 +228,14 @@
 			name = Animations;
 			sourceTree = "<group>";
 		};
+		A85041E41D135D3400452CFC /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				A85041E91D135D8400452CFC /* Localizable.strings */,
+			);
+			name = Localizable;
+			sourceTree = "<group>";
+		};
 		A85FE8261C1C2F2300EF58E5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,23 +292,23 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		A89811311C67F6DE003A344B /* Menu */ = {
+		A89811311C67F6DE003A344B /* SetupGame */ = {
 			isa = PBXGroup;
 			children = (
-				A85FE8221C16316B00EF58E5 /* MenuViewController.h */,
-				A85FE8231C16316B00EF58E5 /* MenuViewController.m */,
-				A87881211C6A9E0B0002F5D8 /* MenuViewController.xib */,
+				A85FE8221C16316B00EF58E5 /* SetupGameViewController.h */,
+				A85FE8231C16316B00EF58E5 /* SetupGameViewController.m */,
+				A87881211C6A9E0B0002F5D8 /* SetupGameViewController.xib */,
 			);
-			name = Menu;
+			name = SetupGame;
 			sourceTree = "<group>";
 		};
-		A89811321C67F6EC003A344B /* HomePage */ = {
+		A89811321C67F6EC003A344B /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				A89811341C67F71B003A344B /* HomePageViewController.h */,
-				A89811351C67F71B003A344B /* HomePageViewController.m */,
+				A89811341C67F71B003A344B /* MenuViewController.h */,
+				A89811351C67F71B003A344B /* MenuViewController.m */,
 			);
-			name = HomePage;
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		A89811331C67F6F2003A344B /* Map */ = {
@@ -456,10 +470,10 @@
 			children = (
 				A828D69D1CAF9B3200720C31 /* Child */,
 				A8CBA7501C6951B8004351EF /* Credit */,
-				A89811321C67F6EC003A344B /* HomePage */,
+				A89811321C67F6EC003A344B /* Menu */,
 				A89811331C67F6F2003A344B /* Map */,
-				A89811311C67F6DE003A344B /* Menu */,
 				A8CBA7541C6A8260004351EF /* Root */,
+				A89811311C67F6DE003A344B /* SetupGame */,
 				A8CBA74B1C692E6D004351EF /* Tutoriel */,
 				A80283A61D076CCF0057678E /* Winner */,
 			);
@@ -469,6 +483,7 @@
 		DA6E9B3D1BA01D5E009A9EB8 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				A85041E41D135D3400452CFC /* Localizable */,
 				A87C5CC61C6807B400CF0B33 /* Fonts */,
 				DA6E9B1C1BA01AC6009A9EB8 /* Images.xcassets */,
 			);
@@ -572,6 +587,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = DA6E9B031BA01AC6009A9EB8;
 			productRefGroup = DA6E9B0D1BA01AC6009A9EB8 /* Products */;
@@ -605,12 +621,13 @@
 				A87C5CDC1C6807BD00CF0B33 /* Roboto-BoldItalic.ttf in Resources */,
 				A87C5CD71C6807BD00CF0B33 /* Roboto-Black.ttf in Resources */,
 				A87C5CE11C6807BD00CF0B33 /* Roboto-LightItalic.ttf in Resources */,
-				A87881221C6A9E0B0002F5D8 /* MenuViewController.xib in Resources */,
+				A87881221C6A9E0B0002F5D8 /* SetupGameViewController.xib in Resources */,
 				A87C5CE61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf in Resources */,
 				A87C5CE51C6807BD00CF0B33 /* Roboto-Thin.ttf in Resources */,
 				A87C5CDE1C6807BD00CF0B33 /* Roboto-CondensedItalic.ttf in Resources */,
 				A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */,
 				DA6E9B1D1BA01AC6009A9EB8 /* Images.xcassets in Resources */,
+				A85041E71D135D8400452CFC /* Localizable.strings in Resources */,
 				A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */,
 				A80283AB1D076D120057678E /* WinnerViewController.xib in Resources */,
 				DA6E9B391BA01D2A009A9EB8 /* HorizontalBarButton.xib in Resources */,
@@ -683,7 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8CBA74E1C692E98004351EF /* TutorielViewController.m in Sources */,
-				A87C5CEA1C690CB100CF0B33 /* HomePageViewController.m in Sources */,
+				A87C5CEA1C690CB100CF0B33 /* MenuViewController.m in Sources */,
 				A866FE391C2961C400916810 /* Component.m in Sources */,
 				A80283A91D076D050057678E /* WinnerViewController.m in Sources */,
 				A8CBA7571C6A828C004351EF /* RootViewController.m in Sources */,
@@ -694,7 +711,7 @@
 				A8157DA41C149518009526D2 /* PlayerManager.m in Sources */,
 				A85041E21D0A2E7A00452CFC /* Animation.m in Sources */,
 				DA6E9B181BA01AC6009A9EB8 /* MapViewController.m in Sources */,
-				A85FE8241C16316B00EF58E5 /* MenuViewController.m in Sources */,
+				A85FE8241C16316B00EF58E5 /* SetupGameViewController.m in Sources */,
 				DA6E9B151BA01AC6009A9EB8 /* AppDelegate.m in Sources */,
 				A828D6A91CB0E9EB00720C31 /* CustomStepper.m in Sources */,
 				DA6E9B121BA01AC6009A9EB8 /* main.m in Sources */,
@@ -724,10 +741,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A85041E91D135D8400452CFC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A85041E81D135D8400452CFC /* Base */,
+				A85041EA1D135D8800452CFC /* en */,
+				A85041ED1D135DAB00452CFC /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DA6E9B191BA01AC6009A9EB8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DA6E9B1A1BA01AC6009A9EB8 /* Base */,
+				A85041EB1D135DAB00452CFC /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -736,6 +764,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DA6E9B1F1BA01AC6009A9EB8 /* Base */,
+				A85041EC1D135DAB00452CFC /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

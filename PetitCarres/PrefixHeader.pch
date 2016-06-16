@@ -21,6 +21,7 @@
 #define ROBOTO_BOLD(s)      [UIFont fontWithName:@"Roboto-Bold" size:s]
 #define ROBOTO_LIGHT(s)     [UIFont fontWithName:@"Roboto-Light" size:s]
 #define ROBOTO_THIN(s)      [UIFont fontWithName:@"Roboto-Thin" size:s]
+#define ROBOTO_MEDIUM(s)    [UIFont fontWithName:@"Roboto-Medium" size:s]
 
 #define IS_IPAD             (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE           (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -28,6 +29,8 @@
 #define IS_IPHONE_5         (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0)
 #define IS_IPHONE_6         (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0)
 #define IS_IPHONE_6_PLUS    (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
+
+#define LOCALIZED_STRING(s)     NSLocalizedString(s, nil)
 
 #import "ChildViewController.h"
 

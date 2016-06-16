@@ -52,10 +52,10 @@
 
 - (void)configureWinnerUI
 {
-    self.winnerIsLabel.text = [[NSString stringWithFormat:@"le gagnant\nest"] uppercaseString];
+    self.winnerIsLabel.text = [[NSString stringWithFormat:LOCALIZED_STRING(@"winner_view.winner_is.label")] uppercaseString];
     self.playerIsImageView.image = self.player.icone;
     
-    NSMutableAttributedString *winnerPlayer = [[NSMutableAttributedString alloc] initWithString:[@"le joueur " uppercaseString] attributes:@{NSFontAttributeName : ROBOTO_LIGHT(25.0f)}];
+    NSMutableAttributedString *winnerPlayer = [[NSMutableAttributedString alloc] initWithString:[LOCALIZED_STRING(@"winner_view.player_winner.label") uppercaseString] attributes:@{NSFontAttributeName : ROBOTO_LIGHT(25.0f)}];
     [winnerPlayer appendAttributedString:[[NSAttributedString alloc] initWithString:[[NSString stringWithFormat:@"%@", self.player.name] uppercaseString]
                                                                          attributes:@{NSFontAttributeName : ROBOTO_REGULAR(25.0f)}]];
     
@@ -68,7 +68,7 @@
     self.logoWinnerImageView.hidden = YES;
     self.playerIsImageView.hidden = YES;
     self.playerIsLabel.hidden = YES;
-    self.winnerIsLabel.text = [[NSString stringWithFormat:@"match nul"] uppercaseString];
+    self.winnerIsLabel.text = [[NSString stringWithFormat:LOCALIZED_STRING(@"winner_view.no_winner.label")] uppercaseString];
 }
 
 @end

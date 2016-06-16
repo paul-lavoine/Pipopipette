@@ -2,327 +2,135 @@
 //  MenuViewController.m
 //  PetitCarres
 //
-//  Created by Paul Lavoine on 07/12/2015.
-//  Copyright © 2015 Paul Lavoine. All rights reserved.
+//  Created by Paul Lavoine on 07/02/2016.
+//  Copyright © 2016 Paul Lavoine. All rights reserved.
 //
 
 #import "MenuViewController.h"
 #import "MapViewController.h"
 #import "PlayerManager.h"
-#import "BarButton.h"
-#import "CustomStepper.h"
 #import "GlobalConfigurations.h"
-#import <NSAttributedString+CCLFormat.h>
+#import "SetupGameViewController.h"
+#import "TutorielViewController.h"
+#import "CGUViewController.h"
 
-#define NUMBER_PLAYER_LABEL @"Nombre de joueur"
-#define NUMBER_BOT_LABEL @"Nombre de Bot"
-#define DEFAULT_LEVEL   3
-
-#define COLUMN_LABEL @"NB COLONNE : %@"
-#define ROW_LABEL @"NB LIGNE : %@"
-#define LEVEL_LABEL @"DIFFICULTÉ : %@"
-
-
-@interface MenuViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
+@interface MenuViewController ()
 
 // Outlets
-@property (weak, nonatomic) IBOutlet UILabel *nbPlayerLabel;
-@property (weak, nonatomic) IBOutlet UIButton *firstPlayerButton;
-@property (weak, nonatomic) IBOutlet UIButton *secondPlayerButton;
-@property (weak, nonatomic) IBOutlet UIButton *thirdPlayerButton;
-@property (weak, nonatomic) IBOutlet UIButton *fourthPlayerButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *playView;
+@property (weak, nonatomic) IBOutlet UIView *setupView;
+@property (weak, nonatomic) IBOutlet UIView *creditView;
 
-@property (weak, nonatomic) IBOutlet UILabel *nbBotLabel;
-@property (weak, nonatomic) IBOutlet UIButton *firstBotButton;
-@property (weak, nonatomic) IBOutlet UIButton *secondBotButton;
-@property (weak, nonatomic) IBOutlet UIButton *thirdBotButton;
-@property (weak, nonatomic) IBOutlet UIButton *fourthBotButton;
+@property (weak, nonatomic) IBOutlet UIView *creditButtonView;
+@property (weak, nonatomic) IBOutlet UIImageView *creditImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *nbColumnLabel;
-@property (weak, nonatomic) IBOutlet CustomStepper *nbColumnStepper;
-@property (weak, nonatomic) IBOutlet UILabel *nbRowLabel;
-@property (weak, nonatomic) IBOutlet CustomStepper *nbRowStepper;
-@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
-@property (weak, nonatomic) IBOutlet CustomStepper *levelStepper;
+@property (weak, nonatomic) IBOutlet UIImageView *setupImageView;
+@property (weak, nonatomic) IBOutlet UIView *setupButtonView;
 
-@property (weak, nonatomic) IBOutlet UIButton *startGameButton;
+@property (weak, nonatomic) IBOutlet UIImageView *tutorielImageView;
+@property (weak, nonatomic) IBOutlet UIView *tutorielButtonView;
 
-// Data
-@property (nonatomic, strong) NSArray *players;
-@property (nonatomic, strong) NSArray *realPlayers;
-@property (nonatomic, strong) NSArray *botPlayers;
-@property (nonatomic, assign) BOOL reachMaxPlayers;
-@property (nonatomic, assign) NSInteger nbColumnMax;
-@property (nonatomic, assign) NSInteger nbRowMax;
-
-// Data
-@property (nonatomic, strong) GlobalConfigurations *configurations;
-//@property (nonatomic, strong) UIView *colorSelectedButtonView;
+// Constraint
 @property (nonatomic, assign) BOOL alreadyAppear;
+@property (strong, nonatomic) NSArray *constraints;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalBottomConstraint;
 
 @end
 
 @implementation MenuViewController
 
-#pragma mark - Initializers
-
-- (instancetype)init
-{
-    if (self = [super initWithNibName:@"MenuViewController" bundle:nil])
-    {
-        
-    }
-    
-    return self;
-}
-
+#pragma mark - View lifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureUI];
     
-    self.configurations = [GlobalConfigurations sharedInstance];
-    [self.levelStepper setValue:DEFAULT_LEVEL];
-    self.navigationController.delegate = self;
-    self.nbColumnStepper.delegate = self;
-    self.nbRowStepper.delegate = self;
-    self.levelStepper.delegate = self;
     
-    self.players = @[self.firstPlayerButton, self.firstBotButton, self.secondBotButton, self.secondPlayerButton, self.thirdBotButton, self.thirdPlayerButton, self.fourthBotButton, self.fourthPlayerButton];
+    // Gesture Recognizer
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(creditAction:)];
+    [self.creditButtonView addGestureRecognizer:tapRecognizer];
     
-    self.realPlayers = @[self.firstPlayerButton, self.secondPlayerButton, self.thirdPlayerButton, self.fourthPlayerButton];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAction:)];
+    [self.setupButtonView addGestureRecognizer:tapRecognizer];
     
-    self.botPlayers = @[self.firstBotButton, self.secondBotButton, self.thirdBotButton, self.fourthBotButton];
-    
-    [self configureDefaultMenu];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorielAction:)];
+    [self.tutorielButtonView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    int minSpaceBorder = (MIN_LARGER_TOUCH - BAR_BUTTON_SPACE) / 2;
-    self.nbColumnMax = [self limitNumberOfSquarre:30
-                                highSideBarButton:SIZE_PIECE
-                                            space:BAR_BUTTON_SPACE
-                                   minSpaceBorder:minSpaceBorder
-                                         widthMax:self.rootParentViewController.view.frame.size.width];
     
-    self.nbRowMax = [self limitNumberOfSquarre:30
-                             highSideBarButton:SIZE_PIECE
-                                         space:BAR_BUTTON_SPACE
-                                minSpaceBorder:minSpaceBorder
-                                      widthMax:self.rootParentViewController.view.frame.size.height - 120];
-// 120 espace pour les boutons et le design ...
+    if (!self.alreadyAppear && [[UIScreen mainScreen] bounds].size.height <= 480.0f)
+    {
+        self.alreadyAppear = YES;
+        self.constraints = @[self.setupVerticalBottomConstraint, self.setupVerticalTopConstraint, self.playVerticalBottomConstraint, self.playVerticalTopConstraint, self.logoVerticalBottomConstraint, self.logoVerticalTopConstraint, self.creditVerticalTopConstraint, self.creditVerticalBottomConstraint];
+        
+        for (NSLayoutConstraint *constraint in self.constraints)
+        {
+            constraint.constant = constraint.constant - 10;
+        }
+    }
 }
 
-- (void)configureDefaultMenu
+- (void)configureUI
 {
-    // Init game start button
-    self.startGameButton.backgroundColor = GREEN_COLOR;
-    self.startGameButton.titleLabel.text = @"JOUER";
-    self.startGameButton.titleLabel.textColor = [UIColor whiteColor];
+    [self.navigationController setNavigationBarHidden:YES];
     
-    // Init Stepper
-    [self.nbPlayerLabel setText:[NUMBER_PLAYER_LABEL uppercaseString]];
-    [self.nbBotLabel setText:[NUMBER_BOT_LABEL uppercaseString]];
-    [self initPlayers];
-
-    [self configureSteppers:self.nbColumnStepper label:self.nbColumnLabel string:COLUMN_LABEL value:NB_DEFAULT_COLUMNS];
-    [self configureSteppers:self.nbRowStepper label:self.nbRowLabel string:ROW_LABEL value:NB_DEFAULT_ROWS];
+    // Background Color
+    self.playView.backgroundColor = GREEN_COLOR;
+    self.setupView.backgroundColor = PINK_COLOR;
+    self.creditView.backgroundColor = [UIColor whiteColor];
+    self.logoView.backgroundColor = [UIColor whiteColor];
     
-    // Stepper
-    self.nbColumnStepper.leftButton.backgroundColor = PINK_COLOR;
-    self.nbColumnStepper.rightButton.backgroundColor = GREEN_COLOR;
-    self.nbRowStepper.leftButton.backgroundColor = PINK_COLOR;
-    self.nbRowStepper.rightButton.backgroundColor = GREEN_COLOR;
-    self.levelStepper.leftButton.backgroundColor = PINK_COLOR;
-    self.levelStepper.rightButton.backgroundColor = GREEN_COLOR;
-    
-    // Init level button
-    [self.levelStepper setValue:DEFAULT_LEVEL];
-    [self configureSteppers:self.levelStepper label:self.levelLabel string:LEVEL_LABEL value:DEFAULT_LEVEL];
-}
-
-- (void)initPlayers
-{
-    [self selectButton:self.firstBotButton isSelected:YES];
-    [self selectButton:self.firstPlayerButton isSelected:YES];
-    self.firstPlayerButton.userInteractionEnabled = NO;
-    [self selectButton:self.secondPlayerButton isSelected:NO];
-    [self selectButton:self.secondBotButton isSelected:NO];
-    [self selectButton:self.thirdPlayerButton isSelected:NO];
-    [self selectButton:self.thirdBotButton isSelected:NO];
-    [self selectButton:self.fourthPlayerButton isSelected:NO];
-    [self selectButton:self.fourthBotButton isSelected:NO];
+    // Tint color button
+    [self.setupImageView setTintColor:[UIColor whiteColor]];
+    [self.creditImageView setTintColor:GREEN_COLOR];
 }
 
 #pragma mark - Actions
 
-- (IBAction)startGame:(id)sender
+- (IBAction)startGameAction:(id)sender
 {
-    BotLevel level = [self selectedLevel];
-    self.configurations.nbPlayer = [self computeNbPlayers:self.realPlayers];
-    self.configurations.nbBot = [self computeNbPlayers:self.botPlayers];
-    [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
+    [[PlayerManager sharedInstance] setNumberOfPlayers:NB_DEFAULT_PLAYER numberOfBot:NB_DEFAULT_BOT botLevel:BotLevelMedium];
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    MapViewController *mapViewController = [mainStoryboard instantiateViewControllerWithIdentifier:MapViewControllerID];
-    [mapViewController configureMapWithRows:self.nbRowStepper.value columns:self.nbColumnStepper.value];
+    MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
+    [mapViewController configureMapWithRows:NB_DEFAULT_ROWS columns:NB_DEFAULT_COLUMNS];
     
-    [self.rootParentViewController pushViewController:mapViewController];
+    [self.navigationController pushViewController:mapViewController animated:YES];
 }
 
-- (IBAction)valueChanged:(UIStepper *)sender
+- (IBAction)creditAction:(id)sender
 {
-    NSInteger maxValue = 0;
-    NSInteger minValue = DIFFICULTY_LEVEL_MIN;
-    UILabel *label;
-    NSString *string;
-    
-    if (sender == self.nbColumnStepper)
-    {
-        maxValue = self.nbColumnMax;
-        string = COLUMN_LABEL;
-        label = self.nbColumnLabel;
-    }
-    else if (sender == self.nbRowStepper)
-    {
-        maxValue = self.nbRowMax;
-        string = ROW_LABEL;
-        label = self.nbRowLabel;
-    }
-    else if (sender == self.levelStepper)
-    {
-        maxValue = DIFFICULTY_LEVEL_MAX;
-        string = LEVEL_LABEL;
-        label = self.levelLabel;
-    }
-    else
-    {
-        NSLog(@"stepper not found");
-    }
-    
-    
-    if (sender.value + 1 > maxValue)
-    {
-        sender.value = maxValue;
-    }
-    else if (sender.value <= minValue)
-    {
-        sender.value = minValue;
-    }
-    
-    [self configureSteppers:nil label:label string:string value:sender.value];
+    CGUViewController *cguViewController = [[CGUViewController alloc] init];
+    [self pushViewController:cguViewController title:[LOCALIZED_STRING(@"menu.credits.button") uppercaseString] image:[UIImage imageNamed:@"credit_button"]];
 }
 
-#pragma mark - Actions
-
-- (IBAction)selectPlayer:(UIButton *)sender
+- (IBAction)tutorielAction:(id)sender
 {
-    if (!sender.isSelected && self.reachMaxPlayers)
-        return;
-    
-    [self selectButton:sender isSelected:!sender.selected];
-    [self isFullPlayerSelected];
+    TutorielViewController *tutorielViewController = [[TutorielViewController alloc] init];
+    [self pushViewController:tutorielViewController title:[LOCALIZED_STRING(@"menu.tutoriel.button") uppercaseString ]image:[UIImage imageNamed:@"tutoriel_icon"]];
 }
 
-#pragma mark - Utils
-
-- (void)selectButton:(UIButton *)button isSelected:(BOOL)isSelected
+- (IBAction)setupAction:(id)sender
 {
-    button.selected = isSelected;
-    button.tintColor = button.selected ? GREEN_COLOR : [UIColor blackColor];
+    SetupGameViewController *setupGameViewController = [[SetupGameViewController alloc] init];
+    [self pushViewController:setupGameViewController title:[LOCALIZED_STRING(@"menu.setup.button") uppercaseString] image:[UIImage imageNamed:@"setup_button"]];
 }
 
-- (BOOL)isFullPlayerSelected
+- (void)pushViewController:(ChildViewController *)viewController title:(NSString *)title image:(UIImage *)image
 {
-    NSInteger nbPlayers = 0;
-    for (UIButton *player in self.players)
-    {
-        if (player.isSelected)
-        {
-            nbPlayers ++;
-            if (nbPlayers >= NB_MAX_PLAYER)
-            {
-                self.reachMaxPlayers = YES;
-                [self colorPlayersNotSelected:YES];
-                return YES;
-            }
-        }
-    }
-    
-    self.reachMaxPlayers = NO;
-    [self colorPlayersNotSelected:NO];
-    return NO;
-}
-
-- (void)colorPlayersNotSelected:(BOOL)shouldColor
-{
-    for (UIButton *player in self.players)
-    {
-        if (!player.isSelected)
-        {
-            player.tintColor = shouldColor ? GRAY_COLOR : [UIColor blackColor];
-        }
-        else
-        {
-            player.tintColor = GREEN_COLOR;
-        }
-    }
-}
-
-- (NSInteger)computeNbPlayers:(NSArray *)players
-{
-    NSInteger nbPlayer = 0;
-    for (UIButton *player in players)
-    {
-        if (player.isSelected)
-        {
-            nbPlayer++;
-        }
-    }
-    return nbPlayer;
-}
-
-- (BotLevel)selectedLevel
-{
-    if (self.levelStepper.value == 1)
-    {
-        return BotLevelEasy;
-    }
-    else if (self.levelStepper.value == 2)
-    {
-        return BotLevelMedium;
-    }
-    else if (self.levelStepper.value == 3)
-    {
-        return BotLevelDifficult;
-    }
-    else
-    {
-        return BotLevelExtreme;
-    }
-}
-
-- (NSInteger)limitNumberOfSquarre:(NSInteger)cases highSideBarButton:(NSInteger)highSideBarButton space:(NSInteger)space minSpaceBorder:(NSInteger)minSpaceBorder widthMax:(NSInteger)widthMax
-{
-    NSInteger nbCaseAvailable = cases;
-    while (widthMax < ((nbCaseAvailable*highSideBarButton) + (space*(nbCaseAvailable+1) + 2*minSpaceBorder)))
-    {
-        nbCaseAvailable --;
-    }
-    
-    return nbCaseAvailable;
-}
-
-- (void)configureSteppers:(UIStepper *)stepper label:(UILabel *)label string:(NSString *)string value:(NSInteger)value
-{
-    NSDictionary *steppersAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Medium" size:13.0f]};
-    [stepper setValue:value];
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[@(value) stringValue]
-                                                                           attributes:steppersAttributes];
-    label.attributedText = [NSAttributedString attributedStringWithFormat:string, attributedString];
-    
-    
+    RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:title image:image subView:viewController];
+    [self.navigationController pushViewController:rootViewController animated:YES];
 }
 
 @end

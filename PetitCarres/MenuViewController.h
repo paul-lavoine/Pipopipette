@@ -1,9 +1,9 @@
 //
-//  StartViewController.h
+//  HomePageViewController.h
 //  PetitCarres
 //
-//  Created by Paul Lavoine on 07/12/2015.
-//  Copyright © 2015 Paul Lavoine. All rights reserved.
+//  Created by Paul Lavoine on 07/02/2016.
+//  Copyright © 2016 Paul Lavoine. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,6 @@
 
 @interface MenuViewController : ChildViewController
 
-- (instancetype)init;
+- (IBAction)setupAction:(id)sender;
 
 @end
