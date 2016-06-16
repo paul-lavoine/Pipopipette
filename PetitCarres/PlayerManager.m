@@ -56,12 +56,12 @@
     for (int i = 0; i < nbPlayers; i++)
     {
         j++;
-        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"%@", self.iconesArray[i]] icone:self.iconesArray[i] position:i isABot:NO botLevel:botLevel]];
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i] name:[NSString stringWithFormat:@"\"%@ %d\"", DEFAULT_NAME, (i+1)] icone:self.iconesArray[i] position:i isABot:NO botLevel:botLevel]];
     }
     
     for (int i = 0; i < nbBot; i++)
     {
-        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i+j] name:[NSString stringWithFormat:@"%@%d",DEFAULT_BOT_NAME, i] icone:self.iconesArray[i+j] position:(i+j) isABot:YES botLevel:botLevel]];
+        [self.playersArray addObject:[[Player alloc] initWithColor:self.colorsArray[i+j] name:[NSString stringWithFormat:@"\"%@ %d\"",DEFAULT_BOT_NAME, (i+1)] icone:self.iconesArray[i+j] position:(i+j) isABot:YES botLevel:botLevel]];
     }
 }
 

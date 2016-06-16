@@ -1,7 +1,55 @@
-/* 
-  Localizable.strings
-  Pipopipette
+/*
+ Localizable.strings
+ Pipopipette
+ 
+ Created by Paul Lavoine on 17/06/2016.
+ Copyright © 2016 Paul Lavoine. All rights reserved.
+ */
 
-  Created by Paul Lavoine on 17/06/2016.
-  Copyright © 2016 Paul Lavoine. All rights reserved.
-*/
+// Global
+"global.default_player.label"       = "Player";
+"global.default_computer.label"     = "Computer";
+
+// Winner view
+"winner_view.winner_is.label"       = "The winner\nis";
+"winner_view.player_winner.label"   = "the player ";
+"winner_view.no_winner.label"       = "draw";
+
+
+// Tutorial
+"tutorial.introduction.label"       = "The pipopipette is a game that is played from 1 to 4 players. ";
+"tutorial.first_rule.label"         = "In turn , each player selects a side of one of the square boxes.";
+"tutorial.second_rule.label"        = "The player who selects the last side from a square, close this square and has 1 point. He replays.";
+
+"tutorial.third_rule.label"         = "The winner is the one who closed the largest number of squares.";
+"tutorial.note_title.label"         = "Note";
+"tutorial.note_content.label"       = "Sometimes a player closes two squares with a single stroke . In this case, the symbol is registered with the two squares.";
+
+
+// Setup
+"setup.nb_player.label"              = "Number of player";
+"setup.nb_bot.label"                 = "Number of computer";
+"setup.nb_column.label"              = "nb column : %@";
+"setup.nb_row.label"                 = "nb row : %@";
+"setup.difficulty_player.label"      = "difficulty : %@";
+"setup.play.label"                   = "play";
+
+// Menu
+"menu.credits.button"                   = "credits";
+"menu.tutoriel.button"                  = "tutorial";
+"menu.setup.button"                     = "setup";
+"menu.play.button"                      = "play";
+
+
+// Credits
+"credits.application_developped.label"  = "application developped by\n";
+"credits.design_by.label"               = "design by";
+"credits.title_determinant.label"       = "THE ";
+"credits.title_game_name.label"         = "PIPOPIPETTE";
+"credits.copyright.label"               = "© copyright Paul Lavoine - 2016";
+
+
+// Map
+"map.back.label"                        = "back";
+"map.replay.label"                      = "replay";
+"map.score.label"                       = "Score : ";
