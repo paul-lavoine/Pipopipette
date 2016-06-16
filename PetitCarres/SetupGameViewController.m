@@ -111,7 +111,7 @@
 {
     // Init game start button
     self.startGameButton.backgroundColor = GREEN_COLOR;
-    self.startGameButton.titleLabel.text = @"JOUER";
+    self.startGameButton.titleLabel.text = [LOCALIZED_STRING(@"setup.play.label") uppercaseString];
     self.startGameButton.titleLabel.textColor = [UIColor whiteColor];
     
     // Init Stepper

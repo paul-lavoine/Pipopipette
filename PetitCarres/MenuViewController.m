@@ -17,13 +17,15 @@
 @interface MenuViewController ()
 
 // Outlets
-@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UILabel *playLabelButton;
+@property (weak, nonatomic) IBOutlet UILabel *creditsLabelButton;
+@property (weak, nonatomic) IBOutlet UILabel *setupLabelButton;
+@property (weak, nonatomic) IBOutlet UILabel *tutorielLabelButton;
+
 @property (weak, nonatomic) IBOutlet UIView *logoView;
 @property (weak, nonatomic) IBOutlet UIView *playView;
 @property (weak, nonatomic) IBOutlet UIView *setupView;
 @property (weak, nonatomic) IBOutlet UIView *creditView;
-
-@property (weak, nonatomic) IBOutlet UIView *creditButtonView;
 @property (weak, nonatomic) IBOutlet UIImageView *creditImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *setupImageView;
@@ -53,17 +55,6 @@
 {
     [super viewDidLoad];
     [self configureUI];
-    
-    
-    // Gesture Recognizer
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(creditAction:)];
-    [self.creditButtonView addGestureRecognizer:tapRecognizer];
-    
-    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAction:)];
-    [self.setupButtonView addGestureRecognizer:tapRecognizer];
-    
-    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorielAction:)];
-    [self.tutorielButtonView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)viewDidLayoutSubviews
@@ -95,6 +86,11 @@
     // Tint color button
     [self.setupImageView setTintColor:[UIColor whiteColor]];
     [self.creditImageView setTintColor:GREEN_COLOR];
+    
+    self.playLabelButton.text = [LOCALIZED_STRING(@"menu.play.button") uppercaseString];
+    self.tutorielLabelButton.text = [LOCALIZED_STRING(@"menu.tutoriel.button") uppercaseString];
+    self.setupLabelButton.text = [LOCALIZED_STRING(@"menu.setup.button") uppercaseString];
+    self.creditsLabelButton.text = [LOCALIZED_STRING(@"menu.credits.button") uppercaseString];
 }
 
 #pragma mark - Actions

@@ -32,16 +32,24 @@
 "setup.nb_column.label"              = "nb column : %@";
 "setup.nb_row.label"                 = "nb row : %@";
 "setup.difficulty_player.label"      = "difficulty : %@";
+"setup.play.label"                   = "play";
 
 // Menu
 "menu.credits.button"                   = "credits";
 "menu.tutoriel.button"                  = "tutorial";
 "menu.setup.button"                     = "setup";
+"menu.play.button"                      = "play";
 
 
 // Credits
 "credits.application_developped.label"  = "application developped by\n";
 "credits.design_by.label"               = "design by";
-"credits.title_determinant.label"       = "LA ";
+"credits.title_determinant.label"       = "THE ";
 "credits.title_game_name.label"         = "PIPOPIPETTE";
 "credits.copyright.label"               = "© copyright Paul Lavoine - 2016";
+
+
+// Map
+"map.back.label"                        = "back";
+"map.replay.label"                      = "replay";
+"map.score.label"                       = "Score : ";

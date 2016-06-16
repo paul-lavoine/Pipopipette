@@ -31,11 +31,14 @@
 "setup.nb_column.label"              = "nb colonne : %@";
 "setup.nb_row.label"                 = "nb ligne : %@";
 "setup.difficulty_player.label"      = "difficulté : %@";
+"setup.play.label"                   = "jouer";
+
 
 // Menu
 "menu.credits.button"                   = "mentions légales";
 "menu.tutoriel.button"                  = "tutoriel";
 "menu.setup.button"                     = "réglages";
+"menu.play.button"                      = "jouer";
 
 
 // Credits
@@ -44,3 +47,9 @@
 "credits.title_determinant.label"   = "LA ";
 "credits.title_game_name.label"     = "PIPOPIPETTE";
 "credits.copyright.label"           = "© copyright Paul Lavoine - 2016";
+
+
+// Map
+"map.back.label" = "retour";
+"map.replay.label" = "rejouer";
+"map.score.label" = "Score : ";

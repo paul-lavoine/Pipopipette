@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFh-AT-frG">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -253,22 +254,22 @@
                                 <rect key="frame" x="0.0" y="528" width="414" height="144"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oed-g5-Cg2">
-                                        <rect key="frame" x="69" y="35" width="276" height="74"/>
+                                        <rect key="frame" x="52.5" y="35" width="310.5" height="74"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_button" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-X3-azl">
-                                                <rect key="frame" x="0.0" y="10" width="63" height="54"/>
+                                                <rect key="frame" x="0.5" y="10" width="63" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="SYU-X3-azl" secondAttribute="height" multiplier="7:6" id="aar-iF-nao"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRÉDITS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-ks-eZs">
-                                                <rect key="frame" x="73" y="27" width="181" height="20"/>
+                                                <rect key="frame" x="73.5" y="27" width="215.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" red="0.45490196078431372" green="0.72941176470588232" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_arrow_button" translatesAutoresizingMaskIntoConstraints="NO" id="MhZ-v8-gTl">
-                                                <rect key="frame" x="264" y="25" width="12" height="24"/>
+                                                <rect key="frame" x="299" y="25" width="12" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MhZ-v8-gTl" secondAttribute="height" multiplier="1:2" id="6Sh-I9-wzG"/>
                                                     <constraint firstAttribute="height" constant="24" id="Mfi-zB-61m"/>
@@ -291,7 +292,7 @@
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="2:3" id="875-Fi-fUQ"/>
+                                    <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="3:4" id="875-Fi-fUQ"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="top" secondItem="0vr-mc-0Vc" secondAttribute="top" constant="35" id="ByA-oO-oJa"/>
                                     <constraint firstAttribute="bottom" secondItem="Oed-g5-Cg2" secondAttribute="bottom" constant="35" id="ka4-AB-5zn"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="centerX" secondItem="0vr-mc-0Vc" secondAttribute="centerX" id="vXg-XF-JPk"/>
@@ -336,19 +337,23 @@
                         <outlet property="creditVerticalBottomConstraint" destination="ka4-AB-5zn" id="xIL-sX-COW"/>
                         <outlet property="creditVerticalTopConstraint" destination="ByA-oO-oJa" id="255-Qx-jwp"/>
                         <outlet property="creditView" destination="0vr-mc-0Vc" id="L1o-1B-j76"/>
+                        <outlet property="creditsLabelButton" destination="Mcm-ks-eZs" id="SZP-Q3-mss"/>
                         <outlet property="logoVerticalBottomConstraint" destination="eDz-fm-H3H" id="vhw-h1-TPh"/>
                         <outlet property="logoVerticalTopConstraint" destination="rzt-3M-aRR" id="kIB-AA-LIK"/>
                         <outlet property="logoView" destination="4Rx-Yt-H1E" id="m0n-df-IWa"/>
+                        <outlet property="playLabelButton" destination="Woo-JU-WWL" id="C5j-5H-O4a"/>
                         <outlet property="playVerticalBottomConstraint" destination="Hwf-Zp-6Eu" id="HtK-x5-nck"/>
                         <outlet property="playVerticalTopConstraint" destination="jGn-TJ-ZKL" id="HFm-Rf-WY7"/>
                         <outlet property="playView" destination="chF-Fy-Pla" id="tY8-Hb-OMo"/>
                         <outlet property="setupButtonView" destination="tcU-cM-uH9" id="Mdl-y4-zxW"/>
                         <outlet property="setupImageView" destination="FSs-Ef-7av" id="l99-uK-LeK"/>
+                        <outlet property="setupLabelButton" destination="fLB-ew-1Jh" id="BPx-hl-VcM"/>
                         <outlet property="setupVerticalBottomConstraint" destination="Uge-Du-bx5" id="Pho-G1-rfS"/>
                         <outlet property="setupVerticalTopConstraint" destination="XNc-YS-ZR8" id="s5C-UD-VVg"/>
                         <outlet property="setupView" destination="4fQ-S0-Cka" id="rz3-vw-JU7"/>
                         <outlet property="tutorielButtonView" destination="Kna-hV-j2D" id="B4C-vw-D5V"/>
                         <outlet property="tutorielImageView" destination="836-vZ-1M0" id="B2b-Dq-QOu"/>
+                        <outlet property="tutorielLabelButton" destination="Zls-0M-5Nc" id="vA8-vr-gZm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCe-xS-YDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -539,7 +544,7 @@
                         <outlet property="mapViewVerticalBottomConstraint" destination="aIM-AZ-2yw" id="GOE-qy-P53"/>
                         <outlet property="mapViewVerticalTopConstraint" destination="r11-wI-wfk" id="hNN-uM-eDO"/>
                         <outlet property="replayButton" destination="gsv-G1-y6Z" id="xUl-dP-i6I"/>
-                        <outlet property="scoreLabel" destination="4We-qq-FE4" id="uoF-E6-Sjz"/>
+                        <outlet property="scoreLabel" destination="4We-qq-FE4" id="3uG-4S-jwH"/>
                         <outlet property="scorePlayerFirst" destination="fla-un-0rB" id="0TI-hG-3hl"/>
                         <outlet property="scorePlayerFourth" destination="T9g-ED-xTy" id="cZS-We-wax"/>
                         <outlet property="scorePlayerSecond" destination="hwn-PK-42a" id="Xbk-Ve-vFj"/>

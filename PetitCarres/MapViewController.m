@@ -84,6 +84,7 @@
 - (void)configureUI
 {
     // Right Bar Button Item
+    [self.replayButton setTitle:LOCALIZED_STRING(@"map.replay.label") forState:UIControlStateNormal];
     [self.replayButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
     self.replayButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.replayButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
@@ -92,10 +93,11 @@
     
     // Score label
      [self.scoreLabel setFont:ROBOTO_REGULAR(15.0f)];
-    self.scoreLabel.text = @"Score : ";
+    self.scoreLabel.text = LOCALIZED_STRING(@"map.score.label");
     
     
     // left Bar Button Item
+    [self.backButton setTitle:LOCALIZED_STRING(@"map.back.label") forState:UIControlStateNormal];
     [self.backButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
     
     // Constraint
