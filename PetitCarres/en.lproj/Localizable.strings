@@ -1,14 +1,14 @@
-/* 
-  Localizable.strings
-  Pipopipette
-
-  Created by Paul Lavoine on 17/06/2016.
-  Copyright © 2016 Paul Lavoine. All rights reserved.
-*/
+/*
+ Localizable.strings
+ Pipopipette
+ 
+ Created by Paul Lavoine on 17/06/2016.
+ Copyright © 2016 Paul Lavoine. All rights reserved.
+ */
 
 // Global
-"global.default_player.label"       = "Player ";
-"global.default_computer.label"     = "Computer ";
+"global.default_player.label"       = "Player";
+"global.default_computer.label"     = "Computer";
 
 // Winner view
 "winner_view.winner_is.label"       = "The winner\nis";
@@ -29,16 +29,16 @@
 // Setup
 "setup.nb_player.label"              = "Number of player";
 "setup.nb_bot.label"                 = "Number of computer";
-"setup.nb_column.label"              = "nb column : %@";
-"setup.nb_row.label"                 = "nb row : %@";
-"setup.difficulty_player.label"      = "difficulty : %@";
-"setup.play.label"                   = "play";
+"setup.nb_column.label"              = "Nb column : %@";
+"setup.nb_row.label"                 = "Nb row : %@";
+"setup.difficulty_player.label"      = "Difficulty : %@";
+"setup.play.label"                   = "Play";
 
 // Menu
-"menu.credits.button"                   = "credits";
-"menu.tutoriel.button"                  = "tutorial";
-"menu.setup.button"                     = "setup";
-"menu.play.button"                      = "play";
+"menu.credits.button"                   = "Credits";
+"menu.tutoriel.button"                  = "Tutorial";
+"menu.setup.button"                     = "Setup";
+"menu.play.button"                      = "Play";
 
 
 // Credits

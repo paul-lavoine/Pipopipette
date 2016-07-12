@@ -9,7 +9,8 @@
 #import "CGUViewController.h"
 #import "Animation.h"
 
-#define URL_MARINE_WEBSITE @"http://www.marine-difranco.fr"
+#define URL_MARINE_WEBSITE      @"http://www.marine-difranco.fr"
+#define TEXT_LABEL_OFFSET       (IS_IPAD ? 8.0f : 0.0f)
 
 @interface CGUViewController ()
 
@@ -60,10 +61,10 @@
 
 - (void)configureUI
 {
-    UIFont *regularFont = ROBOTO_REGULAR(15.0f);
-    UIFont *lightFont = ROBOTO_LIGHT(16.5f);
-    UIFont *lightBigFont = ROBOTO_LIGHT(23.5f);
-    UIFont *thinFont = ROBOTO_THIN(20.0f);
+    UIFont *regularFont = ROBOTO_REGULAR(15.0f + TEXT_LABEL_OFFSET);
+    UIFont *lightFont = ROBOTO_LIGHT(16.5f + TEXT_LABEL_OFFSET);
+    UIFont *lightBigFont = ROBOTO_LIGHT(23.5f + TEXT_LABEL_OFFSET);
+    UIFont *thinFont = ROBOTO_THIN(20.0f + TEXT_LABEL_OFFSET);
     
     NSMutableAttributedString *development = [[NSMutableAttributedString alloc] initWithString:LOCALIZED_STRING(@"credits.application_developped.label") attributes:@{NSFontAttributeName : lightFont}];
     [development appendAttributedString:[[NSAttributedString alloc] initWithString:@"PAUL LAVOINE" attributes:@{NSFontAttributeName : regularFont}]];

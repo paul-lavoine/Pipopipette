@@ -21,6 +21,8 @@
 #define EXPAND_DELAY                        0.2f
 #define RIGHT_BAR_BUTTON_SIZE               25
 
+#define TEXT_FONT                           (IS_IPAD ? ROBOTO_REGULAR(20.0f) : ROBOTO_REGULAR(15.0))
+
 @interface MapViewController () <CustomButtonDelegate>
 
 // Outlets
@@ -89,16 +91,16 @@
     self.replayButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.replayButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.replayButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
-    [self.replayButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
+    [self.replayButton.titleLabel setFont:TEXT_FONT];
     
     // Score label
-     [self.scoreLabel setFont:ROBOTO_REGULAR(15.0f)];
+     [self.scoreLabel setFont:TEXT_FONT];
     self.scoreLabel.text = LOCALIZED_STRING(@"map.score.label");
     
     
     // left Bar Button Item
     [self.backButton setTitle:LOCALIZED_STRING(@"map.back.label") forState:UIControlStateNormal];
-    [self.backButton.titleLabel setFont:ROBOTO_REGULAR(15.0f)];
+    [self.backButton.titleLabel setFont:TEXT_FONT];
     
     // Constraint
     [self configureConstraintWithHeightView];
@@ -125,6 +127,11 @@
     {
         self.mapViewVerticalTopConstraint.constant = 26;
         self.mapViewVerticalBottomConstraint.constant = 26;
+    }
+    else if (IS_IPAD)
+    {
+        self.mapViewVerticalTopConstraint.constant = 37;
+        self.mapViewVerticalBottomConstraint.constant = 37;
     }
     else
     {
@@ -180,7 +187,7 @@
     {
         ((UILabel *)self.scores[player.position]).textColor = player.colorPlayer;
         ((UILabel *)self.scores[player.position]).text = @"0";
-        [((UILabel *)self.scores[player.position]) setFont:ROBOTO_BOLD(15.0f)];
+        [((UILabel *)self.scores[player.position]) setFont:TEXT_FONT];
     }
 }
 

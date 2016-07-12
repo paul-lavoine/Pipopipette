@@ -19,6 +19,7 @@
                 <outlet property="titleImageView" destination="KjI-ZR-1PE" id="Ruz-jI-Ghh"/>
                 <outlet property="titleLabel" destination="rwo-rc-q19" id="l8X-5Y-y9P"/>
                 <outlet property="view" destination="xgm-NY-Y5H" id="kda-kR-GDY"/>
+                <outlet property="widthImageConstraint" destination="6u6-Pe-Q4j" id="QIp-e9-EGN"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="xgm-NY-Y5H">
@@ -57,16 +58,16 @@
                                 <constraint firstAttribute="width" secondItem="KjI-ZR-1PE" secondAttribute="height" multiplier="1:1" id="cgL-TG-fMT"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-Gt-INL">
+                            <rect key="frame" x="0.0" y="130" width="520" height="410"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUTORIEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwo-rc-q19">
                             <rect key="frame" x="221" y="80" width="78" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-Gt-INL">
-                            <rect key="frame" x="0.0" y="130" width="520" height="410"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

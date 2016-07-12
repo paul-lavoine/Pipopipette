@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupGameViewController">
             <connections>
+                <outlet property="botsButtonView" destination="z7l-EO-5N0" id="Pjt-MB-4av"/>
                 <outlet property="firstBotButton" destination="YEw-zf-Gff" id="TJq-1L-ebG"/>
                 <outlet property="firstPlayerButton" destination="5wO-ki-zcX" id="uGY-gf-28U"/>
                 <outlet property="fourthBotButton" destination="ySu-QQ-xao" id="IPn-If-wrh"/>
@@ -28,6 +29,7 @@
                 <outlet property="nbPlayerLabel" destination="waO-3I-aBy" id="E4E-HF-xCp"/>
                 <outlet property="nbRowLabel" destination="ucF-aX-hmP" id="bLl-u2-sZO"/>
                 <outlet property="nbRowStepper" destination="sXx-V1-R5Z" id="ZNJ-ps-3JI"/>
+                <outlet property="playersButtonView" destination="jM4-Wp-I6J" id="v3d-kK-niq"/>
                 <outlet property="secondBotButton" destination="Dgv-Bw-sSd" id="N5b-ag-zJ6"/>
                 <outlet property="secondPlayerButton" destination="3cO-AG-JVR" id="NE7-HJ-dxt"/>
                 <outlet property="startGameButton" destination="TSO-Ve-0d8" id="GPJ-OQ-T5O"/>

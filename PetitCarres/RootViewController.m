@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIView *contentChildView;
 
+// Constraint
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthImageConstraint;
+
 // Data
 @property (nonatomic, strong) ChildViewController *subView;
 @property (nonatomic, strong) NSString *titleView;
@@ -60,6 +63,12 @@
     
     // ChildView
     [self addConstraintToContentView];
+    
+    if (IS_IPAD)
+    {
+        self.widthImageConstraint.constant = 60;
+        [self.titleLabel setFont:ROBOTO_REGULAR(24.0f)];
+    }
     
     // Gesture Recognizer
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backViewAction:)];

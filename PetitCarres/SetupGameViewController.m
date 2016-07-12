@@ -15,6 +15,7 @@
 #import <NSAttributedString+CCLFormat.h>
 
 #define DEFAULT_LEVEL   3
+#define OFFSET_IPAD_FONT_SIZE   (IS_IPAD ? 8.0f : 0.0f)
 
 @interface SetupGameViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
 
@@ -39,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet CustomStepper *levelStepper;
 
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
+@property (weak, nonatomic) IBOutlet UIView *playersButtonView;
+@property (weak, nonatomic) IBOutlet UIView *botsButtonView;
 
 // Data
 @property (nonatomic, strong) NSArray *players;
@@ -79,6 +82,19 @@
     self.nbColumnStepper.delegate = self;
     self.nbRowStepper.delegate = self;
     self.levelStepper.delegate = self;
+    
+    if (IS_IPAD)
+    {
+        CGRect tmp = self.playersButtonView.frame;
+        tmp.size.height = 75.0f;
+        self.playersButtonView.frame = tmp;
+        self.botsButtonView.frame = tmp;
+        self.playersButtonView.backgroundColor = [UIColor redColor];
+    }
+    
+    [self.nbPlayerLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
+    [self.nbBotLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
+    [self.nbColumnLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
     
     self.players = @[self.firstPlayerButton, self.firstBotButton, self.secondBotButton, self.secondPlayerButton, self.thirdBotButton, self.thirdPlayerButton, self.fourthBotButton, self.fourthPlayerButton];
     
@@ -303,19 +319,18 @@
     {
         nbCaseAvailable --;
     }
-    
+
     return nbCaseAvailable;
 }
 
 - (void)configureSteppers:(UIStepper *)stepper label:(UILabel *)label string:(NSString *)string value:(NSInteger)value
 {
-    NSDictionary *steppersAttributes = @{NSFontAttributeName:ROBOTO_MEDIUM(13.0f)};
+    NSDictionary *steppersAttributes = @{NSFontAttributeName:ROBOTO_MEDIUM(13.0f + OFFSET_IPAD_FONT_SIZE)};
     [stepper setValue:value];
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[@(value) stringValue]
                                                                            attributes:steppersAttributes];
     label.attributedText = [NSAttributedString attributedStringWithFormat:string, attributedString];
-    
-    
+    [label setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
 }
 
 @end

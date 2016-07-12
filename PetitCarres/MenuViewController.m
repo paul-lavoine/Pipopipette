@@ -14,6 +14,8 @@
 #import "TutorielViewController.h"
 #import "CGUViewController.h"
 
+#define IMAGE_WIDTH (IS_IPAD ? 90 : 56)
+
 @interface MenuViewController ()
 
 // Outlets
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *creditsLabelButton;
 @property (weak, nonatomic) IBOutlet UILabel *setupLabelButton;
 @property (weak, nonatomic) IBOutlet UILabel *tutorielLabelButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *logoView;
 @property (weak, nonatomic) IBOutlet UIView *playView;
@@ -45,6 +48,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthImageLogoConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthPlayButtonConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthTutorialButtonConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthSetupButtonConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthCGUButtonConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingCGUConstraint;
 
 @end
 
@@ -61,7 +70,7 @@
 {
     [super viewDidLayoutSubviews];
     
-    if (!self.alreadyAppear && [[UIScreen mainScreen] bounds].size.height <= 480.0f)
+    if (!self.alreadyAppear && IS_IPHONE_4)
     {
         self.alreadyAppear = YES;
         self.constraints = @[self.setupVerticalBottomConstraint, self.setupVerticalTopConstraint, self.playVerticalBottomConstraint, self.playVerticalTopConstraint, self.logoVerticalBottomConstraint, self.logoVerticalTopConstraint, self.creditVerticalTopConstraint, self.creditVerticalBottomConstraint];
@@ -91,6 +100,25 @@
     self.tutorielLabelButton.text = [LOCALIZED_STRING(@"menu.tutoriel.button") uppercaseString];
     self.setupLabelButton.text = [LOCALIZED_STRING(@"menu.setup.button") uppercaseString];
     self.creditsLabelButton.text = [LOCALIZED_STRING(@"menu.credits.button") uppercaseString];
+    
+    UIFont *fontName = IS_IPAD ? ROBOTO_BOLD(25.0f) : ROBOTO_REGULAR(18.0f);
+    [self.playLabelButton setFont:fontName];
+    [self.tutorielLabelButton setFont:fontName];
+    [self.setupLabelButton setFont:fontName];
+    [self.creditsLabelButton setFont:fontName];
+    
+    if (IS_IPAD)
+    {
+        self.widthImageLogoConstraint.constant = 200;
+        [self.titleLabel setFont:ROBOTO_THIN(30.0f)];
+        
+        self.widthPlayButtonConstraint.constant = IMAGE_WIDTH;
+        self.widthTutorialButtonConstraint.constant = IMAGE_WIDTH;
+        self.widthSetupButtonConstraint.constant = IMAGE_WIDTH;
+        self.widthCGUButtonConstraint.constant = IMAGE_WIDTH + 5;
+        
+        self.trailingCGUConstraint.constant = 30;
+    }
 }
 
 #pragma mark - Actions

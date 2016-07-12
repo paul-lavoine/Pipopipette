@@ -28,10 +28,10 @@
 // Setup
 "setup.nb_player.label"              = "Nombre de joueur";
 "setup.nb_bot.label"                 = "Nombre de Bot";
-"setup.nb_column.label"              = "nb colonne : %@";
-"setup.nb_row.label"                 = "nb ligne : %@";
-"setup.difficulty_player.label"      = "difficulté : %@";
-"setup.play.label"                   = "jouer";
+"setup.nb_column.label"              = "Nb colonne : %@";
+"setup.nb_row.label"                 = "Nb ligne : %@";
+"setup.difficulty_player.label"      = "Difficulté : %@";
+"setup.play.label"                   = "Jouer";
 
 
 // Menu
