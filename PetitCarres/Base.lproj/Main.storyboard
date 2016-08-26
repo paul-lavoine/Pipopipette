@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFh-AT-frG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFh-AT-frG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -174,7 +174,20 @@
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="ez3-Kb-lTW"/>
+                                                            </mask>
+                                                        </variation>
                                                     </label>
+                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4q-2O-Rkm">
+                                                        <rect key="frame" x="-69" y="-30" width="207" height="144"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <gestureRecognizers/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="PTW-Ai-by4" appends="YES" id="sTm-VJ-a8A"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
@@ -242,23 +255,15 @@
                                 <constraints>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="width" secondItem="4fQ-S0-Cka" secondAttribute="width" multiplier="2:3" id="FHz-On-R6k"/>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="centerX" secondItem="4fQ-S0-Cka" secondAttribute="centerX" id="LsO-9L-0zM"/>
-                                    <constraint firstAttribute="bottom" secondItem="mKv-V8-qKf" secondAttribute="bottom" constant="30" id="Uge-Du-bx5"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="mKv-V8-qKf" secondAttribute="bottom" constant="30" id="Uge-Du-bx5"/>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="top" secondItem="4fQ-S0-Cka" secondAttribute="top" constant="30" id="XNc-YS-ZR8"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4q-2O-Rkm">
-                                <rect key="frame" x="0.0" y="384" width="207" height="144"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="PTW-Ai-by4" appends="YES" id="sTm-VJ-a8A"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-mc-0Vc" userLabel="Credit">
                                 <rect key="frame" x="0.0" y="528" width="414" height="144"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oed-g5-Cg2">
-                                        <rect key="frame" x="52" y="35" width="310.5" height="74"/>
+                                        <rect key="frame" x="30" y="35" width="354.5" height="74"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_button" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-X3-azl">
                                                 <rect key="frame" x="0.0" y="10" width="63" height="54"/>
@@ -274,7 +279,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_arrow_button" translatesAutoresizingMaskIntoConstraints="NO" id="MhZ-v8-gTl">
-                                                <rect key="frame" x="299" y="25" width="12" height="24"/>
+                                                <rect key="frame" x="343" y="25" width="12" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MhZ-v8-gTl" secondAttribute="height" multiplier="1:2" id="6Sh-I9-wzG"/>
                                                     <constraint firstAttribute="height" constant="24" id="Mfi-zB-61m"/>
@@ -302,7 +307,7 @@
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="3:4" id="875-Fi-fUQ"/>
+                                    <constraint firstItem="Oed-g5-Cg2" firstAttribute="width" secondItem="0vr-mc-0Vc" secondAttribute="width" multiplier="6:7" id="875-Fi-fUQ"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="top" secondItem="0vr-mc-0Vc" secondAttribute="top" constant="35" id="ByA-oO-oJa"/>
                                     <constraint firstAttribute="bottom" secondItem="Oed-g5-Cg2" secondAttribute="bottom" constant="35" id="ka4-AB-5zn"/>
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="centerX" secondItem="0vr-mc-0Vc" secondAttribute="centerX" id="vXg-XF-JPk"/>
@@ -318,7 +323,6 @@
                             <constraint firstItem="4fQ-S0-Cka" firstAttribute="height" secondItem="0vr-mc-0Vc" secondAttribute="height" id="1l0-7H-Uqr"/>
                             <constraint firstItem="0vr-mc-0Vc" firstAttribute="top" secondItem="4fQ-S0-Cka" secondAttribute="bottom" id="AlG-yv-vx3"/>
                             <constraint firstAttribute="trailing" secondItem="4fQ-S0-Cka" secondAttribute="trailing" id="CsZ-oU-auZ"/>
-                            <constraint firstItem="F4q-2O-Rkm" firstAttribute="leading" secondItem="4fQ-S0-Cka" secondAttribute="leading" id="CyT-dr-REA"/>
                             <constraint firstAttribute="trailing" secondItem="4Rx-Yt-H1E" secondAttribute="trailing" id="Ewe-rt-BYT"/>
                             <constraint firstItem="4Rx-Yt-H1E" firstAttribute="leading" secondItem="UGA-Z2-hav" secondAttribute="leading" id="GHB-lz-iMO"/>
                             <constraint firstItem="4fQ-S0-Cka" firstAttribute="top" secondItem="chF-Fy-Pla" secondAttribute="bottom" id="HQu-fy-9w7"/>
@@ -329,11 +333,8 @@
                             <constraint firstItem="Xrh-Xn-YJP" firstAttribute="top" secondItem="0vr-mc-0Vc" secondAttribute="bottom" id="XwQ-95-JKj"/>
                             <constraint firstItem="chF-Fy-Pla" firstAttribute="height" secondItem="0vr-mc-0Vc" secondAttribute="height" id="b5c-4a-qYF"/>
                             <constraint firstItem="4fQ-S0-Cka" firstAttribute="leading" secondItem="UGA-Z2-hav" secondAttribute="leading" id="e7q-kD-GrF"/>
-                            <constraint firstItem="F4q-2O-Rkm" firstAttribute="width" secondItem="4fQ-S0-Cka" secondAttribute="width" multiplier="1:2" id="gy4-s2-v1O"/>
                             <constraint firstItem="0vr-mc-0Vc" firstAttribute="leading" secondItem="UGA-Z2-hav" secondAttribute="leading" id="jYm-dg-Sfx"/>
                             <constraint firstItem="chF-Fy-Pla" firstAttribute="leading" secondItem="UGA-Z2-hav" secondAttribute="leading" id="rf2-cQ-b7A"/>
-                            <constraint firstItem="F4q-2O-Rkm" firstAttribute="bottom" secondItem="4fQ-S0-Cka" secondAttribute="bottom" id="yqC-q9-YBg"/>
-                            <constraint firstItem="F4q-2O-Rkm" firstAttribute="top" secondItem="4fQ-S0-Cka" secondAttribute="top" id="z0a-T7-M9A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jbz-T2-WXv"/>
