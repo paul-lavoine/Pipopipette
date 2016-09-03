@@ -94,11 +94,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chF-Fy-Pla" userLabel="Play">
                                 <rect key="frame" x="0.0" y="240" width="414" height="144"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPZ-rz-iRL">
-                                        <rect key="frame" x="179" y="25" width="56" height="94"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPZ-rz-iRL">
+                                        <rect key="frame" x="179" y="23.5" width="56" height="97.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ct5-BK-i6E">
-                                                <rect key="frame" x="1" y="0.0" width="53" height="66"/>
+                                                <rect key="frame" x="1" y="0.5" width="53" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="53" id="h3g-CU-tBN"/>
                                                     <constraint firstAttribute="width" secondItem="ct5-BK-i6E" secondAttribute="height" multiplier="4:5" id="jyb-wm-pi6"/>
@@ -108,8 +108,8 @@
                                                     <action selector="startGameAction:" destination="rPS-cn-fUJ" eventType="touchUpInside" id="0FL-Ch-aOb"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="JOUER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woo-JU-WWL">
-                                                <rect key="frame" x="0.0" y="76" width="56" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOUER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woo-JU-WWL">
+                                                <rect key="frame" x="0.0" y="76.5" width="56" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -167,7 +167,7 @@
                                                         </variation>
                                                     </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4q-2O-Rkm">
-                                                        <rect key="frame" x="-23" y="-56" width="59" height="66"/>
+                                                        <rect key="frame" x="-15" y="8" width="92" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <gestureRecognizers/>
                                                         <connections>
@@ -203,7 +203,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3d-Sl-cLJ">
-                                                        <rect key="frame" x="29" y="-47" width="24" height="84"/>
+                                                        <rect key="frame" x="87" y="-81" width="36" height="96"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <gestureRecognizers/>
                                                         <connections>
