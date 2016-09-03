@@ -38,16 +38,6 @@
 @property (weak, nonatomic) IBOutlet UIView *tutorielButtonView;
 
 // Constraint
-@property (nonatomic, assign) BOOL alreadyAppear;
-@property (strong, nonatomic) NSArray *constraints;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalBottomConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *setupVerticalTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalBottomConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playVerticalTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalBottomConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoVerticalTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *creditVerticalBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthImageLogoConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthPlayButtonConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthTutorialButtonConstraint;
@@ -64,22 +54,6 @@
 {
     [super viewDidLoad];
     [self configureUI];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    if (!self.alreadyAppear && IS_IPHONE_4)
-    {
-        self.alreadyAppear = YES;
-        self.constraints = @[self.setupVerticalBottomConstraint, self.setupVerticalTopConstraint, self.playVerticalBottomConstraint, self.playVerticalTopConstraint, self.logoVerticalBottomConstraint, self.logoVerticalTopConstraint, self.creditVerticalTopConstraint, self.creditVerticalBottomConstraint];
-        
-        for (NSLayoutConstraint *constraint in self.constraints)
-        {
-            constraint.constant = constraint.constant - 10;
-        }
-    }
 }
 
 - (void)configureUI
