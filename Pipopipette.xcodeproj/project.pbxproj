@@ -572,7 +572,7 @@
 				TargetAttributes = {
 					DA6E9B0B1BA01AC6009A9EB8 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = DM4F765E5B;
+						DevelopmentTeam = CVR7QTY622;
 					};
 					DA6E9B241BA01AC7009A9EB8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -860,15 +860,15 @@
 			baseConfigurationReference = 0C6243A1969197366985428F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Lavoine (3L2SH5F5VU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = PetitCarres/PrefixHeader.pch;
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perso.pipopipette;
 				PRODUCT_NAME = Pipopipette;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4cd2e393-9fad-404b-94dd-cb8924ec084b";
 			};
 			name = Debug;
 		};
@@ -877,15 +877,15 @@
 			baseConfigurationReference = 069E2A307960648314294142 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Paul Lavoine (CVR7QTY622)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = PetitCarres/PrefixHeader.pch;
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dreamTeam.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perso.pipopipette;
 				PRODUCT_NAME = Pipopipette;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "016e5e68-5d25-4ae4-a043-964b73f7832c";
 			};
 			name = Release;
 		};
