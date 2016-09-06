@@ -95,10 +95,10 @@
                                 <rect key="frame" x="0.0" y="240" width="414" height="144"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPZ-rz-iRL">
-                                        <rect key="frame" x="179" y="23.5" width="56" height="97.5"/>
+                                        <rect key="frame" x="179" y="23" width="56" height="97.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ct5-BK-i6E">
-                                                <rect key="frame" x="1" y="0.5" width="53" height="66"/>
+                                                <rect key="frame" x="1" y="0.0" width="53" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="53" id="h3g-CU-tBN"/>
                                                     <constraint firstAttribute="width" secondItem="ct5-BK-i6E" secondAttribute="height" multiplier="4:5" id="jyb-wm-pi6"/>
@@ -109,7 +109,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOUER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woo-JU-WWL">
-                                                <rect key="frame" x="0.0" y="76.5" width="56" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="76" width="56" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -133,16 +133,16 @@
                                     <constraint firstItem="CPZ-rz-iRL" firstAttribute="centerY" secondItem="chF-Fy-Pla" secondAttribute="centerY" id="fih-sP-cBW"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="b97-bj-dXt" appends="YES" id="TvH-bl-cZt"/>
+                                    <outletCollection property="gestureRecognizers" destination="b97-bj-dXt" appends="YES" id="XRD-8r-YpK"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fQ-S0-Cka" userLabel="Setup">
                                 <rect key="frame" x="0.0" y="384" width="414" height="144"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKv-V8-qKf" userLabel="ContentPingView">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKv-V8-qKf" userLabel="ContentPingView">
                                         <rect key="frame" x="69" y="29" width="276" height="86"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-cM-uH9">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-cM-uH9">
                                                 <rect key="frame" x="0.0" y="0.0" width="83.5" height="86"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setup_button" translatesAutoresizingMaskIntoConstraints="NO" id="FSs-Ef-7av">
@@ -170,9 +170,6 @@
                                                         <rect key="frame" x="-15" y="8" width="92" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="PTW-Ai-by4" appends="YES" id="sTm-VJ-a8A"/>
-                                                        </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -186,7 +183,7 @@
                                                     <constraint firstItem="fLB-ew-1Jh" firstAttribute="centerX" secondItem="FSs-Ef-7av" secondAttribute="centerX" id="vyn-Dl-AM2"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kna-hV-j2D">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kna-hV-j2D">
                                                 <rect key="frame" x="198" y="0.0" width="78" height="86"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutoriel_button" translatesAutoresizingMaskIntoConstraints="NO" id="836-vZ-1M0">
@@ -202,14 +199,6 @@
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3d-Sl-cLJ">
-                                                        <rect key="frame" x="87" y="-81" width="36" height="96"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="pLq-0e-9He" appends="YES" id="ROi-Tp-VMi"/>
-                                                        </connections>
-                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
@@ -233,18 +222,40 @@
                                             <constraint firstItem="tcU-cM-uH9" firstAttribute="top" secondItem="mKv-V8-qKf" secondAttribute="top" id="sFq-mX-aFd"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ya-tx-8nm">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="144"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="PTW-Ai-by4" appends="YES" id="aYW-Fw-yQA"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPI-uL-4pm">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="144"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pLq-0e-9He" appends="YES" id="IJn-Mf-evz"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cPI-uL-4pm" secondAttribute="trailing" id="8Wl-8U-EiL"/>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="centerY" secondItem="4fQ-S0-Cka" secondAttribute="centerY" id="CEw-QH-iwE"/>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="width" secondItem="4fQ-S0-Cka" secondAttribute="width" multiplier="2:3" id="FHz-On-R6k"/>
+                                    <constraint firstItem="cPI-uL-4pm" firstAttribute="width" secondItem="4fQ-S0-Cka" secondAttribute="width" multiplier="1:2" id="Jyw-Pk-69A"/>
                                     <constraint firstItem="mKv-V8-qKf" firstAttribute="centerX" secondItem="4fQ-S0-Cka" secondAttribute="centerX" id="LsO-9L-0zM"/>
+                                    <constraint firstItem="2ya-tx-8nm" firstAttribute="width" secondItem="4fQ-S0-Cka" secondAttribute="width" multiplier="1:2" id="YnE-jO-saA"/>
+                                    <constraint firstItem="cPI-uL-4pm" firstAttribute="top" secondItem="4fQ-S0-Cka" secondAttribute="top" id="ZOk-4z-ocr"/>
+                                    <constraint firstItem="2ya-tx-8nm" firstAttribute="leading" secondItem="4fQ-S0-Cka" secondAttribute="leading" id="maT-R1-MqF"/>
+                                    <constraint firstAttribute="bottom" secondItem="2ya-tx-8nm" secondAttribute="bottom" id="x6v-EK-Pde"/>
+                                    <constraint firstItem="2ya-tx-8nm" firstAttribute="top" secondItem="4fQ-S0-Cka" secondAttribute="top" id="zQ7-wm-N8u"/>
+                                    <constraint firstAttribute="bottom" secondItem="cPI-uL-4pm" secondAttribute="bottom" id="zgD-G1-QCs"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-mc-0Vc" userLabel="Credit">
                                 <rect key="frame" x="0.0" y="528" width="414" height="144"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oed-g5-Cg2">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oed-g5-Cg2">
                                         <rect key="frame" x="30" y="35" width="354.5" height="74"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_button" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-X3-azl">
@@ -255,7 +266,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRÉDITS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-ks-eZs">
-                                                <rect key="frame" x="73.5" y="27" width="67.5" height="20"/>
+                                                <rect key="frame" x="73" y="27" width="67.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" red="0.45490196078431372" green="0.72941176470588232" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -294,7 +305,7 @@
                                     <constraint firstItem="Oed-g5-Cg2" firstAttribute="centerX" secondItem="0vr-mc-0Vc" secondAttribute="centerX" id="vXg-XF-JPk"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="K4G-P5-amP" appends="YES" id="N4T-Hx-RQ0"/>
+                                    <outletCollection property="gestureRecognizers" destination="K4G-P5-amP" appends="YES" id="b7H-sB-THN"/>
                                 </connections>
                             </view>
                         </subviews>
