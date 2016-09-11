@@ -14,8 +14,9 @@
 #import "GlobalConfigurations.h"
 #import <NSAttributedString+CCLFormat.h>
 
-#define DEFAULT_LEVEL   3
+#define DEFAULT_LEVEL           3
 #define OFFSET_IPAD_FONT_SIZE   (IS_IPAD ? 8.0f : 0.0f)
+#define BUTTON_IPAD_HEIGHT      80
 
 @interface SetupGameViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
 
@@ -42,6 +43,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIView *playersButtonView;
 @property (weak, nonatomic) IBOutlet UIView *botsButtonView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstPlayerButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstBotButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *playButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *botTitlePlayerButtonVerticalConstraint;
+
 
 // Data
 @property (nonatomic, strong) NSArray *players;
@@ -89,7 +96,13 @@
         tmp.size.height = 75.0f;
         self.playersButtonView.frame = tmp;
         self.botsButtonView.frame = tmp;
-        self.playersButtonView.backgroundColor = [UIColor redColor];
+        
+        self.firstPlayerButtonHeightConstraint.constant = self.firstBotButtonHeightConstraint.constant = BUTTON_IPAD_HEIGHT;
+        
+        self.playButtonHeightConstraint.constant = 2*BUTTON_IPAD_HEIGHT/3;
+        
+        self.botTitlePlayerButtonVerticalConstraint.constant = 40;
+        
     }
     
     [self.nbPlayerLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
@@ -129,6 +142,7 @@
     self.startGameButton.backgroundColor = GREEN_COLOR;
     self.startGameButton.titleLabel.text = [LOCALIZED_STRING(@"setup.play.label") uppercaseString];
     self.startGameButton.titleLabel.textColor = [UIColor whiteColor];
+    self.startGameButton.titleLabel.font = IS_IPAD ? ROBOTO_REGULAR(30.0f) : ROBOTO_REGULAR(15.0f);
     
     // Init Stepper
     [self.nbPlayerLabel setText:[LOCALIZED_STRING(@"setup.nb_player.label") uppercaseString]];

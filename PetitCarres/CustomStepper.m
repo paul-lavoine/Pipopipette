@@ -83,7 +83,7 @@
                                                         toItem:self
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0
-                                                      constant:0.0]];
+                                                      constant:IS_IPAD ? 1.0 : 0]];
 }
 
 - (IBAction)valueChange:(id)sender

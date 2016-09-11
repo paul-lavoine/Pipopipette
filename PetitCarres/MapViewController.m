@@ -83,6 +83,17 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LOCALIZED_STRING(@"map.information_popup.title")
+                                                    message:LOCALIZED_STRING(@"map.information_popup.message")
+                                                   delegate:nil
+                                          cancelButtonTitle:LOCALIZED_STRING(@"global.OK")
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 - (void)configureUI
 {
     // Right Bar Button Item

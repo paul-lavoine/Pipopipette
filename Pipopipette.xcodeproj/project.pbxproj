@@ -241,7 +241,6 @@
 			children = (
 				A85041DF1D0A2E6800452CFC /* Animations */,
 				A828D6A11CB0E99600720C31 /* CustomStepper */,
-				A8CBA7471C6918C3004351EF /* UIButton+Text */,
 				A89811371C67F92B003A344B /* Configuration */,
 				A8FEB5071C24C3440085E589 /* MiniMax */,
 				A85FE8271C1C2F2D00EF58E5 /* NSMutableArray+Addition */,
@@ -337,13 +336,6 @@
 				DA6E9B3C1BA01D4A009A9EB8 /* ViewsController */,
 			);
 			name = Class;
-			sourceTree = "<group>";
-		};
-		A8CBA7471C6918C3004351EF /* UIButton+Text */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "UIButton+Text";
 			sourceTree = "<group>";
 		};
 		A8CBA74B1C692E6D004351EF /* Tutoriel */ = {

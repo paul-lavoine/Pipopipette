@@ -45,7 +45,7 @@
 {
     [super viewDidLoad];
     [self configureUI];
-    [[[Animation alloc] init] startAnimation:self.websiteAccessLabel];
+//    [[[Animation alloc] init] startAnimation:self.websiteAccessLabel];
     
     self.websiteAccessLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebsite)];

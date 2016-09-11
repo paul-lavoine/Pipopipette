@@ -9,6 +9,7 @@
 // Global
 "global.default_player.label"       = "Player";
 "global.default_computer.label"     = "Computer";
+"global.OK"                         = "OK";
 
 // Winner view
 "winner_view.winner_is.label"       = "The winner\nis";
@@ -20,10 +21,9 @@
 "tutorial.introduction.label"       = "The pipopipette is a game that is played from 1 to 4 players. ";
 "tutorial.first_rule.label"         = "In turn , each player selects a side of one of the square boxes.";
 "tutorial.second_rule.label"        = "The player who selects the last side from a square, close this square and has 1 point. He replays.";
-
 "tutorial.third_rule.label"         = "The winner is the one who closed the largest number of squares.";
 "tutorial.note_title.label"         = "Note";
-"tutorial.note_content.label"       = "Sometimes a player closes two squares with a single stroke . In this case, the symbol is registered with the two squares.";
+"tutorial.note_content.label"       = "You can close a square even if one of the sides has already been set by another player";
 
 
 // Setup
@@ -33,6 +33,7 @@
 "setup.nb_row.label"                 = "Nb row : %@";
 "setup.difficulty_player.label"      = "Difficulty : %@";
 "setup.play.label"                   = "Play";
+
 
 // Menu
 "menu.credits.button"                   = "Credits";
@@ -53,3 +54,5 @@
 "map.back.label"                        = "back";
 "map.replay.label"                      = "replay";
 "map.score.label"                       = "Score : ";
+"map.information_popup.title"           = "Information";
+"map.information_popup.message"         = "You are the green player (the key)\nYour turn";

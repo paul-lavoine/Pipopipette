@@ -9,6 +9,7 @@
 // Global
 "global.default_player.label"       = "Joueur ";
 "global.default_computer.label"     = "Ordinateur ";
+"global.OK"                         = "OK";
 
 // Winner view
 "winner_view.winner_is.label"       = "le gagnant\nest";
@@ -22,7 +23,7 @@
 "tutorial.second_rule.label"        = "Le joueur qui selectionne le dernier côté d’une des cases ferme cette case et compte 1 point. Il rejoue.";
 "tutorial.third_rule.label"         = "Le gagnant est celui qui a fermé le plus grand nombre de cases.";
 "tutorial.note_title.label"         = "Remarque";
-"tutorial.note_content.label"       = "Il arrive qu'un joueur ferme deux carrés avec un seul trait. Dans ce cas, son symbole est inscrit sur les deux carrés.";
+"tutorial.note_content.label"       = "Vous pouvez fermer le carré même si l'un des côté a déjà été sélectionné par un autre joueur";
 
 
 // Setup
@@ -42,14 +43,16 @@
 
 
 // Credits
-"credits.application_developped.label" = "application développé par\n";
-"credits.design_by.label"           = "design par";
-"credits.title_determinant.label"   = "LA ";
-"credits.title_game_name.label"     = "PIPOPIPETTE";
-"credits.copyright.label"           = "© copyright Paul Lavoine - 2016";
+"credits.application_developped.label"  = "application développé par\n";
+"credits.design_by.label"               = "design par";
+"credits.title_determinant.label"       = "LA ";
+"credits.title_game_name.label"         = "PIPOPIPETTE";
+"credits.copyright.label"               = "© copyright Paul Lavoine - 2016";
 
 
 // Map
-"map.back.label" = "retour";
-"map.replay.label" = "rejouer";
-"map.score.label" = "Score : ";
+"map.back.label"                        = "retour";
+"map.replay.label"                      = "rejouer";
+"map.score.label"                       = "Score : ";
+"map.information_popup.title"           = "Information";
+"map.information_popup.message"         = "Vous êtes le joueur vert (la clé)\nC'est à vous de jouer";
