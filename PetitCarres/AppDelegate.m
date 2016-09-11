@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+
+    [Fabric with:@[ CrashlyticsKit ]];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     return YES;

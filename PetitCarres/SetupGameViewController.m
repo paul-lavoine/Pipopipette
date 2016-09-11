@@ -12,7 +12,7 @@
 #import "BarButton.h"
 #import "CustomStepper.h"
 #import "GlobalConfigurations.h"
-#import <NSAttributedString+CCLFormat.h>
+#import "NSAttributedString+CCLFormat.h"
 
 #define DEFAULT_LEVEL           3
 #define OFFSET_IPAD_FONT_SIZE   (IS_IPAD ? 8.0f : 0.0f)

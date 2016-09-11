@@ -1,10 +1,17 @@
 PODS:
+  - Crashlytics (3.8.1):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.8)
   - NSAttributedString+CCLFormat (1.2.0)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - NSAttributedString+CCLFormat
 
 SPEC CHECKSUMS:
+  Crashlytics: 4391d8df0b125345e9f209c5db6e7f40a6a8435d
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   NSAttributedString+CCLFormat: 46d1e36b72b7ab0e093323705188818b21ba9763
 
 COCOAPODS: 0.39.0
