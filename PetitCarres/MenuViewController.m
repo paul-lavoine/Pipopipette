@@ -23,7 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *creditsLabelButton;
 @property (weak, nonatomic) IBOutlet UILabel *setupLabelButton;
 @property (weak, nonatomic) IBOutlet UILabel *tutorielLabelButton;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstPartTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondPartTitleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *logoView;
 @property (weak, nonatomic) IBOutlet UIView *playView;
@@ -84,7 +86,8 @@
     if (IS_IPAD)
     {
         self.widthImageLogoConstraint.constant = 200;
-        [self.titleLabel setFont:ROBOTO_THIN(30.0f)];
+        [self.firstPartTitleLabel setFont:ROBOTO_THIN(30.0f)];
+        [self.secondPartTitleLabel setFont:ROBOTO_REGULAR(30.0f)];
         
         self.widthPlayButtonConstraint.constant = IMAGE_WIDTH;
         self.widthTutorialButtonConstraint.constant = IMAGE_WIDTH;
@@ -92,7 +95,14 @@
         self.widthCGUButtonConstraint.constant = IMAGE_WIDTH + 5;
         
         self.trailingCGUConstraint.constant = 30;
+        self.titleHeightConstraint.constant = 30;
+    } else {
+        [self.firstPartTitleLabel setFont:ROBOTO_THIN(17.0f)];
+        [self.secondPartTitleLabel setFont:ROBOTO_REGULAR(17.0f)];
     }
+    
+    self.firstPartTitleLabel.text = [LOCALIZED_STRING(@"credits.title_determinant.label") uppercaseString];
+    self.secondPartTitleLabel.text = [LOCALIZED_STRING(@"credits.title_game_name.label") uppercaseString];
 }
 
 #pragma mark - Actions
