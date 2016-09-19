@@ -19,11 +19,11 @@
 
 // Tutorial
 "tutorial.introduction.label"       = "The pipopipette is a game that is played from 1 to 4 players. ";
-"tutorial.first_rule.label"         = "In turn , each player selects a side of one of the square boxes.";
-"tutorial.second_rule.label"        = "The player who selects the last side from a square, close this square and has 1 point. He replays.";
-"tutorial.third_rule.label"         = "The winner is the one who closed the largest number of squares.";
+"tutorial.first_rule.label"         = "In turn, each player selects a side of one of the square boxes.";
+"tutorial.second_rule.label"        = "The player who selects the last side from a square, close this square and has 1 point. Afterwards, he replays.";
+"tutorial.third_rule.label"         = "The winner is the one who close the largest number of squares.";
 "tutorial.note_title.label"         = "Note";
-"tutorial.note_content.label"       = "You can close a square even if one of the sides has already been set by another player";
+"tutorial.note_content.label"       = "You can close a square, even though one of the sides has already been set by another player.";
 
 
 // Setup
