@@ -29,15 +29,15 @@
 // Setup
 "setup.nb_player.label"              = "Nombre de joueur";
 "setup.nb_bot.label"                 = "Nombre de Bot";
-"setup.nb_column.label"              = "Nb colonne : %@";
-"setup.nb_row.label"                 = "Nb ligne : %@";
+"setup.nb_column.label"              = "Colonne : %@";
+"setup.nb_row.label"                 = "Ligne : %@";
 "setup.difficulty_player.label"      = "Difficulté : %@";
 "setup.play.label"                   = "Jouer";
 
 
 // Menu
 "menu.credits.button"                   = "mentions légales";
-"menu.tutoriel.button"                  = "tutoriel";
+"menu.tutoriel.button"                  = "règles";
 "menu.setup.button"                     = "réglages";
 "menu.play.button"                      = "jouer";
 

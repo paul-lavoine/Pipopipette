@@ -37,7 +37,7 @@
 
 // Menu
 "menu.credits.button"                   = "Credits";
-"menu.tutoriel.button"                  = "Tutorial";
+"menu.tutoriel.button"                  = "Rules";
 "menu.setup.button"                     = "Setup";
 "menu.play.button"                      = "Play";
 
