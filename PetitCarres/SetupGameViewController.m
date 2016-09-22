@@ -17,6 +17,8 @@
 #define DEFAULT_LEVEL           3
 #define OFFSET_IPAD_FONT_SIZE   (IS_IPAD ? 8.0f : 0.0f)
 #define BUTTON_IPAD_HEIGHT      80
+#define LEVEL_PREFERENCE @"preferenceLevel"
+
 
 @interface SetupGameViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
 
@@ -84,7 +86,6 @@
     [super viewDidLoad];
     
     self.configurations = [GlobalConfigurations sharedInstance];
-    [self.levelStepper setValue:DEFAULT_LEVEL];
     self.navigationController.delegate = self;
     self.nbColumnStepper.delegate = self;
     self.nbRowStepper.delegate = self;
@@ -160,8 +161,9 @@
     self.levelStepper.rightButton.backgroundColor = GREEN_COLOR;
     
     // Init level button
-    [self.levelStepper setValue:DEFAULT_LEVEL];
-    [self configureSteppers:self.levelStepper label:self.levelLabel string:LOCALIZED_STRING(@"setup.difficulty_player.label") value:DEFAULT_LEVEL];
+    double savedValue = [[NSUserDefaults standardUserDefaults] doubleForKey:LEVEL_PREFERENCE];
+    [self.levelStepper setValue:savedValue ?:DEFAULT_LEVEL];
+    [self configureSteppers:self.levelStepper label:self.levelLabel string:LOCALIZED_STRING(@"setup.difficulty_player.label") value:savedValue?:DEFAULT_LEVEL];
 }
 
 - (void)initPlayers
@@ -182,6 +184,9 @@
 - (IBAction)startGame:(id)sender
 {
     BotLevel level = [self selectedLevel];
+    [[NSUserDefaults standardUserDefaults] setDouble:self.levelStepper.value forKey:LEVEL_PREFERENCE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     self.configurations.nbPlayer = [self computeNbPlayers:self.realPlayers];
     self.configurations.nbBot = [self computeNbPlayers:self.botPlayers];
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
