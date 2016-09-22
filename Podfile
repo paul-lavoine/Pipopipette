@@ -1,8 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
-pod 'NSAttributedString+CCLFormat'
-
 use_frameworks!
-pod 'Fabric'
-pod 'Crashlytics'
+
+target "Pipopipette" do
+
+	pod 'NSAttributedString+CCLFormat', '~> 1.2.0'
+	pod 'Fabric', '~> 1.5'
+	pod 'Crashlytics', '~> 3.3'
+
+end
