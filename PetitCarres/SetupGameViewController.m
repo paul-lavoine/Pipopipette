@@ -105,9 +105,8 @@
         
     }
     
-    [self.nbPlayerLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
-    [self.nbBotLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
-    [self.nbColumnLabel setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
+    [self.nbPlayerLabel setFont:ROBOTO_LIGHT(17.0f + OFFSET_IPAD_FONT_SIZE)];
+    [self.nbBotLabel setFont:ROBOTO_LIGHT(17.0f + OFFSET_IPAD_FONT_SIZE)];
     
     self.players = @[self.firstPlayerButton, self.firstBotButton, self.secondBotButton, self.secondPlayerButton, self.thirdBotButton, self.thirdPlayerButton, self.fourthBotButton, self.fourthPlayerButton];
     
@@ -140,7 +139,7 @@
 {
     // Init game start button
     self.startGameButton.backgroundColor = GREEN_COLOR;
-    self.startGameButton.titleLabel.text = [LOCALIZED_STRING(@"setup.play.label") uppercaseString];
+    [self.startGameButton setTitle:[LOCALIZED_STRING(@"setup.play.label") uppercaseString] forState:UIControlStateNormal];
     self.startGameButton.titleLabel.textColor = [UIColor whiteColor];
     self.startGameButton.titleLabel.font = IS_IPAD ? ROBOTO_REGULAR(30.0f) : ROBOTO_REGULAR(15.0f);
     
@@ -344,7 +343,7 @@
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[@(value) stringValue]
                                                                            attributes:steppersAttributes];
     label.attributedText = [NSAttributedString attributedStringWithFormat:string, attributedString];
-    [label setFont:ROBOTO_LIGHT(13.0f + OFFSET_IPAD_FONT_SIZE)];
+    [label setFont:ROBOTO_LIGHT(15.0f + OFFSET_IPAD_FONT_SIZE)];
 }
 
 @end
