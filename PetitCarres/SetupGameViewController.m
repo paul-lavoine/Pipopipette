@@ -8,7 +8,6 @@
 
 #import "SetupGameViewController.h"
 #import "MapViewController.h"
-#import "PlayerManager.h"
 #import "BarButton.h"
 #import "CustomStepper.h"
 #import "GlobalConfigurations.h"
@@ -17,7 +16,6 @@
 #define DEFAULT_LEVEL           3
 #define OFFSET_IPAD_FONT_SIZE   (IS_IPAD ? 8.0f : 0.0f)
 #define BUTTON_IPAD_HEIGHT      80
-#define LEVEL_PREFERENCE @"preferenceLevel"
 
 
 @interface SetupGameViewController () <UINavigationControllerDelegate, CustomStepperDelegate>
@@ -149,8 +147,10 @@
     [self.nbBotLabel setText:[LOCALIZED_STRING(@"setup.nb_bot.label") uppercaseString]];
     [self initPlayers];
 
-    [self configureSteppers:self.nbColumnStepper label:self.nbColumnLabel string:LOCALIZED_STRING(@"setup.nb_column.label") value:NB_DEFAULT_COLUMNS];
-    [self configureSteppers:self.nbRowStepper label:self.nbRowLabel string:LOCALIZED_STRING(@"setup.nb_row.label") value:NB_DEFAULT_ROWS];
+    double savedColumn = [[NSUserDefaults standardUserDefaults] doubleForKey:COLUMN_PREFERENCE];
+    [self configureSteppers:self.nbColumnStepper label:self.nbColumnLabel string:LOCALIZED_STRING(@"setup.nb_column.label") value:savedColumn?:NB_DEFAULT_COLUMNS];
+    double savedRow = [[NSUserDefaults standardUserDefaults] doubleForKey:ROW_PREFERENCE];
+    [self configureSteppers:self.nbRowStepper label:self.nbRowLabel string:LOCALIZED_STRING(@"setup.nb_row.label") value:savedRow?:NB_DEFAULT_ROWS];
     
     // Stepper
     self.nbColumnStepper.leftButton.backgroundColor = PINK_COLOR;
@@ -183,12 +183,15 @@
 
 - (IBAction)startGame:(id)sender
 {
-    BotLevel level = [self selectedLevel];
-    [[NSUserDefaults standardUserDefaults] setDouble:self.levelStepper.value forKey:LEVEL_PREFERENCE];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
+    BotLevel level = [[self class] selectedLevel:self.levelStepper.value];
     self.configurations.nbPlayer = [self computeNbPlayers:self.realPlayers];
     self.configurations.nbBot = [self computeNbPlayers:self.botPlayers];
+    
+    [[NSUserDefaults standardUserDefaults] setDouble:self.levelStepper.value forKey:LEVEL_PREFERENCE];
+    [[NSUserDefaults standardUserDefaults] setDouble:self.nbRowStepper.value forKey:ROW_PREFERENCE];
+    [[NSUserDefaults standardUserDefaults] setDouble:self.nbColumnStepper.value forKey:COLUMN_PREFERENCE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [[PlayerManager sharedInstance] setNumberOfPlayers:self.configurations.nbPlayer numberOfBot:self.configurations.nbBot botLevel:level];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
@@ -249,7 +252,14 @@
         return;
     
     [self selectButton:sender isSelected:!sender.selected];
-    [self isFullPlayerSelected];
+    if ([self isFullPlayerSelected]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LOCALIZED_STRING(@"setup.max_player_reach.title")
+                                                        message:LOCALIZED_STRING(@"setup.max_player_reach.message")
+                                                       delegate:nil
+                                              cancelButtonTitle:LOCALIZED_STRING(@"global.OK")
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 #pragma mark - Utils
@@ -310,17 +320,17 @@
     return nbPlayer;
 }
 
-- (BotLevel)selectedLevel
++ (BotLevel)selectedLevel:(CGFloat)value
 {
-    if (self.levelStepper.value == 1)
+    if (value == 1)
     {
         return BotLevelEasy;
     }
-    else if (self.levelStepper.value == 2)
+    else if (value == 2)
     {
         return BotLevelMedium;
     }
-    else if (self.levelStepper.value == 3)
+    else if (value == 3)
     {
         return BotLevelDifficult;
     }

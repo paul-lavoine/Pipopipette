@@ -109,10 +109,12 @@
 
 - (IBAction)startGameAction:(id)sender
 {
-    [[PlayerManager sharedInstance] setNumberOfPlayers:NB_DEFAULT_PLAYER numberOfBot:NB_DEFAULT_BOT botLevel:BotLevelMedium];
-    
+    double savedColumn = [[NSUserDefaults standardUserDefaults] doubleForKey:COLUMN_PREFERENCE];
+    double savedRow = [[NSUserDefaults standardUserDefaults] doubleForKey:ROW_PREFERENCE];
+    double savedLevel = [[NSUserDefaults standardUserDefaults] doubleForKey:LEVEL_PREFERENCE];
+    [[PlayerManager sharedInstance] setNumberOfPlayers:NB_DEFAULT_PLAYER numberOfBot:NB_DEFAULT_BOT botLevel:savedLevel?[[SetupGameViewController class] selectedLevel:savedLevel] : BotLevelMedium];
     MapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:MapViewControllerID];
-    [mapViewController configureMapWithRows:NB_DEFAULT_ROWS columns:NB_DEFAULT_COLUMNS];
+    [mapViewController configureMapWithRows:savedRow?:NB_DEFAULT_ROWS columns:savedColumn?:NB_DEFAULT_COLUMNS];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
 }

@@ -33,7 +33,8 @@
 "setup.nb_row.label"                 = "Row : %@";
 "setup.difficulty_player.label"      = "Difficulty : %@";
 "setup.play.label"                   = "Play";
-
+"setup.max_player_reach.title"       = "Information";
+"setup.max_player_reach.message"     = "You have reached the maximum number of players";
 
 // Menu
 "menu.credits.button"                   = "Credits";

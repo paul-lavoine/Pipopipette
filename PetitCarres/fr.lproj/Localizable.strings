@@ -33,6 +33,8 @@
 "setup.nb_row.label"                 = "Ligne : %@";
 "setup.difficulty_player.label"      = "Difficulté : %@";
 "setup.play.label"                   = "Jouer";
+"setup.max_player_reach.title"       = "Information";
+"setup.max_player_reach.message"     = "Nombre maximum de joueurs atteint";
 
 
 // Menu
