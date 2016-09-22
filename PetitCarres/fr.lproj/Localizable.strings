@@ -43,7 +43,7 @@
 
 
 // Credits
-"credits.application_developped.label"  = "application développé par\n";
+"credits.application_developped.label"  = "application développée par\n";
 "credits.design_by.label"               = "design par";
 "credits.title_determinant.label"       = "LA ";
 "credits.title_game_name.label"         = "PIPOPIPETTE";
