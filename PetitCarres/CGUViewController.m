@@ -66,11 +66,11 @@
     UIFont *lightBigFont = ROBOTO_LIGHT(23.5f + TEXT_LABEL_OFFSET);
     UIFont *thinFont = ROBOTO_THIN(20.0f + TEXT_LABEL_OFFSET);
     
-    NSMutableAttributedString *development = [[NSMutableAttributedString alloc] initWithString:LOCALIZED_STRING(@"credits.application_developped.label") attributes:@{NSFontAttributeName : lightFont}];
+    NSMutableAttributedString *development = [[NSMutableAttributedString alloc] initWithString:LOCALIZED_STRING(@"credits.application_developed.label") attributes:@{NSFontAttributeName : lightFont}];
     [development appendAttributedString:[[NSAttributedString alloc] initWithString:@"PAUL LAVOINE" attributes:@{NSFontAttributeName : regularFont}]];
     
     
-    self.designLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:@{NSFontAttributeName : lightFont}];
+    self.designLabel.attributedText = [[NSAttributedString alloc] initWithString:LOCALIZED_STRING(@"credits.application_designed.label") attributes:@{NSFontAttributeName : lightFont}];
     
     self.websiteAccessLabel.attributedText = [[NSAttributedString alloc] initWithString:@"MARINE DI FRANCO"
                                                                              attributes:@{NSFontAttributeName : regularFont,
