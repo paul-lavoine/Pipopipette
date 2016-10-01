@@ -24,6 +24,15 @@
 	<dict>
 		<key>APIKey</key>
 		<string>b7b8e98258d9c5f04a3a3026ead3933cecd860c9</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
