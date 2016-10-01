@@ -56,7 +56,7 @@
     self.playerIsImageView.image = self.player.icone;
     
     NSMutableAttributedString *winnerPlayer = [[NSMutableAttributedString alloc] initWithString:[LOCALIZED_STRING(@"winner_view.player_winner.label") uppercaseString] attributes:@{NSFontAttributeName : ROBOTO_LIGHT(25.0f)}];
-    [winnerPlayer appendAttributedString:[[NSAttributedString alloc] initWithString:[[NSString stringWithFormat:@"%@", self.player.name] uppercaseString]
+    [winnerPlayer appendAttributedString:[[NSAttributedString alloc] initWithString:[[NSString stringWithFormat:@"\n%@", self.player.name] uppercaseString]
                                                                          attributes:@{NSFontAttributeName : ROBOTO_REGULAR(25.0f)}]];
     
     
