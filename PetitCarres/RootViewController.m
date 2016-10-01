@@ -73,6 +73,11 @@
     // Gesture Recognizer
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backViewAction:)];
     [self.backButton addGestureRecognizer:tapRecognizer];
+    
+    
+    UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)addConstraintToContentView
@@ -119,6 +124,13 @@
 - (IBAction)backViewAction:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)swipeHandler:(UISwipeGestureRecognizer *)recognizer
+{
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - Utils
