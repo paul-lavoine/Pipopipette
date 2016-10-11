@@ -574,6 +574,7 @@
 					DA6E9B0B1BA01AC6009A9EB8 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = CVR7QTY622;
+						ProvisioningStyle = Automatic;
 					};
 					DA6E9B241BA01AC7009A9EB8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -912,13 +913,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Lavoine (3L2SH5F5VU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = PetitCarres/PrefixHeader.pch;
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.perso.pipopipette;
 				PRODUCT_NAME = Pipopipette;
-				PROVISIONING_PROFILE = "4cd2e393-9fad-404b-94dd-cb8924ec084b";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -929,13 +932,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Paul Lavoine (CVR7QTY622)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = PetitCarres/PrefixHeader.pch;
 				INFOPLIST_FILE = PetitCarres/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.perso.pipopipette;
 				PRODUCT_NAME = Pipopipette;
-				PROVISIONING_PROFILE = "016e5e68-5d25-4ae4-a043-964b73f7832c";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
