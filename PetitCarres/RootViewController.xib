@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Regular.ttf">
+        <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
             <connections>
                 <outlet property="backButton" destination="nQy-lX-jxk" id="kxV-3L-jtF"/>
+                <outlet property="bottomContentViewConstraint" destination="mY1-Jw-aAv" id="Jg0-4I-IXX"/>
                 <outlet property="contentChildView" destination="E6I-Gt-INL" id="8aa-IL-Vli"/>
                 <outlet property="contentView" destination="bbL-63-JIC" id="XC0-AZ-qAR"/>
+                <outlet property="leadingContentViewConstraint" destination="RtF-R1-zgr" id="j3l-MP-hjA"/>
                 <outlet property="titleImageView" destination="KjI-ZR-1PE" id="Ruz-jI-Ghh"/>
                 <outlet property="titleLabel" destination="rwo-rc-q19" id="l8X-5Y-y9P"/>
+                <outlet property="topContentViewConstraint" destination="ZED-vm-uFm" id="UOG-yR-hhM"/>
+                <outlet property="trailingContentViewConstraint" destination="b8f-3O-Lax" id="qS9-OE-bi9"/>
                 <outlet property="view" destination="xgm-NY-Y5H" id="kda-kR-GDY"/>
                 <outlet property="widthImageConstraint" destination="6u6-Pe-Q4j" id="QIp-e9-EGN"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="xgm-NY-Y5H">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tuto" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-sf-N3f">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_tuto" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-sf-N3f"/>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbL-63-JIC" userLabel="Content">
-                    <rect key="frame" x="17" y="20" width="564" height="560"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQy-lX-jxk" userLabel="Back">
-                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_arrow_tuto_button" translatesAutoresizingMaskIntoConstraints="NO" id="f3T-aT-8kT">
-                                    <rect key="frame" x="10" y="10" width="15" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="uhU-X3-QIy"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="f3T-aT-8kT" firstAttribute="width" secondItem="nQy-lX-jxk" secondAttribute="height" multiplier="3:9" id="7rR-PX-IzU"/>
                                 <constraint firstAttribute="width" constant="45" id="CTX-nf-nOH"/>
@@ -52,24 +52,21 @@
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutoriel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-ZR-1PE">
-                            <rect key="frame" x="262" y="30" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="6u6-Pe-Q4j"/>
                                 <constraint firstAttribute="width" secondItem="KjI-ZR-1PE" secondAttribute="height" multiplier="1:1" id="cgL-TG-fMT"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-Gt-INL">
-                            <rect key="frame" x="0.0" y="130" width="564" height="430"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUTORIEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwo-rc-q19">
-                            <rect key="frame" x="243" y="80" width="78" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="nQy-lX-jxk" firstAttribute="top" secondItem="bbL-63-JIC" secondAttribute="top" id="1rm-tP-GpD"/>
                         <constraint firstItem="E6I-Gt-INL" firstAttribute="top" secondItem="rwo-rc-q19" secondAttribute="bottom" constant="30" id="KXX-xB-y1D"/>
@@ -84,18 +81,18 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="eGf-sf-N3f" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" id="1YP-yp-AXE"/>
                 <constraint firstAttribute="trailing" secondItem="eGf-sf-N3f" secondAttribute="trailing" id="5z2-4k-HwY"/>
                 <constraint firstItem="eGf-sf-N3f" firstAttribute="top" secondItem="xgm-NY-Y5H" secondAttribute="top" id="I2l-Vk-s0j"/>
-                <constraint firstItem="bbL-63-JIC" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" constant="17" id="RtF-R1-zgr"/>
+                <constraint firstItem="bbL-63-JIC" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" constant="20" id="RtF-R1-zgr"/>
                 <constraint firstAttribute="bottom" secondItem="eGf-sf-N3f" secondAttribute="bottom" id="T4J-0l-sgp"/>
                 <constraint firstAttribute="trailing" secondItem="eGf-sf-N3f" secondAttribute="trailing" id="TpE-n9-qry"/>
-                <constraint firstItem="bbL-63-JIC" firstAttribute="top" secondItem="xgm-NY-Y5H" secondAttribute="top" constant="20" id="ZED-vm-uFm"/>
+                <constraint firstItem="bbL-63-JIC" firstAttribute="top" secondItem="xgm-NY-Y5H" secondAttribute="top" constant="23" id="ZED-vm-uFm"/>
                 <constraint firstItem="eGf-sf-N3f" firstAttribute="leading" secondItem="xgm-NY-Y5H" secondAttribute="leading" id="aZp-42-PFI"/>
-                <constraint firstAttribute="trailing" secondItem="bbL-63-JIC" secondAttribute="trailing" constant="19" id="b8f-3O-Lax"/>
-                <constraint firstAttribute="bottom" secondItem="bbL-63-JIC" secondAttribute="bottom" constant="20" id="mY1-Jw-aAv"/>
+                <constraint firstAttribute="trailing" secondItem="bbL-63-JIC" secondAttribute="trailing" constant="21" id="b8f-3O-Lax"/>
+                <constraint firstAttribute="bottom" secondItem="bbL-63-JIC" secondAttribute="bottom" constant="23" id="mY1-Jw-aAv"/>
             </constraints>
             <point key="canvasLocation" x="219" y="188"/>
         </view>

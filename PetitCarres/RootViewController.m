@@ -20,6 +20,12 @@
 // Constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthImageConstraint;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingContentViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingContentViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topContentViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomContentViewConstraint;
+
+
 // Data
 @property (nonatomic, strong) ChildViewController *subView;
 @property (nonatomic, strong) NSString *titleView;
@@ -60,6 +66,9 @@
     // Image
     self.titleImageView.image = self.image;
     [self.titleImageView setTintColor:BLACK_COLOR];
+    
+    // Manage constraint for background image
+    [self updateConstraintContentViewSize];
     
     // ChildView
     [self addConstraintToContentView];
@@ -118,6 +127,28 @@
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0
                                                       constant:0.0]];
+}
+
+- (void)updateConstraintContentViewSize
+{
+    if (IS_IPAD) {
+        self.leadingContentViewConstraint.constant += 23;
+        self.trailingContentViewConstraint.constant += 25;
+        self.topContentViewConstraint.constant += 5;
+        self.bottomContentViewConstraint.constant += 5;
+    } if (IS_IPHONE_5 || IS_IPHONE_4) {
+        self.leadingContentViewConstraint.constant -= 3;
+        self.trailingContentViewConstraint.constant -= 2;
+        self.topContentViewConstraint.constant -= 3;
+        self.bottomContentViewConstraint.constant -= 3;
+    } else if (IS_IPHONE_6) {
+     // it's ok
+    } else {
+        self.leadingContentViewConstraint.constant += 2;
+        self.trailingContentViewConstraint.constant += 3;
+        self.topContentViewConstraint.constant += 3;
+        self.bottomContentViewConstraint.constant += 3;
+    }
 }
 
 #pragma mark - Actions
