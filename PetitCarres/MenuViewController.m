@@ -56,6 +56,10 @@
 {
     [super viewDidLoad];
     [self configureUI];
+    
+    NSString *shortcutFastGame = [GlobalConfigurations sharedInstance].fastGame;
+    if (shortcutFastGame)
+        [self pushSpecificView:shortcutFastGame];
 }
 
 - (void)configureUI
@@ -141,6 +145,23 @@
 {
     RootViewController *rootViewController = [[RootViewController alloc] initWithTitle:title image:image subView:viewController];
     [self.navigationController pushViewController:rootViewController animated:YES];
+}
+
+- (void)pushSpecificView:(NSString *)shortcutKey
+{
+    NSString *bundle = [NSBundle mainBundle].bundleIdentifier;
+    NSLog(@"test : %@", [NSString stringWithFormat:@"%@.%@", bundle, SETTINGS_SHORTCUT_KEY]);
+    if ([shortcutKey isEqual:[NSString stringWithFormat:@"%@.%@", bundle, FAST_LAUNCH_SHORTCUT_KEY]]) {
+        [self startGameAction:nil];
+    } else if ([shortcutKey isEqual:[NSString stringWithFormat:@"%@.%@", bundle, RULES_SHORTCUT_KEY]]) {
+        [self tutorielAction:nil];
+    } else if ([shortcutKey isEqual:[NSString stringWithFormat:@"%@.%@", bundle, SETTINGS_SHORTCUT_KEY]]) {
+        [self setupAction:nil];
+    } else if ([shortcutKey isEqual:[NSString stringWithFormat:@"%@.%@", bundle, CREDITS_SHORTCUT_KEY]]){
+        [self creditAction:nil];
+    } else {
+        NSLog(@"Key unknown %@", shortcutKey);
+    }
 }
 
 @end

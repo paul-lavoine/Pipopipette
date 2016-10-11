@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "GlobalConfigurations.h"
+
+
 
 @interface AppDelegate ()
 
@@ -18,10 +21,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    [Fabric with:@[ CrashlyticsKit ]];
     
+    [Fabric with:@[ CrashlyticsKit ]];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    [self manageDeepLink:[launchOptions valueForKey:UIApplicationLaunchOptionsShortcutItemKey]];
     
     return YES;
 }
@@ -46,6 +50,25 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    [self manageDeepLink:shortcutItem];
+}
+
+- (void)manageDeepLink:(UIApplicationShortcutItem *)shortcutItem
+{
+    [GlobalConfigurations sharedInstance].fastGame = shortcutItem.type;
+
+    // grab our storyboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // and instantiate our navigation controller
+    UINavigationController *controller = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewControllerID"];
+    
+    // make it the key window
+    self.window.rootViewController = controller;
+    [self.window makeKeyAndVisible];
 }
 
 @end

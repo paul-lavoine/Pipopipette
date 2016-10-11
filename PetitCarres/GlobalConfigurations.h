@@ -20,6 +20,11 @@
 #define NB_DEFAULT_ROWS     4
 #define NB_DEFAULT_COLUMNS  3
 
+#define FAST_LAUNCH_SHORTCUT_KEY    @"fastLaunch"
+#define RULES_SHORTCUT_KEY          @"rules"
+#define SETTINGS_SHORTCUT_KEY       @"settings"
+#define CREDITS_SHORTCUT_KEY        @"credits"
+
 @interface GlobalConfigurations : NSObject
 
 + (instancetype)sharedInstance;
@@ -27,5 +32,6 @@
 @property (assign, nonatomic) NSInteger nbPlayer;
 @property (assign, nonatomic) NSInteger nbBot;
 @property (assign, nonatomic) NSInteger botLevel;
+@property (strong, nonatomic) NSString *fastGame;
 
 @end

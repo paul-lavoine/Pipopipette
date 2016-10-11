@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Pipopipette
+
+  Created by Paul Lavoine on 01/10/2016.
+  Copyright © 2016 Paul Lavoine. All rights reserved.
+*/
+
+"UIApplicationShortcutItemTitle.fastLaunch.title"   = "Play";
+"UIApplicationShortcutItemTitle.settings.title"     = "Settings";
+"UIApplicationShortcutItemTitle.rules.title"        = "Rules";
+"UIApplicationShortcutItemTitle.credits.title"      = "Credits";

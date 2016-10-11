@@ -19,6 +19,7 @@
 		A85FE8241C16316B00EF58E5 /* SetupGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE8231C16316B00EF58E5 /* SetupGameViewController.m */; };
 		A85FE82F1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */; };
 		A866FE391C2961C400916810 /* Component.m in Sources */ = {isa = PBXBuildFile; fileRef = A866FE381C2961C400916810 /* Component.m */; };
+		A86E68B61D9FE735003DF4B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A86E68B81D9FE735003DF4B0 /* InfoPlist.strings */; };
 		A878811B1C6A86080002F5D8 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811A1C6A86080002F5D8 /* RootViewController.xib */; };
 		A878811D1C6A97AB0002F5D8 /* TutorielViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */; };
 		A87881201C6A9C750002F5D8 /* CGUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A878811F1C6A9C750002F5D8 /* CGUViewController.xib */; };
@@ -98,6 +99,9 @@
 		A85FE82E1C1C2FEB00EF58E5 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 		A866FE371C2961C400916810 /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
 		A866FE381C2961C400916810 /* Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Component.m; sourceTree = "<group>"; };
+		A86E68B71D9FE735003DF4B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A86E68B91D9FE739003DF4B0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A86E68BA1D9FE73C003DF4B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A878811A1C6A86080002F5D8 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		A878811C1C6A97AB0002F5D8 /* TutorielViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorielViewController.xib; sourceTree = "<group>"; };
 		A878811F1C6A9C750002F5D8 /* CGUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGUViewController.xib; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 		A898113C1C6802D3003A344B /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				DA6E9B131BA01AC6009A9EB8 /* AppDelegate.h */,
+				DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */,
 				A85FE8261C1C2F2300EF58E5 /* Utils */,
 				DA6E9B4B1BA03B1D009A9EB8 /* Model */,
 				DA6E9B3C1BA01D4A009A9EB8 /* ViewsController */,
@@ -416,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				DA6E9B101BA01AC6009A9EB8 /* Info.plist */,
+				A86E68B81D9FE735003DF4B0 /* InfoPlist.strings */,
 				DA6E9B111BA01AC6009A9EB8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -452,8 +459,6 @@
 		DA6E9B3B1BA01D3D009A9EB8 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				DA6E9B131BA01AC6009A9EB8 /* AppDelegate.h */,
-				DA6E9B141BA01AC6009A9EB8 /* AppDelegate.m */,
 				A898113B1C6802C2003A344B /* PrefixHeader.pch */,
 			);
 			name = Configuration;
@@ -620,6 +625,7 @@
 				A87881221C6A9E0B0002F5D8 /* SetupGameViewController.xib in Resources */,
 				A87C5CE61C6807BD00CF0B33 /* Roboto-ThinItalic.ttf in Resources */,
 				A87C5CE51C6807BD00CF0B33 /* Roboto-Thin.ttf in Resources */,
+				A86E68B61D9FE735003DF4B0 /* InfoPlist.strings in Resources */,
 				A87C5CDE1C6807BD00CF0B33 /* Roboto-CondensedItalic.ttf in Resources */,
 				A87C5CD91C6807BD00CF0B33 /* Roboto-Bold.ttf in Resources */,
 				DA6E9B1D1BA01AC6009A9EB8 /* Images.xcassets in Resources */,
@@ -773,6 +779,16 @@
 				A85041ED1D135DAB00452CFC /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A86E68B81D9FE735003DF4B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86E68B71D9FE735003DF4B0 /* en */,
+				A86E68B91D9FE739003DF4B0 /* fr */,
+				A86E68BA1D9FE73C003DF4B0 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		DA6E9B191BA01AC6009A9EB8 /* Main.storyboard */ = {
