@@ -50,7 +50,7 @@
 "credits.title_determinant.label"       = "LA ";
 "credits.title_game_name.label"         = "PIPOPIPETTE";
 "credits.copyright.label"               = "© copyright Paul Lavoine - 2016";
-"credits.application_designed.label"    = "designée by";
+"credits.application_designed.label"    = "designée par";
 
 // Map
 "map.back.label"                        = "retour";
